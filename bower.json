@@ -1,0 +1,30 @@
+{
+  "name": "moosejs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/RJTM/moosejs",
+  "authors": [
+    "Ricardo Montero <rjtm1992@gmail.com>",
+    "Emilio Tirado <emilio.tirado.58@gmail.com>"
+  ],
+  "description": "Piece of software made for the administration of online programming contests.",
+  "keywords": [
+    "judge",
+    "programming",
+    "contests",
+    "grade"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/dependencies",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+   "angular": "1.2.x",
+   "angular-route": "1.2.x"
+ }
+}

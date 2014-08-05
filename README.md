@@ -1,4 +1,3 @@
-moosejs
-=======
+# tmp
 
-Moose Judging System. Piece of software made for the administration of online programming contests.
+a [Sails](http://sailsjs.org) application
