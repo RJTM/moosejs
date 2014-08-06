@@ -14,8 +14,22 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('home', {
 			url : '/home',
-			templateUrl : 'partial1.html'
+			templateUrl : 'templates/partial1.html'
 		})
+		
+		.state('home.list', {
+			url: '/list',
+			templateUrl: 'templates/partial1-list.html',
+			controller: function($scope){
+				$scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
+			}
+		})
+
+		.state('home.paragraph', {
+			url : '/paragraph',
+			template: 'I could sur use a drink right now.'
+		})
+
 		.state('about', {
 
 		});
