@@ -36,7 +36,7 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 				'': { templateUrl : 'templates/partial2.html'},
 				'columnOne@about' : { template : 'Look I am a column!'},
 				'columnTwo@about' : {
-					templateUrl : 'templates/table-data.html',
+					templateUrl : 'templates/scoreboard.html',
 					controller : 'scotchController'
 				}
 			}
@@ -45,18 +45,18 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 
 mooseJs.controller('scotchController', function($scope){
 	$scope.message = 'test';
-	$scope.scotches = [
+	$scope.results = [
 		{
-			name: 'Macalan 12',
-			price: 50
+			team: 'Macalan 12',
+			scores : ['250(2)', '100', '20', '-']
 		},
 		{
-			name: 'Chivas Regal Royal Salute',
-			price: 10000
+			team: 'Chivas Regal Royal Salute',
+			scores : ['250(2)', '100', '20', '-']
 		},
 		{
-			name: 'Glenfiddich 1937',
-			price: 20000
+			team: 'Glenfiddich 1937',
+			scores : ['250(2)', '100', '20', '-']
 		}
 	];
 });

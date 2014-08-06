@@ -1,0 +1,15 @@
+<table class="table table-hover table-striped">
+  <thead>
+  	<th>Team</th>
+  	<th>Problem A</th>
+  	<th>Problem B</th>
+  	<th>Problem C</th>
+  	<th>Problem D</th>
+  </thead>
+  <tbody>
+  	<tr ng-repeat="result in results">
+  		<td>{{ result.team }}</td>
+  		<td ng-repeat="score in result.scores" class="danger">{{score}}</td>
+  	</tr>
+  </tbody>
+</table>
