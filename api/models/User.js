@@ -35,6 +35,10 @@ module.exports = {
   		enum: ['admin','jury','staff','team'],
   		required: true,
   	},
+  	runs: {
+  		collection: 'run',
+  		via: 'owner'
+  	},
   	toJSON: function() {
       var obj = this.toObject();
       delete obj.encryptedPassword;
