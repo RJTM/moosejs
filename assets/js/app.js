@@ -45,6 +45,20 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 
 mooseJs.controller('scotchController', function($scope){
 	$scope.message = 'test';
+	$scope.problems = [
+		{
+			name : 'Problem A'
+		},
+		{
+			name : 'Problem B'
+		},
+		{
+			name : 'Problem C'
+		},
+		{
+			name : 'Problem D'
+		},
+	];
 	$scope.results = [
 		{
 			team: 'Macalan 12',
