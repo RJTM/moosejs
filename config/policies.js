@@ -51,5 +51,8 @@ module.exports.policies = {
   // 
   UserController: {
     check: 'tokenAuth'
+  },
+  RunController: {
+    submit: 'tokenAuth'
   }
 };

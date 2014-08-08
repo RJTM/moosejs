@@ -21,7 +21,10 @@ module.exports = {
   	},
   	task: {
   		model: 'task'
-  	}
+  	},
+      source: {
+             type: 'string'
+      }
   }
 };
 
