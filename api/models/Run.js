@@ -13,7 +13,7 @@ module.exports = {
   	},
   	status: {
   		type: 'string',
-  		enum: ['pending','invalid','done'],
+  		enum: ['pending','judging','done','invalid'],
   		defaultsTo: 'pending'
   	},
   	owner: {
@@ -24,6 +24,10 @@ module.exports = {
   	},
       source: {
              type: 'string'
+      },
+      grades: {
+             collection: 'grade',
+             via: 'run'
       }
   }
 };
