@@ -19,7 +19,7 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 		
 		.state('home.list', {
 			url: '/list',
-			templateUrl: 'templates/partial1-list.html',
+			templateUrl: 'templates/login.html',
 			controller: function($scope){
 				$scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
 			}
@@ -34,7 +34,7 @@ mooseJs.config(function($stateProvider, $urlRouterProvider){
 			url: '/about',
 			views : {
 				'': { templateUrl : 'templates/partial2.html'},
-				'columnOne@about' : { template : 'Look I am a column!'},
+				'columnOne@about' : { templateUrl : 'templates/login.html'},
 				'columnTwo@about' : {
 					templateUrl : 'templates/scoreboard.html',
 					controller : 'scotchController'
