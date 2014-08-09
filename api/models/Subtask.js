@@ -8,7 +8,13 @@
 module.exports = {
 
   attributes: {
-
+  	task: {
+  		model: 'task'
+  	},
+  	testcases: {
+  		collecion: 'testcase',
+  		via: 'subtask'
+  	}
   }
 };
 
