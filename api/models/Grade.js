@@ -11,6 +11,9 @@ module.exports = {
   	run: {
   		model: 'run'
   	},
+      subtask: {
+            model: 'subtask'
+      },
   	judgehost: {
   		model: 'judgehost'
   	},

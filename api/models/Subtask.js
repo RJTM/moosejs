@@ -11,6 +11,9 @@ module.exports = {
   	task: {
   		model: 'task'
   	},
+  	points: {
+  		type: 'int'
+  	},
   	testcases: {
   		collecion: 'testcase',
   		via: 'subtask'
