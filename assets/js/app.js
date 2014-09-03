@@ -2,10 +2,7 @@
 
 // Declare app level module which depends on filters, and services
 var mooseJs = angular.module('mooseJs', [
-  'ui.router',
-  'mooseJs.filters',
-  'mooseJs.services',
-  'mooseJs.directives',
+  'ui.router'
 ]);
 
 mooseJs.run(function($rootScope, $state){
@@ -14,6 +11,5 @@ mooseJs.run(function($rootScope, $state){
 		// 	event.preventDefault();
 		// 	$state.go('home.login');
 		// }
-		return true;
 	});
 });
