@@ -1,8 +1,6 @@
 'use strict';
 
-var mooseJs = angular.module('mooseJs');
-
-angular.module('mooseJs').value('AccessLevel', {
+angular.module('mooseJs').constant('AccessLevels', {
 	anon : 0,
 	user : 1
 });

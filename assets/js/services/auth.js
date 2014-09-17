@@ -15,7 +15,7 @@ mooseJs.factory('Auth', function($http, LocalService, AccessLevels) {
         return LocalService.get('auth_token');
       },
       login: function(credentials) {
-        var login = $http.post('/auth/authenticate', credentials);
+        var login = $http.post('/user/authenticate', credentials);
         login.success(function(result) {
           LocalService.set('auth_token', JSON.stringify(result));
         });
@@ -27,7 +27,7 @@ mooseJs.factory('Auth', function($http, LocalService, AccessLevels) {
       },
       register: function(formData) {
         LocalService.unset('auth_token');
-        var register = $http.post('/auth/register', formData);
+        var register = $http.post('/user/register', formData);
         register.success(function(result) {
           LocalService.set('auth_token', JSON.stringify(result));
         });
@@ -53,7 +53,7 @@ mooseJs.factory('AuthInterceptor', function($q, $injector) {
       responseError: function(response) {
         if (response.status === 401 || response.status === 403) {
           LocalService.unset('auth_token');
-          $injector.get('$state').go('anon.login');
+          $injector.get('$state').go('home.login');
         }
         return $q.reject(response);
       }
