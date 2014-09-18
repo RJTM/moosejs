@@ -49,9 +49,6 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   // 
-  UserController: {
-    check: 'tokenAuth'
-  },
   RunController: {
     submit: 'tokenAuth'
   }
