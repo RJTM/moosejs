@@ -6,7 +6,11 @@
  */
 
 module.exports = {
-	authenticate: function(req, res){
+    /**
+     * Function that handles the authentication of the users
+     * @returns {String}   Access token
+     */
+    authenticate: function(req, res){
 		var username = req.param('username');
 		var password = req.param('password');
 		console.log(username);
@@ -40,9 +44,13 @@ module.exports = {
 			});
 		});
 	},
+    /**
+     * Action to register a new user
+     */
+    register: function(req, res){
+        //TODO
+    }
 
-	check: function(req, res) {
-		return res.json({token: req.token});
-	}
+	
 };
 

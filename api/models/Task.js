@@ -17,7 +17,11 @@ module.exports = {
   	runs: {
   		collection: 'run',
   		via: 'task'
-  	}
+  	},
+      subtasks: {
+             collection: 'subtask',
+             via: 'task',
+      }
   }
 };
 

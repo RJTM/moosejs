@@ -9,6 +9,12 @@ module.exports = {
 
 	attributes: {
 		name: 'string',
+
+		grades: {
+			collection: 'grade',
+			via: 'judgehost'
+		}
+
 	}
 };
 

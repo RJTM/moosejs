@@ -8,6 +8,9 @@
 module.exports = {
 
   attributes: {
+  	name: {
+  		type: 'string'
+  	},
   	tasks: {
   		collection: 'task',
   		via: 'contest'
