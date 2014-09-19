@@ -9,7 +9,8 @@ angular.module('mooseJs')
 		email : '',
 		role : 'team',
 		password : '',
-		confirmPassword : ''
+		confirmPassword : '',
+        members: ''
 	};
 	$scope.errors = [];
 	$scope.register = function(){

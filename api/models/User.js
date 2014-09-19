@@ -17,6 +17,7 @@ module.exports = {
   	},
   	name: 'string',
   	email: 'string',
+    members: 'string',
   	last_login: 'datetime',
   	last_ip_address: {
   		type: 'string',
