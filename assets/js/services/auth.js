@@ -24,18 +24,6 @@ mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User) {
       logout: function() {
         // The backend doesn't care about logouts, delete the token and you're good to go.
         LocalService.unset('auth_token');
-      },
-      register: function(formData) {
-        // LocalService.unset('auth_token');
-        // var register = $http.post('/user', formData);
-        // register.success(function(result) {
-        //   LocalService.set('auth_token', JSON.stringify(result));
-        // });
-        // return register;
-        var user = User.save(formData, function(result){
-          LocalService.set('auth_token', JSON.stringify(result));
-        });
-        return user;
       }
     }
   });

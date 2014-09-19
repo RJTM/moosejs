@@ -5,7 +5,6 @@ angular.module('mooseJs')
 	$scope.errors = [];
 
 	$scope.login = function(){
-		$window.alert('enter');
 		$scope.errors = [];
 		Auth.login($scope.user).success(function(result){
 			$state.go('about.logged');

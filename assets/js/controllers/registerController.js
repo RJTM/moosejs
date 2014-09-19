@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs')
-.controller('RegisterController', function($scope, $state, Auth){
+.controller('RegisterController', function($scope, $state, User){
 	
 	$scope.user = {
 		username : '',
@@ -11,11 +11,16 @@ angular.module('mooseJs')
 		password : '',
 		confirmPassword : ''
 	};
-	
+	$scope.errors = [];
 	$scope.register = function(){
-		Auth.register($scope.user).then(function(){
-			$state.go('home');
-		});
-	}
+		$scope.errors = [];
+        User.save($scope.user, 
+        function(data){
+            $state.go('home');
+	    },
+        function(error){
+            $scope.errors.push({message: error.data.summary});
+        });
+    };
 	
 });
