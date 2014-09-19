@@ -2,7 +2,7 @@
 
 var mooseJs = angular.module('mooseJs');
 
-mooseJs.factory('Auth', function($http, LocalService, AccessLevels) {
+mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User) {
     return {
       authorize: function(access) {
         if (access === AccessLevels.user) {
@@ -26,12 +26,16 @@ mooseJs.factory('Auth', function($http, LocalService, AccessLevels) {
         LocalService.unset('auth_token');
       },
       register: function(formData) {
-        LocalService.unset('auth_token');
-        var register = $http.post('/user/register', formData);
-        register.success(function(result) {
+        // LocalService.unset('auth_token');
+        // var register = $http.post('/user', formData);
+        // register.success(function(result) {
+        //   LocalService.set('auth_token', JSON.stringify(result));
+        // });
+        // return register;
+        var user = User.save(formData, function(result){
           LocalService.set('auth_token', JSON.stringify(result));
         });
-        return register;
+        return user;
       }
     }
   });

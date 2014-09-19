@@ -22,8 +22,9 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
 		})
 
 		.state('home.addUser', {
-			templateUrl: 'templates/addUser.html',
-			controller: 'registerController',
+			url : '/register',
+			templateUrl: 'templates/register.html',
+			controller: 'RegisterController',
 			data : {
 				access : AccessLevels.anon
 			}
