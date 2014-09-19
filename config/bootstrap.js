@@ -13,6 +13,7 @@ module.exports.bootstrap = function(cb) {
 
     async.series([
         Task.seed,
-        Contest.seed
+        Contest.seed,
+        User.seed
     ],cb);
 };
