@@ -14,6 +14,7 @@ module.exports.bootstrap = function(cb) {
     async.series([
         Task.seed,
         Contest.seed,
-        User.seed
+        User.seed,
+        Run.seed
     ],cb);
 };
