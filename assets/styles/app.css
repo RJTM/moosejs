@@ -35,3 +35,7 @@
 .form-signin > button {
     width: 100%;
 }
+
+.top-logo {
+    padding-left: 10px;
+}
