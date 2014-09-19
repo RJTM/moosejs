@@ -49,7 +49,13 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   // 
-  RunController: {
-    submit: 'tokenAuth'
-  }
+    RunController: {
+        submit: 'tokenAuth'
+    },
+    UserController: {
+        '*': ['tokenAuth', 'admin'],
+        'findOne': ['tokenAuth', 'juryAndUp'],
+        'authenticate': true,
+        'update': 'tokenAuth'
+    }
 };

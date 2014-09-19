@@ -39,17 +39,12 @@ module.exports = {
 				if(!valid){
 					return res.json(401, {err: 'invalid email or password'});
 				}else{
-					res.json({user: user, token: JWTService.issueToken(user.id)})
+					return res.json({user: user, token: JWTService.issueToken({id: user.id})})
 				}
 			});
 		});
-	},
-    /**
-     * Action to register a new user
-     */
-    register: function(req, res){
-        //TODO
-    }
+	}  
+    
 
 	
 };
