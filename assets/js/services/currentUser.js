@@ -6,7 +6,7 @@ angular.module('mooseJs').factory('CurrentUser', function(LocalService){
 			if(LocalService.get('auth_token')){
 				return angular.fromJson(LocalService.get('auth_token')).user;
 			} else {
-				return {};
+				return { role: 'anon'};
 			}
 		}
 	}

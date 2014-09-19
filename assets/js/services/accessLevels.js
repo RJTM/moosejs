@@ -2,5 +2,8 @@
 
 angular.module('mooseJs').constant('AccessLevels', {
 	anon : 0,
-	user : 1
+    staff: 1,
+	team : 2,
+    jury : 3,
+    admin : 4,
 });

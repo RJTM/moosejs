@@ -13,14 +13,6 @@ module.exports = {
     authenticate: function(req, res){
 		var username = req.param('username');
 		var password = req.param('password');
-		console.log(username);
-
-		User.find({}).exec(function findCB(err, found){
-			console.log(found.length);
-			while(found.length){
-				console.log('Found user with name: ' + found.pop().name);
-			}
-		});
 
 		if(!username || !password){
 			return res.json(401, {err:'Username and password required'});

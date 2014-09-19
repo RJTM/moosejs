@@ -7,7 +7,7 @@ angular.module('mooseJs')
 	$scope.login = function(){
 		$scope.errors = [];
 		Auth.login($scope.user).success(function(result){
-			$state.go('about.logged');
+			$state.go('roleRouter');
 		}).error(function(err) {
 			$scope.errors.push(err);
 		});

@@ -2,17 +2,41 @@
 
 var mooseJs = angular.module('mooseJs');
 
-mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User) {
+mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User, CurrentUser) {
     return {
       authorize: function(access) {
-        if (access === AccessLevels.user) {
+        if (access === AccessLevels.team) {
           return this.isAuthenticated();
+        }else if (access === AccessLevels.jury){
+            return this.isJury();
+        }else if (access === AccessLevels.admin){
+            return this.isAdmin();
+        }else if(access === AccessLevels.staff){
+            return this.isStaff();
         } else {
           return true;
         }
       },
       isAuthenticated: function() {
         return LocalService.get('auth_token');
+      },
+      isJury: function() {
+          if(LocalService.get('auth_token')){
+                var user = CurrentUser.user();
+                return user.role === 'jury';
+          }
+      },
+      isAdmin: function() {
+          if(LocalService.get('auth_token')){
+                var user = CurrentUser.user();
+                return user.role === 'admin';
+          }
+      },
+      isStaff: function() {
+        if(LocalService.get('auth_token')){
+                var user = CurrentUser.user();
+                return user.role === 'staff';
+          }
       },
       login: function(credentials) {
         var login = $http.post('/user/authenticate', credentials);

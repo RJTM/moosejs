@@ -17,6 +17,34 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  migrate: 'safe'
+  migrate: 'safe',
   // connection: 'localDiskDb'
+    
+  seed: function(cb){
+    var self = this;
+    var modelName = self.adapter.identity.charAt(0).toUpperCase() + self.adapter.identity.slice(1);
+    if (!self.seedData) {
+      sails.log.debug('No data avaliable to seed ' + modelName);
+      callback();
+      return;
+    }
+    self.count().exec(function (err, count){
+        if(!err && count === 0){
+            sails.log.debug('Seeding ' + modelName);
+            self.seedData.forEach(function(element){
+                 self.create(element).exec(function(err, result){
+                    if(err){
+                        sails.log.debug(err);
+                        cb();
+                    }
+                });
+            });
+            sails.log.debug(modelName +' seed planted');
+            cb();
+        }else{
+            sails.log.debug('No need to seed '+ modelName);
+            cb();
+        }
+    });
+  }
 };

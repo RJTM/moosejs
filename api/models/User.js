@@ -34,7 +34,7 @@ module.exports = {
   	role: {
   		type: 'string',
   		enum: ['admin','jury','staff','team'],
-  		defaultsTo: 'team';
+  		defaultsTo: 'team',
   	},
   	runs: {
   		collection: 'run',
