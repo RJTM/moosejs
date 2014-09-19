@@ -1,12 +1,8 @@
-/**
- * sessionAuth
- *
- * @module      :: Policy
- * @description :: Simple policy to allow any authenticated user
- *    
- * @docs        :: http://sailsjs.org/#!documentation/policies
- *
- */
+ /**
+  * tokenAuth
+  * 
+  * Check if the user making the request provided the token to see if the user is logged in
+  */
  module.exports = function(req, res, next) {
  	var token;
  	if (req.headers && req.headers.authorization) {
@@ -17,7 +13,9 @@
 
 	      if (/^Bearer$/i.test(scheme)) {
 	        token = credentials;
-	      }
+	      }else{
+            return res.json(401, {err: 'Format is Authorization: Bearer [token]'});
+          }
 	    } else {
 	      return res.json(401, {err: 'Format is Authorization: Bearer [token]'});
 	    }
@@ -28,7 +26,6 @@
 	  } else {
 	    return res.json(401, {err: 'No Authorization header was found'});
 	  }
-
 	  JWTService.verifyToken(token, function(err, token) {
 	  	if (err) return res.json(401, {err: 'The token is not valid'});
 
