@@ -15,6 +15,15 @@ module.exports = {
 			via: 'judgehost'
 		}
 
-	}
+	},
+    
+    seedData: [
+        {
+            name: 'Main judgehost'
+        },
+        {
+            name: 'Spare judgehost'
+        }
+    ]
 };
 

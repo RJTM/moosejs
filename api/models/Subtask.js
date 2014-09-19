@@ -18,6 +18,21 @@ module.exports = {
   		collecion: 'testcase',
   		via: 'subtask'
   	}
-  }
+  },
+    
+  seedData: [
+      {
+        task: 1,
+        points: 20
+      },
+      {
+        task: 1,
+        points: 30
+      },
+      {
+        task: 1,
+        points: 50
+      }
+  ]
 };
 
