@@ -15,6 +15,9 @@ module.exports.bootstrap = function(cb) {
         Task.seed,
         Contest.seed,
         User.seed,
-        Run.seed
+        Run.seed,
+        Subtask.seed,
+        Testcase.seed,
+        Judgehost.seed
     ],cb);
 };
