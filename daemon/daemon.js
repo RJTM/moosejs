@@ -1,7 +1,13 @@
 var fs = require('fs');
 var http = require('http');
+var socketIOClient = require('socket.io-client');
+var sailsIOClient = require('sails.io.js');
 var config;
+
+var io = sailsIOClient(socketIOClient);
+
 console.log("Starting...");
+
 /**
  * Function to get content of files using http.get()
  * Used for daemon handshake and gettin .in, .out and code files
@@ -58,37 +64,24 @@ function buildUrl(options){
 
 //Reading config file
 console.log("Reading config file...");
-fs.readFile('config.json', 'utf8', function(error,data){
-	if(error){
-		console.log('Error loading config file\n' + error);
-		return;
-	}
-	config = JSON.parse(data);
-	console.log("Config file loaded.");
-	var configToShow = JSON.parse(JSON.stringify(config));
-	delete configToShow.key;
-	console.log("Config:");
-	console.log(configToShow);
-
-	//Sending a handshake request to the server
-	var url = buildUrl({
-		host: config.host,
-		port: config.port,
-		path: "/judgehost/handshake",
-		params: [{name: 'token', value: config.key}],
-	});
-
-	console.log("Initiating handshake with the server.");
-	httpGetContent(url,function(err, body){
-		if(err){
-			console.log("error"+ err);
-			return;
-		}
-
-		handshakeResult(body);
-	});
-
+var data = fs.readFileSync('config.json');
+config = JSON.parse(data);
+console.log("Config file loaded.");
+var configToShow = JSON.parse(JSON.stringify(config));
+delete configToShow.key;
+console.log("Config:");
+console.log(configToShow);
+io.sails.url = config.host+':'+config.port;
+//Sending a handshake request to the server
+var url = buildUrl({
+    host: config.host,
+    port: config.port,
+    path: "/judgehost/handshake",
+    params: [{name: 'token', value: config.key}],
 });
+
+console.log("Initiating handshake with the server.");
+io.socket.post('/judgehost/handshake', {token: config.key}, handshakeResult);
 
 /**
  * Function that evaluates the response of the handshake and continues
@@ -96,16 +89,19 @@ fs.readFile('config.json', 'utf8', function(error,data){
  * @return {Function}   continues
  */
 function handshakeResult(body){
-	var response = JSON.parse(body);
+	var response = body;
 	if(response.success === 'yes'){
 		console.log("Handshake succeeded.");
-		return startJudging();
+		startJudging();
+        return;
 	}else{
 		console.log('Handshake not succesful! Something went wrong.');
 	}
 }
 
 function startJudging(){
-
+    io.socket.on('message', function(event){
+        console.log(event);
+    });
 }
 

@@ -10,9 +10,8 @@ module.exports = {
 		var token = req.param('token');
 		JWTService.verifyToken(token, function(err, token){
 			if(err) return res.json(401, {err: 'The token is not valid'});
-
-			res.json({token: token, success: 'yes'});
-
+            sails.sockets.join(req.socket, 'newSubmissions');
+			return res.json({token: token, success: 'yes'});
 		});
 	},
 
