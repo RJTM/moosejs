@@ -61,7 +61,6 @@ function buildUrl(options){
 	}
 	return url;
 }
-
 //Reading config file
 console.log("Reading config file...");
 var data = fs.readFileSync('config.json');
@@ -72,32 +71,15 @@ delete configToShow.key;
 console.log("Config:");
 console.log(configToShow);
 io.sails.url = config.host+':'+config.port;
-//Sending a handshake request to the server
-var url = buildUrl({
-    host: config.host,
-    port: config.port,
-    path: "/judgehost/handshake",
-    params: [{name: 'token', value: config.key}],
+io.socket.on('connect',function(){
+    console.log("Initiating handshake with the server.");
+    io.socket.post('/judgehost/handshake', {token: config.key}, function(body, responseObj){
+        if(responseObj.statusCode !== 200){
+            console.log('Handshake not successful');
+            process.exit(1);
+        }
+    });
 });
-
-console.log("Initiating handshake with the server.");
-io.socket.post('/judgehost/handshake', {token: config.key}, handshakeResult);
-
-/**
- * Function that evaluates the response of the handshake and continues
- * @param  {string}		body JSON body of the response
- * @return {Function}   continues
- */
-function handshakeResult(body){
-	var response = body;
-	if(response.success === 'yes'){
-		console.log("Handshake succeeded.");
-		startJudging();
-        return;
-	}else{
-		console.log('Handshake not succesful! Something went wrong.');
-	}
-}
 
 function startJudging(){
     io.socket.on('message', function(event){
