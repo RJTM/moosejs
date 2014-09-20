@@ -11,6 +11,17 @@ module.exports = {
   	subtask: {
   		model: 'subtask'
   	}
-  }
+  },
+  seedData: [
+      {
+        subtask: 1
+      },
+      {
+          subtask: 1
+      },
+      {
+        subtask: 1
+      }
+  ]
 };
 

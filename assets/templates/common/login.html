@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form class="form-signin" role="form">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="text" class="form-control" ng-model="user.username" placeholder="username" required autofocus/>
+                <input type="password" class="form-control" ng-model="user.password" placeholder="password" required/>
+
+                <button class="btn btn-large btn-primary" type="submit" ng-click="login()">Sign in</button>
+            </form>
+        </div>
+        
+    </div>
+	
+</div>
+
+<ul>
+	<li ng-repeat="error in errors"> {{ error }}</li>
+</ul>

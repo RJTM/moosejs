@@ -17,6 +17,7 @@ module.exports = {
   	},
   	name: 'string',
   	email: 'string',
+    members: 'string',
   	last_login: 'datetime',
   	last_ip_address: {
   		type: 'string',
@@ -33,7 +34,7 @@ module.exports = {
   	role: {
   		type: 'string',
   		enum: ['admin','jury','staff','team'],
-  		required: true,
+  		defaultsTo: 'team',
   	},
   	runs: {
   		collection: 'run',
@@ -70,6 +71,49 @@ module.exports = {
         	cb(err);
       	}
     });
-  }
+  },
+
+  seedData : [{
+    username : 'emiliot',
+    name : 'emilio',
+    email : 'emilio.tirado57@gmail.com',
+    password : '123',
+    role : 'admin'
+  },
+  {
+    username : 'rjtm',
+    name : 'ricardo',
+    email : 'rjtm1992@gmail.com',
+    password : '123',
+    role : 'admin'
+  },
+  {
+    username : 'hnavarro',
+    name : 'hector',
+    email : 'hector.navarro@ciens.ucv.ve',
+    password : '123',
+    role : 'jury'
+  }, 
+  {
+    username : 'trino',
+    name : 'trino',
+    email : 'trino.gomez@ciens.ucv.ve',
+    password : '123',
+    role : 'staff'
+  },
+  {
+    username : 'zyx',
+    name : 'carlos',
+    email : 'carlos.guia.vera@gmail.com',
+    password : '123',
+    role : 'team'
+  },
+  {
+    username : 'jbernadas',
+    name : 'jorge',
+    email : 'jbernadas@gmail.com',
+    password : '123',
+    role : 'team'
+  }]
 };
 

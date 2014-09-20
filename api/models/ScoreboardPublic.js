@@ -21,16 +21,24 @@ module.exports = {
 			model: 'subtask'
 		},
 		submissions: {
-			type: 'int'
+			type: 'int',
+			defaultsTo: 0
 		},
 		pending: {
-			type: 'int'
+			type: 'int',
+			defaultsTo: 0
 		},
 		totaltime: {
-			type: 'int'
+			type: 'int',
+			defaultsTo: 0
 		},
 		is_correct: {
-			type: 'boolean'
+			type: 'boolean',
+			defaultsTo: false
+		},
+		points: {
+			type: 'float',
+			defaultsTo: 0
 		}
 	}
 };

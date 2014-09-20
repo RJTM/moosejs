@@ -15,6 +15,18 @@ module.exports = {
   		collection: 'task',
   		via: 'contest'
   	}
-  }
+  },
+    
+  seedData: [{
+    name: "DummyContest",
+    
+  },
+ {
+     name: "Slurpee Contest",
+     
+ },
+ {
+     name: "TuktukContest",
+ }],
 };
 
