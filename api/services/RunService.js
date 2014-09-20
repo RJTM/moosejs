@@ -19,13 +19,14 @@ module.exports = {
                 var dirName =  contestName+"/"+ownerName+"/"+taskName+"/";
                 
                 file.upload({
-                                dirname: "../../assets/sources/"+dirName
+                                dirname: sails.config.appPath + "/assets/sources/" + dirName
                             }, function(err, up){
                     if (err){
                         callback(err,null);
                         return;
                     }
                     var fileName = /[^/]*$/.exec(up[0].fd)[0];
+                    sails.log(sails.config.appPath + "/" + dirName);
                     callback(null,dirName+fileName);
 			    });
            }
