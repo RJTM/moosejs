@@ -9,7 +9,7 @@ module.exports = {
 
 	submit: function(req,res) {
 		var time = req.param('time');
-		var owner = req.token;
+		var owner = req.token.id;
 		var task = req.param('task');
         var source = req.file('source');
         RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
@@ -21,6 +21,7 @@ module.exports = {
                 source: sourceUrl
             }).exec(function(err, result){
                 if(err) return res.json(500, err);
+                JudgeService.dispatchRun(result);
                 return res.json(result);
             });
         });

@@ -11,15 +11,20 @@ module.exports = {
   	run: {
   		model: 'run'
   	},
-      subtask: {
-            model: 'subtask'
-      },
+    subtask: {
+        model: 'subtask'
+    },
   	judgehost: {
   		model: 'judgehost'
   	},
   	result: {
-  		type: 'string'
-  	}
+  		type: 'string',
+  	},
+    status: {
+  		type: 'string',
+  		enum: ['pending','judging','done','invalid'],
+  		defaultsTo: 'pending'
+  	},
   }
 };
 

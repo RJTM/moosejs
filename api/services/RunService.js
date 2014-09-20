@@ -18,14 +18,16 @@ module.exports = {
                 var ownerName = URLService.toSlug(results[1].username);
                 var dirName =  contestName+"/"+ownerName+"/"+taskName+"/";
                 
-                file.upload({dirname: "../../assets/sources/"+dirName}, function(err, up){
+                file.upload({
+                                dirname: "../../assets/sources/"+dirName
+                            }, function(err, up){
                     if (err){
                         callback(err,null);
                         return;
                     }
                     var fileName = /[^/]*$/.exec(up[0].fd)[0];
                     callback(null,dirName+fileName);
-			});
+			    });
            }
         );
         
