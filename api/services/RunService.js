@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = {
-    getFileName: function(task, owner){
-       var self = this;
+    uploadSourceFile: function(task, owner, file, callback){
         
        async.parallel([
                 function(callback){
@@ -14,10 +13,19 @@ module.exports = {
             ],
             function (err,results){
                 if(err) return err;
-                    var contestName = URLService.toSlug(results[0].contest.name);
-                    var taskName = URLService.toSlug(results[0].name);
-                    var ownerName = URLService.toSlug(results[1].username);
-                    .return contestName+"/"+ownerName+"/"+taskName+"/";
+                var contestName = URLService.toSlug(results[0].contest.name);
+                var taskName = URLService.toSlug(results[0].name);
+                var ownerName = URLService.toSlug(results[1].username);
+                var dirName =  contestName+"/"+ownerName+"/"+taskName+"/";
+                
+                file.upload({dirname: "../../assets/sources/"+dirName}, function(err, up){
+                    if (err){
+                        callback(err,null);
+                        return;
+                    }
+                    var fileName = /[^/]*$/.exec(up[0].fd)[0];
+                    callback(null,dirName+fileName);
+			});
            }
         );
         
