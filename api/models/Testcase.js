@@ -10,7 +10,9 @@ module.exports = {
   attributes: {
   	subtask: {
   		model: 'subtask'
-  	}
+  	},
+    inputFile: 'string',
+    outputFile: 'string'
   },
   seedData: [
       {

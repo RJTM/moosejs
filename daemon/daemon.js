@@ -3,7 +3,8 @@ var socketIOClient = require('socket.io-client');
 var sailsIOClient = require('sails.io.js');
 var async = require('async');
 var util = require('./util.js');
-var config;
+var jsonfile = require('jsonfile');
+var config,tmp;
 
 var io = sailsIOClient(socketIOClient);
 
@@ -12,7 +13,7 @@ var judge = function(grade){
     grade.status = 'judging';
     
     util.log.judge("Received a new grade to judge");
-    util.log.judge(JSON.stringify(grade,undefined,2));
+    util.log.judge(grade);
     
     
     var sourceUrl = util.buildUrl({
@@ -40,6 +41,13 @@ var subscribe = function(){
     });
 }
 
+var syncTestcases = function(callback){
+    io.socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
+        
+        callback();
+    });
+}
+
 var onConnect = function(){
     util.log.info("Initiating handshake with the server.");
     io.socket.post('/judgehost/handshake', {token: config.key}, function(body, responseObj){
@@ -47,7 +55,8 @@ var onConnect = function(){
             util.log.info('Handshake not successful');
             process.exit(1);
         }
-        subscribe();
+        syncTestcases(subscribe);
+        //subscribe();
     });
 }
 
@@ -61,13 +70,23 @@ util.log.info("Starting...");
 
 //Reading config file
 util.log.info("Reading config file...");
-var data = fs.readFileSync('config.json');
-config = JSON.parse(data);
+config = jsonfile.readFileSync('config.json');
 util.log.info("Config file loaded.");
 var configToShow = JSON.parse(JSON.stringify(config));
 delete configToShow.key;
 util.log.info("Config:");
-util.log.info(JSON.stringify(configToShow,undefined,2));
+util.log.info(configToShow);
+
+//Reading TMP file
+if(!fs.existsSync('tmp.json')){
+   var newTmp = {
+        lastUpdate: config.lastUpdate
+   }
+   jsonfile.writeFileSync('tmp.json',newTmp);
+}
+tmp = jsonfile.readFileSync('tmp.json');
+
+
 io.sails.url = config.host+':'+config.port;
 
 //define event actions

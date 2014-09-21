@@ -66,22 +66,27 @@ module.exports = {
     log: {
         error: function(data){
             var timestamp = Date();
+            data = JSON.stringify(data,undefined,2);
             console.log(timestamp+" "+data.red);
         },
         info: function(data){
              var timestamp = Date();
+            data = JSON.stringify(data,undefined,2);
             console.log(timestamp+" "+data.blue);
         },
         debug: function(data){
              var timestamp = Date();
+            data = JSON.stringify(data,undefined,2);
             console.log(timestamp+" "+data);
         },
         warning: function(data){
              var timestamp = Date();
+            data = JSON.stringify(data,undefined,2);
             console.log(timestamp+" "+data.yellow);
         },
         judge: function(data){
             var timestamp = Date();
+            data = JSON.stringify(data,undefined,2);
             console.log(timestamp+" "+data.green);
         }
     
