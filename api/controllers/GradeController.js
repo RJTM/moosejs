@@ -43,6 +43,14 @@ module.exports = {
 				});
 			});			
 		});
-	}
+	},
+    
+    toJudging: function(req, res){
+        var gradeId = req.param('id');
+        Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
+            if(err) return res.servrError(err);
+            return res.json(result);
+        });
+    }
 };
 

@@ -17,7 +17,6 @@ module.exports = {
             task: run.task
         };
         if(subscribers.length > 0){
-            grade.status = 'judging';
             var judgehostToSend = subscribers[0];
             
             Grade.create(grade).exec(function(err, result){

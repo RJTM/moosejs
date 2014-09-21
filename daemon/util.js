@@ -1,5 +1,6 @@
 'use strict';
 var http = require('http');
+var colors = require('colors');
 
 module.exports = {
     /**
@@ -60,5 +61,29 @@ module.exports = {
             });
         }
         return url;
+    },
+    
+    log: {
+        error: function(data){
+            var timestamp = Date();
+            console.log(timestamp+" "+data.red);
+        },
+        info: function(data){
+             var timestamp = Date();
+            console.log(timestamp+" "+data.blue);
+        },
+        debug: function(data){
+             var timestamp = Date();
+            console.log(timestamp+" "+data);
+        },
+        warning: function(data){
+             var timestamp = Date();
+            console.log(timestamp+" "+data.yellow);
+        },
+        judge: function(data){
+            var timestamp = Date();
+            console.log(timestamp+" "+data.green);
+        }
+    
     }
 }

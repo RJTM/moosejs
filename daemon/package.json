@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "async": "^0.9.0",
+    "colors": "^0.6.2",
     "sails.io.js": "^0.10.3",
     "socket.io-client": "^0.9.17"
   }

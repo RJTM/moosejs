@@ -3,7 +3,7 @@
 module.exports = {
     uploadSourceFile: function(task, owner, file, callback){
         
-       async.parallel([
+       async.parallel([ 
                 function(callback){
                     Task.findOne({id: task}).populate('contest').exec(callback);
                 },
@@ -26,7 +26,6 @@ module.exports = {
                         return;
                     }
                     var fileName = /[^/]*$/.exec(up[0].fd)[0];
-                    sails.log(sails.config.appPath + "/" + dirName);
                     callback(null,dirName+fileName);
 			    });
            }
