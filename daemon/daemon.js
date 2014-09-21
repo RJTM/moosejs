@@ -1,4 +1,4 @@
-var fs = require('fs');
+var fs = require('fs-extra');
 var socketIOClient = require('socket.io-client');
 var sailsIOClient = require('sails.io.js');
 var async = require('async');
@@ -27,8 +27,7 @@ var judge = function(grade){
             util.log.judge("Processing...");
             util.log.debug(data);
             
-            subscribe();
-            
+            subscribe();            
         });
     },3000);
 }
@@ -37,14 +36,73 @@ var subscribe = function(){
     io.socket.get('/judgehost/subscribe',function(body,responseObj){
         if(body.status === 'pending'){
             judge(body.grade);
-        }
+        }  
     });
+}
+
+var getTestCase = function(testcase, callback){
+    var inputFile = util.buildUrl({
+        host: config.host,
+        port: config.port,
+        path: '/testcases/'+testcase.inputFile
+    });
+    
+    var outputFile = util.buildUrl({
+        host: config.host,
+        port: config.port,
+        path: '/testcases/'+testcase.outputFile
+    });
+    util.log.info("Fetching testcase "+testcase.id);
+    async.parallel(
+        [
+            function(callback){
+                util.httpGetContent(inputFile, callback);
+            },
+            function(callback){
+                util.httpGetContent(outputFile, callback);
+            }
+        ],
+        function(err,results){
+            if(err){ 
+                callback(err); 
+                return;
+            }
+            fs.outputFileSync('testcases/'+testcase.inputFile, results[0]);
+            fs.outputFileSync('testcases/'+testcase.outputFile, results[1]);
+            
+            util.log.info("Testcase saved "+ testcase.id);
+            callback();
+        }
+    )
+}
+
+var onTestcaseChange = function(obj){
+    util.log.info("Getting updated testcases");
+    if(obj.verb === "updated"){
+        getTestCase(obj.previous, function(err){
+            if(err){
+                util.log.error(err);
+                return;
+            }
+            util.log.info("Testcase updated");
+        });
+    }else if(obj.verb === "created"){
+        setTimeout(function(){
+            getTestCase(obj.data, function(err){
+                if(err){
+                    util.log.error(err);
+                    return;
+                }
+                util.log.info("New Testcase saved");
+            })},3000);
+    };
 }
 
 var syncTestcases = function(callback){
     io.socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
-        
-        callback();
+        async.each(body, getTestCase, function(err){
+            callback();
+        });
     });
 }
 
@@ -92,6 +150,7 @@ io.sails.url = config.host+':'+config.port;
 //define event actions
 io.socket.on('connect', onConnect);
 io.socket.on('submission', onSubmission);
+io.socket.on('testcase', onTestcaseChange);
 io.socket.on('message', function(event){
     util.log.info(event);
 });

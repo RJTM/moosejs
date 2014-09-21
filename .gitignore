@@ -120,3 +120,6 @@ daemon/tmp.json
 
 assets/sources/
 assets/testcases/
+
+daemon/sources/
+daemon/testcases/

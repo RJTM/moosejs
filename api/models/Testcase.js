@@ -13,17 +13,7 @@ module.exports = {
   	},
     inputFile: 'string',
     outputFile: 'string'
-  },
-  seedData: [
-      {
-        subtask: 1
-      },
-      {
-          subtask: 1
-      },
-      {
-        subtask: 1
-      }
-  ]
+  }
+  
 };
 

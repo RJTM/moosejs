@@ -13,7 +13,8 @@ module.exports = {
                 function(callback){
                     input.upload({
                                     dirname: sails.config.appPath + "/assets/testcases/" + dirName,
-                                    saveAs: testcase+'.in'
+                                    saveAs: testcase+'.in',
+                                    maxBytes: 1000000000
                     }, function(err,up){
                         if(err){ callback(err); return; }
                         callback(null,dirName+testcase+'.in');
@@ -24,7 +25,8 @@ module.exports = {
                 function(callback){
                     output.upload({
                                     dirname: sails.config.appPath + "/assets/testcases/" + dirName,
-                                    saveAs: testcase+'.out'
+                                    saveAs: testcase+'.out',
+                                    maxBytes: 1000000000
                     }, function(err,up){
                         if(err){ callback(err); return; }
                         callback(null,dirName+testcase+'.out');

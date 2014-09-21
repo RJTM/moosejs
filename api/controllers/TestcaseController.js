@@ -7,8 +7,14 @@
 
 module.exports = {
 	sync: function(req, res){
+        Testcase.find({}).exec(function(e,list){
+            Testcase.subscribe(req.socket,list,'update');
+            Testcase.watch(req.socket);
+            sails.log.debug(sails.sockets.socketRooms(req.socket));
+//            sails.log.debug(sails.sockets.subscribers('testcase'));
+        });
         var lastSync = req.param('date');
-        Testcase.find({ updatedAt: { '>': lastSync}}).exec(function(err, result){
+        Testcase.find({ updatedAt: { '>': lastSync}}).populate('subtask').exec(function(err, result){
             if(err) return res.serverError(err);
             return res.json(result);
         });
@@ -38,6 +44,7 @@ module.exports = {
                 
                 testcase.save(function(err,s){
                     if(err) return res.serverError(err);
+                    Testcase.publishCreate(s);
                     return res.json(s);
                 });
                 
