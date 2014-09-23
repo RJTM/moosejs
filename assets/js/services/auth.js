@@ -69,7 +69,7 @@ mooseJs.factory('AuthInterceptor', function($q, $injector) {
       responseError: function(response) {
         if (response.status === 401 || response.status === 403) {
           LocalService.unset('auth_token');
-          $injector.get('$state').go('home.login');
+          $injector.get('$state').go('public.login');
         }
         return $q.reject(response);
       }

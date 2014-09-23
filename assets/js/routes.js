@@ -31,7 +31,30 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
             url: "/login",
             templateUrl: 'templates/common/login.html',
             controller: 'LoginController'
-        });
+        })
+
+        .state('admin', {
+            url : '/admin',
+            templateUrl : 'templates/public/layout.html',
+            abstract : true,
+            data : {
+                access : AccessLevels.admin
+            }
+        })
+
+        .state('admin.home', {
+            url : '/home',
+        	templateUrl : 'templates/admin/home.html'
+        })
+
+        .state('admin.register', {
+        	url : "/admin/register",
+        	templateUrl : 'templates/common/register.html',
+        	controller : 'RegisterController',
+        	data : {
+        		access : AccessLevels.admin
+        	}
+        })
 		/*.state('home', {
 			url : '/home',
 			templateUrl : 'templates/partial1.html',

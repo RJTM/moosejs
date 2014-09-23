@@ -17,6 +17,7 @@ angular.module('mooseJs')
 		$scope.errors = [];
         User.save($scope.user, 
         function(data){
+        	//TODO
             $state.go('home');
 	    },
         function(error){
