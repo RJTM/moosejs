@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	save: function(req, res) {
+	/*save: function(req, res) {
 		var runId = req.param('run');
 		var judgehost = req.token.id;
 		var result = req.param('result');
@@ -43,6 +43,14 @@ module.exports = {
 				});
 			});			
 		});
-	}
+	},*/
+    
+    toJudging: function(req, res){
+        var gradeId = req.param('id');
+        Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
+            if(err) return res.servrError(err);
+            return res.json(result);
+        });
+    }
 };
 

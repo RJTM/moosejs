@@ -116,3 +116,10 @@ npm-debug.log
 nbproject
 .idea
 .node_history
+daemon/tmp.json
+
+assets/sources/
+assets/testcases/
+
+daemon/sources/
+daemon/testcases/

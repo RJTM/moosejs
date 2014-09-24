@@ -22,6 +22,20 @@ module.exports = {
              collection: 'subtask',
              via: 'task',
       }
-  }
+  },
+    
+  seedData: [{
+    name: "DummyTask",
+    contest: 1,
+  },
+ {
+     name: "Flips",
+     contest: 1,
+ },
+ {
+     name: "Diet Coke",
+     contest: 1,
+ }],
+    
 };
 

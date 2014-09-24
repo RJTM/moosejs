@@ -6,7 +6,11 @@
  */
 
 module.exports = {
-	authenticate: function(req, res){
+    /**
+     * Function that handles the authentication of the users
+     * @returns {String}   Access token
+     */
+    authenticate: function(req, res){
 		var username = req.param('username');
 		var password = req.param('password');
 
@@ -27,14 +31,13 @@ module.exports = {
 				if(!valid){
 					return res.json(401, {err: 'invalid email or password'});
 				}else{
-					res.json({user: user, token: JWTService.issueToken(user.id)})
+					return res.json({user: user, token: JWTService.issueToken({id: user.id})})
 				}
 			});
 		});
-	},
+	}  
+    
 
-	check: function(req, res) {
-		return res.json({token: req.token});
-	}
+	
 };
 

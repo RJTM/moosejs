@@ -17,7 +17,25 @@ module.exports = {
   	testcases: {
   		collecion: 'testcase',
   		via: 'subtask'
-  	}
-  }
+  	},
+    feedback: {
+        type: 'boolean'
+    }
+  },
+    
+  seedData: [
+      {
+        task: 1,
+        points: 20
+      },
+      {
+        task: 1,
+        points: 30
+      },
+      {
+        task: 1,
+        points: 50
+      }
+  ]
 };
 
