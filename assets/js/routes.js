@@ -35,7 +35,7 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
 
         .state('admin', {
             url : '/admin',
-            templateUrl : 'templates/public/layout.html',
+            templateUrl : 'templates/admin/layout.html',
             abstract : true,
             data : {
                 access : AccessLevels.admin
@@ -44,8 +44,20 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
 
         .state('admin.home', {
             url : '/home',
-        	templateUrl : 'templates/admin/home.html'
+        	templateUrl : 'templates/admin/home.html',
+            data: {
+                ncyBreadcrumbLabel: 'Home'
+            }
         })
+    
+        .state('admin.contests', {
+            url: '/contests',
+            templateUrl: 'templates/admin/contests.html',
+            data: {
+                ncyBreadcrumbLabel: 'Contests',
+                ncyBreadcrumbParent: 'admin.home'
+            }
+        })  
 
         .state('admin.register', {
         	url : "/admin/register",

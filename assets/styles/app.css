@@ -39,3 +39,15 @@
 .top-logo {
     padding-left: 10px;
 }
+
+
+.nav-pills > li {
+    float: none;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.nav-pills {
+    text-align: center;
+}
