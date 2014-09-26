@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Sites</strong>
+		<small>all the sites you connect to in those lovely multi-sites contests</small>		
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>URL</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="site in sites">
+				<td>{{ site.name }}</td>
+				<td>{{ site.url }}</td>
+				<td>
+					<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

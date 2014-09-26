@@ -26,11 +26,22 @@ angular.module('mooseJs.admin')
                 .state('admin.contests', {
                     url: '/contests',
                     templateUrl: 'templates/admin/contests.html',
+                    controller: 'ContestsController',
                     data: {
                         ncyBreadcrumbLabel: 'Contests',
                         ncyBreadcrumbParent: 'admin.home'
                     }
                 })  
+
+                .state('admin.users',{
+                    url: '/users',
+                    templateUrl: 'templates/admin/users.html',
+                    controller: 'UsersController',
+                    data: {
+                        ncyBreadcrumbLabel: 'Users',
+                        ncyBreadcrumbParent: 'admin.home'
+                    }
+                })
 
                 .state('admin.register', {
                     url : "/register",
@@ -38,6 +49,16 @@ angular.module('mooseJs.admin')
                     controller : 'RegisterController',
                     data : {
                         access : AccessLevels.admin
+                    }
+                })
+
+                .state('admin.sites',{
+                    url: "/sites",
+                    templateUrl: 'templates/admin/sites.html',
+                    controller: 'SitesController',
+                    data: {
+                        ncyBreadcrumbLabel: 'Sites',
+                        ncyBreadcrumbParent: 'admin.home'
                     }
                 })
 });
