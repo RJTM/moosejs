@@ -12,15 +12,24 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation" ng-controller="navController">
        <div class="navbar-header top-logo">
          <a href="#"><img src="/images/logo.png" alt=""></a>
        </div>
        <p class="navbar-text navbar-right">
            <strong><span class="white-text">Time remaining 00:00:00</span></strong>
        </p>
-       <ul class="nav navbar-nav navbar-right">
+       <ul class="nav navbar-nav navbar-right" ng-hide="isLogged">
            <li><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
+       </ul>
+       <ul class="nav navbar-nav navbar-right" ng-show="isLogged">
+          <li class="dropdown">
+           <a href class="dropdown-toggle">Welcome, {{ user.username }} <span class="caret"></span></a>
+            
+            <ul class="dropdown-menu">
+              <li><a href ng-click="logout()">Logout</a></li>
+            </ul>
+          </li>
        </ul>
 
      </nav>

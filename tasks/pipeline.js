@@ -36,7 +36,9 @@ var jsFilesToInject = [
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
-  'js/app.js',
+  'js/common/common.module.js',
+  'js/**/*.module.js',
+  'js/moose.module.js',
   'js/services/accessLevels.js',
   'js/**/*.js'
 ];

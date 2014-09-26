@@ -1,0 +1,528 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
+			"settings":
+			{
+				"buffer_size": 692,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
+			"settings":
+			{
+				"buffer_size": 36,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 368.0,
+		"selected_items":
+		[
+			[
+				"packae",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Disable Package"
+			],
+			[
+				"pa",
+				"Package Control: List Packages"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"pull",
+				"Git: Pull"
+			],
+			[
+				"tatus",
+				"Git: Status"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			],
+			[
+				"add re",
+				"Package Control: Add Repository"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"save",
+				"Project: Save As"
+			],
+			[
+				"bl",
+				"Git: Blame"
+			],
+			[
+				"diff",
+				"Git: Diff All Files"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instll",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 561.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/rjtm/Escritorio/moosejs",
+		"/home/rjtm/Escritorio/moosejs/assets",
+		"/home/rjtm/Escritorio/moosejs/assets/js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common"
+	],
+	"file_history":
+	[
+		"/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/services/accessLevels.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/admin.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/routes.js",
+		"/home/rjtm/Escritorio/moosejs/bower_components/angular-route/angular-route.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-backend/templates/config/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/routes.js",
+		"/home/rjtm/Escritorio/moosejs/config/routes.js",
+		"/home/rjtm/Escritorio/moosejs/README.md",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/retry/lib/retry_operation.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/moose.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/staff.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/public.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/jury.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/team/team.module.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/ejs-locals/test/fixtures/parent-include-chain.ejs",
+		"/home/rjtm/Escritorio/moosejs/package.json",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/roleController.js",
+		"/home/rjtm/.config/sublime-text-3/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/home/rjtm/Escritorio/moosejs/daemon/moosejs.sublime-project",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/express/node_modules/connect/lib/middleware/methodOverride.js",
+		"/home/rjtm/Escritorio/moosejs/bower_components/components-font-awesome/Makefile",
+		"/home/rjtm/Escritorio/moosejs/assets/js/app.js",
+		"/home/rjtm/Escritorio/moosejs/daemon/moosejs.sublime-workspace",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-sync/node_modules/promised-io/tests/oauth.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/minimatch/test/extglob-ending-with-state-char.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/underscore.string/test/test_standalone.html",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/iconv-lite/test/turkish-test.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/internal-tasks/subgrunt.js",
+		"/home/rjtm/Escritorio/moosejs/.gitignore",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/async/index.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-sync/node_modules/promised-io/step.js",
+		"/home/rjtm/Escritorio/moosejs/Gruntfile.js",
+		"/home/rjtm/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/rjtm/Escritorio/moosejs/assets/styles/importer.less",
+		"/home/rjtm/Escritorio/moosejs/assets/styles/app.css",
+		"/home/rjtm/Escritorio/dummy.in",
+		"/home/rjtm/Escritorio/moosejs/daemon/daemon.js",
+		"/home/rjtm/Escritorio/moosejs/assets/sources/dummycontest/trino/dummytask/d283fe15-a07b-4dcc-b7ed-ec73cfecb785.cpp",
+		"/home/rjtm/Escritorio/moosejs/npm-debug.log"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\n			grunt.registerTask('default', []);\n",
+			"exports",
+			"this",
+			"This",
+			"other",
+			"needs"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 692,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 36,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 55.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 112.0
+	},
+	"project": "moosejs.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"routes",
+				"assets/js/public/routes.js"
+			],
+			[
+				"pipe",
+				"tasks/pipeline.js"
+			],
+			[
+				"moose",
+				"assets/js/moose.module.js"
+			],
+			[
+				"moose.",
+				"assets/js/moose.module.js"
+			],
+			[
+				"dae",
+				"daemon/daemon.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/Escritorio/moosejs/daemon/moosejs.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 221.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

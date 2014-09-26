@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mooseJs').constant('RoleDestination', {
+angular.module('mooseJs.common').constant('RoleDestination', {
 	anon: 'public.home',
     team: 'team.home',
     jury: 'jury.home',

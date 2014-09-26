@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mooseJs')
+angular.module('mooseJs.common')
 .controller('LoginController', function($scope, $state, Auth, $window){
 	$scope.errors = [];
 

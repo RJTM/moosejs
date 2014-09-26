@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mooseJs').factory('LocalService', function(){
+angular.module('mooseJs.common').factory('LocalService', function(){
 	return {
 		get : function(key){
 			return localStorage.getItem(key);

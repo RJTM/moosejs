@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mooseJs').factory('CurrentUser', function(LocalService){
+angular.module('mooseJs.common').factory('CurrentUser', function(LocalService){
 	return {
 		user : function(){
 			if(LocalService.get('auth_token')){

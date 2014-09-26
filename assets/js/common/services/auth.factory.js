@@ -1,6 +1,6 @@
 'use strict';
 
-var mooseJs = angular.module('mooseJs');
+var mooseJs = angular.module('mooseJs.common');
 
 mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User, CurrentUser) {
     return {
