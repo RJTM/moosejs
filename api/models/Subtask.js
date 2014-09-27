@@ -7,35 +7,41 @@
 
 module.exports = {
 
-  attributes: {
-  	task: {
-  		model: 'task'
-  	},
-  	points: {
-  		type: 'int'
-  	},
-  	testcases: {
-  		collection: 'testcase',
-  		via: 'subtask'
-  	},
-    feedback: {
-        type: 'boolean'
-    }
-  },
-    
-  seedData: [
-      {
-        task: 1,
-        points: 20
-      },
-      {
-        task: 1,
-        points: 30
-      },
-      {
-        task: 1,
-        points: 50
-      }
-  ]
+	attributes: {
+		task: {
+			model: 'task'
+		},
+		points: {
+			type: 'int'
+		},
+		testcases: {
+			collection: 'testcase',
+			via: 'subtask'
+		},
+		feedback: {
+			type: 'boolean'
+		},
+		timeLimit: {
+			type: 'integer'
+		},
+		memoryLimit: {
+			type: 'integer'
+		}
+	},
+
+	seedData: [
+	{
+		task: 1,
+		points: 20
+	},
+	{
+		task: 1,
+		points: 30
+	},
+	{
+		task: 1,
+		points: 50
+	}
+	]
 };
 

@@ -29,6 +29,24 @@ module.exports = {
 			if(err) return res.serverError(err);
 			return res.json(data);
 		});
+	},
+
+	cleanGrade: function(req, res){
+		var grade = req.param('grade');
+		TestcaseGrade.destroy({ grade: grade }).exec(function(err, result){
+			if(err) return res.serverError(err);
+			sails.log.error("Error ocurred judging a submission. Cleaning grade object");
+			return res.json(result);
+		});
+	},
+
+	done: function(req, res){
+		var grade = req.param('grade');
+		Grade.update({id: grade}, {status: 'done'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			sails.log.info('Grade '+ grade + ' completed');
+			return res.json(result);
+		});
 	}
 };
 

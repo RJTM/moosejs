@@ -90,5 +90,20 @@ module.exports = {
             console.log(timestamp+" "+data.green);
         }
     
+    },
+    toSlug: function(text) {
+        if(text)
+            return text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+        else
+            return "";
+    },
+    buildPath : function(elements){
+        return elements.join('/');
+    },
+    getExt : function(fileName){
+        return fileName.split('.').pop();
+    },
+    getFileName : function(url){
+        return url.split('/').pop();
     }
 }
