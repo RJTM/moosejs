@@ -21,12 +21,13 @@
  				source: sourceUrl
  			}).exec(function(err, result){
  				if(err) return res.json(500, err);
+ 				Run.publishCreate(result);
  				JudgeService.dispatchRun(result);
  				return res.json(result);
  			});
  		});
 
- 	},
+ 	}
 
  };
 

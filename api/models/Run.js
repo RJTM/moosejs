@@ -23,6 +23,10 @@ module.exports = {
 		grades: {
 			collection: 'grade',
 			via: 'run'
+		},
+		ignore: {
+			type: 'boolean',
+			defaultsTo: false
 		}
 	},
 	seedData : [{
