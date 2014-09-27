@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Contests</strong>
+		<small> all the contests in the database in one table </small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Tasks</th>
+				<th>Activate Time</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-class="{ success : (date >= contest.activateTime && date <= contest.unfreezeTime) }" ng-repeat="contest in contests">
+				<td>{{ contest.name }}</td>
+				<td>{{ contest.tasks.length }}</td>
+				<td>{{ contest.activateTime | date:'short' }}</td>
+				<td>{{ contest.startTime | date:'short' }}</td>
+				<td>{{ contest.endTime | date:'short' }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

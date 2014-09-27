@@ -1,4 +1,4 @@
 angular.module('mooseJs.admin')
-	.controller('SitesController',function($scope, Site){
+	.controller('admin.SitesController',function($scope, Site){
 		$scope.sites = Site.query();
 	})

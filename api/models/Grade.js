@@ -22,7 +22,7 @@ module.exports = {
 		},
 		status: {
 			type: 'string',
-			enum: ['pending','judging','done','invalid'],
+			enum: ['pending','judging','done','verified','invalid'],
 			defaultsTo: 'pending'
 		},
 		testcaseGrades: {

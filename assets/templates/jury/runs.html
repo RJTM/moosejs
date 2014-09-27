@@ -1,0 +1,29 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Runs</strong>
+		<small> all those team submissions that probably will end up as WA</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Team</th>
+				<th>Task</th>
+				<th>Time</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-class="{ success : (date >= contest.activateTime && date <= contest.unfreezeTime) }" ng-repeat="run in runs">
+				<td>{{ run.id }}</td>
+				<td>{{ run.owner.name }}</td>
+				<td>{{ run.task.name }}</td>
+				<td>{{ run.time }}</td>
+				<td>
+					<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
