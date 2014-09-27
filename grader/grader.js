@@ -1,5 +1,9 @@
 'use strict';
 
+var getRandomInt  =  function (min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
 module.exports = {
 
 	compile: function(source, callback){
@@ -16,6 +20,10 @@ module.exports = {
 	},
 
 	run : function(source, refInput, refOutput, timelimit, memorylimit, callback){
-		callback(null, {result: 'AC', message: ''});
+		var answer = getRandomInt(0, 4)
+		var answers = ['TLE', 'WA', 'AC', 'RE', 'PE'];
+		setTimeout(function(){
+			callback(null, {result: answers[answer], message: ''});
+		}, getRandomInt(3000, 10000));
 	}
 }
