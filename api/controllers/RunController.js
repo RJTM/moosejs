@@ -21,13 +21,19 @@
  				source: sourceUrl
  			}).exec(function(err, result){
  				if(err) return res.json(500, err);
- 				Run.publishCreate(result);
  				JudgeService.dispatchRun(result);
- 				return res.json(result);
+ 				Run.findOne({id: result.id}).populate('owner').populate('task').exec(function(err, data){
+ 					if(err){
+ 						Run.publishCreate(result);
+ 						return res.json(result);
+ 					} 
+ 					Run.publishCreate(data);
+ 					return res.json(data);
+ 				});
  			});
  		});
 
- 	}
+ 	},
 
  };
 

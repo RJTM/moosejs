@@ -3,5 +3,5 @@ angular.module('mooseJs.jury',[
 
 		'ui.router',
 		'ui.bootstrap',
-		'ncy-angular-breadcrumb'
+		'ncy-angular-breadcrumb',
 	]);
