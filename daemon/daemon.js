@@ -3,6 +3,7 @@ var socketIOClient = require('socket.io-client');
 var sailsIOClient = require('sails.io.js');
 var async = require('async');
 var util = require('./util.js');
+// var grader = require('./grader.js');
 var jsonfile = require('jsonfile');
 var config,tmp;
 
@@ -25,8 +26,10 @@ var judge = function(grade){
     setTimeout(function(){
         util.httpGetContent(sourceUrl,function(err,data){
             util.log.judge("Processing...");
-            util.log.debug(data);
             
+            util.log.debug(data);
+            //fs.outputFileSync('sources/')
+
             subscribe();            
         });
     },3000);

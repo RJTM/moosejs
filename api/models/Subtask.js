@@ -15,7 +15,7 @@ module.exports = {
   		type: 'int'
   	},
   	testcases: {
-  		collecion: 'testcase',
+  		collection: 'testcase',
   		via: 'subtask'
   	},
     feedback: {

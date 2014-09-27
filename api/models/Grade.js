@@ -7,24 +7,28 @@
 
 module.exports = {
 
-  attributes: {
-  	run: {
-  		model: 'run'
-  	},
-    subtask: {
-        model: 'subtask'
-    },
-  	judgehost: {
-  		model: 'judgehost'
-  	},
-  	result: {
-  		type: 'string',
-  	},
-    status: {
-  		type: 'string',
-  		enum: ['pending','judging','done','invalid'],
-  		defaultsTo: 'pending'
-  	},
-  }
+	attributes: {
+		run: {
+			model: 'run'
+		},
+		task: {
+			model: 'task'
+		},
+		judgehost: {
+			model: 'judgehost'
+		},
+		result: {
+			type: 'string',
+		},
+		status: {
+			type: 'string',
+			enum: ['pending','judging','done','invalid'],
+			defaultsTo: 'pending'
+		},
+		testcaseGrades: {
+			collection: 'testcasegrade',
+			via: 'grade'
+		}
+	}
 };
 

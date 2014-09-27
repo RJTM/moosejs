@@ -3,33 +3,97 @@
 	{
 		"selected_items":
 		[
+			[
+				"template",
+				"templateUrl"
+			],
+			[
+				"templa",
+				"templateUrl"
+			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
-			"settings":
-			{
-				"buffer_size": 692,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
-			"settings":
-			{
-				"buffer_size": 36,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 368.0,
+		"height": 250.0,
 		"selected_items":
 		[
+			[
+				"git push",
+				"Git: Push Current Branch"
+			],
+			[
+				"git merge",
+				"Git: Merge Branch"
+			],
+			[
+				"git bran",
+				"Git: Change Branch"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"gt push",
+				"Git: Push Current Branch"
+			],
+			[
+				"commi",
+				"Git: Commit"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"gi",
+				"Git: Diff Staged Files"
+			],
+			[
+				"git",
+				"Git: Commit history"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"git q",
+				"Git: Quick Commit"
+			],
+			[
+				"quick",
+				"Git: Quick Commit"
+			],
+			[
+				"git tat",
+				"Git: Status"
+			],
+			[
+				"git sta",
+				"Git: Status"
+			],
 			[
 				"packae",
 				"Package Control: Remove Package"
@@ -52,14 +116,6 @@
 			],
 			[
 				"tatus",
-				"Git: Status"
-			],
-			[
-				"git",
-				"Git: Status"
-			],
-			[
-				"status",
 				"Git: Status"
 			],
 			[
@@ -138,27 +194,84 @@
 	[
 		"/home/rjtm/Escritorio/moosejs",
 		"/home/rjtm/Escritorio/moosejs/assets",
-		"/home/rjtm/Escritorio/moosejs/assets/js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common"
+		"/home/rjtm/Escritorio/moosejs/assets/templates"
 	],
 	"file_history":
 	[
+		"/home/rjtm/Escritorio/index.php",
+		"/home/rjtm/Escritorio/GalleryController.php",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/contests.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/contest.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ContestController.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Contest.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/admin/contests.html",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-clean/docs/clean-options.md",
+		"/home/rjtm/Escritorio/moosejs/api/responses/ok.js",
+		"/home/rjtm/Escritorio/moosejs/bower.json",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/users.html",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/sites.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/site.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/layout.html",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/views/layoutshim.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/user.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/User.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/models/site.model.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Site.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/ejs-locals/test/fixtures/subfolder/sub-include-chain.ejs",
+		"/home/rjtm/Escritorio/moosejs/config/session.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/UploaderService.js",
+		"/home/rjtm/Escritorio/moosejs/daemon/util.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/public/layout.html",
+		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/LICENSE",
+		"/home/rjtm/Escritorio/moosejs/node_modules/rc/LICENSE.APACHE2",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/models/contest.model.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/express/node_modules/connect/node_modules/multiparty/test/standalone/test-content-transfer-encoding.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/lib/const.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/math/countSteps.js",
+		"/home/rjtm/Escritorio/moosejs/config/connections.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
+		"/home/rjtm/Escritorio/moosejs/README.md",
+		"/home/rjtm/Escritorio/moosejs/assets/index.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/nav.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/moose.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/updateController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/logout.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/auth.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/common/services/auth.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/services/auth.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/lru-cache/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/daemon/node_modules/fs-extra/node_modules/rimraf/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/grunt-cli/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-watch/node_modules/gaze/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-jst/node_modules/grunt-lib-contrib/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-clean/node_modules/rimraf/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/rimraf/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-watch/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-concat/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-clean/AUTHORS",
+		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/release/angular-ui-router.js",
+		"/home/rjtm/Escritorio/moosejs/app.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/currentUser.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/admin.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/public.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/test.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/roleDestination.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/localStorage.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/models/user.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/loginController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/registerController.js",
 		"/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
 		"/home/rjtm/Escritorio/moosejs/assets/js/services/accessLevels.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/admin/admin.module.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
 		"/home/rjtm/Escritorio/moosejs/assets/js/routes.js",
 		"/home/rjtm/Escritorio/moosejs/bower_components/angular-route/angular-route.js",
 		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-backend/templates/config/routes.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/admin/routes.js",
 		"/home/rjtm/Escritorio/moosejs/config/routes.js",
-		"/home/rjtm/Escritorio/moosejs/README.md",
 		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/retry/lib/retry_operation.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/moose.module.js",
 		"/home/rjtm/Escritorio/moosejs/assets/js/staff/staff.module.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/public/public.module.js",
 		"/home/rjtm/Escritorio/moosejs/assets/js/jury/jury.module.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
 		"/home/rjtm/Escritorio/moosejs/assets/js/team/team.module.js",
 		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/ejs-locals/test/fixtures/parent-include-chain.ejs",
 		"/home/rjtm/Escritorio/moosejs/package.json",
@@ -202,6 +315,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"medium",
 			"\n			grunt.registerTask('default', []);\n",
 			"exports",
 			"this",
@@ -215,6 +329,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"short"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -224,188 +339,6 @@
 	},
 	"groups":
 	[
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 692,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								62,
-								62
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/rjtm/Escritorio/moosejs/assets/js/common/common.module.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 36,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
-			]
-		},
 		{
 			"sheets":
 			[
@@ -429,18 +362,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.5,
 			1.0
 		],
 		"rows":
@@ -470,8 +396,36 @@
 		"selected_items":
 		[
 			[
+				"contests",
+				"assets/js/admin/contest.controller.js"
+			],
+			[
+				"layout",
+				"assets/templates/admin/layout.html"
+			],
+			[
+				"sit",
+				"api/models/Site.js"
+			],
+			[
+				"user",
+				"api/models/User.js"
+			],
+			[
+				"layou",
+				"node_modules/sails/lib/hooks/views/layoutshim.js"
+			],
+			[
+				"contest.o",
+				"assets/js/admin/contest.controller.js"
+			],
+			[
 				"routes",
-				"assets/js/public/routes.js"
+				"assets/js/admin/routes.js"
+			],
+			[
+				"auth.js",
+				"assets/js/common/services/auth.js"
 			],
 			[
 				"pipe",
@@ -520,7 +474,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 221.0,
+	"side_bar_width": 335.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
