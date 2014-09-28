@@ -35,5 +35,13 @@
 
  	},
 
+ 	getResult: function(req,res){
+ 		var run = req.param('run');
+ 		GradeService.getRunResult(run, function(err, data){
+ 			if(err) return res.serverError(err);
+ 			return res.json(data);
+ 		});
+ 	}
+
  };
 
