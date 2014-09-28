@@ -49,6 +49,16 @@ module.exports = {
 			Grade.publishUpdate(result[0].id, result[0]);
 			return res.json(result);
 		});
+	},
+
+	verify: function(req, res){
+		var grade = req.param('grade');
+		var veredict = req.param('veredict');
+		Grade.update({id: grade}, {status: 'verified'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
 	}
 };
 

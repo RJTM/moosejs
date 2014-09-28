@@ -21,7 +21,7 @@ module.exports = {
 
 	run : function(source, refInput, refOutput, timelimit, memorylimit, callback){
 		var answer = getRandomInt(0, 4)
-		var answers = ['TLE', 'WA', 'AC', 'RE', 'PE'];
+		var answers = ['time-limit', 'wrong-answer', 'accepted', 'run-error', 'presentation-error'];
 		setTimeout(function(){
 			callback(null, {result: answers[answer], message: ''});
 		}, getRandomInt(3000, 10000));

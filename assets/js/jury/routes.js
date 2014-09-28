@@ -11,6 +11,7 @@ angular.module('mooseJs.jury')
 				url: '/jury',
 				templateUrl: 'templates/jury/layout.html',
 				abstract: true,
+				controller: 'jury.PillsController',
 				data: {
 					access: AccessLevels.jury
 				}
