@@ -61,6 +61,20 @@ angular.module('mooseJs.jury')
 				}
 			})
 
+			.state('jury.runs.verify', {
+				url: '/verify/:id',
+				views: {
+					"@jury": {
+						templateUrl: 'templates/jury/verify.html',
+						controller: 'jury.VerifyController',
+					}
+				},
+				data: {
+					ncyBreadcrumbLabel: 'Verifyng solution for run {{ run.id }}',
+					ncyBreadcrumbParent: 'jury.runs'
+				}
+			})
+
 			.state('jury.contests', {
 				url: '/contests',
 				templateUrl: 'templates/jury/contests.html',

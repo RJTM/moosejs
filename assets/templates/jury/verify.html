@@ -1,0 +1,16 @@
+<h1>Run {{ run.id }}</h1>
+<div class="row">
+	<div class="col-md-2"><i class="fa fa-book"></i> Task: {{ run.task.name }}</div>
+	<div class="col-md-2"><i class="fa fa-clock-o"></i> Time: {{ run.time }}</div>
+	<div class="col-md-2"><i class="fa fa-users"></i> Team: {{ run.owner.name }}</div>
+	<div class="col-md-2"><i class="fa fa-file-code-o"></i> Language: </div>
+</div><br>
+<div class="row">
+	<button class="btn btn-default" ng-click="showSource = !showSource">
+		Source Code
+	</button>
+	<div ng-init="showSource = false" collapse="!showSource">
+		<pre nag-prism source="{{ code }}" class="language-cpp line-numbers"></pre>
+	</div>
+	
+</div>
