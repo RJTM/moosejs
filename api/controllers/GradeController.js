@@ -10,6 +10,7 @@ module.exports = {
 		var gradeId = req.param('id');
 		Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
 			if(err) return res.serverError(err);
+			Grade.publishUpdate(result[0].id, result[0]);
 			return res.json(result);
 		});
 	},
@@ -45,6 +46,7 @@ module.exports = {
 		Grade.update({id: grade}, {status: 'done'}).exec(function(err, result){
 			if(err) return res.serverError(err);
 			sails.log.info('Grade '+ grade + ' completed');
+			Grade.publishUpdate(result[0].id, result[0]);
 			return res.json(result);
 		});
 	}

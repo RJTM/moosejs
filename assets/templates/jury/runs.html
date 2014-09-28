@@ -15,12 +15,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-class="run.grades[run.grades.length-1].status == 'verified' ? 'success' : 'warning'" ng-repeat="run in runs | orderBy:[predicate,'-id']">
+			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'warning' : 'danger' " ng-repeat="run in runs | orderBy:[statusSort,'-id']">
 				<td>{{ run.id }}</td>
 				<td>{{ run.owner.name }}</td>
 				<td>{{ run.task.name }}</td>
 				<td>{{ run.time }}</td>
-				<td>{{ run.grades[run.grades.length-1].status | statusFilter }}</td>
+				<td>{{ run.status | statusFilter }}</td>
 				<td>
 					<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
 					<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>

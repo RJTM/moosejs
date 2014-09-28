@@ -24,6 +24,7 @@ module.exports = {
         			sails.log.error(err);
         			return;   
         		}
+                        Grade.publishCreate(result);
         		Grade.findOne({id: result.id}).populate('run').populate('task').exec(function(err, gradeToSend){
         			if(err){
 	        			sails.log.error(err);
@@ -45,6 +46,7 @@ module.exports = {
         			sails.log.error(err);
         			return;   
         		}
+                        Grade.publishCreate(result);
         	});
         }
     }
