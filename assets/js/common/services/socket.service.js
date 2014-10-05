@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.common')
-	.factory('socket', function($rootScope, Auth, LocalService){
+	.factory('socket', ["$rootScope", "Auth", "LocalService", function($rootScope, Auth, LocalService){
 		return {
 			on: function(eventName, callback){
 				io.socket.on(eventName, function(){
@@ -51,4 +51,4 @@ angular.module('mooseJs.common')
 				});
 			}
 		}
-	});
+	}]);

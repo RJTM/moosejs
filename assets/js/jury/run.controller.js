@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.jury')
-	.controller('jury.RunController', function($scope, socket){
+	.controller('jury.RunController', ["$scope", "socket", function($scope, socket){
 		var updateRun = function (element){
 			for(var i=0; i < $scope.runs.length; i++){
 				if($scope.runs[i].id === element.run){
@@ -47,4 +47,4 @@ angular.module('mooseJs.jury')
 			return statues[run.status];
 		};
 
-	})
+	}])

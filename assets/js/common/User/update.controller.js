@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.common')
-.controller('UpdateController', function($scope, $state, $stateParams, User){
+.controller('UpdateController', ["$scope", "$state", "$stateParams", "User", function($scope, $state, $stateParams, User){
 	
 	$scope.user = User.get({ id : $stateParams.id});
 	$scope.errors = [];
@@ -16,4 +16,4 @@ angular.module('mooseJs.common')
         });
     };
 	
-});
+}]);

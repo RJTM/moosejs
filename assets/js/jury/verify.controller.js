@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.jury')
-	.controller('jury.VerifyController', function($scope, $stateParams, socket, $http, $state){
+	.controller('jury.VerifyController', ["$scope", "$stateParams", "socket", "$http", "$state", function($scope, $stateParams, socket, $http, $state){
 		
 		$scope.veredict = {};
 
@@ -24,4 +24,4 @@ angular.module('mooseJs.jury')
 				$state.go('jury.runs');
 			});
 		};
-	});
+	}]);

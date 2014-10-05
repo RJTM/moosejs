@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.common')
-.controller('RegisterController', function($scope, $state, User){
+.controller('RegisterController', ["$scope", "$state", "User", function($scope, $state, User){
 	
 	$scope.user = {
 		username : '',
@@ -25,4 +25,4 @@ angular.module('mooseJs.common')
         });
     };
 	
-});
+}]);

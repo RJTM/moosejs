@@ -2,7 +2,7 @@
 
 var mooseJs = angular.module('mooseJs.public');
 
-mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
+mooseJs.config(["$stateProvider", "$urlRouterProvider", "AccessLevels", function($stateProvider, $urlRouterProvider, AccessLevels){
 	$stateProvider
 
         .state('public',{
@@ -24,4 +24,4 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
             templateUrl: 'templates/common/login.html',
             controller: 'LoginController'
         })
-});
+}]);

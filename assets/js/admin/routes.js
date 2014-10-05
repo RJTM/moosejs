@@ -2,7 +2,7 @@
 
 angular.module('mooseJs.admin')
 
-.config(function($stateProvider, $urlRouterProvider, AccessLevels){
+.config(["$stateProvider", "$urlRouterProvider", "AccessLevels", function($stateProvider, $urlRouterProvider, AccessLevels){
 
 	$urlRouterProvider.otherwise('/admin/home');
 
@@ -63,4 +63,4 @@ angular.module('mooseJs.admin')
 			ncyBreadcrumbParent: 'admin.home'
 		}
 	})
-});
+}]);
