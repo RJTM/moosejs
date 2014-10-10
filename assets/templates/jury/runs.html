@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Runs</strong>
+		<small> all those team submissions that probably will end up as WA</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Team</th>
+				<th>Task</th>
+				<th>Time</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'warning' : 'danger' " ng-repeat="run in runs | orderBy:[statusSort,'-id']">
+				<td>{{ run.id }}</td>
+				<td>{{ run.owner.name }}</td>
+				<td>{{ run.task.name }}</td>
+				<td>{{ run.time }}</td>
+				<td>{{ run.status | statusFilter }}</td>
+				<td>
+					<button ng-show="run.status === 'done'" ui-sref="jury.runs.verify({ id: run.id })" class="btn btn-success btn-xs" tooltip="Verify solution"><i class="fa fa-check"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

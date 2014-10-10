@@ -1,0 +1,63 @@
+<h1>Run {{ run.id }}</h1>
+<div class="row">
+	<div class="col-md-2"><i class="fa fa-book"></i> Task: {{ task.name }}</div>
+	<div class="col-md-2"><i class="fa fa-clock-o"></i> Time: {{ run.time }}</div>
+	<div class="col-md-2"><i class="fa fa-users"></i> Team: {{ run.owner.name }}</div>
+	<div class="col-md-2"><i class="fa fa-file-code-o"></i> Language: </div>
+	<div class="col-md-4"><i class="fa fa-lightbulb-o"></i> Overall Result: <strong><span ng-class="result == 'accepted' ? 'text-success' : 'text-danger'">{{ result }}</span></strong></div>
+</div><br>
+<div class="row">
+	<button class="btn btn-default" ng-click="showSource = !showSource">
+		Source Code
+	</button>
+	<div ng-init="showSource = false" collapse="!showSource">
+		<pre nag-prism source="{{ code }}" class="language-cpp line-numbers"></pre>
+	</div>
+	
+</div>
+<br>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<accordion close-others="false">
+			<accordion-group ng-repeat="subtask in subtasks" heading="Subtask {{ $index+1 }}">
+				<div class="row" align="center">
+					<h3>Auto Judge Response: <strong><span ng-class="subtask.result == 'accepted' ? 'text-success' : 'text-danger'">{{ subtask.result }}</span></strong></h3>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-2" align="right">
+							Veredict
+						</div>
+						<div class="col-md-4">
+							<select class="form-control" ng-model="veredict[subtask.id]">
+								<option value="memory-limit">Memory Limit</option>
+								<option value="output-limit">Output Limit</option>
+								<option value="run-error">Run Error</option>
+								<option value="time-limit">Time Limit Exceeded</option>
+								<option value="wrong-answer">Wrong Answer</option>
+								<option value="presentation-error">Presentation Error</option>
+								<option value="no-output">No Output</option>
+								<option value="accepted">Accepted</option>
+							</select>
+						</div>
+					</div><br>
+				</div>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Testcase #</th>
+							<th>Result</th>
+							<th>Detail</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="testcase in subtask.testcases">
+							<td>{{ $index+1 }}</td>
+							<td><span ng-class="testcase.testcasegrade.result == 'accepted' ? 'text-success' : 'text-danger'">{{ testcase.testcasegrade.result }}</td>
+							<td><button class="btn btn-xs btn-primary"><i class="fa fa-search"></i></button></td>
+						</tr>
+					</tbody>
+				</table>			
+			</accordion-group>
+		</accordion>
+		<button class="btn btn-block btn-lg btn-danger" ng-click="makeVeredict()"><i class="fa fa-gavel"></i> Make Veredict</button>
+	</div>
+</div>

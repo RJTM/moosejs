@@ -6,51 +6,59 @@
  */
 
 module.exports = {
-	/*save: function(req, res) {
-		var runId = req.param('run');
-		var judgehost = req.token.id;
+	toJudging: function(req, res){
+		var gradeId = req.param('id');
+		Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
+	},
+
+	saveGrade: function(req,res){
+		var grade = req.param('grade');
+		var testcase = req.param('testcase');
 		var result = req.param('result');
-		var is_correct = result === "yes";
-		var subtask = req.param('subtask');
-		Grade.create({run: runId, judgehost: judgehost, result: result, subtask: subtask}).exec(function(err,response){
+		var message = req.param('message');
+
+		TestcaseGrade.create({
+			grade: grade,
+			testcase: testcase,
+			result: result,
+			message: message
+		}).exec(function(err, data){
 			if(err) return res.serverError(err);
+			return res.json(data);
 		});
-		Run.findOne({id: runId}).populate('task').exec(function(err,run) {
+	},
+
+	cleanGrade: function(req, res){
+		var grade = req.param('grade');
+		TestcaseGrade.destroy({ grade: grade }).exec(function(err, result){
 			if(err) return res.serverError(err);
-			Subtask.findOne({id: subtask}).exec(function(err,subT) {
-				if(err) return res.serverError(err);
-				ScoreboardPublic.findOne({
-					contest: run.task.contest,
-					user: run.owner,
-					task: run.task,
-					subtask: subtask
-				}).exec(function(err, scoreline) {
-					if(err) return res.serverError(err);
-					ScoreboardPublic.update({
-						contest: run.task.contest,
-						user: run.owner,
-						task: run.task,
-						subtask: subtask
-					},{
-						submissions: scoreline.submissions+1,
-						totaltime: run.time,
-						is_correct: is_correct,
-						points: subT.poitns
-					},function(err, updated) {
-						if(err) return res.serverError(err);
-						return res.json(updated);
-					});
-				});
-			});			
+			sails.log.error("Error ocurred judging a submission. Cleaning grade object");
+			return res.json(result);
 		});
-	},*/
-    
-    toJudging: function(req, res){
-        var gradeId = req.param('id');
-        Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
-            if(err) return res.servrError(err);
-            return res.json(result);
-        });
-    }
+	},
+
+	done: function(req, res){
+		var grade = req.param('grade');
+		Grade.update({id: grade}, {status: 'done'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			sails.log.info('Grade '+ grade + ' completed');
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
+	},
+
+	verify: function(req, res){
+		var grade = req.param('grade');
+		var veredict = req.param('veredict');
+		Grade.update({id: grade}, {status: 'verified'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
+	}
 };
 
