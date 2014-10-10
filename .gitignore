@@ -123,3 +123,6 @@ assets/testcases/
 
 daemon/sources/
 daemon/testcases/
+
+moose.sublime-project
+moose.sublime-workspace
