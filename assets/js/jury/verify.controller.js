@@ -15,12 +15,15 @@ angular.module('mooseJs.jury')
 			});
 
 			angular.forEach($scope.subtasks, function(value, key){
-				$scope.veredict[value.id] = value.result;
+				$scope.veredict[value.id] = {
+					autojudge: value.result,
+					veredict: value.result
+				};
 			})
 		});
 
 		$scope.makeVeredict = function(){
-			socket.post('/grade/verify', {grade: $scope.grade.id, veredict: $scope.veredict}, function(data){
+			socket.post('/grade/verify', {grade: $scope.grade, veredict: $scope.veredict}, function(data){
 				$state.go('jury.runs');
 			});
 		};

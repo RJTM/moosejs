@@ -54,11 +54,31 @@ module.exports = {
 	verify: function(req, res){
 		var grade = req.param('grade');
 		var veredict = req.param('veredict');
-		Grade.update({id: grade}, {status: 'verified'}).exec(function(err, result){
+		Grade.update({id: grade.id}, {status: 'verified'}).exec(function(err, result){
 			if(err) return res.serverError(err);
 			Grade.publishUpdate(result[0].id, result[0]);
-			//Call ScoreboardService to update the scoreboard
-			return res.json(result);
+			var veredicts = [];
+			for(var subtaskId in veredict){
+				veredict[subtaskId].id = subtaskId;
+				veredicts.push(veredict[subtaskId]);
+			}
+			async.each(veredicts, function(item, callback){
+				Veredict.create({ 
+					run: result[0].run, 
+					subtask: item.id,
+					autojudge: item.autojudge,
+					jury: item.veredict,
+					owner: req.token.id
+				}).exec(function(err, result){
+					callback(err);
+				});
+			},function(err){
+				if(err) return res.serverError(err);
+				ScoreboardService.update(grade, veredicts);
+				return res.json(result);
+			});
+
+			
 		});
 	}
 };

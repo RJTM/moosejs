@@ -36,5 +36,20 @@ module.exports = {
 				}
 			});
 		});
+	},
+	update: function(grade, veredicts){
+		// GradeService.getRunResult(grade.run, function(err, response){
+		// 	if(err){
+		// 		sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+		// 	}
+		// 	Scoreboard.findOne({user: response.run.owner.id, task: response.task.id}).exec(function(err, row){
+		// 		if(err){
+		// 			sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+		// 		}
+		// 		row.submissions += 1;
+		// 		row.pending = Math.max(0, row.pending-1);
+		// 		if(veredict)
+		// 	});
+		// });
 	}
 }

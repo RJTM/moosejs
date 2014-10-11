@@ -35,7 +35,37 @@ module.exports = {
 				cb(null,grade);
 			});
 	},
-
+	/**
+	 * Given a run id, returns the result given by the auto grader
+	 * @param  {Int}   run Run id
+	 * @param  {Function(error, response)} cb  Callback function 
+	 * @return {Object}  returns an object with all the relevant data to the run in the following format
+	 *
+	 *	{
+	 *		run: { 
+	 *			owner: { Object },
+	 *			//Run data
+	 *		},
+	 *		grade: {
+	 *			//Grade Data
+	 *		},
+	 *		task: {
+	 *			//Task Data
+	 *		},
+	 *		subtasks: [
+	 *			{
+	 *				testcases: [
+	 *					{ //Testcase data including testcase based result },
+	 *					...
+	 *				]
+	 *				//Subtask data including subtask based result
+	 *			},
+	 *			...
+	 *		],
+	 *		result: //Overall result for the Run
+	 *	}
+	 * 
+	 */
 	getRunResult: function(run, cb){
 		var finalResponse = {};
 		Run.findOne({id: run}).populate('grades').populate('task').populate('owner').exec(function(err, res){

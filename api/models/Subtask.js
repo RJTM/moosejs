@@ -26,6 +26,10 @@ module.exports = {
 		},
 		memoryLimit: {
 			type: 'integer'
+		},
+		veredicts: {
+			collection: 'veredict',
+			via: 'subtask'
 		}
 	},
 

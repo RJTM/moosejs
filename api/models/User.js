@@ -48,6 +48,10 @@ module.exports = {
 			collection: 'contest',
 			via: 'users'
 		},
+		veredicts: {
+			collection: 'veredict',
+			via: 'owner'
+		}
 		toJSON: function() {
 			var obj = this.toObject();
 			delete obj.encryptedPassword;

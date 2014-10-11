@@ -27,6 +27,10 @@ module.exports = {
 		ignore: {
 			type: 'boolean',
 			defaultsTo: false
+		},
+		veredicts: {
+			collection: 'veredict',
+			via: 'run'
 		}
 	},
 	seedData : [{
