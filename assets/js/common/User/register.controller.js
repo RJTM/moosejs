@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.common')
-.controller('RegisterController', ["$scope", "$state", "User", function($scope, $state, User){
+.controller('common.RegisterController', ["$scope", "$state", "User", function($scope, $state, User){
 	
 	$scope.user = {
 		username : '',
@@ -9,20 +9,19 @@ angular.module('mooseJs.common')
 		email : '',
 		role : 'team',
 		password : '',
-		confirmPassword : '',
-        members: ''
+		members: ''
 	};
 	$scope.errors = [];
 	$scope.register = function(){
 		$scope.errors = [];
-        User.save($scope.user, 
-        function(data){
+		User.save($scope.user, 
+			function(data){
         	//TODO
-            $state.go('home');
-	    },
+        	$state.go('admin.home');
+        },
         function(error){
-            $scope.errors.push({message: error.data.summary});
+        	$scope.errors.push({message: error.data.summary});
         });
-    };
+	};
 	
 }]);

@@ -45,12 +45,17 @@ angular.module('mooseJs.admin')
 		}
 	})
 
-	.state('admin.register', {
+	.state('admin.users.register', {
 		url : "/register",
-		templateUrl : 'templates/common/register.html',
-		controller : 'RegisterController',
+		views: {
+			'@admin': {
+				templateUrl : 'templates/common/register.html',
+				controller : 'common.RegisterController'
+			}
+		},
 		data : {
-			access : AccessLevels.admin
+			ncyBreadcrumbLabel: 'New User',
+			ncyBreadcrumbParent: 'admin.users'	
 		}
 	})
 
