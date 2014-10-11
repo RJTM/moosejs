@@ -20,6 +20,7 @@ angular.module('mooseJs.jury')
 			.state('jury.home', {
 				url: '/home',
 				templateUrl: 'templates/jury/home.html',
+				controller: 'jury.ScoreboardController',
 				data: {
 					ncyBreadcrumbLabel: 'Home'
 				}	

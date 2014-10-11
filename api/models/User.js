@@ -40,6 +40,10 @@ module.exports = {
 			collection: 'run',
 			via: 'owner'
 		},
+		contests: {
+			collection: 'contest',
+			via: 'users'
+		},
 		toJSON: function() {
 			var obj = this.toObject();
 			delete obj.encryptedPassword;

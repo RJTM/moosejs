@@ -41,10 +41,21 @@
      	var  newUser = req.allParams();
      	User.create(newUser).exec(function(err, user){
      		if(err) return res.json(400, err);
-     		ScoreboardService.addUser(user);
      		return res.json(user);
      	});
-     }  
+     },
+
+     addToContest: function(req, res){
+     	var user = req.param('user');
+     	var contestId = req.param('contest');
+     	Contest.findOne({ id: contestId }).exec(function(err, contest){
+     		if(err) return res.serverError(err);
+     		contest.users.add(user);
+     		contest.save();
+     		ScoreboardService.addUser(user, contestId);
+     		return res.json(contest);
+     	});	
+     }
 
 
 
