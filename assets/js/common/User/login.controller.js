@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.common')
-.controller('LoginController', function($scope, $state, Auth, $rootScope){
+.controller('LoginController', ["$scope", "$state", "Auth", "$rootScope", function($scope, $state, Auth, $rootScope){
 	$scope.errors = [];
 
 	$scope.login = function(){
@@ -13,4 +13,4 @@ angular.module('mooseJs.common')
 			$scope.errors.push(err);
 		});
 	}
-});
+}]);

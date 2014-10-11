@@ -2,7 +2,7 @@
 
 var mooseJs = angular.module('mooseJs.common');
 
-mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User, CurrentUser) {
+mooseJs.factory('Auth', ["$http", "LocalService", "AccessLevels", "User", "CurrentUser", function($http, LocalService, AccessLevels, User, CurrentUser) {
 	return {
 		authorize: function(access) {
 			if (access === AccessLevels.team) {
@@ -50,9 +50,9 @@ mooseJs.factory('Auth', function($http, LocalService, AccessLevels, User, Curren
 	       	LocalService.unset('auth_token');
 	      }
     }
-  });
+  }]);
 
-mooseJs.factory('AuthInterceptor', function($q, $injector) {
+mooseJs.factory('AuthInterceptor', ["$q", "$injector", function($q, $injector) {
 	var LocalService = $injector.get('LocalService');
 
 	return {
@@ -74,7 +74,7 @@ mooseJs.factory('AuthInterceptor', function($q, $injector) {
 			return $q.reject(response);
 		}
 	}
-})
-.config(function($httpProvider) {
+}])
+.config(["$httpProvider", function($httpProvider) {
 	$httpProvider.interceptors.push('AuthInterceptor');
-});
+}]);

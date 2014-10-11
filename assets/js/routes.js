@@ -2,7 +2,7 @@
 
 var mooseJs = angular.module('mooseJs');
 
-mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
+mooseJs.config(["$stateProvider", "$urlRouterProvider", "AccessLevels", function($stateProvider, $urlRouterProvider, AccessLevels){
 	$urlRouterProvider.otherwise('/roleRouter');
 	$stateProvider
     
@@ -61,4 +61,4 @@ mooseJs.config(function($stateProvider, $urlRouterProvider, AccessLevels){
 				access : AccessLevels.user
 			}
 		});*/
-});
+}]);

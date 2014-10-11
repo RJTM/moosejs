@@ -1,5 +1,5 @@
 angular.module('mooseJs.common')
-	.controller('navController', function($scope, $state, Auth, CurrentUser){
+	.controller('navController', ["$scope", "$state", "Auth", "CurrentUser", function($scope, $state, Auth, CurrentUser){
 		
 		$scope.$on('loggedIn', function(event){
 			console.log("Received a loggedIn event");
@@ -20,4 +20,4 @@ angular.module('mooseJs.common')
 
 			$state.go('public.home');
 		}
-	});
+	}]);

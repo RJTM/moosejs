@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.config(function($stateProvider, $urlRouterProvider, AccessLevels){
+	.config(["$stateProvider", "$urlRouterProvider", "AccessLevels", function($stateProvider, $urlRouterProvider, AccessLevels){
 
 		$urlRouterProvider.otherwise('/jury/home');
 
@@ -85,4 +85,4 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbParent: 'jury.home'
 				}
 			});
-	});
+	}]);

@@ -2,10 +2,10 @@
 
 var app = angular.module('mooseJs.common');
 
-app.factory('Contest', function($resource) {
+app.factory('Contest', ["$resource", function($resource) {
   return $resource("/contest/:id", {id: '@id'}, {
       update: {
           method: 'PUT',
       }
     });
-});
+}]);

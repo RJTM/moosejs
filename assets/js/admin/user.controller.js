@@ -1,4 +1,4 @@
 angular.module('mooseJs.admin')
-	.controller('admin.UsersController', function($scope, User){
+	.controller('admin.UsersController', ["$scope", "User", function($scope, User){
 		$scope.users = User.query();
-	})
+	}])
