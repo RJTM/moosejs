@@ -57,6 +57,7 @@ module.exports = {
 		Grade.update({id: grade}, {status: 'verified'}).exec(function(err, result){
 			if(err) return res.serverError(err);
 			Grade.publishUpdate(result[0].id, result[0]);
+			//Call ScoreboardService to update the scoreboard
 			return res.json(result);
 		});
 	}
