@@ -1,5 +1,8 @@
 module.exports = function(grunt){
 	grunt.config.set('ngAnnotate',{
+		options: {
+			remove: true,
+		},
 		dev: {
 			files: [
 				{

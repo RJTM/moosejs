@@ -15,7 +15,11 @@ module.exports = {
 			unique: true,
 			required: true
 		},
-		name: 'string',
+		name: {
+			type: 'string',
+			unique: true,
+			required: true
+		},
 		email: 'string',
 		members: 'string',
 		last_login: 'datetime',

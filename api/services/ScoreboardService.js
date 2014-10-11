@@ -8,6 +8,7 @@ module.exports = {
 			}
 			async.each(tasks, function(task, callback){
 				Scoreboard.create({ contest: task.contest, user: user, task: task.id}).exec(function(err, res){
+					Scoreboard.publishCreate(res);
 					callback(err);
 				});
 			}, function(err){
@@ -25,6 +26,7 @@ module.exports = {
 			async.each(contest.users, function(user, callback){
 				if(user.role === 'jury' || user.role === 'team'){
 					Scoreboard.create({ contest: task.contest, user: user.id, task: task.id}).exec(function(err, res){
+						Scoreboard.publishCreate(res);
 						callback(err);
 					});
 				}

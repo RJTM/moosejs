@@ -1,5 +1,5 @@
 angular.module('mooseJs.common')
-.directive('nagPrism', ['$compile', function($compile) {
+.directive('nagPrism', ["$compile", function($compile) {
 	return {
 		restrict: 'A',
 		transclude: true,
