@@ -126,3 +126,4 @@ daemon/testcases/
 
 moose.sublime-project
 moose.sublime-workspace
+*.sublime-workspace
