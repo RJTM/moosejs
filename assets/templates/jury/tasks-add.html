@@ -1,0 +1,16 @@
+<div class="container">
+
+	<div class="col-md-6 col-md-offset-3">
+
+		<alert type="danger" ng-repeat="error in errors">{{ error.message }}</alert>
+		<form name="taskForm" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="name" ng-model="task.name" required>
+				</div>
+			</div>
+			<input type="submit" class="btn btn-lg btn-primary btn-block" ng-click="save()" value="Create Task" />
+		</form>
+	</div>
+</div>

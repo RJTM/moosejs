@@ -16,9 +16,9 @@ angular.module('mooseJs.common')
 		$scope.errors = [];
 		User.save($scope.user, 
 			function(data){
-        	//TODO
-        	$state.go('admin.home');
-        },
+		        	//TODO
+		        		$state.go('admin.home');
+		        	},
         function(error){
         	$scope.errors.push({message: error.data.summary});
         });

@@ -1,0 +1,33 @@
+<div class="pull-right">
+	<button class="btn btn-success">
+		<i class="fa fa-plus" ui-sref="jury.tasks.add"> Agregar</i>
+	</button>
+</div>
+<div class="clearfix"></div>
+<br>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Task</strong>
+		<small> the headache of your contestants</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Runs</th>
+				<th>Subtasks</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="task in tasks">
+				<td>{{ task.id }}</td>
+				<td>{{ task.name }}</td>
+				<td>{{ task.runs.length }}</td>
+				<td>{{ task.subtasks.length }}</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

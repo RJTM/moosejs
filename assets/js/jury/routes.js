@@ -46,9 +46,25 @@ angular.module('mooseJs.jury')
 			.state('jury.tasks', {
 				url: '/tasks',
 				templateUrl: 'templates/jury/tasks.html',
+				controller: 'jury.TaskController',
 				data: {
 					ncyBreadcrumbLabel: 'Tasks',
 					ncyBreadcrumbParent: 'jury.home'
+				}
+			})
+
+
+			.state('jury.tasks.add', {
+				url: '/add',
+				views: {
+					"@jury": {
+						templateUrl: 'templates/jury/tasks-add.html',
+						controller: 'jury.TaskAddController'
+					}
+				},
+				data: {
+					ncyBreadcrumbLabel: 'Create a new task',
+					ncyBreadcrumbParent: 'jury.tasks'
 				}
 			})
 
