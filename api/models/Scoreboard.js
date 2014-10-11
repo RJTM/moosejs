@@ -17,9 +17,6 @@ module.exports = {
 		task: {
 			model: 'task'
 		},
-		subtask: {
-			model: 'subtask'
-		},
 		submissions: {
 			type: 'int',
 			defaultsTo: 0
