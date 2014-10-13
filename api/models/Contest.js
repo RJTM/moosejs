@@ -43,6 +43,10 @@ module.exports = {
 			collection: 'user',
 			via: 'contests',
 			dominant: true
+		},
+		penalty: {
+			type: 'integer',
+			defaultsTo: 0
 		}
 	},
 

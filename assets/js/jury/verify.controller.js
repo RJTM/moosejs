@@ -17,7 +17,8 @@ angular.module('mooseJs.jury')
 			angular.forEach($scope.subtasks, function(value, key){
 				$scope.veredict[value.id] = {
 					autojudge: value.result,
-					veredict: value.result
+					veredict: value.result,
+					points : value.points
 				};
 			})
 		});

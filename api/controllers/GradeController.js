@@ -67,8 +67,8 @@ module.exports = {
 					run: result[0].run, 
 					subtask: item.id,
 					autojudge: item.autojudge,
-					jury: item.veredict,
-					owner: req.token.id
+					jury: item.veredict
+					//owner: req.token.id
 				}).exec(function(err, result){
 					callback(err);
 				});

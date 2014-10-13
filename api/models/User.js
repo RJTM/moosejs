@@ -51,7 +51,7 @@ module.exports = {
 		veredicts: {
 			collection: 'veredict',
 			via: 'owner'
-		}
+		},
 		toJSON: function() {
 			var obj = this.toObject();
 			delete obj.encryptedPassword;

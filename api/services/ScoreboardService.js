@@ -2,20 +2,27 @@
 
 module.exports = {
 	addUser: function(user, contest){
-		Task.find({ contest: contest }).exec(function(err, tasks){
+		Task.find({ contest: contest }).populate('subtasks').exec(function(err, tasks){
 			if(err){ 
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
 			async.each(tasks, function(task, callback){
-				Scoreboard.create({ contest: task.contest, user: user, task: task.id}).exec(function(err, res){
-					Scoreboard.publishCreate(res);
-					callback(err);
+
+				async.each(task.subtasks, function(subtask, cb){
+					Scoreboard.create({ contest: task.contest, user: user, task: task.id, subtask: subtask.id}).exec(function(err, res){
+						Scoreboard.publishCreate(res);
+						cb(err);
+					});
+				}, function(err){
+						callback(err);
 				});
-			}, function(err){
+
+			},function(err){
 				if(err){ 
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 				}
-			});
+			})
+			
 		});
 	},
 	addTask: function(task){
@@ -25,8 +32,12 @@ module.exports = {
 			}
 			async.each(contest.users, function(user, callback){
 				if(user.role === 'jury' || user.role === 'team'){
-					Scoreboard.create({ contest: task.contest, user: user.id, task: task.id}).exec(function(err, res){
-						Scoreboard.publishCreate(res);
+					async.each(task.subtasks, function(subtask, cb){
+						Scoreboard.create({ contest: task.contest, user: user.id, task: task.id, subtask: subtask.id}).exec(function(err, res){
+							Scoreboard.publishCreate(res);
+							cb(err);
+						});
+					}, function(err){
 						callback(err);
 					});
 				}
@@ -38,18 +49,68 @@ module.exports = {
 		});
 	},
 	update: function(grade, veredicts){
-		// GradeService.getRunResult(grade.run, function(err, response){
-		// 	if(err){
-		// 		sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
-		// 	}
-		// 	Scoreboard.findOne({user: response.run.owner.id, task: response.task.id}).exec(function(err, row){
-		// 		if(err){
-		// 			sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
-		// 		}
-		// 		row.submissions += 1;
-		// 		row.pending = Math.max(0, row.pending-1);
-		// 		if(veredict)
-		// 	});
-		// });
+		/**
+		
+			TODO:
+			- Get previous result for that task
+			- Compare subtask to subtask to see which one of the runs is better
+			- Update if needed
+		
+		**/
+		
+		GradeService.getRunResult(grade.run, function(err, response){
+			if(err){
+				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+			}
+			Scoreboard.find({ where: {user: response.run.owner.id, task: response.task.id}, sort: 'subtask'}).exec(function(err, rows){
+				if(err){
+					sails.log.err("Error building scoreboard. Please refresh scoreboard"); 
+					return;
+				}
+
+				//Get the score points from the previous submit and the next one
+				var subTaskUtil = {};
+				var previousScore = rows.map(function(current){
+					return current.points;
+				}).reduce(function(prev,next){
+					return prev+next;
+				});
+				
+				var nextScore = veredicts.map(function(current){
+					subTaskUtil[current.id] = {
+						points : current.points,
+						veredict : current.veredict,
+						autojudge : current.autojudge
+					};
+					return current.veredict === 'accepted' ? parseInt(current.points) : 0;
+				}).reduce(function (prev, next){
+					return prev + next;
+				});
+
+				// update each subtask entry in the scoreboard
+				async.each(rows, function(item, cb){
+					item.submissions = parseInt(item.submissions) + 1;
+
+					// update results if needed
+					if(nextScore > previousScore){
+						if(subTaskUtil[item.subtask].veredict === 'accepted'){
+							item.points = subTaskUtil[item.subtask].points;
+							item.isCorrect = true;
+							// item.jury = TODO
+						}
+						item.juryModified = subTaskUtil[item.subtask].veredict !== subTaskUtil[item.subtask].autojudge;
+						item.time = response.run.time;
+						item.penalty = (item.submissions - 1) * response.contest.penalty;
+					}
+					item.save();
+				}, function(err){
+					if(err){
+						sails.log.err("Error building scoreboard. Please refresh scoreboard"); 
+						return;
+					}
+				});					
+
+			});
+		});
 	}
 }
