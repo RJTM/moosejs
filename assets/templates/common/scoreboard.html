@@ -1,16 +1,18 @@
 <div class="panel panel-primary">
 <div class="panel-heading">Scoreboard</div>
-	<table class="table table-hover table-bordered">
+	<table class="table table-bordered">
 		<thead>
 			<th>Team</th>
 			<th ng-repeat="task in tasks | orderObjectBy:'name'">{{ task.name }}</th>
 			<th>Total</th>
+			<th>Time</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="team in scoreboardRows | orderObjectBy:'total':true">
 				<td>{{ team.name }}</td>
-				<td ng-repeat="task in team.tasks | orderObjectBy:'name'">{{task.points}}</td>
+				<td ng-repeat="task in team.tasks | orderObjectBy:'name'" ng-class="task.points === tasks[task.name].fullPoints ? 'fullPoints' : (task.points > 0 ? 'somePoints' : '')"><span tooltip-html-unsafe="<h5>Time: <strong>{{ task.time }}</strong> Runs: <strong>{{ task.runs }}</strong></h5>">{{task.points}} / {{tasks[task.name].fullPoints}}</span></td>
 				<td>{{ team.total }}</td>
+				<td><span tooltip-html-unsafe="<h5>Time: <strong>{{team.totalTime}}</strong> Penalty: <strong>{{team.penalty}}</strong></h5>">{{ team.totalTime + team.penalty}}</span></td>
 			</tr>
 		</tbody>
 	</table>

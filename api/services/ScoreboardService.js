@@ -6,21 +6,22 @@ module.exports = {
 			if(err){ 
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
-			async.each(tasks, function(task, callback){
+			async.map(tasks, function(task, callback){
 
-				async.each(task.subtasks, function(subtask, cb){
+				async.map(task.subtasks, function(subtask, cb){
 					Scoreboard.create({ contest: task.contest, user: user, task: task.id, subtask: subtask.id}).exec(function(err, res){
-						Scoreboard.publishCreate(res);
-						cb(err);
+						
+						cb(err, res);
 					});
-				}, function(err){
-						callback(err);
+				}, function(err, results){
+						callback(err, results);
 				});
 
-			},function(err){
+			},function(err, results){
 				if(err){ 
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 				}
+				Scoreboard.publishCreate(results);
 			})
 			
 		});
@@ -30,21 +31,22 @@ module.exports = {
 			if(err){
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
-			async.each(contest.users, function(user, callback){
+			async.map(contest.users, function(user, callback){
 				if(user.role === 'jury' || user.role === 'team'){
-					async.each(task.subtasks, function(subtask, cb){
+					async.map(task.subtasks, function(subtask, cb){
 						Scoreboard.create({ contest: task.contest, user: user.id, task: task.id, subtask: subtask.id}).exec(function(err, res){
-							Scoreboard.publishCreate(res);
-							cb(err);
+							
+							cb(err,res);
 						});
-					}, function(err){
-						callback(err);
+					}, function(err,results){
+						callback(err, results);
 					});
 				}
-			}, function(err){
+			}, function(err, results){
 				if(err){ 
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 				}
+				Scoreboard.publishCreate(results);
 			});
 		});
 	},
@@ -103,11 +105,13 @@ module.exports = {
 						item.penalty = (item.submissions - 1) * response.contest.penalty;
 					}
 					item.save();
+					cb();
 				}, function(err){
 					if(err){
 						sails.log.err("Error building scoreboard. Please refresh scoreboard"); 
 						return;
 					}
+					Scoreboard.publishUpdate(rows[0].id, rows);
 				});					
 
 			});
