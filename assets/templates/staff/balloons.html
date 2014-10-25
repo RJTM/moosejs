@@ -1,17 +1,21 @@
-<div class="panel panel-primary">
-	<div class="panel-heading">Balloons</div>
-	<table class="table table-bordered">
-		<thead>
-			<th>#</th>
-			<th>Team</th>
-			<th>Balloon Color</th>
-		</thead>
-		<tbody>
-			<tr ng-repeat="balloon in balloons">
-				<td>{{ balloon.id }}</td>
-				<td>{{ balloon.user.name }}</td>
-				<td>{{ balloon.color }}</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Balloons</div>
+			<table class="table table-bordered">
+				<thead>
+					<th class="text-center">#</th>
+					<th class="text-center">Team</th>
+					<th class="text-center">Balloon Color</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="balloon in balloons">
+						<td class="col-md-2 text-center">{{ balloon.id }}</td>
+						<td class="col-md-8 text-center">{{ balloon.user.name }}</td>
+						<td class="col-md-2 text-center" style="background-color : {{ balloon.color }}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
