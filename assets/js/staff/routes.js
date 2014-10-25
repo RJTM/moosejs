@@ -26,6 +26,8 @@ angular.module('mooseJs.staff')
 
 			.state('staff.balloons', {
 				url : '/balloons',
+				templateUrl : 'templates/staff/balloons.html',
+				controller : 'staff.BalloonController',
 				data : {
 					ncyBreadcrumbLabel : 'Balloons',
 					ncyBreadcrumbParent : 'staff.home'

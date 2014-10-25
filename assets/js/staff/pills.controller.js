@@ -5,7 +5,6 @@ angular.module('mooseJs.staff')
 		$scope.prints = 0;
 		$scope.balloons = 0;
 
-		console.log('register sockets');
 		socket.get('/print');
 		socket.on('print', function(message){
 			$scope.prints++;
@@ -13,7 +12,6 @@ angular.module('mooseJs.staff')
 
 		socket.get('/balloon');
 		socket.on('balloon', function(message){
-			console.log('balloon event');
 			$scope.balloons++;
 		});
 	}]);

@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">Balloons</div>
+	<table class="table table-bordered">
+		<thead>
+			<th>#</th>
+			<th>Team</th>
+			<th>Balloon Color</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="balloon in balloons">
+				<td>{{ balloon.id }}</td>
+				<td>{{ balloon.user.name }}</td>
+				<td>{{ balloon.color }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -11,7 +11,7 @@ module.exports = {
 		color : {
 			type : 'string'
 		},
-		team : {
+		user : {
 			model : 'user'
 		}
 	}
