@@ -99,6 +99,10 @@ module.exports = {
 							item.points = subTaskUtil[item.subtask].points;
 							item.isCorrect = true;
 							// item.jury = TODO
+						}else{
+							item.points = 0;
+							item.isCorrect = false;
+							// item.jury = TODO;
 						}
 						item.juryModified = subTaskUtil[item.subtask].veredict !== subTaskUtil[item.subtask].autojudge;
 						item.time = response.run.time;

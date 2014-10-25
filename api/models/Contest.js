@@ -52,6 +52,7 @@ module.exports = {
 
 	seedData: [{
 		name: "DummyContest",
+		penalty: 20
 
 	},
 	{

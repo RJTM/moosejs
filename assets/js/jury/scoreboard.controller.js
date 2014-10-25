@@ -22,16 +22,16 @@ angular.module('mooseJs.jury')
 						name: value.task.name, 
 						id: value.task.id,
 						time: 0,
-						runs: 0
+						runs: 0,
+						penalty: 0
 					};	
 				}
 
-				users[value.user.id]['tasks'][value.task.id] .points += value.points;
-				users[value.user.id]['tasks'][value.task.id].time = Math.max(users[value.user.id]['tasks'][value.task.id].time, value.time)
-				users[value.user.id]['tasks'][value.task.id].runs = value.submissions;
+				users[value.user.id]['tasks'][value.task.id].points += parseInt(value.points);
+				users[value.user.id]['tasks'][value.task.id].time = parseInt(value.time);
+				users[value.user.id]['tasks'][value.task.id].runs = parseInt(value.submissions);
+				users[value.user.id]['tasks'][value.task.id].penalty = parseInt(value.penalty);
 				users[value.user.id]['total'] += value.points;
-				users[value.user.id]['totalTime'] = Math.max(users[value.user.id]['totalTime'], parseInt(value.time));
-				users[value.user.id]['penalty'] = Math.max(users[value.user.id]['penalty'], parseInt(value.penalty));
 
 				if(!tasks[value.task.name]){
 					tasks[value.task.name] = { 
@@ -44,6 +44,17 @@ angular.module('mooseJs.jury')
 				tasks[value.task.name].subtasks[value.subtask.id] = value.subtask.points;
 			});
 			
+			// Compute time and penalty for each team
+			angular.forEach(users, function(user, userId){
+				user.totalTime = 0;
+				user.penalty = 0;
+				angular.forEach(user.tasks, function(task, taskId){
+					user.totalTime += task.time;
+					user.penalty += task.penalty;
+				});
+			});
+			
+			// Compute the maximum amount of points per task (visual only)
 			angular.forEach(tasks, function(task, taskName){
 				angular.forEach(task.subtasks, function(points, subtaskId){
 					task.fullPoints += parseInt(points);
@@ -58,12 +69,38 @@ angular.module('mooseJs.jury')
 		socket.on('scoreboard', function(message){
 			if(message.verb === 'created'){
 				//New user or task
+				//TODO
 			}else if(message.verb === 'deleted'){
 				//Deleted user or task
+				//TODO
 			}else if(message.verb === 'updated'){
 				//Updated scoreboard
-				console.log('UPDATE');
-				console.log(message.data);
+				// console.log(message.data);
+				var updatedUser = message.data[0].user;
+				var updatedTask = message.data[0].task;
+				var oldTask = users[updatedUser]['tasks'][updatedTask];
+				oldTask.points = 0;
+				oldTask.runs++;
+				oldTask.penalty = message.data[0].penalty;
+				
+				angular.forEach(message.data, function(value, key){
+					// console.log(users[value.user]);
+					oldTask.points += parseInt(value.points);
+					oldTask.time = Math.max(oldTask.time, value.time);
+					oldTask.runs = value.submissions;
+				});
+
+				//recalculate the team score
+				var oldTeam = users[updatedUser];
+				oldTeam.totalTime = 0;
+				oldTeam.total = 0;
+				oldTeam.penalty = 0;
+
+				angular.forEach(oldTeam.tasks, function(task, taskId){
+					oldTeam.totalTime += parseInt(task.time);
+					oldTeam.total += parseInt(task.points);
+					oldTeam.penalty += parseInt(task.penalty);
+				});
 			}
 		})
 

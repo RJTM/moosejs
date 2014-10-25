@@ -56,6 +56,7 @@ module.exports.policies = {
         '*': ['tokenAuth', 'admin'],
         'findOne': ['tokenAuth', 'juryAndUp'],
         'authenticate': true,
-        'update': 'tokenAuth'
+        'update': 'tokenAuth',
+        'addToContest': true
     }
 };
