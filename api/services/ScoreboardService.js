@@ -21,7 +21,10 @@ module.exports = {
 				if(err){ 
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 				}
-				Scoreboard.publishCreate(results);
+				Scoreboard.publishCreate({
+					id: user,
+					rows: results
+				});
 			})
 			
 		});
