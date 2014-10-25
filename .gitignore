@@ -120,6 +120,7 @@ daemon/tmp.json
 
 assets/sources/
 assets/testcases/
+assets/js/dependencies/
 
 daemon/sources/
 daemon/testcases/
