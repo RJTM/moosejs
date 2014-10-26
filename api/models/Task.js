@@ -18,23 +18,29 @@ module.exports = {
   		collection: 'run',
   		via: 'task'
   	},
-      subtasks: {
-             collection: 'subtask',
-             via: 'task',
-      }
+    subtasks: {
+           collection: 'subtask',
+           via: 'task',
+    },
+    color : {
+      type : 'string'
+    }
   },
     
   seedData: [{
     name: "DummyTask",
     contest: 1,
+    color : '#D949E3'
   },
  {
      name: "Flips",
      contest: 1,
+     color : '#4953E3'
  },
  {
      name: "Diet Coke",
      contest: 1,
+     color : '#49E389'
  }],
     
 };

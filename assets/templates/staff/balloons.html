@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Balloons</div>
+			<table class="table table-bordered">
+				<thead>
+					<th class="text-center">#</th>
+					<th class="text-center">Team</th>
+					<th class="text-center">Color</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="balloon in balloons | orderBy: '-id'">
+						<td class="col-md-2 text-center">{{ balloon.id }}</td>
+						<td class="col-md-8 text-center">{{ balloon.user.name }}</td>
+						<td class="col-md-2 text-center" style="background-color : {{ balloon.task.color }}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
