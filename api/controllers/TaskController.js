@@ -14,6 +14,17 @@ module.exports = {
 			ScoreboardService.addTask(task);
 			return res.json(task);
 		});
+	},
+
+
+	contest: function(req, res){
+		var user = req.token.id;
+		ContestService.getActiveContest(user, function(err, contest){
+			Task.find({contest: contest.id}).exec(function(err, tasks){
+				//TODO: Handle Error
+				return res.json(tasks);
+			});
+		});
 	}
 };
 

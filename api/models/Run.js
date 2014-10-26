@@ -20,6 +20,9 @@ module.exports = {
 		source: {
 			type: 'string'
 		},
+		language: {
+			type: 'string'
+		},
 		grades: {
 			collection: 'grade',
 			via: 'run'

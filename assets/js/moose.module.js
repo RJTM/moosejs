@@ -11,7 +11,7 @@ angular.module('mooseJs', [
 	'mooseJs.team',
 
 
- 	'ui.router', 'ngResource','ui.bootstrap','ncy-angular-breadcrumb','ui.select'
+ 	'ui.router', 'ngResource','ui.bootstrap','ncy-angular-breadcrumb','ui.select','angularFileUpload'
 ]).run(["$rootScope", "$state", "Auth", function($rootScope, $state, Auth){
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 		if(!Auth.authorize(toState.data.access)){
