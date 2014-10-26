@@ -3,7 +3,8 @@
 angular.module('mooseJs.team')
 .controller('team.ClarificationsAddController', ["$scope", "$sce", "$state", "socket", "LocalService", function($scope, $sce, $state, socket, LocalService){
 	$scope.subjects = [{name: 'General Issue'}];
-	socket.get('/task', function(data){
+	//TODO: Get token out of here
+	socket.get('/task/contest', {token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNDE0Mjg0MTQ0fQ.enUSSR4pWilw5hyGEc1yWZf5ZqyvK_BBqPFxchMk14o'} ,function(data){
 		$scope.subjects.push.apply($scope.subjects, data);
 	});
 
