@@ -1,8 +1,14 @@
-<div class="pull-right">
-	<button class="btn btn-danger">Request Clarification <i class="fa fa-question-circle"></i></button>
+<div class="row">
+	<div class="col-md-10">
+		<div ui-view></div>
+	</div>
+	<div class="col-md-2">
+		<button class="btn btn-danger" ui-sref="team.clarifications.add">Request Clarification <i class="fa fa-question-circle"></i></button>
+	</div>
 </div>
-<div class="clearfix"></div>
+	
 <br>
+
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<strong>Clarifications</strong>
@@ -19,12 +25,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="clarification in clarifications">
-				<td>{{ clarification.jury !== undefined ? clarification.jury.name : 'Not Answered yet' }}</td>
-				<td>{{ clarification.subject }}</td>
-				<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>
-				<td>{{ clarification.question }}</td>
-				<td>{{ clarification.answer }}</td>
+			<tr ng-repeat="clarification in clarifications" ng-click="showDetails(clarification)">
+					<td>{{ clarification.jury !== undefined ? 'Jury' : 'Not Answered yet' }}</td>
+					<td>{{ clarification.subject }}</td>
+					<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>
+					<td>{{ clarification.question | limitTo: 20 }}</td>
+					<td>{{ clarification.answer | limitTo: 20 }}</td>
 			</tr>
 		</tbody>
 	</table>

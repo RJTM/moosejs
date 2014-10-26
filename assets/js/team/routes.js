@@ -32,4 +32,22 @@ angular.module('mooseJs.team')
 					clearBadge: 'clarifications'
 				}
 			})
+			.state('team.clarifications.add',{
+				url: '/add',
+				templateUrl: 'templates/team/clarifications-add.html',
+				controller: 'team.ClarificationsAddController',
+				data: {
+					ncyBreadcrumbLabel: 'Requesting clarification',
+					ncyBreadcrumbParent: 'team.clarifications'
+				}
+			})
+			.state('team.newRun', {
+				url: '/newRun',
+				templateUrl: 'templates/team/submit.html',
+				controller: 'team.RunAddController',
+				data: {
+					ncyBreadcrumbLabel: 'Submitting a new solution',
+					ncyBreadcrumbParent: 'team.home'
+				}
+			})
 	}]);

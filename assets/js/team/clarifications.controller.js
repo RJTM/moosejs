@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('mooseJs.team')
-.controller('team.ClarificationsController', ["$scope", "socket", "CurrentUser", "LocalService", function($scope, socket, CurrentUser, LocalService){
+.controller('team.ClarificationsController', ["$scope", "$modal", "socket", "CurrentUser", "LocalService", function($scope, $modal, socket, CurrentUser, LocalService){
+	// TODO: Remove token from data
 	socket.get('/clarification/user', {token: angular.fromJson(LocalService.get('auth_token')).token} ,function(data){
 		$scope.clarifications = data;
 	});
@@ -21,4 +22,16 @@ angular.module('mooseJs.team')
 			});
 		}
 	});
+
+	$scope.showDetails = function(clarification){
+		$modal.open({
+			templateUrl: 'templates/team/clarification-detail.html',
+			controller: 'team.ClarificationDetailController',
+			resolve: {
+				clarification: function(){
+					return clarification;
+				}
+			}
+		});
+	}
 }])
