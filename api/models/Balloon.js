@@ -8,8 +8,8 @@
 module.exports = {
 
 	attributes: {
-		color : {
-			type : 'string'
+		task : {
+			model : 'task'
 		},
 		user : {
 			model : 'user'

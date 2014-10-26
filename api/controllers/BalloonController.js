@@ -9,21 +9,21 @@ module.exports = {
 
 	create : function(req, res){
 		var user = req.param('user');
-		var color = req.param('color');
+		var task = req.param('task');
 
 		Balloon.create({
 			user : user,
-			color : color
-		}).exec(function(err, result){
+			task : task
+		}).exec(function(err, balloon){
 			if(err)
 				return res.serverError(err);
-			Balloon.findOne({id : result.id}).populate('user').exec(function(err, balloon){
+			Balloon.findOne({id : balloon.id}).populate('user').populate('task').exec(function(err, balloonFull){
 				if(err){
-					Balloon.publisCreate(result);
+					Balloon.publishCreate(balloon);
 					return res.serverError(err);
 				}
-				Balloon.publishCreate(balloon);
-				return res.json(balloon);
+				Balloon.publishCreate(balloonFull);
+				return res.json(balloonFull);
 			});
 		});
 	}
