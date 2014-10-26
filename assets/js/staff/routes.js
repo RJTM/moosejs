@@ -30,7 +30,8 @@ angular.module('mooseJs.staff')
 				controller : 'staff.BalloonController',
 				data : {
 					ncyBreadcrumbLabel : 'Balloons',
-					ncyBreadcrumbParent : 'staff.home'
+					ncyBreadcrumbParent : 'staff.home',
+					clearBadge : 'balloons'
 				}
 			})
 
@@ -38,7 +39,8 @@ angular.module('mooseJs.staff')
 				url : '/prints',
 				data : {
 					ncyBreadcrumbLabel : 'Prints',
-					ncyBreadcrumbParent : 'staff.home'
+					ncyBreadcrumbParent : 'staff.home',
+					clearBadge : 'prints'
 				}
 			})
 	}]);
