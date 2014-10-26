@@ -1,0 +1,31 @@
+<div class="pull-right">
+	<button class="btn btn-danger">Request Clarification <i class="fa fa-question-circle"></i></button>
+</div>
+<div class="clearfix"></div>
+<br>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Clarifications</strong>
+		<small> where people come when desperate</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th>is Public</th>
+				<th>Question</th>
+				<th>Answer</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="clarification in clarifications">
+				<td>{{ clarification.jury !== undefined ? clarification.jury.name : 'Not Answered yet' }}</td>
+				<td>{{ clarification.subject }}</td>
+				<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>
+				<td>{{ clarification.question }}</td>
+				<td>{{ clarification.answer }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

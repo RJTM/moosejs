@@ -40,7 +40,8 @@ angular.module('mooseJs.jury')
 				templateUrl: 'templates/jury/clarifications.html',
 				data: {
 					ncyBreadcrumbLabel: 'Clarifications',
-					ncyBreadcrumbParent: 'jury.home'
+					ncyBreadcrumbParent: 'jury.home',
+					clearBadge: 'clarifications'
 				}
 			})
 
@@ -75,7 +76,8 @@ angular.module('mooseJs.jury')
 				controller: 'jury.RunController',
 				data: {
 					ncyBreadcrumbLabel: 'Runs',
-					ncyBreadcrumbParent: 'jury.home'
+					ncyBreadcrumbParent: 'jury.home',
+					clearBadge: 'runs'
 				}
 			})
 

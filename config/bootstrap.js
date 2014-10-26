@@ -18,6 +18,7 @@ module.exports.bootstrap = function(cb) {
         Run.seed,
         Subtask.seed,
         Testcase.seed,
-        Judgehost.seed
+        Judgehost.seed,
+        Clarification.seed
     ],cb);
 };

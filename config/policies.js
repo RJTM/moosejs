@@ -58,5 +58,8 @@ module.exports.policies = {
         'authenticate': true,
         'update': 'tokenAuth',
         'addToContest': true
+    },
+    ClarificationController: {
+      '*' : 'tokenAuth',
     }
 };

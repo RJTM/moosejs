@@ -30,6 +30,7 @@
     "components-font-awesome": "~4.2.0",
     "angular-ui-router": "~0.2.10",
     "angular-resource": "~1.2.25",
-    "angular-breadcrumb": "~0.2.3"
+    "angular-breadcrumb": "~0.2.3",
+    "sweetalert": "~0.3.1"
   }
 }
