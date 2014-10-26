@@ -37,6 +37,8 @@ angular.module('mooseJs.staff')
 
 			.state('staff.prints', {
 				url : '/prints',
+				templateUrl : 'templates/staff/prints.html',
+				controller : 'staff.PrintController',
 				data : {
 					ncyBreadcrumbLabel : 'Prints',
 					ncyBreadcrumbParent : 'staff.home',

@@ -6,6 +6,16 @@
  */
 
 module.exports = {
-	
+	create : function (req, res){
+		var user = req.param('user');
+		var source = req.file('source');
+		PrintService.uploadSourceFile(user, source,
+			function(err, printJob){
+				if(err)
+					return res.serverError(err);
+				Print.publishCreate(printJob);
+				return res.json(printJob);
+		});
+	}
 };
 
