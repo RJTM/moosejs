@@ -1,8 +1,43 @@
+<div class="row" ng-hide="updating">
+	<div class="pull-right col-md-6">
+		<div class="row">
+			<div class="col-md-8" align="right">
+				<input type="text" ng-model="contest.name" class="form-control" placeholder="Name">
+			</div>
+			<div class="col-md-4" align="right">
+				<button class="btn btn-success" ng-click="save()">
+					<i class="fa fa-plus"></i> Add new contest
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div><br>
+</div>
+
+<div class="row" ng-show="updating">
+	<div class="pull-right col-md-6">
+		<div class="row">
+			<div class="col-md-7" align="right">
+				<input type="text" ng-model="contest.name" class="form-control" placeholder="Name">
+			</div>
+			<div class="col-md-5" align="right">
+				<button class="btn btn-success" ng-click="update()">
+					Save contest
+				</button>
+				<button class="btn btn-warning" ng-click="cancel()">
+					Cancel
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div><br>
+</div>
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<strong>Contests</strong>
 		<small> all the contests in the database in one table </small>
 	</div>
+	
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -16,14 +51,14 @@
 		</thead>
 		<tbody>
 			<tr ng-class="{ success : (date >= contest.activateTime && date <= contest.unfreezeTime) }" ng-repeat="contest in contests">
-				<td>{{ contest.name }}</td>
+				<td>{{ contest.name }} <i class="fa fa-check text-success2" ng-show="contest.set" tooltip="This contest has been set up"></i></td>
 				<td>{{ contest.tasks.length }}</td>
 				<td>{{ contest.activateTime | date:'short' }}</td>
 				<td>{{ contest.startTime | date:'short' }}</td>
 				<td>{{ contest.endTime | date:'short' }}</td>
 				<td>
-					<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
-					<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+					<button class="btn btn-info btn-xs" ng-click="edit($index)"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs" ng-click="delete($index)"><i class="fa fa-trash"></i></button>
 				</td>
 			</tr>
 		</tbody>

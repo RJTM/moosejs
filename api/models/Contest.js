@@ -47,6 +47,10 @@ module.exports = {
 		penalty: {
 			type: 'integer',
 			defaultsTo: 0
+		},
+		set: {
+			type: 'boolean',
+			defaultsTo: false
 		}
 	},
 
