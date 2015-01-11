@@ -1,0 +1,41 @@
+<h4>{{ contest.tasks[taskIndex].name }} - {{ 'Subtask '+ (subtaskIndex + 1) }}</h4>
+
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="form-group">
+			<label for="points">Points</label>
+			<input type="text" class="form-control" id="points" ng-model="contest.tasks[taskIndex].subtasks[subtaskIndex].points">
+			<p class="help-block">Amount of points awarded for solving this subtask correctly (for ACM-ICPC use 1).</p>
+		</div>
+
+		<div class="form-group">
+			<label for="feedback"><input type="checkbox" id="feedback" ng-model="contest.tasks[taskIndex].subtasks[subtaskIndex].feedback"> Feedback</label>
+			
+
+			<p class="help-block">Check this if you want to show the result of the submissions to the contestants for this subtask.</p>
+		</div>
+
+		<div class="form-group">
+			<label for="tl">Timelimit</label>
+			<input type="number" class="form-control" id="tl" ng-model="contest.tasks[taskIndex].subtasks[subtaskIndex].timeLimit">
+			<p class="help-block">Max amount of miliseconds to run each Testcase of this subtask.</p>
+		</div>
+
+		<div class="form-group">
+			<label for="ml">Memorylimit</label>
+			<input type="number" class="form-control" id="ml" ng-model="contest.tasks[taskIndex].subtasks[subtaskIndex].memoryLimit">
+			<p class="help-block">Max amount of memory (KB) to run each Testcase of this subtask.</p>
+		</div>
+
+		<div class="form-group">
+			<label for="testcases">Number of testcases</label>
+			<input type="number" class="form-control" id="testcases" ng-model="contest.tasks[taskIndex].subtasks[subtaskIndex].testcases" min="0">
+			<p class="help-block">Number of testcases for this subtask (you should use 1 testcase per testcase file).</p>
+		</div>
+
+		<div class="pull-right">
+			<button class="btn btn-success" ng-click="next('subtask', taskIndex, subtaskIndex)">Next <i class="fa fa-arrow-right"></i></button>
+		</div>
+	</div>
+</div>

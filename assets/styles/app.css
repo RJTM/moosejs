@@ -59,3 +59,17 @@
 .somePoints{
 	background-color:  #BFEC78
 }
+
+.contest-tree {
+  margin-left: 5px;
+  list-style: none;
+}
+
+.contest-tree > li:before{
+  font-family: "FontAwesome";
+  content: '\f105';
+}
+
+.fa-8x {
+  font-size: 8em;
+}

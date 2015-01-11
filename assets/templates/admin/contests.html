@@ -51,7 +51,7 @@
 		</thead>
 		<tbody>
 			<tr ng-class="{ success : (date >= contest.activateTime && date <= contest.unfreezeTime) }" ng-repeat="contest in contests">
-				<td>{{ contest.name }} <i class="fa fa-check text-success2" ng-show="contest.set" tooltip="This contest has been set up"></i></td>
+				<td>{{ contest.name }} <i class="fa fa-check text-success" ng-show="contest.set" tooltip="This contest has been set up"></i></td>
 				<td>{{ contest.tasks.length }}</td>
 				<td>{{ contest.activateTime | date:'short' }}</td>
 				<td>{{ contest.startTime | date:'short' }}</td>

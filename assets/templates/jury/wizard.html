@@ -1,0 +1,41 @@
+<h3>Setting up a contest</h3>
+<div class="row">
+	<div class="col-md-4 well">
+		<h4>Contest Structure</h4>
+		<a ui-sref="jury.wizard.contest"><label>{{ contest.name }}</label></a>
+		<ul>
+			<li>Start Time {{ contest.startTime }}</li>
+			<li>Freeze Time {{ contest.freezeTime }}</li>
+			<li>End Time {{ contest.endTime }}</li>
+			<li>Unfreeze Time {{ contest.unfreezeTime }}</li>
+			<li>Penalty {{ contest.penalty }}</li>
+		</ul>
+		<ul class="contest-tree">
+			<li ng-repeat="task in contest.tasks track by $index" >
+				<a ui-sref="jury.wizard.task({ taskIndex: $index })"><span ng-class="{ 'text-muted' : !task.name }">{{ task.name ? task.name : 'Task '+($index+1) }}</span></a>
+				<ul class="contest-tree">
+					<li ng-repeat="subtask in task.subtasks track by $index">
+						<a ui-sref="jury.wizard.task.subtask({ taskIndex: $parent.$index, subtaskIndex: $index })">Subtask {{ $index + 1 }}</a>
+						<ul>
+							<li>Points {{ subtask.points }}</li>
+							<li>Feedback {{ subtask.feedback ? 'Yes' : 'No' }}</li>
+							<li>Testcases {{ subtask.testcases }}</li>
+							<li>TL {{subtask.timeLimit}}</li>
+							<li>ML {{subtask.memoryLimit}}</li>
+						</ul>
+					</li>
+				</ul>
+			</li><br><br>
+		</ul>
+	</div>
+	<div class="col-md-7 col-md-offset-1">
+		<div ui-view>
+			<button class="btn btn-block btn-lg btn-primary" ui-sref="jury.wizard.contest">
+				Use the creation wizard
+			</button><br><br>
+			<button class="btn btn-block btn-lg btn-success">
+				Upload contest zip
+			</button>
+		</div>
+	</div>
+</div>

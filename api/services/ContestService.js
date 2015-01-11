@@ -21,6 +21,23 @@ module.exports = {
 			});
 			callback("No active contest found for this user");
 		});
+	},
+
+	saveFromJson: function(contest, callback){
+		contest.set = true;
+		contest.tasks.forEach(function(task, index){
+			task.subtasks.forEach(function(subtask, subIndex){
+				var testcasesN = subtask.testcases;
+				subtask.testcases = [];
+				for(var i=0;i<testcasesN;i++){
+					subtask.testcases.push({
+						inputFile: '',
+						outputFile: ''
+					});
+				}
+			});
+		});
+		Contest.update({ id: contest.id }, contest).exec(callback);
 	}
 	
 }

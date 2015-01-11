@@ -103,5 +103,54 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbLabel: 'Contests',
 					ncyBreadcrumbParent: 'jury.home'
 				}
+			})
+
+			.state('jury.wizard', {
+				url: '/wizard/:id',
+				templateUrl: 'templates/jury/wizard.html',
+				controller: 'jury.WizardController',
+				data: {
+					ncyBreadcrumbLabel: 'Setting up a contest',
+					ncyBreadcrumbParent: 'jury.contests'
+				}
+			})
+			.state('jury.wizard.contest', {
+				url: '/contest',
+				templateUrl: 'templates/jury/wizard-contest.html',
+				data: {
+					ncyBreadcrumbLabel: 'Contest information',
+					ncyBreadcrumbParent: 'jury.contests'
+				}
+			})
+			.state('jury.wizard.task', {
+				url: '/task/:taskIndex',
+				templateUrl: 'templates/jury/wizard-task.html',
+				controller: 'jury.WizardInnerController',
+				data: {
+					ncyBreadcrumbLabel: 'Task information',
+					ncyBreadcrumbParent: 'jury.contests'
+				}
+			})
+			.state('jury.wizard.task.subtask', {
+				url: '/subtask/:subtaskIndex',
+				data: {
+					ncyBreadcrumbLabel: 'Subtask information',
+					ncyBreadcrumbParent: 'jury.contests'
+				},
+				views: {
+					'@jury.wizard': {
+						templateUrl: 'templates/jury/wizard-subtask.html',
+						controller: 'jury.WizardInnerController'
+					}
+				}
+			})
+			.state('jury.wizard.finished', {
+				url: '/finished',
+				templateUrl: 'templates/jury/wizard-finished.html',
+				controller: 'jury.WizardFinishedController',
+				data: {
+					ncyBreadcrumbLabel: 'Finished contest setup',
+					ncyBreadcrumbParent: 'jury.contests'
+				}
 			});
 	}]);
