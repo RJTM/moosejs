@@ -33,7 +33,7 @@ module.exports = {
   		name: 'C++',
   		compiler: 'g++',
   		fileName: 'source.cpp',
-  		executable: 'a.out',
+  		executable: './a.out',
   		arguments: '-O2'
   	},
   	{

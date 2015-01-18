@@ -36,7 +36,9 @@ module.exports = {
 	seedData: [
 	{
 		task: 1,
-		points: 20
+		points: 20,
+		timeLimit: 5,
+		memoryLimit: 50
 	},
 	{
 		task: 1,

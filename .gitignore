@@ -125,6 +125,8 @@ assets/js/dependencies/
 daemon/sources/
 daemon/testcases/
 
+daemon/grader/sources
+
 moose.sublime-project
 moose.sublime-workspace
 *.sublime-workspace

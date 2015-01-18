@@ -32,9 +32,9 @@ var cleanGrade = function(grade){
 	});
 }
 
-var judgeTestcase = function(grade, subtask, testcase, cb){
+var judgeTestcase = function(source, grade, subtask, testcase, cb){
 	util.log.judge("Running testcase "+ testcase.id);
-	grader.run(testcase.inputFile, testcase.outputFile, subtask.timeLimit, subtask.memoryLimit,
+	grader.run(source, grade.run.language, testcase.inputFile, testcase.outputFile, subtask.timeLimit, subtask.memoryLimit,
 		function(err, data){
 			if(err){
 				cb(err);
@@ -58,11 +58,11 @@ var judgeTestcase = function(grade, subtask, testcase, cb){
 		});
 }
 
-var judgeSubtask = function(grade, subtask, cb){
+var judgeSubtask = function(source, grade, subtask, cb){
 	util.log.judge("Judging subtask " + subtask.id);
 
 	async.eachSeries(subtask.testcases, function(testcase, callback){
-		judgeTestcase(grade, subtask, testcase, callback);
+		judgeTestcase(source, grade, subtask, testcase, callback);
 	},function(err){
 		if(err){
 			cb(err);
@@ -72,10 +72,10 @@ var judgeSubtask = function(grade, subtask, cb){
 	});
 }
 
-var judgeTask = function(grade){
+var judgeTask = function(source, grade){
 	util.log.judge("Judging for task "+ grade.task.name);
 	async.eachSeries(grade.subtasks, function(subtask, callback){
-		judgeSubtask(grade, subtask, callback);
+		judgeSubtask(source, grade, subtask, callback);
 	}, function(err){
 		if(err){
 			util.log.error(err);
@@ -146,7 +146,7 @@ var judge = function(grade){
 						return;
 					}
 					util.log.judge("Source file compiled succesfully.");
-					judgeTask(grade);	
+					judgeTask(fileName, grade);	
 				});
 
 		});
