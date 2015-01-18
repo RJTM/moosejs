@@ -52,6 +52,45 @@ module.exports = {
             
             TestcaseService.uploadFiles(task,subtask, testcase.id,inputFile,outputFile,callback);
         });
+    },
+
+    update: function(req, res){
+        // req.file('input').upload({ maxBytes: Number.MAX_VALUE },function(err, files){
+        //     if(err)
+        //         return res.serverError(err);
+        //     return res.json({
+        //             message: files.length + ' file(s) uploaded successfully!',
+        //             files: files
+        //           });
+        // });
+        
+        var subtask = req.param('subtask');
+        var task = req.param('task');
+        var inputFile = req.file('input');
+        var outputFile = req.file('output');
+
+        Testcase.findOne({id: req.param('testcase')}).exec(function(err, testcase){
+            if(err) return res.serverError(err);
+
+            var callback = function(err,results){
+                if(err){
+                    return res.serverError(err);
+                }
+                //Update testcase with the URL provided by service
+                testcase.inputFile = results[0];
+                testcase.outputFile = results[1];
+                
+                testcase.save(function(err,s){
+                    if(err) return res.serverError(err);
+                    Testcase.publishUpdate(s.id, s);
+                    return res.json(s);
+                });
+                
+            };
+
+            TestcaseService.uploadFiles(task, subtask, testcase.id, inputFile, outputFile, callback);
+        });
+        
     }
 };
 

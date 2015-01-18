@@ -29,6 +29,7 @@ angular.module('mooseJs.jury')
 			.state('jury.team', {
 				url: '/team',
 				templateUrl: 'templates/jury/team.html',
+				controller: 'jury.TeamController',
 				data: {
 					ncyBreadcrumbLabel: 'As a team',
 					ncyBreadcrumbParent: 'jury.home'

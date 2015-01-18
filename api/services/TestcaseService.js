@@ -9,35 +9,19 @@ module.exports = {
             var taskName = URLService.toSlug(result.name);
             var dirName =  contestName+"/"+taskName+"/"+subtask+"/";
             
-            async.parallel([
-                function(callback){
-                    input.upload({
-                                    dirname: sails.config.appPath + "/assets/testcases/" + dirName,
-                                    saveAs: testcase+'.in',
-                                    maxBytes: 1000000000
-                    }, function(err,up){
-                        if(err){ callback(err); return; }
-                        callback(null,dirName+testcase+'.in');
-                        
-                    });
-                }
-                ,
-                function(callback){
-                    output.upload({
-                                    dirname: sails.config.appPath + "/assets/testcases/" + dirName,
-                                    saveAs: testcase+'.out',
-                                    maxBytes: 1000000000
-                    }, function(err,up){
-                        if(err){ callback(err); return; }
-                        callback(null,dirName+testcase+'.out');
-                        
-                    });
-                }
-            ], function(err, results){
-                cb(err,results);
-            }
-        
-            );  
+            input.upload({
+                            dirname: sails.config.appPath + "/assets/testcases/" + dirName,
+                            saveAs: function(__newFileStream,cb) {
+                                var re = /(?:\.([^.]+))?$/;
+                                var ext = re.exec(__newFileStream.filename)[1];
+                                cb(null, testcase+'.'+ext); 
+                            },
+                            maxBytes: Number.MAX_VALUE
+            }, function(err,up){
+                if(err){ cb(err); return; }
+                cb(null,[dirName+testcase+'.in', dirName+testcase+'.out']);
+            });
+      
         });
     }
 };
