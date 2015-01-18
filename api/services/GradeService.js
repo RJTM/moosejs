@@ -22,6 +22,9 @@ module.exports = {
 				User.findOne({id: grade.run.owner}).exec(callback);
 			},
 			function(callback){
+				Language.findOne({id: grade.run.language}).exec(callback);
+			},
+			function(callback){
 				Subtask.find({task: grade.task.id}).populate('testcases').exec(callback);
 			}
 			], function(err,results){
@@ -30,7 +33,8 @@ module.exports = {
 					return;	
 				} 
 				grade.run.owner = results[0];
-				grade.subtasks = results[1];
+				grade.run.language = results[1];
+				grade.subtasks = results[2];
 
 				cb(null,grade);
 			});

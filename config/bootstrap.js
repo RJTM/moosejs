@@ -19,6 +19,7 @@ module.exports.bootstrap = function(cb) {
         Subtask.seed,
         Testcase.seed,
         Judgehost.seed,
-        Clarification.seed
+        Clarification.seed,
+        Language.seed
     ],cb);
 };
