@@ -1,0 +1,2 @@
+/workspace/compile.sh: line 23: source.cpp: command not found
+/workspace/compile.sh: line 29: [: -eq: unary operator expected

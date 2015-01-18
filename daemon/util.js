@@ -105,5 +105,10 @@ module.exports = {
     },
     getFileName : function(url){
         return url.split('/').pop();
+    },
+    getPath: function(file){
+        var folders = file.split('/');
+        folders.pop();
+        return folders.join('/') + '/';
     }
 }

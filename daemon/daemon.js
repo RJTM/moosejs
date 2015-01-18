@@ -3,7 +3,7 @@ var socketIOClient = require('socket.io-client');
 var sailsIOClient = require('sails.io.js');
 var async = require('async');
 var util = require('./util.js');
-var grader = require('../grader/grader.js');
+var grader = require('./grader/grader.js');
 var jsonfile = require('jsonfile');
 var config,tmp;
 
@@ -124,7 +124,7 @@ var judge = function(grade){
 	setTimeout(function(){
 		util.httpGetContent(sourceUrl,function(err,data){
 			var fileName = util.buildPath(['sources', grade.run.owner.username, 
-				util.toSlug(grade.task.name), grade.run.id, util.getFileName(grade.run.source) ]);
+				util.toSlug(grade.task.name), grade.run.id, 'source.'+util.getExt(grade.run.source) ]);
 			async.series([
 					function(callback){
 						fs.outputFile(fileName, data, callback);
@@ -188,9 +188,10 @@ var getTestCase = function(testcase, callback){
 }
 
 var onTestcaseChange = function(obj){
+	util.log.debug(obj);
 	util.log.info("Getting updated testcases");
 	if(obj.verb === "updated"){
-		getTestCase(obj.previous, function(err){
+		getTestCase(obj.data, function(err){
 			if(err){
 				util.log.error(err);
 				return;
