@@ -55,8 +55,10 @@ module.exports = {
 				       		// Timeout
 				       		callback({compileError: 'The compilation proccess timed out.'});
 				       	}
+				       	return;
 				    	}
 				    	callback(null, stdout);
+				    	return;
 				});
 			}
 		], function(err, results){

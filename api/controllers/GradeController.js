@@ -51,6 +51,17 @@ module.exports = {
 		});
 	},
 
+	compilerError: function(req, res){
+		var message = req.param('message');
+		var grade = req.param('grade');
+		Grade.update({ id: grade}, {status: 'done', result: 'compiler-error', compileMessage: message}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			sails.log.info('Grade '+ grade + ' completed');
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
+	},
+
 	verify: function(req, res){
 		var grade = req.param('grade');
 		var veredict = req.param('veredict');

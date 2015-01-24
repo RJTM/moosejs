@@ -77,7 +77,7 @@ module.exports = {
 	 */
 	getRunResult: function(run, cb){
 		var finalResponse = {};
-		Run.findOne({id: run}).populate('grades').populate('task').populate('owner').exec(function(err, res){
+		Run.findOne({id: run}).populate('grades').populate('task').populate('owner').populate('language').exec(function(err, res){
 			if(err || !res){
 				cb(err);
 				return;
@@ -93,6 +93,13 @@ module.exports = {
 				finalResponse.contest = contest.toJSON();
 				delete finalResponse.run.grades;
 				delete finalResponse.run.task;
+
+				if(finalResponse.grade.result === 'compiler-error'){
+					finalResponse.result = 'compiler-error';
+					cb(null,finalResponse);
+					return;
+				}
+
 				var resultPriority;
 				getResultPriority(function(resultPrio){
 					resultPriority = resultPrio;

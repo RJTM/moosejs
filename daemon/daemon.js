@@ -19,11 +19,21 @@ var subscribe = function(){
 }
 
 var saveCompileError = function(grade, err){
-	/**
-	
-		TODO:
-		- Save compile error in DB	
-	**/
+	io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+		function(data,responseObj){
+				if(responseObj.statusCode !== 200){
+					util.log.warn('Unable to mark problem judging done. Retrying...');
+					io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+						function(data,responseObj){
+							if(responseObj.statusCode !== 200){
+								util.log.error('Retry failed, starting cleaning for further judging');
+								cleanGrade();
+								return;
+							}
+					});
+					return;
+				}
+		});
 }
 
 var cleanGrade = function(grade){
@@ -136,7 +146,7 @@ var judge = function(grade){
 				],function(err, results){
 					if(err){
 						if(err.compileError){
-							saveCompileError(grade, err);
+							saveCompileError(grade, err.compileError);
 							util.log.warning(err);
 						}else{
 							util.log.error(err);

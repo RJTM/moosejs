@@ -17,8 +17,8 @@ module.exports = {
 		result: {
 			type: 'string'
 		},
-		message: {
-			type: 'string'
+		output: {
+			type: 'text'
 		}
 	}
 };

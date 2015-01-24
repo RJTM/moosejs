@@ -26,7 +26,13 @@ module.exports = {
   	},
   	arguments: {
   		type: 'string'
-  	}
+  	},
+      extension: {
+             type: 'string'
+      },
+      syntaxHighlighting: {
+             type: 'string'
+      }
   },
   seedData: [
   	{
@@ -34,14 +40,18 @@ module.exports = {
   		compiler: 'g++',
   		fileName: 'source.cpp',
   		executable: './a.out',
-  		arguments: '-O2'
+  		arguments: '-O2',
+             extension: 'cpp',
+             syntaxHighlighting: 'cpp'
   	},
   	{
   		name: 'Python',
   		compiler: '',
   		fileName: 'source.py',
   		executable: 'python source.py',
-  		arguments: ''
+  		arguments: '',
+             extension: 'py',
+             syntaxHighlighting: 'python'
   	}
   ]
 };
