@@ -1,8 +1,0 @@
-source.cpp: In function 'int main()':
-source.cpp:5:2: error: 'vector' was not declared in this scope
-  vector< int > i;
-  ^
-source.cpp:5:10: error: expected primary-expression before 'int'
-  vector< int > i;
-          ^
-source.cpp:5:10: error: expected ';' before 'int'
