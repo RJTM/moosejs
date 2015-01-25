@@ -32,6 +32,14 @@ module.exports = {
       },
       syntaxHighlighting: {
              type: 'string'
+      },
+      timeFactor: {
+             type: 'float',
+             defaultsTo: 1.0
+      },
+      allowed: {
+             type: 'boolean',
+             defaultsTo: true
       }
   },
   seedData: [

@@ -73,7 +73,7 @@ module.exports = {
 		// 	callback(null, {result: answers[answer], message: ''});
 		// }, getRandomInt(3000, 10000));
 		// 
-		var statement = gPath + '/TimeScript.sh ' + timelimit + 's -t ' +
+		var statement = gPath + '/TimeScript.sh ' + ((timelimit/1000.0) * language.timeFactor) + 's -t ' +
 						  // '-m '+ memorylimit + 'm -t ' +
 						  '-v ' + gPath + '/' +util.getPath(source) + ':/workspace ' + 
 						  '-v ' + gPath + '/../testcases/:/testcases ' + 
@@ -83,6 +83,7 @@ module.exports = {
 						   ' /workspace/outputs/'+util.getFileName(refOutput) +
 						   ' /workspace/errors/'+util.getFileName(refOutput)+'.error';
 
+		console.log(statement);
 		exec(statement, function(error, stdout, stderr){
 			if(error){
 				if(error.code === 137){
@@ -94,6 +95,7 @@ module.exports = {
 				}
 				return;
 			}
+			var executionTime = stdout;
 			// Check for wrong-answer
 			var diffStatement = 'diff '+gPath+'/../testcases/' + refOutput +
 			 ' ' + gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput);
@@ -104,7 +106,6 @@ module.exports = {
 							encoding: 'utf8'
 						},
 						function(err, data){
-							console.log(data);
 							var diffPre = diffStatement + ' -iEZbwB'
 							exec(diffPre, function(error){
 								if(error && error.code === 1){
@@ -117,7 +118,7 @@ module.exports = {
 						});
 					return;
 				}
-				callback(null, {result: 'accepted', message: ''});
+				callback(null, {result: 'accepted', message: 'Execution Time: '+executionTime});
 			});
 		});
 	}

@@ -6,7 +6,7 @@ module.exports = {
         Task.findOne({id: task}).populate('contest').exec(function(err,result){
             if(err) return err;
             var contestName = URLService.toSlug(result.contest.name);
-            var taskName = URLService.toSlug(result.name);
+            var taskName = URLService.toSlug(result.code);
             var dirName =  contestName+"/"+taskName+"/"+subtask+"/";
             
             async.parallel([
