@@ -13,19 +13,19 @@ module.exports = {
 		},
 		startTime: {
 			type: 'datetime',
-			// defaultsTo: new Date().toISOString()
+			defaultsTo: new Date().toISOString()
 		},
 		freezeTime: {
 			type: 'datetime',
-			// defaultsTo: new Date().toISOString()
+			defaultsTo: new Date().toISOString()
 		},
 		endTime: {
 			type: 'datetime',
-			// defaultsTo: new Date().toISOString()
+			defaultsTo: new Date().toISOString()
 		},
 		unfreezeTime: {
 			type: 'datetime',
-			// defaultsTo: new Date().toISOString()
+			defaultsTo: new Date().toISOString()
 		},
 		enabled: {
 			type: 'boolean',

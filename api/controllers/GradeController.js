@@ -25,7 +25,7 @@ module.exports = {
 			grade: grade,
 			testcase: testcase,
 			result: result,
-			message: message
+			output: message
 		}).exec(function(err, data){
 			if(err) return res.serverError(err);
 			return res.json(data);
@@ -44,6 +44,17 @@ module.exports = {
 	done: function(req, res){
 		var grade = req.param('grade');
 		Grade.update({id: grade}, {status: 'done'}).exec(function(err, result){
+			if(err) return res.serverError(err);
+			sails.log.info('Grade '+ grade + ' completed');
+			Grade.publishUpdate(result[0].id, result[0]);
+			return res.json(result);
+		});
+	},
+
+	compilerError: function(req, res){
+		var message = req.param('message');
+		var grade = req.param('grade');
+		Grade.update({ id: grade}, {status: 'done', result: 'compiler-error', compileMessage: message}).exec(function(err, result){
 			if(err) return res.serverError(err);
 			sails.log.info('Grade '+ grade + ' completed');
 			Grade.publishUpdate(result[0].id, result[0]);

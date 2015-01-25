@@ -10,7 +10,7 @@ docker kill $container &> /dev/null
 if [ -z "$code" ]; then
 	>&2 echo "Timeout"
 	docker rm $container &> /dev/null
-	exit 2
+	exit 137
 else
 	docker logs $container
 	docker rm $container &> /dev/null

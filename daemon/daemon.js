@@ -19,11 +19,21 @@ var subscribe = function(){
 }
 
 var saveCompileError = function(grade, err){
-	/**
-	
-		TODO:
-		- Save compile error in DB	
-	**/
+	io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+		function(data,responseObj){
+				if(responseObj.statusCode !== 200){
+					util.log.warn('Unable to mark problem judging done. Retrying...');
+					io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+						function(data,responseObj){
+							if(responseObj.statusCode !== 200){
+								util.log.error('Retry failed, starting cleaning for further judging');
+								cleanGrade();
+								return;
+							}
+					});
+					return;
+				}
+		});
 }
 
 var cleanGrade = function(grade){
@@ -32,9 +42,9 @@ var cleanGrade = function(grade){
 	});
 }
 
-var judgeTestcase = function(runnable, grade, subtask, testcase, cb){
+var judgeTestcase = function(source, grade, subtask, testcase, cb){
 	util.log.judge("Running testcase "+ testcase.id);
-	grader.run(runnable, testcase.inputFile, testcase.outputFile, subtask.timeLimit, subtask.memoryLimit,
+	grader.run(source, grade.run.language, testcase.inputFile, testcase.outputFile, subtask.timeLimit, subtask.memoryLimit,
 		function(err, data){
 			if(err){
 				cb(err);
@@ -58,11 +68,11 @@ var judgeTestcase = function(runnable, grade, subtask, testcase, cb){
 		});
 }
 
-var judgeSubtask = function(runnable, grade, subtask, cb){
+var judgeSubtask = function(source, grade, subtask, cb){
 	util.log.judge("Judging subtask " + subtask.id);
 
 	async.eachSeries(subtask.testcases, function(testcase, callback){
-		judgeTestcase(runnable, grade, subtask, testcase, callback);
+		judgeTestcase(source, grade, subtask, testcase, callback);
 	},function(err){
 		if(err){
 			cb(err);
@@ -72,10 +82,10 @@ var judgeSubtask = function(runnable, grade, subtask, cb){
 	});
 }
 
-var judgeTask = function(grade, runnable){
+var judgeTask = function(source, grade){
 	util.log.judge("Judging for task "+ grade.task.name);
 	async.eachSeries(grade.subtasks, function(subtask, callback){
-		judgeSubtask(runnable, grade, subtask, callback);
+		judgeSubtask(source, grade, subtask, callback);
 	}, function(err){
 		if(err){
 			util.log.error(err);
@@ -124,27 +134,29 @@ var judge = function(grade){
 	setTimeout(function(){
 		util.httpGetContent(sourceUrl,function(err,data){
 			var fileName = util.buildPath(['sources', grade.run.owner.username, 
-				util.toSlug(grade.task.name), grade.run.id, 'source.'+util.getExt(grade.run.source) ]);
+				util.toSlug(grade.task.name), grade.run.id, grade.run.language.fileName ]);
 			async.series([
 					function(callback){
 						fs.outputFile(fileName, data, callback);
 					},
 					function(callback){
 						util.log.judge("Source file acquired. Beginning to judge");
-						grader.compile(fileName, callback);
+						grader.compile(fileName, grade.run.language, callback);
 					}
 				],function(err, results){
 					if(err){
 						if(err.compileError){
-							saveCompileError(grade, err);
+							saveCompileError(grade, err.compileError);
 							util.log.warning(err);
 						}else{
 							util.log.error(err);
 						}
+						util.log.judge('Grade '+ grade.id + ' completed!!');
+						subscribe();
 						return;
 					}
 					util.log.judge("Source file compiled succesfully.");
-					judgeTask(grade,results[1]);	
+					judgeTask(fileName, grade);	
 				});
 
 		});

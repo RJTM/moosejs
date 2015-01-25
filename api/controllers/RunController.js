@@ -12,12 +12,14 @@
  		var owner = req.token.id;
  		var task = req.param('task');
  		var source = req.file('source');
+ 		var language = req.param('language')
  		RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
  			if(err) return res.serverError(err);
  			Run.create({
  				time: time,
  				owner: owner,
  				task: task,
+ 				language: language,
  				source: sourceUrl
  			}).exec(function(err, result){
  				if(err) return res.json(500, err);

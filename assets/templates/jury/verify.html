@@ -3,7 +3,7 @@
 	<div class="col-md-2"><i class="fa fa-book"></i> Task: {{ task.name }}</div>
 	<div class="col-md-2"><i class="fa fa-clock-o"></i> Time: {{ run.time }}</div>
 	<div class="col-md-2"><i class="fa fa-users"></i> Team: {{ run.owner.name }}</div>
-	<div class="col-md-2"><i class="fa fa-file-code-o"></i> Language: </div>
+	<div class="col-md-2"><i class="fa fa-file-code-o"></i> Language: {{ run.language.name }}</div>
 	<div class="col-md-4"><i class="fa fa-lightbulb-o"></i> Overall Result: <strong><span ng-class="result == 'accepted' ? 'text-success' : 'text-danger'">{{ result }}</span></strong></div>
 </div><br>
 <div class="row">
@@ -11,7 +11,7 @@
 		Source Code
 	</button>
 	<div ng-init="showSource = false" collapse="!showSource">
-		<pre nag-prism source="{{ code }}" class="language-cpp line-numbers"></pre>
+		<pre nag-prism source="{{ code }}" class="language-{{ run.language.syntaxHighlighting }} line-numbers"></pre>
 	</div>
 	
 </div>

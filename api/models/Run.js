@@ -21,7 +21,7 @@ module.exports = {
 			type: 'string'
 		},
 		language: {
-			type: 'string'
+			model: 'language'
 		},
 		grades: {
 			collection: 'grade',

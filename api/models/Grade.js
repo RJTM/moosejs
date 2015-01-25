@@ -20,6 +20,9 @@ module.exports = {
 		result: {
 			type: 'string',
 		},
+		compileMessage: {
+			type: 'text'
+		},
 		status: {
 			type: 'string',
 			enum: ['pending','judging','done','verified','invalid'],
