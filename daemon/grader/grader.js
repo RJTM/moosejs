@@ -73,8 +73,8 @@ module.exports = {
 		// 	callback(null, {result: answers[answer], message: ''});
 		// }, getRandomInt(3000, 10000));
 		// 
-		var statement = gPath + '/TimeScript.sh ' + timelimit + 's ' +
-						  '-m '+ memorylimit + 'm -t ' +
+		var statement = gPath + '/TimeScript.sh ' + timelimit + 's -t ' +
+						  // '-m '+ memorylimit + 'm -t ' +
 						  '-v ' + gPath + '/' +util.getPath(source) + ':/workspace ' + 
 						  '-v ' + gPath + '/../testcases/:/testcases ' + 
 						   '-w /workspace ' +
@@ -84,10 +84,41 @@ module.exports = {
 						   ' /workspace/errors/'+util.getFileName(refOutput)+'.error';
 
 		exec(statement, function(error, stdout, stderr){
-			util.log.debug(error);
-			util.log.debug(stdout);
-			util.log.debug(stderr);
-			callback(null, {result: 'accepted', message: ''});
+			if(error){
+				if(error.code === 137){
+					// Execution timed out
+					callback(null, {result: 'time-limit', message: stderr});
+				}else{
+					// Run error
+					callback(null, {result: 'run-error', message: stdout});
+				}
+				return;
+			}
+			// Check for wrong-answer
+			var diffStatement = 'diff '+gPath+'/../testcases/' + refOutput +
+			 ' ' + gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput);
+			exec(diffStatement, function(error){
+				if(error && error.code === 1){
+					fs.readFile(gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput), 
+						{
+							encoding: 'utf8'
+						},
+						function(err, data){
+							console.log(data);
+							var diffPre = diffStatement + ' -iEZbwB'
+							exec(diffPre, function(error){
+								if(error && error.code === 1){
+									callback(null, {result: 'wrong-answer', message: data});
+									return;
+								}
+								callback(null, {result: 'presentation-error', message: data});
+							});
+							return;
+						});
+					return;
+				}
+				callback(null, {result: 'accepted', message: ''});
+			});
 		});
 	}
 }

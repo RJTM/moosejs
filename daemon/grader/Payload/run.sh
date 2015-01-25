@@ -17,14 +17,17 @@ input=$2
 output=$3
 error=$4
 
-exec 2>$error
+exec 2> >(tee $4)
 
 START=$(date +%s.%2N)
 
 $cmd < $input > $output
+code=$?
 
 END=$(date +%s.%2N)
 
 runtime=$(echo "$END - $START" | bc)
 
 echo $runtime 
+
+exit $code

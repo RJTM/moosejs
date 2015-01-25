@@ -25,7 +25,7 @@ module.exports = {
 			grade: grade,
 			testcase: testcase,
 			result: result,
-			message: message
+			output: message
 		}).exec(function(err, data){
 			if(err) return res.serverError(err);
 			return res.json(data);
