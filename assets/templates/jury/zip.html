@@ -1,0 +1,49 @@
+<h3>Uploading a contest zip file</h3>
+<div class="row">
+	<div class="col-md-5 well">
+		<h4>Zip file structure is described below</h4>
+	
+		<i class="fa fa-file-archive-o"></i> <strong>Contest.zip</strong>
+			<ul>
+				<li><i class="fa fa-file-code-o"></i> contest.json <small class="text-muted">Main configuration file for the contest</small></li>
+				<li><i class="fa fa-folder-open"></i> tasks/
+					<ul>
+						<li><i class="fa fa-folder-open"></i> Task 1 <small class="text-muted">One folder per task. Folder name should be the task code</small>
+							<ul>
+								<li><i class="fa fa-file-pdf-o"></i> Task 1.pdf <small class="text-muted">Task statement in pdf format.</small></li>
+								<li><i class="fa fa-folder-open"></i> Subtask 1 <small class="text-muted">One folder per subtask. Folder name should be Subtask number</small>
+									<ul>
+										<li class="text-muted">One pair of files per testcase</li>
+										<li><i class="fa fa-file-text-o"></i> 1.in</li>
+										<li><i class="fa fa-file-text-o"></i> 1.out</li>
+										<li>...</li>
+										<li><i class="fa fa-file-text-o"></i> n.in</li>
+										<li><i class="fa fa-file-text-o"></i> n.out</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>...</li>
+						<li><i class="fa fa-folder"></i> Task N</li>
+					</ul>
+				</li>
+			</ul>
+		<div align="center">
+			<a class="btn btn-primary" href="/example.zip">Download example file</a>
+		</div>
+	</div>
+	<div class="col-md-6 col-md-offset-1">
+		<h4>Upload zip file</h4>
+		<input type="file" ng-file-select accept="*.zip" ng-model="input" multiple="false" class="form-control">
+		<br><br>
+		<button class="btn btn-primary btn-block" ng-click="upload()">
+			Upload
+		</button>
+		<br><br>
+
+		<div ng-show="uploading">
+			<h5>Progress</h5>
+			<progressbar class="progress-striped" value="progress"></progressbar>
+		</div>
+	</div>
+</div>

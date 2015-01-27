@@ -11,6 +11,15 @@ module.exports = {
 			if(err) return res.serverError(err);
 			return res.json(result);
 		});
+	},
+
+	fromZip: function(req, res){
+		var id = req.param('id');
+		var file = req.file('input');
+		ContestService.saveFromZip(id, file, function(err, result){
+			if(err) return res.serverError(err);
+			return res.json(result);
+		});
 	}
 };
 

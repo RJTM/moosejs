@@ -153,5 +153,14 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbLabel: 'Finished contest setup',
 					ncyBreadcrumbParent: 'jury.contests'
 				}
+			})
+			.state('jury.zip', {
+				url: '/zip/:id',
+				templateUrl: 'templates/jury/zip.html',
+				controller: 'jury.ZipController',
+				data: {
+					ncyBreadcrumbLabel: 'Uploading a contest zip file',
+					ncyBreadcrumbParent: 'jury.contests'
+				}
 			});
 	}]);

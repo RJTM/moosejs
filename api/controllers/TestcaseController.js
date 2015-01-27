@@ -50,7 +50,7 @@ module.exports = {
                 
             };
             
-            TestcaseService.uploadFiles(task,subtask, testcase.id,inputFile,outputFile,callback);
+            TestcaseService.uploadFiles(task,subtask, testcase.id,inputFile,callback);
         });
     },
 
@@ -88,7 +88,7 @@ module.exports = {
                 
             };
 
-            TestcaseService.uploadFiles(task, subtask, testcase.id, inputFile, outputFile, callback);
+            TestcaseService.uploadFiles(task, subtask, testcase.id, inputFile, callback);
         });
         
     }

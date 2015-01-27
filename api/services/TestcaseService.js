@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    uploadFiles: function(task, subtask, testcase, input, output, cb){
+    uploadFiles: function(task, subtask, testcase, input, cb){
         
         Task.findOne({id: task}).populate('contest').exec(function(err,result){
             if(err) return err;
