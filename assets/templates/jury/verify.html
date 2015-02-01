@@ -17,7 +17,7 @@
 </div>
 <br>
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-md-12">
 		<accordion close-others="false">
 			<accordion-group ng-repeat="subtask in subtasks" heading="Subtask {{ $index+1 }}">
 				<div class="row" align="center">
@@ -56,8 +56,24 @@
 						</tr>
 						<tr ng-repeat-end ng-init="isCollapsed=true" collapse="isCollapsed">
 							<td colspan="3">
-								<div class="col-md-6">{{testcase.juryOutput}}</div>
-								<div class="col-md-6">{{testcase.testcasegrade.output}}</div>
+								<div class="col-md-6">
+									<div class="row text-center">
+										<strong>Jury Output</strong>
+									</div>
+									<div class="row wrap" ng-repeat="line in testcase.diff | filter:redFilter">
+										<span class="col-md-1 text-muted">{{$index + 1}}</span>
+										<span ng-class="{'bg-danger' : line.color=='red', 'text-danger' : line.color=='red'}" class="col-md-9 col-md-offset-1">{{line.text}}</span>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="row text-center">
+										<strong>Team Output</strong>
+									</div>
+									<div class="row wrap" ng-repeat="line in testcase.diff | filter:greenFilter">
+										<span class="col-md-1 text-muted">{{$index + 1}}</span>
+										<span ng-class="{'bg-danger': line.color=='green', 'text-danger' : line.color=='green'}" class="col-md-9 col-md-offset-1">{{line.text}}</span>
+									</div>
+								</div>
 							</td>
 						</tr>
 					</tbody>

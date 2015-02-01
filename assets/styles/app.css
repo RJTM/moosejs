@@ -73,3 +73,11 @@
 .fa-8x {
   font-size: 8em;
 }
+
+.wrap{
+  word-break : break-word;
+}
+
+.col-md-9-overflow{
+  min-width: 75%;
+}

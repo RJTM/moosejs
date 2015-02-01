@@ -543,11 +543,9 @@
 })(this);
 
 angular.module('mooseJs.common')
-.factory('Diff', function(){
+.factory('diff', function(){
   return function (a, b){
-    var diff = JsDiff.diffChars(one, other);
-    dif.forEach(function(part){
-      console.log(part.added ? 'green' : 'red');
-    });
+    var diff = JsDiff.diffLines(a, b);
+    return diff;
   }
 });

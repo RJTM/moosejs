@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.jury')
-	.controller('jury.VerifyController', ["$scope", "$stateParams", "socket", "$http", "$state", function($scope, $stateParams, socket, $http, $state){
+	.controller('jury.VerifyController', ["$scope", "$stateParams", "socket", "$http", "$state", "diff", function($scope, $stateParams, socket, $http, $state, diff){
 		
 		$scope.veredict = {};
 
@@ -29,7 +29,19 @@ angular.module('mooseJs.jury')
 						testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
 				   			return '&#'+i.charCodeAt(0)+';';
 						});
-						console.log(testcase.juryOutput);
+						var result = diff(testcase.juryOutput, testcase.testcasegrade.output);
+						var lines = [];
+						result.forEach(function(part){
+							lines = lines.concat(part.value.split('\n').map(function(value){
+								return {
+									text : value,
+									color : part.added ? 'green' : part.removed ? 'red' : 'gray'
+								}
+							}));
+							lines.pop();
+						});
+						testcase.diff = lines;
+						console.log(lines);
 					});
 				});
 			});
@@ -39,5 +51,17 @@ angular.module('mooseJs.jury')
 			socket.post('/grade/verify', {grade: $scope.grade, veredict: $scope.veredict}, function(data){
 				$state.go('jury.runs');
 			});
+		};
+
+		$scope.redFilter = function(line){
+			if(line.color == 'red' || line.color == 'gray')
+				return true;
+			return false;
+		};
+
+		$scope.greenFilter = function(line){
+			if(line.color == 'green' || line.color == 'gray')
+				return true;
+			return false;
 		};
 	}]);
