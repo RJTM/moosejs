@@ -68,4 +68,14 @@ angular.module('mooseJs.admin')
 			ncyBreadcrumbParent: 'admin.home'
 		}
 	})
+
+	.state('admin.contestUsers', {
+		url: '/contest/:id/users',
+		templateUrl: 'templates/admin/contest-users.html',
+		controller: 'admin.ContestUsersController',
+		data: {
+			ncyBreadcrumbLabel: 'Registering users to contest',
+			ncyBreadcrumbParent: 'admin.contests'
+		}
+	})
 }]);

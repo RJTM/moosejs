@@ -1,0 +1,43 @@
+<h3>Managing users in {{ contest.name }}</h3>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="pull-right">
+			<button class="btn btn-success" ng-click="register()" ng-disabled="disable">
+				Register
+			</button>
+		</div>
+		<div class="clearfix"></div>
+		<br>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Not registered
+				<div class="pull-right">
+					<button class="btn btn-default btn-xs" ng-click="selectAll(users)">Select all</button>
+					<button class="btn btn-default btn-xs" ng-click="deselectAll(users)">Deselect all</button>
+				</div>
+			</div>
+			<ul class="contest-users-list">
+				<li ng-repeat="user in users | filter:registeredUsers" ng-class="{ 'bg-primary': user.selected }" ng-click="select(user)">({{user.username}}) {{ user.name }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<button class="btn btn-danger" ng-click="unregister()" ng-disabled="disable">Delete</button>
+		<br><br>
+		<div class="panel panel-success">
+			<div class="panel-heading">
+				Registered
+				<div class="pull-right">
+					<button class="btn btn-default btn-xs" ng-click="selectAll(contest.users)">Select all</button>
+					<button class="btn btn-default btn-xs" ng-click="deselectAll(contest.users)">Deselect all</button>
+				</div>
+			</div>
+			<ul class="contest-users-list">
+				<li ng-repeat="user in contest.users" ng-class="{ 'bg-primary': user.selected }" ng-click="select(user)">
+					({{user.username}}) {{ user.name }}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

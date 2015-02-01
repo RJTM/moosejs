@@ -73,3 +73,12 @@
 .fa-8x {
   font-size: 8em;
 }
+
+.contest-users-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contest-users-list > li{
+  padding:5px;
+}

@@ -55,8 +55,47 @@
      		ScoreboardService.addUser(user, contestId);
      		return res.json(contest);
      	});	
-     }
+     },
 
+     addUsersToContest: function(req, res){
+          var users = req.param('users');
+          var contestId = req.param('contest');
+          Contest.findOne({id: contestId}).exec(function(err, contest){
+               if(err) return res.serverError(err);
+               async.each(users, function(user, callback){
+                    contest.users.add(user);
+                    ScoreboardService.addUser(user, contestId);
+                    callback();
+               }, function(err){
+                    contest.save();
+                    return res.json(contest);
+               });
+          });         
+     },
+
+     deleteUsersFromContest: function(req, res){
+          var users = req.param('users');
+          var contestId = req.param('contest');
+          Contest.findOne({id: contestId}).exec(function(err, contest){
+               if(err) return res.serverError(err);
+               async.each(users, function(user, callback){
+                    contest.users.remove(user);
+                    
+                    /**
+                    
+                         TODO:
+                         - Create ScoreboardService.deleteUser
+                         - Reference it here
+                    
+                    **/
+                    //ScoreboardService.addUser(user,contestId);
+                    callback();
+               }, function(err){
+                    contest.save();
+                    return res.json(contest);
+               });
+          });     
+     }
 
 
  };
