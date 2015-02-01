@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	/**
+	*
+	* Creates a new task
+	*
+	**/
+	
 	create: function(req, res){
 		var task = req.allParams();
 		Task.create(task).exec(function(err, task){
@@ -16,14 +22,23 @@ module.exports = {
 		});
 	},
 
-
+	/**
+	*
+	* Gets the tasks available for submissions to a user
+	*
+	**/
+	
 	contest: function(req, res){
 		var user = req.token.id;
 		ContestService.getActiveContest(user, function(err, contest){
-			Task.find({contest: contest.id}).exec(function(err, tasks){
-				//TODO: Handle Error
-				return res.json(tasks);
-			});
+			if(contest){
+				Task.find({contest: contest.id}).exec(function(err, tasks){
+					//TODO: Handle Error
+					return res.json(tasks);
+				});
+			}else{
+				return res.json([]);				
+			}
 		});
 	}
 };

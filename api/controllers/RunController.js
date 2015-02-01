@@ -7,6 +7,12 @@
 
  module.exports = {
 
+ 	/**
+ 	*
+ 	* Submits a new code to be graded
+ 	*
+ 	**/
+ 	
  	submit: function(req,res) {
  		var time = req.param('time');
  		var owner = req.token.id;
@@ -36,6 +42,12 @@
  		});
 
  	},
+
+ 	/**
+ 	*
+ 	* Gets the final result for a run
+ 	*
+ 	**/
 
  	getResult: function(req,res){
  		var run = req.param('run');

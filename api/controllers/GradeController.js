@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	/**
+	*
+	* Action used by the judgehost to mark a grade as judging
+	*
+	**/
+	
 	toJudging: function(req, res){
 		var gradeId = req.param('id');
 		Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
@@ -15,6 +21,13 @@ module.exports = {
 		});
 	},
 
+
+	/**
+	*
+	* Saves the result of a grade
+	*
+	**/
+	
 	saveGrade: function(req,res){
 		var grade = req.param('grade');
 		var testcase = req.param('testcase');
@@ -32,15 +45,28 @@ module.exports = {
 		});
 	},
 
+	/**
+	*
+	* Cleans grade object in case of error
+	*
+	**/
+	
 	cleanGrade: function(req, res){
 		var grade = req.param('grade');
 		TestcaseGrade.destroy({ grade: grade }).exec(function(err, result){
 			if(err) return res.serverError(err);
+			Grade.update({id: grade}, {status:'pending'}).exec(function(){});
 			sails.log.error("Error ocurred judging a submission. Cleaning grade object");
 			return res.json(result);
 		});
 	},
 
+	/**
+	*
+	* Marks a grade as done
+	*
+	**/
+	
 	done: function(req, res){
 		var grade = req.param('grade');
 		Grade.update({id: grade}, {status: 'done'}).exec(function(err, result){
@@ -50,6 +76,12 @@ module.exports = {
 			return res.json(result);
 		});
 	},
+
+	/**
+	*
+	* Saves compiler error message
+	*
+	**/
 
 	compilerError: function(req, res){
 		var message = req.param('message');
@@ -62,6 +94,12 @@ module.exports = {
 		});
 	},
 
+	/**
+	*
+	* Action called by the Jury to mark the final result of a problem
+	*
+	**/
+	
 	verify: function(req, res){
 		var grade = req.param('grade');
 		var veredict = req.param('veredict');

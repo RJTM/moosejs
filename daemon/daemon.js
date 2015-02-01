@@ -9,9 +9,32 @@ var config,tmp;
 
 var io = sailsIOClient(socketIOClient);
 
+var socket = {
+	get: function(url, data, callback){
+		if(!callback){
+			if(typeof data == 'function' || typeof data == 'undefined'){
+				callback = data;
+				data = {};
+			}
+		}
+		data.token = config.key;
+		io.socket.get(url,data, callback);
+	},
+	post: function(url, data, callback){
+		if(!callback){
+			if(typeof data == 'function' || typeof data == 'undefined'){
+				callback = data;
+				data = {};
+			}
+		}
+		data.token = config.key;
+		io.socket.post(url,data, callback);
+	}
+}
+
 var subscribe = function(){
 	util.log.info('Waiting for next run');
-	io.socket.get('/judgehost/subscribe',function(body,responseObj){
+	socket.get('/judgehost/subscribe',function(body,responseObj){
 		if(body.status === 'pending'){
 			judge(body.grade);
 		}  
@@ -19,11 +42,11 @@ var subscribe = function(){
 }
 
 var saveCompileError = function(grade, err){
-	io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+	socket.post('/grade/compilerError', { grade: grade.id, message: err },
 		function(data,responseObj){
 				if(responseObj.statusCode !== 200){
 					util.log.warn('Unable to mark problem judging done. Retrying...');
-					io.socket.post('/grade/compilerError', { grade: grade.id, message: err },
+					socket.post('/grade/compilerError', { grade: grade.id, message: err },
 						function(data,responseObj){
 							if(responseObj.statusCode !== 200){
 								util.log.error('Retry failed, starting cleaning for further judging');
@@ -37,7 +60,7 @@ var saveCompileError = function(grade, err){
 }
 
 var cleanGrade = function(grade){
-	io.socket.post('/grade/cleanGrade', {
+	socket.post('/grade/cleanGrade', {
 		grade: grade.id
 	});
 }
@@ -52,7 +75,7 @@ var judgeTestcase = function(source, grade, subtask, testcase, cb){
 			}
 			util.log.judge('Result for the run of testcase ' + testcase.id);
 			util.log.judge(data);
-			io.socket.post('/grade/saveGrade',{
+			socket.post('/grade/saveGrade',{
 				grade: grade.id,
 				testcase: testcase.id,
 				result: data.result,
@@ -92,11 +115,11 @@ var judgeTask = function(source, grade){
 			cleanGrade(grade);
 			return;
 		}
-		io.socket.post('/grade/done', {grade: grade.id}, 
+		socket.post('/grade/done', {grade: grade.id}, 
 			function(data,responseObj){
 				if(responseObj.statusCode !== 200){
 					util.log.warn('Unable to mark problem judging done. Retrying...');
-					io.socket.post('/grade/done', {grade : grade.id},  
+					socket.post('/grade/done', {grade : grade.id},  
 						function(data,responseObj){
 							if(responseObj.statusCode !== 200){
 								util.log.error('Retry failed, starting cleaning for further judging');
@@ -118,7 +141,7 @@ var judgeTask = function(source, grade){
 }
 
 var judge = function(grade){
-	io.socket.get('/grade/toJudging/'+grade.id);
+	socket.get('/grade/toJudging/'+grade.id);
 	grade.status = 'judging';
 
 	util.log.judge("Received a new grade to judge");
@@ -223,7 +246,7 @@ var onTestcaseChange = function(obj){
 }
 
 var syncTestcases = function(callback){
-	io.socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
+	socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
 		async.each(body, getTestCase, function(err){
 			callback();
 		});
@@ -232,7 +255,7 @@ var syncTestcases = function(callback){
 
 var onConnect = function(){
 	util.log.info("Initiating handshake with the server.");
-	io.socket.post('/judgehost/handshake', {token: config.key}, function(body, responseObj){
+	socket.post('/judgehost/handshake', {token: config.key}, function(body, responseObj){
 		if(responseObj.statusCode !== 200){
 			util.log.info('Handshake not successful');
 			process.exit(1);
@@ -243,7 +266,7 @@ var onConnect = function(){
 
 
 var onSubmission = function(grade){
-	io.socket.get('/judgehost/unsubscribe');
+	socket.get('/judgehost/unsubscribe');
 	judge(grade);
 }
 

@@ -9,18 +9,19 @@ module.exports = {
 	*
 	**/
 	getActiveContest: function(userId, callback){
-		var curTime = Date().toISOString();
-		User.findById(userId).populate('contests').exec(function(err, user){
+		var curTime = new Date().toISOString();
+		User.findOne(userId).populate('contests').exec(function(err, user){
 			if(err){
 				callback(err);
 				return;
 			}
-			user.contests.forEach(function(contest, index){
+			for(var i=0;i<user.contests.length;i++){
+				var contest = user.contests[i];
 				if(contest.startTime < curTime && curTime < contest.unfreezeTime){
 					callback(null, contest);
 					return;
 				}
-			});
+			}
 			callback("No active contest found for this user");
 		});
 	},

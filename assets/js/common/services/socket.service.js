@@ -19,7 +19,7 @@ angular.module('mooseJs.common')
 				}
 
 				if(Auth.isAuthenticated()){
-					//data.token = JSON.parse(LocalService.get('auth_token')).token;
+					data.token = JSON.parse(LocalService.get('auth_token')).token;
 				}
 				io.socket.get(url,data, function(){
 					var args = arguments;
@@ -39,7 +39,7 @@ angular.module('mooseJs.common')
 				}
 
 				if(Auth.isAuthenticated()){
-					//data.token = JSON.parse(LocalService.get('auth_token')).token;
+					data.token = JSON.parse(LocalService.get('auth_token')).token;
 				}
 				io.socket.post(url,data, function(){
 					var args = arguments;

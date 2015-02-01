@@ -49,17 +49,63 @@ module.exports.policies = {
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   // 
-    RunController: {
-        submit: 'tokenAuth'
+
+    ClarificationController: {
+      '*': ['tokenAuth', 'teamAndJury'],
+    }, 
+
+    ContestController: {
+      '*': ['tokenAuth', 'teamAndJury'],
     },
+
+    GradeController: {
+      '*': ['tokenAuth', 'judgehost'],
+      verify: ['tokenAuth', 'jury']
+    },
+
+    JudgehostController: {
+      '*': ['tokenAuth', 'admin'],
+      handshake: ['tokenAuth', 'judgehost'],
+      subscribe: ['tokenAuth', 'judgehost'],
+      unsubscribe: ['tokenAuth', 'judgehost'],
+    },
+
+    LanguageController: {
+      '*': ['tokenAuth', 'juryAndUp'],
+      'find': 'tokenAuth'
+    },
+
+    PrintController: {
+      '*': ['tokenAuth','staff'],
+      'create': ['tokenAuth', 'teamAndJury']
+    },
+
+    RunController: {
+      '*': ['tokenAuth', 'jury'],
+      submit: ['tokenAuth', 'teamAndJury'],
+      getResult: ['tokenAuth', 'jury']
+    },
+
+    ScoreboardController: {
+      '*': ['tokenAuth', 'jury']
+    },
+
+    TaskController: {
+      '*': ['tokenAuth', 'jury'],
+      contest: ['tokenAuth', 'teamAndJury']
+    },
+
+    TestcaseController: {
+      '*': ['tokenAuth', 'jury'],
+      sync: ['tokenAuth', 'judgehost']
+    },
+
     UserController: {
         '*': ['tokenAuth', 'admin'],
         'findOne': ['tokenAuth', 'juryAndUp'],
         'authenticate': true,
         'update': 'tokenAuth',
-        'addToContest': true
     },
-    ClarificationController: {
-      '*' : 'tokenAuth',
-    }
+
+    '*': 'cleanToken'
 };

@@ -6,14 +6,26 @@
  */
 
  module.exports = {
+ 	/**
+ 	*
+ 	* Initial handshake with the judgehost
+ 	*
+ 	**/
+ 	
  	handshake: function(req, res){
- 		var token = req.param('token');
- 		JWTService.verifyToken(token, function(err, token){
- 			if(err) return res.json(401, {err: 'The token is not valid'});
-            //sails.sockets.join(req.socket, 'newSubmissions');
-            return res.json({token: token, success: 'yes'});
-        });
+ 		var token = req.token;
+ 		if(token.judgehost == 'yes'){
+ 			return res.json({token: token, success: 'yes'});
+ 		}else{
+ 			return res.json(401, {err: 'The token is not valid'});
+ 		}
  	},
+ 	
+ 	/**
+ 	*
+ 	* Subscribes the judgehost to upcoming runs
+ 	*
+ 	**/
  	
  	subscribe: function(req, res){
  		Grade.findOne({status: 'pending'}).sort("createdAt ASC").populate('run').populate('task').exec(function(err, grade){
@@ -32,6 +44,12 @@
  		});       
  	},
  	
+ 	/**
+ 	*
+ 	* Unsubscribes the judgehost from the available list meanwhile judging
+ 	*
+ 	**/
+ 	
  	unsubscribe: function(req,res){
  		sails.sockets.leave(req.socket, 'newSubmissions');
  		sails.log.info('Judgehost disconnected '+ req.socket.id);
@@ -39,6 +57,12 @@
  		sails.log.info(sails.sockets.subscribers('newSubmissions'));
  		return res.ok();
  	},
+ 	
+ 	/**
+ 	*
+ 	* Returns the token for a given judgehost id
+ 	*
+ 	**/
  	
  	token: function(req, res){
  		var id = req.param('id');		

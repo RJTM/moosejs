@@ -52,7 +52,9 @@ module.exports = {
 
 	seedData: [{
 		name: "DummyContest",
-		penalty: 20
+		penalty: 20,
+		endTime: "2020-02-01T02:30:01.996Z",
+		unfreezeTime: "2020-02-01T02:30:01.996Z"
 
 	},
 	{

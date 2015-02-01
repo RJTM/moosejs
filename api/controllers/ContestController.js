@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	/**
+	*
+	* Sets up a contest using the contest creation wizard
+	*
+	**/
+	
 	fromJson: function(req, res){
 		ContestService.saveFromJson(req.params.all(), function(err, result){
 			if(err) return res.serverError(err);
@@ -13,6 +19,12 @@ module.exports = {
 		});
 	},
 
+	/**
+	*
+	* Sets up a contest using the zip uploader tool
+	*
+	**/
+	
 	fromZip: function(req, res){
 		var id = req.param('id');
 		var file = req.file('input');

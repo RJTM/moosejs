@@ -7,6 +7,12 @@
 
 module.exports = {
 	
+	/**
+	*
+	* Returns all the clarifications of the user calling this action
+	*
+	**/
+	
 	user: function(req, res){
 		Clarification.find({ or: [
 				{ toAll: true},
@@ -18,6 +24,12 @@ module.exports = {
 			});
 	},
 
+	/**
+	*
+	* Creates a new clarification
+	*
+	**/
+	
 	create: function(req,res){
 		var clar = req.allParams();
 		clar.owner = req.token.id;

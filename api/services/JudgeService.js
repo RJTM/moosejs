@@ -3,7 +3,6 @@
 module.exports = {
 	dispatchRun: function(run){
         /*
-         TODO:
         1.- Receive new Run
         2.- Create new Grade with default status pending 
         3.- Check for available Judgehosts

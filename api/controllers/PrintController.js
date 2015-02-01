@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+	/**
+	*
+	* Sends a file to print service
+	*
+	**/
+	
 	create : function (req, res){
 		var user = req.param('user');
 		var source = req.file('source');

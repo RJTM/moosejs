@@ -10,9 +10,8 @@ module.exports = {
         Testcase.find({}).exec(function(e,list){
             Testcase.subscribe(req.socket,list,'update');
             Testcase.watch(req.socket);
-            sails.log.debug(sails.sockets.socketRooms(req.socket));
 //            sails.log.debug(sails.sockets.subscribers('testcase'));
-        });
+});
         var lastSync = req.param('date');
         Testcase.find({ updatedAt: { '>': lastSync}}).populate('subtask').exec(function(err, result){
             if(err) return res.serverError(err);
