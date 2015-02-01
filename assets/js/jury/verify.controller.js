@@ -5,6 +5,7 @@ angular.module('mooseJs.jury')
 		$scope.veredict = {};
 
 		socket.get('/run/getResult', {run: $stateParams.id} , function(data){
+			console.log(data);
 			$scope.subtasks = data.subtasks;
 			$scope.run = data.run;
 			$scope.task = data.task;
@@ -16,13 +17,22 @@ angular.module('mooseJs.jury')
 				});
 			});
 
-			angular.forEach($scope.subtasks, function(value, key){
-				$scope.veredict[value.id] = {
-					autojudge: value.result,
-					veredict: value.result,
-					points : value.points
+			angular.forEach($scope.subtasks, function(subtask, key){
+				$scope.veredict[subtask.id] = {
+					autojudge: subtask.result,
+					veredict: subtask.result,
+					points : subtask.points
 				};
-			})
+
+				angular.forEach(subtask.testcases, function(testcase, index){
+					$http.get('/testcases/'+testcase.outputFile).success(function(data){
+						testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+				   			return '&#'+i.charCodeAt(0)+';';
+						});
+						console.log(testcase.juryOutput);
+					});
+				});
+			});
 		});
 
 		$scope.makeVeredict = function(){

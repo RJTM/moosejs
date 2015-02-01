@@ -17,7 +17,7 @@
 </div>
 <br>
 <div class="row">
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-8 col-md-offset-2">
 		<accordion close-others="false">
 			<accordion-group ng-repeat="subtask in subtasks" heading="Subtask {{ $index+1 }}">
 				<div class="row" align="center">
@@ -49,10 +49,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="testcase in subtask.testcases">
+						<tr ng-repeat-start="testcase in subtask.testcases">
 							<td>{{ $index+1 }}</td>
 							<td><span ng-class="testcase.testcasegrade.result == 'accepted' ? 'text-success' : 'text-danger'">{{ testcase.testcasegrade.result }}</td>
-							<td><button class="btn btn-xs btn-primary"><i class="fa fa-search"></i></button></td>
+							<td><button class="btn btn-xs btn-primary" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-search"></i></button></td>
+						</tr>
+						<tr ng-repeat-end ng-init="isCollapsed=true" collapse="isCollapsed">
+							<td colspan="3">
+								<div class="col-md-6">{{testcase.juryOutput}}</div>
+								<div class="col-md-6">{{testcase.testcasegrade.output}}</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>			
