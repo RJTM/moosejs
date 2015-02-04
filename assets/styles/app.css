@@ -74,11 +74,17 @@
   font-size: 8em;
 }
 
+.wrap{
+  word-break : break-word;
+}
 .contest-users-list {
   list-style: none;
   padding: 0;
 }
 
+.col-md-9-overflow{
+  min-width: 75%;
+}
 .contest-users-list > li{
   padding:5px;
 }
