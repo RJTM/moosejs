@@ -64,13 +64,13 @@ module.exports = {
 						});
 						task.subtasks.forEach(function(subtask, subtaskIndex){
 							var dirName =  contestName+"/"+taskName+"/"+subtask.id+"/";
-							fs.mkdirs(sails.config.appPath + '/assets/testcases/' + dirName, function(err){
+							fs.mkdirs(sails.config.appPath + '/protected/testcases/' + dirName, function(err){
 								if(err){ cb(err); return; }
 								Testcase.find({subtask: subtask.id}).exec(function(err, testcases){
 									if(err){ cb(err); return; }
 									testcases.forEach(function(testcase, index){
 										var from = 'tasks/'+task.code+'/'+(subtaskIndex+1)+'/'+(index+1);
-										var to = sails.config.appPath + "/assets/testcases/" + dirName;
+										var to = sails.config.appPath + "/protected/testcases/" + dirName;
 										zip.extractEntryTo(from+'.in', to, false, true);
 										zip.extractEntryTo(from+'.out', to, false, true);
 										fs.renameSync(to+(index+1)+'.in', to+testcase.id+'.in');

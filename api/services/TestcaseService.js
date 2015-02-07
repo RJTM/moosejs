@@ -10,7 +10,7 @@ module.exports = {
             var dirName =  contestName+"/"+taskName+"/"+subtask+"/";
             
             input.upload({
-                            dirname: sails.config.appPath + "/assets/testcases/" + dirName,
+                            dirname: sails.config.appPath + "/protected/testcases/" + dirName,
                             saveAs: function(__newFileStream,cb) {
                                 var re = /(?:\.([^.]+))?$/;
                                 var ext = re.exec(__newFileStream.filename)[1];

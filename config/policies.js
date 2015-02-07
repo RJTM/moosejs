@@ -107,6 +107,9 @@ module.exports.policies = {
         'authenticate': true,
         'update': 'tokenAuth',
     },
-
+    ProtectedFileController: {
+        'download': ['tokenAuth', 'juryAndJudgehost'],
+        'job': ['tokenAuth', 'staff']
+    },
     '*': 'cleanToken'
 };

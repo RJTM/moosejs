@@ -32,6 +32,19 @@ var socket = {
 	}
 }
 
+var tokenHttp = function(url, callback){
+	var headers = {
+		'Authorization': 'Bearer '+ config.key
+	}
+	return util.httpGetContent({
+		host: config.host,
+		port: config.port,
+		path: url,
+		headers: headers, 
+		
+	}, callback);
+}
+
 var subscribe = function(){
 	util.log.info('Waiting for next run');
 	socket.get('/judgehost/subscribe',function(body,responseObj){
@@ -147,17 +160,10 @@ var judge = function(grade){
 	util.log.judge("Received a new grade to judge");
 	util.log.judge("Getting source file for the run");
 
-
-	var sourceUrl = util.buildUrl({
-		host: config.host,
-		port: config.port,
-		path: '/sources/'+grade.run.source
-	});
-
 	setTimeout(function(){
-		util.httpGetContent(sourceUrl,function(err,data){
+		tokenHttp('/protected/sources/'+grade.run.source ,function(err,data){
 			var fileName = util.buildPath(['sources', grade.run.owner.username, 
-				util.toSlug(grade.task.name), grade.run.id, grade.run.language.fileName ]);
+				util.toSlug(grade.task.code), grade.run.id, grade.run.language.fileName ]);
 			async.series([
 					function(callback){
 						fs.outputFile(fileName, data, callback);
@@ -187,25 +193,18 @@ var judge = function(grade){
 }
 
 var getTestCase = function(testcase, callback){
-	var inputFile = util.buildUrl({
-		host: config.host,
-		port: config.port,
-		path: '/testcases/'+testcase.inputFile
-	});
+	var inputFile =  '/protected/testcases/'+testcase.inputFile;
 
-	var outputFile = util.buildUrl({
-		host: config.host,
-		port: config.port,
-		path: '/testcases/'+testcase.outputFile
-	});
+	var outputFile =  '/protected/testcases/'+testcase.outputFile;
+
 	util.log.info("Fetching testcase "+testcase.id);
 	async.parallel(
 		[
 		function(callback){
-			util.httpGetContent(inputFile, callback);
+			tokenHttp(inputFile, callback);
 		},
 		function(callback){
-			util.httpGetContent(outputFile, callback);
+			tokenHttp(outputFile, callback);
 		}
 		],
 		function(err,results){
@@ -291,7 +290,7 @@ if(!fs.existsSync('tmp.json')){
 tmp = jsonfile.readFileSync('tmp.json');
 
 
-io.sails.url = config.host+':'+config.port;
+io.sails.url = 'http://'+config.host+':'+config.port;
 
 //define event actions
 io.socket.on('connect', onConnect);

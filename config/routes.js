@@ -42,5 +42,6 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+  '/protected/*': 'ProtectedFileController.download',
+  '/jobs/*': 'ProtectedFileController.job',
 };

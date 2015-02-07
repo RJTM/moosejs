@@ -11,7 +11,7 @@ angular.module('mooseJs.jury')
 			$scope.task = data.task;
 			$scope.result = data.result;
 			$scope.grade = data.grade;
-			$http.get('/sources/'+$scope.run.source).success(function(data){
+			$http.get('/protected/sources/'+$scope.run.source).success(function(data){
 				$scope.code = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
 				   return '&#'+i.charCodeAt(0)+';';
 				});
@@ -25,7 +25,7 @@ angular.module('mooseJs.jury')
 				};
 
 				angular.forEach(subtask.testcases, function(testcase, index){
-					$http.get('/testcases/'+testcase.outputFile).success(function(data){
+					$http.get('/protected/testcases/'+testcase.outputFile).success(function(data){
 						testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
 				   			return '&#'+i.charCodeAt(0)+';';
 						});

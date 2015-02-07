@@ -16,7 +16,7 @@ module.exports = {
 			var username = URLService.toSlug(theUser.username);
 
 			file.upload({
-				dirname : sails.config.appPath + "/assets/sources/jobs/" + username + "/"
+				dirname : sails.config.appPath + "/jobs/" + username + "/"
 			}, function(err, up){
 				if(err){
 					callback(err);

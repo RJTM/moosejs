@@ -125,6 +125,9 @@ assets/js/dependencies/
 daemon/sources/
 daemon/testcases/
 
+protected/sources/
+protected/testcases/
+
 daemon/grader/sources
 
 moose.sublime-project
