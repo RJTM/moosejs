@@ -61,7 +61,14 @@
  			if(err) return res.serverError(err);
  			return res.json(data);
  		});
- 	}
+ 	},
 
+ 	team: function(req, res){
+ 		var user = req.token.id;
+ 		Run.find({owner: user}).exec(function(err, data){
+ 			if(err) return res.serverError(err);
+ 			return res.json(data);
+ 		});
+ 	}
  };
 

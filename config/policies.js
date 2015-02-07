@@ -83,7 +83,8 @@ module.exports.policies = {
     RunController: {
       '*': ['tokenAuth', 'jury'],
       submit: ['tokenAuth', 'teamAndJury'],
-      getResult: ['tokenAuth', 'jury']
+      getResult: ['tokenAuth', 'jury'],
+      team: ['tokenAuth', 'teamAndJury']
     },
 
     ScoreboardController: {

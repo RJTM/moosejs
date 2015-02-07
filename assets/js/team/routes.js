@@ -50,4 +50,13 @@ angular.module('mooseJs.team')
 					ncyBreadcrumbParent: 'team.home'
 				}
 			})
+			.state('team.runs', {
+				url: '/runs',
+				templateUrl: 'templates/team/runs.html',
+				controller: 'team.RunsController',
+				data: {
+					ncyBreadcrumbLabel: 'Runs',
+					ncyBreadcrumbParent: 'team.home'
+				}
+			})
 	}]);

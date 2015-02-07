@@ -11,18 +11,20 @@ angular.module('mooseJs.team')
 	});
 
 	$scope.$watch('source', function(value){
-		var source = value[0];
-		var fileName = source.name.split('.');
-		for(var i=0;i<$scope.languages.length; i++){
-			if($scope.languages[i].extension === fileName.pop()){
-				$scope.submit.language = $scope.languages[i].id;
-				break;
+		if(value){
+			var source = value[0];
+			var fileName = source.name.split('.');
+			for(var i=0;i<$scope.languages.length; i++){
+				if($scope.languages[i].extension === fileName.pop()){
+					$scope.submit.language = $scope.languages[i].id;
+					break;
+				}
 			}
-		}
-		for(var i=0;i<$scope.tasks.length; i++){
-			if($scope.tasks[i].code === fileName[0]){
-				$scope.submit.task = $scope.tasks[i].id;
-				break;
+			for(var i=0;i<$scope.tasks.length; i++){
+				if($scope.tasks[i].code === fileName[0]){
+					$scope.submit.task = $scope.tasks[i].id;
+					break;
+				}
 			}
 		}
 	});
