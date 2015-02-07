@@ -15,11 +15,7 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/bootstrap.css',
-  'styles/bootstrap-theme.css',
-  'styles/components-font-awesome/components-font-awesome.css',
-  'styles/app.css',
-  'styles/**/*.css',
+  'styles/importer.css'
 ];
 
 
@@ -28,11 +24,18 @@ var cssFilesToInject = [
 var jsFilesToInject = [
   
   // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  'dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
-  'js/dependencies/angular/angular.js',
-  'js/dependencies/**/*.js',
+  'dependencies/vendor/angular/angular.js',
+  'dependencies/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+  'dependencies/vendor/angular-breadcrumb/dist/angular-breadcrumb.js',
+  'dependencies/vendor/angular-resource/angular-resource.js',
+  'dependencies/vendor/angular-ui-router/release/angular-ui-router.js',
+  'dependencies/vendor/angular-ui-select/dist/select.js',
+  'dependencies/vendor/ng-file-upload/angular-file-upload.js',
+  'dependencies/vendor/sweetalert/lib/sweet-alert.js',
+  'dependencies/prism.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

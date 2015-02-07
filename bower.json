@@ -25,7 +25,6 @@
   ],
   "dependencies": {
     "angular": "1.2.x",
-    "angular-route": "1.2.x",
     "angular-bootstrap": "~0.11.0",
     "components-font-awesome": "~4.2.0",
     "angular-ui-router": "~0.2.10",
@@ -33,6 +32,7 @@
     "angular-breadcrumb": "~0.2.3",
     "sweetalert": "~0.3.1",
     "angular-ui-select": "~0.8.3",
-    "ng-file-upload": "~2.1.1"
+    "ng-file-upload": "~2.1.1",
+    "bootstrap": "~3.3.2"
   }
 }
