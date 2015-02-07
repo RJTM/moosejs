@@ -9,7 +9,7 @@ module.exports = {
 	*
 	**/
 	getActiveContest: function(userId, callback){
-		var curTime = new Date().toISOString();
+		var curTime = new Date();
 		User.findOne(userId).populate('contests').exec(function(err, user){
 			if(err){
 				callback(err);
@@ -17,7 +17,7 @@ module.exports = {
 			}
 			for(var i=0;i<user.contests.length;i++){
 				var contest = user.contests[i];
-				if(contest.startTime < curTime && curTime < contest.unfreezeTime){
+				if(new Date(contest.startTime) < curTime && curTime < new Date(contest.unfreezeTime)){
 					callback(null, contest);
 					return;
 				}
