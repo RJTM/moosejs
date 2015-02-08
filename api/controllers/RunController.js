@@ -73,7 +73,7 @@
 				async.each(runs, function(run, callback){
 					if(run.task.contest !== contest.id)
 						callback();
-					var finalSubtasks = [];
+					var finalSubtasks = [], overall = 'accepted';
 					Task.findOne(run.task.id).populate('subtasks').exec(function(err, task){
 						if(err) callback(err);
 						async.each(task.subtasks, function(subtask, finishedSubtask){
@@ -84,17 +84,22 @@
 										points: subtask.points,
 										result: veredict.jury
 									});
+									if(veredict.jury !== 'accepted' && overall !== 'judged'){
+										overall = 'problem';
+									}
 								}else{
 									finalSubtasks.push({
 										points: subtask.points,
 										result: 'judged'
 									});
+									overall = 'judged';
 								}
 								finishedSubtask();
 							});
 						}, function(err){
 							if(err) callback(err);
-							run.result = finalSubtasks;
+							run.subtasks = finalSubtasks;
+							run.result = overall;
 							finalRuns.push(run);
 							callback();
 						});

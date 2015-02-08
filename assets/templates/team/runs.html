@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Runs</strong>
+		<small>All those lovely WA</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Task</th>
+				<th>Time</th>
+				<th>Overall</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat-start="run in runs" ng-click="showDetails(run)">
+				<td>{{ run.task.name }}</td>
+				<td>{{ run.time }}</td>
+				<td>{{ run.result }}</td>
+			</tr>
+			<tr ng-repeat-end ng-show="run.details">
+				<td colspan="3">
+					<table class="table table-condensed">
+						<thead>
+							<th>Subtask</th>
+							<th>Result</th>
+							<th>Points</th>
+						</thead>
+						<tbody>		
+							<tr ng-repeat-end ng-repeat="subtask in run.subtasks" ng-class="{ 'success': subtask.result == 'accepted', 'active': subtask.result == 'judged', 'danger': subtask.result == 'wrong-answer'}">
+								<td>{{ $index + 1 }}</td>
+								<td><span tooltip="{{ subtask.result == 'judged' ? 'This means there is no answer for this yet' : 'Jury response for your solution' }}">{{ subtask.result }}</span></td>
+								<td>{{ subtask.points }}</td>
+							</tr>
+						</tbody>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
