@@ -25,8 +25,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="clarification in clarifications" ng-click="showDetails(clarification)">
-					<td>{{ clarification.jury !== undefined ? 'Jury' : 'Not Answered yet' }}</td>
+			<tr ng-repeat="clarification in clarifications track by clarification.id" ng-click="showDetails(clarification)">
+					<td>{{ clarification.owner.name }}</td>
 					<td>{{ clarification.subject }}</td>
 					<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>
 					<td>{{ clarification.question | limitTo: 20 }}</td>
