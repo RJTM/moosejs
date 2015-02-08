@@ -39,6 +39,7 @@ angular.module('mooseJs.jury')
 			.state('jury.clarifications', {
 				url: '/clarifications',
 				templateUrl: 'templates/jury/clarifications.html',
+				controller : 'jury.ClarificationController',
 				data: {
 					ncyBreadcrumbLabel: 'Clarifications',
 					ncyBreadcrumbParent: 'jury.home',
