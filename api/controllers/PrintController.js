@@ -13,7 +13,7 @@ module.exports = {
 	**/
 	
 	create : function (req, res){
-		var user = req.param('user');
+		var user = req.token.id;
 		var source = req.file('source');
 		PrintService.uploadSourceFile(user, source,
 			function(err, printJob){
