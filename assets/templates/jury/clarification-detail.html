@@ -1,0 +1,34 @@
+<div class="modal-header">
+	<h3 class="modal-title">Showing clarification details</h3>
+</div>
+<div class="modal-body">
+	<div class="form-group">
+		<label>From</label>
+		<p class="form-control-static">{{ clarification.owner.name }}</p>
+	</div>
+
+	<div class="form-group">
+		<label>Subject</label>
+		<p class="form-control-static">{{ clarification.subject }}</p>
+	</div>
+
+	<div class="form-group">
+		<label>Is this clarification public?</label>
+		<br>
+		<input type="checkbox" ng-model="clarification.toAll">
+	</div>
+
+	<div class="form-group">
+		<label>Question</label>
+		<p class="form-control-static">{{ clarification.question }}</p>
+	</div>
+
+	<div class="form-group">
+		<label>Answer</label>
+		<textarea ng-model="clarification.answer" cols="30" rows="3" class="form-control"></textarea>
+	</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="ok()">Close</button>
+    <button class="btn btn-primary" ng-click="send()">Send</button>
+</div>

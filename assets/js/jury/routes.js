@@ -47,6 +47,16 @@ angular.module('mooseJs.jury')
 				}
 			})
 
+			.state('jury.clarifications.add', {
+				url: '/add',
+				templateUrl : 'templates/jury/clarifications-add.html',
+				controller: 'team.ClarificationsAddController',
+				data: {
+					ncyBreadcrumbLabel: 'Send clarification',
+					ncyBreadcrumbParent: 'jury.clarifications'
+				}
+			})
+
 			.state('jury.tasks', {
 				url: '/tasks',
 				templateUrl: 'templates/jury/tasks.html',

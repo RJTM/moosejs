@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-10">
+		<div ui-view></div>
+	</div>
+	<div class="col-md-2">
+		<button class="btn btn-primary" ui-sref="jury.clarifications.add">Send Clarification <i class="fa fa-paper-plane"></i></button>
+	</div>
+</div>
+	
+<br>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Clarifications</strong>
+		<small> where people come when desperate</small>
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th>is Public</th>
+				<th>Question</th>
+				<th>Answer</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="clarification in clarifications" ng-click="showDetails(clarification)">
+					<td>{{ clarification.jury !== undefined ? 'Jury' : 'Not Answered yet' }}</td>
+					<td>{{ clarification.subject }}</td>
+					<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>
+					<td>{{ clarification.question | limitTo: 20 }}</td>
+					<td>{{ clarification.answer | limitTo: 20 }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
