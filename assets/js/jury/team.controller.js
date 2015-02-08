@@ -1,24 +1,51 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.TeamController', ["$scope", "$upload", function($scope, $upload){
-		$scope.upload = function(){
-			$upload.upload({
-				url: '/testcase/update',
-				file: [$scope.input[0], $scope.output[0]],
-				fileFormDataName: 'input',
-				fileName: ['data.in', 'data.out'],
-				data: {
-					testcase: 1,
-					subtask: 6,
-					task: 4
+	.controller('jury.TeamController', ["$scope", "socket","$upload", function($scope, socket, $upload){
+		socket.get('/task/contest', function(data){
+		$scope.tasks = data;
+	});
+
+	socket.get('/language', function(data){
+		$scope.languages = data;
+	});
+
+	$scope.$watch('source', function(value){
+		if(value){
+			var source = value[0];
+			var fileName = source.name.split('.');
+			for(var i=0, n=$scope.languages.length; i<n; i++){
+				if($scope.languages[i].extension === fileName.pop()){
+					$scope.submit.language = $scope.languages[i].id;
+					break;
 				}
-			}).success(function(data){
-				console.log(data);
-				swal('done');
-			}).progress(function(evt){
-				$scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-				// console.log('progress: ' + parseInt(100.0 * evt.loaded / evt.total) + '% file :'+ evt.config.file.name);
-			});
+			}
+			for(var i=0, n=$scope.tasks.length; i<n; i++){
+				if($scope.tasks[i].code === fileName[0]){
+					$scope.submit.task = $scope.tasks[i].id;
+					break;
+				}
+			}
 		}
-	}]);
+	});
+
+	$scope.submit = function(){
+		swal({
+			title: 'Submitting solution',
+			text: 'Are you sure?',
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonText: 'Yes, submit',
+			closeOnConfirm: false
+		}, function(){
+			$upload.upload({
+				url: '/run/submit',
+				file: $scope.source,
+				fileFormDataName: 'source',
+				data: $scope.submit
+			}).success(function(data){
+				swal('Done!', 'Submission sent','success');
+			});
+		});
+	}
+}]);
