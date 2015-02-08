@@ -1,0 +1,59 @@
+<h4>Modifying a task</h4>
+
+<form class="form form-horizontal" ng-submit="save()">
+	<div class="form-group">
+		<label for="name" class="col-md-2 control-label">Task Name</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="name" ng-model="task.name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="code" class="col-md-2 control-label">Task code</label>
+		<div class="col-md-10">
+			<p class="form-control-static">{{ task.code }}</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="color" class="col-md-2 control-label">Balloon color</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="color" ng-model="task.color">
+		</div>
+	</div>
+	<button class="btn btn-success" type="submit">Save</button>
+</form>
+<br>
+<hr>
+<div class="pull-right">
+	<button class="btn btn-success" ui-sref="jury.task.addSubtask">Add subtask <i class="fa fa-plus"></i></button>
+</div>
+<div class="clearfix"></div>
+<br>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		Subtasks
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Points</th>
+				<th>Feedback</th>
+				<th>TimeLimit</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="subtask in task.subtasks">
+				<td>{{ $index + 1 }} (ID {{ subtask.id }})</td>
+				<td>{{ subtask.points }}</td>
+				<td>{{ subtask.feedback ? 'Yes' : 'No' }}</td>
+				<td>{{ subtask.timeLimit }}ms</td>
+				<td>
+					<button class="btn btn-xs btn-info" ui-sref="jury.task.subtask({ id:task.id, subtask:subtask.id})"><i class="fa fa-pencil"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div ui-view autoscroll></div>
+

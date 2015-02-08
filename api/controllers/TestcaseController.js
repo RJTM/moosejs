@@ -24,7 +24,6 @@ module.exports = {
         var subtask = req.param('subtask');
         var task = req.param('task');
         var inputFile = req.file('input');
-        var outputFile = req.file('output');
         Testcase.create({
             subtask: subtask
         }).exec(function(err, testcase){
