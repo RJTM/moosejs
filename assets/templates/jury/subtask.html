@@ -1,0 +1,70 @@
+<div class="pull-left">
+	<h4>Modificando el subtask {{ subtask.id }}</h4>
+</div>
+<div class="pull-right">
+	<button class="btn btn-sm btn-danger" ui-sref="jury.task"><fa class="fa fa-times"></fa></button>
+</div>
+<div class="clearfix"></div>
+
+
+<form class="form form-horizontal" ng-submit="save()">
+	<div class="form-group">
+		<label for="points" class="col-md-2 control-label">Points</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="points" ng-model="subtask.points">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Feedback</label>
+		<div class="col-md-10">
+			<input type="checkbox" id="feedback" ng-model="subtask.feedback">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="timelimit" class="col-md-2 control-label">Time Limit (ms)</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="timelimit" ng-model="subtask.timeLimit">
+		</div>
+	</div>
+	<button class="btn btn-success" type="submit">Save</button>
+</form>
+<br>
+<hr>
+<div class="pull-right">
+	<button class="btn btn-success" ui-sref="jury.task.subtask.addTestcase">Add testcase <i class="fa fa-plus"></i></button>
+</div>
+<div class="clearfix"></div>
+<br>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Testcases
+			</div>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="testcase in subtask.testcases">
+						<td>{{ $index + 1 }} (ID {{ testcase.id }})</td>
+						<td>
+							<button class="btn btn-xs btn-info" ui-sref="jury.task.subtask.testcase({testcase: testcase.id})">
+								<i class="fa fa-pencil"></i>
+							</button>
+							<button class="btn btn-xs btn-danger">
+								<i class="fa fa-trash"></i>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+<div ui-view autoscroll></div>
+

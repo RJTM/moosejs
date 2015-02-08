@@ -1,0 +1,23 @@
+<div class="pull-left">
+	<h4>New testcase</h4>
+</div>
+<div class="pull-right">
+	<button class="btn btn-sm btn-danger" ui-sref="jury.task.subtask"><fa class="fa fa-times"></fa></button>
+</div>
+<div class="clearfix"></div>
+
+<form class="form form-horizontal" ng-submit="save()">
+	<div class="form-group">
+		<label for="input" class="col-md-2 control-label">Input file</label>
+		<div class="col-md-10">
+			<input type="file" id="input" ng-file-select ng-model="input" multiple="false">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="output" class="col-md-2 control-label">Output file</label>
+		<div class="col-md-10">
+			<input type="file" id="output" ng-file-select ng-model="output" multiple="false">
+		</div>
+	</div>
+	<button class="btn btn-success" type="submit">Save</button>
+</form>

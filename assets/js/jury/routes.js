@@ -60,7 +60,7 @@ angular.module('mooseJs.jury')
 			.state('jury.tasks', {
 				url: '/tasks',
 				templateUrl: 'templates/jury/tasks.html',
-				controller: 'jury.TaskController',
+				controller: 'jury.TasksController',
 				data: {
 					ncyBreadcrumbLabel: 'Tasks',
 					ncyBreadcrumbParent: 'jury.home'
@@ -173,5 +173,50 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbLabel: 'Uploading a contest zip file',
 					ncyBreadcrumbParent: 'jury.contests'
 				}
-			});
+			})
+			.state('jury.task', {
+				url: '/tasks/:id',
+				templateUrl: 'templates/jury/task.html',
+				controller: 'jury.TaskController',
+				data: {
+					ncyBreadcrumbLabel: 'Modifying a task',
+					ncyBreadcrumbParent: 'jury.tasks'
+				}
+			})
+			.state('jury.task.subtask', {
+				url: '/subtask/:subtask',
+				templateUrl: 'templates/jury/subtask.html',
+				controller: 'jury.SubtaskController',
+				data: {
+					ncyBreadcrumbLabel: 'Modifying a subtask',
+					ncyBreadcrumbParent: 'jury.task'
+				}
+			})
+			.state('jury.task.addSubtask', {
+				url: '/addSubtask',
+				templateUrl: 'templates/jury/add-subtask.html',
+				controller: 'jury.AddSubtaskController',
+				data: {
+					ncyBreadcrumbLabel: 'Adding a subtask',
+					ncyBreadcrumbParent: 'jury.task'
+				}
+			})
+			.state('jury.task.subtask.addTestcase', {
+				url: '/addTestcase',
+				templateUrl: 'templates/jury/add-testcase.html',
+				controller: 'jury.AddTestcaseController',
+				data: {
+					ncyBreadcrumbLabel: 'Adding a testcase',
+					ncyBreadcrumbParent: 'jury.task.subtask'
+				}
+			})
+			.state('jury.task.subtask.testcase', {
+				url: '/testcase/:testcase',
+				templateUrl: 'templates/jury/testcase.html',
+				controller: 'jury.TestcaseController',
+				data: {
+					ncyBreadcrumbLabel: 'Modifying a testcase',
+					ncyBreadcrumbParent: 'jury.task.subtask'
+				}
+			})
 	}]);

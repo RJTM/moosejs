@@ -14,6 +14,7 @@
 		<thead>
 			<tr>
 				<th>#</th>
+				<th>Contest</th>
 				<th>Name</th>
 				<th>Runs</th>
 				<th>Subtasks</th>
@@ -23,10 +24,14 @@
 		<tbody>
 			<tr ng-repeat="task in tasks">
 				<td>{{ task.id }}</td>
+				<td>{{ task.contest.name }}</td>
 				<td>{{ task.name }}</td>
 				<td>{{ task.runs.length }}</td>
 				<td>{{ task.subtasks.length }}</td>
-				<td></td>
+				<td>
+					<button class="btn btn-info btn-xs" ui-sref="jury.task({ id: task.id })"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs" ng-click="delete($index)"><i class="fa fa-trash"></i></button>
+				</td>
 			</tr>
 		</tbody>
 	</table>
