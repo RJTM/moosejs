@@ -21,7 +21,7 @@
 
  		Task.findOne(task).populate('contest').exec(function(err, fullTask){
  			var now = new Date();
- 			var contestTime = new Date(fullTask.contest.startTime)
+ 			var contestTime = new Date(fullTask.contest.startTime);
  			var time = parseInt((now - contestTime)/60000);
  			RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
  				if(err) return res.serverError(err);
@@ -65,10 +65,52 @@
 
  	team: function(req, res){
  		var user = req.token.id;
- 		Run.find({owner: user}).exec(function(err, data){
- 			if(err) return res.serverError(err);
- 			return res.json(data);
+ 		ContestService.getActiveContest(user, function(err, contest){
+ 			if(err) res.serverError(err);
+ 			var finalRuns = [];
+	 		Run.find({owner: user}).populate('task').exec(function(err, runs){
+	 			if(err) return res.serverError(err);
+				async.each(runs, function(run, callback){
+					if(run.task.contest !== contest.id)
+						callback();
+					var finalSubtasks = [], overall = 'accepted';
+					Task.findOne(run.task.id).populate('subtasks').exec(function(err, task){
+						if(err) callback(err);
+						async.each(task.subtasks, function(subtask, finishedSubtask){
+							Veredict.find({ where: {subtask: subtask.id, run: run.id}, limit:1, sort: 'createdAt DESC'}).exec(function(err, veredict){
+								if(err) callback(err);
+								if(subtask.feedback){
+									finalSubtasks.push({
+										points: subtask.points,
+										result: veredict.jury
+									});
+									if(veredict.jury !== 'accepted' && overall !== 'judged'){
+										overall = 'problem';
+									}
+								}else{
+									finalSubtasks.push({
+										points: subtask.points,
+										result: 'judged'
+									});
+									overall = 'judged';
+								}
+								finishedSubtask();
+							});
+						}, function(err){
+							if(err) callback(err);
+							run.subtasks = finalSubtasks;
+							run.result = overall;
+							finalRuns.push(run);
+							callback();
+						});
+					});
+				}, function(err){
+					if(err) return res.serverError(err);
+					return res.json(finalRuns);
+				});
+	 		});
  		});
+ 		
  	}
  };
 

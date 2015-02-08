@@ -59,4 +59,13 @@ angular.module('mooseJs.team')
 					ncyBreadcrumbParent: 'team.home'
 				}
 			})
+			.state('team.tools', {
+				url: '/tools',
+				templateUrl: 'templates/team/tools.html',
+				controller: 'team.ToolsController',
+				data: {
+					ncyBreadcrumbLabel: 'Tools',
+					ncyBreadcrumbParent: 'team.home'
+				}
+			});
 	}]);
