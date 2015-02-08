@@ -33,7 +33,7 @@ module.exports = {
 		ContestService.getActiveContest(user, function(err, contest){
 			if(contest){
 				Task.find({contest: contest.id}).exec(function(err, tasks){
-					//TODO: Handle Error
+					if(err)return res.serverError(err);
 					return res.json(tasks);
 				});
 			}else{

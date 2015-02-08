@@ -14,7 +14,7 @@
 				<ui-select ng-model="submit.task">
 					<ui-select-match placeholder="Choose a task">{{$select.selected.name}}</ui-select-match>
 					<ui-select-choices repeat="task.id as task in tasks | filter: $select.search">
-						<div>({{task.code}}) {{ task.name }}</div>
+						<div>({{task.contest.name}}) {{ task.code }}</div>
 					</ui-select-choices>
 			</div>
 		</div>

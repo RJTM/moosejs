@@ -2,8 +2,10 @@
 
 angular.module('mooseJs.jury')
 	.controller('jury.TeamController', ["$scope", "socket","$upload", function($scope, socket, $upload){
-		socket.get('/task/contest', function(data){
+	
+	socket.get('/task', function(data){
 		$scope.tasks = data;
+		console.log(data);
 	});
 
 	socket.get('/language', function(data){
