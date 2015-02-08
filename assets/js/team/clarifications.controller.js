@@ -9,7 +9,7 @@ angular.module('mooseJs.team')
 
 	socket.on('clarification', function(message){
 		if(message.verb === 'created'){
-			if(message.data.owner === CurrentUser.user().id){
+			if(message.data.owner === CurrentUser.user().id || message.data.toAll){
 				$scope.clarifications.push(message.data);
 			}
 		}else if(message.verb === 'updated'){

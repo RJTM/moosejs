@@ -12,17 +12,16 @@
 				</ui-select>
 				<br>
 				<label>Recipient</label>
-				<ui-select ng-model="clarification.recipient">
+				<ui-select ng-model="clarification.owner">
 					<ui-select-match placeholder="Select the recipient of the clarification..">{{$select.selected.name}}</ui-select-match>
 					<ui-select-choices repeat="recipient in recipients | filter:$select.search">
 						<div ng-bind-html="trustAsHtml((recipient.name | highlight: $select.search))"></div>
 					</ui-select-choices>
 				</ui-select>
 			</div>
-
 			<div class="form-group">
 				<label>Message</label>
-				<textarea rows="10" class="form-control" ng-model="clarification.question"></textarea>
+				<textarea rows="10" class="form-control" ng-model="clarification.answer"></textarea>
 			</div>
 			<div class="form-group">
 				<button class="btn btn-success" type="submit">Send</button>

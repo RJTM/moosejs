@@ -5,7 +5,7 @@ angular.module('mooseJs.jury')
 			$scope.clarifications = data;
 		});
 
-		socket.on('/clarification', function(message){
+		socket.on('clarification', function(message){
 			console.log(message);
 			if(message.verb === 'created'){
 				$scope.clarifications.push(message.data);

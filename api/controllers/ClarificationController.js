@@ -34,6 +34,10 @@ module.exports = {
 		var clar = req.allParams();
 		clar.owner = req.token.id;
 		Clarification.create(clar).exec(function(err, result){
+			if(err){
+				return res.serverError(err);
+			}
+			
 			Clarification.publishCreate(result);
 			return res.json(result);
 		});

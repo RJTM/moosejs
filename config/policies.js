@@ -60,7 +60,7 @@ module.exports.policies = {
     },
 
     UserController: {
-        '*': ['tokenAuth', 'admin'],
+        '*': ['tokenAuth', 'juryAndUp'],
         'findOne': ['tokenAuth', 'juryAndUp'],
         'authenticate': true,
         'update': 'tokenAuth',
