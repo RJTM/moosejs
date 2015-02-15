@@ -1,6 +1,14 @@
+<div class="pull-left col-md-6">
+	<ui-select ng-model="contest.contest.id">
+		<ui-select-match placeholder="Select one contest to filter tasks..">{{$select.selected.name}}</ui-select-match>
+		<ui-select-choices repeat="contest.id as contest in contests | filter:$select.search">
+			<div ng-bind-html="trustAsHtml((contest.name | highlight : $select.search))"></div>
+		</ui-select-choices>
+	</ui-select>
+</div>
 <div class="pull-right">
 	<button class="btn btn-success">
-		<i class="fa fa-plus" ui-sref="jury.tasks.add"> Agregar</i>
+		<i class="fa fa-plus" ui-sref="jury.tasks.add"> Add task</i>
 	</button>
 </div>
 <div class="clearfix"></div>
@@ -22,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="task in tasks">
+			<tr ng-repeat="task in tasks | filter : contest">
 				<td>{{ task.id }}</td>
 				<td>{{ task.contest.name }}</td>
 				<td>{{ task.name }}</td>

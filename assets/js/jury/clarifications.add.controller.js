@@ -44,7 +44,6 @@ angular.module('mooseJs.jury')
 					swal('Done!', 'Clarification sent', 'success');
 					$scope.clarification = {};
 					$state.go('jury.clarifications');
-					console.log(data);
 				});
 		});
 	}
