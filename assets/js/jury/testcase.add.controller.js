@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.AddTestcaseController', function($scope, $stateParams, $upload){
+	.controller('jury.AddTestcaseController', function($scope, $stateParams, $upload, $state){
 		$scope.save = function(){
 			$upload.upload({
 				url: '/testcase',
@@ -14,6 +14,8 @@ angular.module('mooseJs.jury')
 				}
 			}).success(function(data){
 				swal('Done!', 'Testcase uploaded','success');
+				$scope.subtask.testcases.push(data);
+				$state.go('jury.task.subtask');
 			});
 		}
 	});
