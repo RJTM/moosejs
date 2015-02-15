@@ -14,7 +14,8 @@ module.exports = {
 	
 	toJudging: function(req, res){
 		var gradeId = req.param('id');
-		Grade.update({id : gradeId},{status: 'judging'}).exec(function(err, result){
+		var judgehost = req.token.id;
+		Grade.update({id : gradeId},{status: 'judging', judgehost: judgehost}).exec(function(err, result){
 			if(err) return res.serverError(err);
 			Grade.publishUpdate(result[0].id, result[0]);
 			return res.json(result);

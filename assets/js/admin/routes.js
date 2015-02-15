@@ -108,4 +108,34 @@ angular.module('mooseJs.admin')
 			ncyBreadcrumbParent: 'admin.languages'
 		}
 	})
+
+	.state('admin.judgehosts', {
+		url: '/judgehosts',
+		templateUrl: 'templates/admin/judgehosts.html',
+		controller: 'admin.JudgehostsController',
+		data: {
+			ncyBreadcrumbLabel: 'Judgehosts',
+			ncyBreadcrumbParent: 'admin.home'
+		}
+	})
+
+	.state('admin.newJudgehost', {
+		url: '/judgehosts/add',
+		templateUrl: 'templates/admin/add-judgehost.html',
+		controller: 'admin.NewJudgehostController',
+		data: {
+			ncyBreadcrumbLabel: 'Adding a judgehost',
+			ncyBreadcrumbParent: 'admin.judgehosts'
+		}
+	})
+
+	.state('admin.judgehost', {
+		url: '/judgehost/:id',
+		templateUrl: 'templates/admin/judgehost.html',
+		controller: 'admin.JudgehostController',
+		data: {
+			ncyBreadcrumbLabel: 'Modifying a judgehost',
+			ncyBreadcrumbParent: 'admin.judgehosts'
+		}
+	})
 }]);
