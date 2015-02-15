@@ -1,5 +1,5 @@
 <div class="pull-left">
-	<h4>Modificando el subtask {{ subtask.id }}</h4>
+	<h4>Modifying subtask {{ subtask.id }}</h4>
 </div>
 <div class="pull-right">
 	<button class="btn btn-sm btn-danger" ui-sref="jury.task"><fa class="fa fa-times"></fa></button>
@@ -55,7 +55,7 @@
 							<button class="btn btn-xs btn-info" ui-sref="jury.task.subtask.testcase({testcase: testcase.id})">
 								<i class="fa fa-pencil"></i>
 							</button>
-							<button class="btn btn-xs btn-danger">
+							<button class="btn btn-xs btn-danger" ng-click="deleteTestcase($index)">
 								<i class="fa fa-trash"></i>
 							</button>
 						</td>

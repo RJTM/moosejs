@@ -43,7 +43,6 @@ angular.module('mooseJs.admin')
 			var toSend = {
 				users: usersIds,
 				contest: $scope.contest.id,
-				token: angular.fromJson(LocalService.get('auth_token')).token
 			};
 			socket.post('/user/addUsersToContest', toSend, function(data){
 				$scope.disable = false;
@@ -63,7 +62,6 @@ angular.module('mooseJs.admin')
 			var toSend = {
 				users: usersIds,
 				contest: $scope.contest.id,
-				token: angular.fromJson(LocalService.get('auth_token')).token
 			};
 			socket.post('/user/deleteUsersFromContest', toSend, function(data){
 				$scope.disable = false;

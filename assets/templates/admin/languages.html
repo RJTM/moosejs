@@ -1,0 +1,46 @@
+<div class="pull-right">
+	<button class="btn btn-success" ui-sref="admin.newLanguage">
+		<i class="fa fa-plus"></i> Add
+	</button>
+</div>
+<br><br>	
+<div class="clearfix"></div>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<strong>Languages</strong>
+		<small>all the different ways your contestants have to send WAs</small>		
+	</div>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Compiler</th>
+				<th>File Name</th>
+				<th>Command to execute</th>
+				<th>Additional args to compile</th>
+				<th>Extension</th>
+				<th>Syntax Highlighting</th>
+				<th>Time Factor</th>
+				<th>Allowed</th>
+				<th class="col-md-1">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="lang in languages">
+				<td>{{ lang.name }}</td>
+				<td>{{ lang.compiler }}</td>
+				<td>{{ lang.fileName }}</td>
+				<td>{{ lang.executable }}</td>
+				<td>{{ lang.arguments }}</td>
+				<td>{{ lang.extension }}</td>
+				<td>{{ lang.syntaxHighlighting }}</td>
+				<td>{{ lang.timeFactor }}</td>
+				<td>{{ lang.allowed }}</td>
+				<td>
+					<button class="btn btn-info btn-xs" ui-sref="admin.language({ id: lang.id })"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs" ng-click="delete($index)"><i class="fa fa-trash"></i></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

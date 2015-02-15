@@ -78,4 +78,64 @@ angular.module('mooseJs.admin')
 			ncyBreadcrumbParent: 'admin.contests'
 		}
 	})
+
+	.state('admin.languages', {
+		url: '/languages',
+		templateUrl: '/templates/admin/languages.html',
+		controller: 'admin.LanguagesController',
+		data: {
+			ncyBreadcrumbLabel: 'Programming Languages',
+			ncyBreadcrumbParent: 'admin.home'
+		}
+	})
+
+	.state('admin.newLanguage', {
+		url: '/languages/add',
+		templateUrl: '/templates/admin/add-language.html',
+		controller: 'admin.NewLanguageController',
+		data: {
+			ncyBreadcrumbLabel: 'Adding a language',
+			ncyBreadcrumbParent: 'admin.languages',
+		}
+	})
+
+	.state('admin.language', {
+		url: '/languages/:id',
+		templateUrl: 'templates/admin/language.html',
+		controller: 'admin.LanguageController',
+		data: {
+			ncyBreadcrumbLabel: 'Modifying a language',
+			ncyBreadcrumbParent: 'admin.languages'
+		}
+	})
+
+	.state('admin.judgehosts', {
+		url: '/judgehosts',
+		templateUrl: 'templates/admin/judgehosts.html',
+		controller: 'admin.JudgehostsController',
+		data: {
+			ncyBreadcrumbLabel: 'Judgehosts',
+			ncyBreadcrumbParent: 'admin.home'
+		}
+	})
+
+	.state('admin.newJudgehost', {
+		url: '/judgehosts/add',
+		templateUrl: 'templates/admin/add-judgehost.html',
+		controller: 'admin.NewJudgehostController',
+		data: {
+			ncyBreadcrumbLabel: 'Adding a judgehost',
+			ncyBreadcrumbParent: 'admin.judgehosts'
+		}
+	})
+
+	.state('admin.judgehost', {
+		url: '/judgehost/:id',
+		templateUrl: 'templates/admin/judgehost.html',
+		controller: 'admin.JudgehostController',
+		data: {
+			ncyBreadcrumbLabel: 'Modifying a judgehost',
+			ncyBreadcrumbParent: 'admin.judgehosts'
+		}
+	})
 }]);

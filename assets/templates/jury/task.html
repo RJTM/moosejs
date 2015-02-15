@@ -23,6 +23,7 @@
 </form>
 <br>
 <hr>
+<alert type="warning">If you do any modifications below this point mid-contest, you <b>SHOULD rejudge all runs for this task.</b></alert>
 <div class="pull-right">
 	<button class="btn btn-success" ui-sref="jury.task.addSubtask">Add subtask <i class="fa fa-plus"></i></button>
 </div>
@@ -50,6 +51,9 @@
 				<td>{{ subtask.timeLimit }}ms</td>
 				<td>
 					<button class="btn btn-xs btn-info" ui-sref="jury.task.subtask({ id:task.id, subtask:subtask.id})"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-xs btn-danger" ng-click="deleteSubtask($index)">
+						<i class="fa fa-trash"></i>
+					</button>
 				</td>
 			</tr>
 		</tbody>

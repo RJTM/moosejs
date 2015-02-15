@@ -48,6 +48,14 @@ module.exports = {
 		task: 1,
 		points: 50
 	}
-	]
+	],
+
+	afterDestroy: function(destroyedRecords, cb){
+		Testcase.destroy({ 
+			subtask: destroyedRecords.map(function(currentValue){
+				return currentValue.id;
+			})
+		}).exec(cb);
+	}
 };
 

@@ -47,6 +47,7 @@ var tokenHttp = function(url, callback){
 
 var subscribe = function(){
 	util.log.info('Waiting for next run');
+	io.socket.once('submission', onSubmission);
 	socket.get('/judgehost/subscribe',function(body,responseObj){
 		if(body.status === 'pending'){
 			judge(body.grade);
@@ -265,8 +266,9 @@ var onConnect = function(){
 
 
 var onSubmission = function(grade){
-	socket.get('/judgehost/unsubscribe');
-	judge(grade);
+	socket.get('/judgehost/unsubscribe', function(data){
+		judge(grade);
+	});
 }
 
 util.log.info("Starting...");
@@ -294,7 +296,6 @@ io.sails.url = 'http://'+config.host+':'+config.port;
 
 //define event actions
 io.socket.on('connect', onConnect);
-io.socket.on('submission', onSubmission);
 io.socket.on('testcase', onTestcaseChange);
 io.socket.on('message', function(event){
 	util.log.info(event);
