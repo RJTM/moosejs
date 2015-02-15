@@ -10,10 +10,12 @@ angular.module('mooseJs.team')
 
 	socket.on('clarification', function(message){
 		if(message.verb === 'created'){
-			if(message.data.owner === CurrentUser.user().id || message.data.toAll){
+			if(message.data.owner.id === CurrentUser.user().id || message.data.toAll){
+				console.log(message);
 				$scope.clarifications.push(message.data);
 			}
 		}else if(message.verb === 'updated'){
+			console.log(message);
 			angular.forEach($scope.clarifications, function(clarification, index){
 				if(clarification.id == message.id){
 					angular.forEach(message.data, function(value, key){

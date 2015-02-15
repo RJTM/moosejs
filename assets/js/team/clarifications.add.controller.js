@@ -11,9 +11,19 @@ angular.module('mooseJs.team')
 		return $sce.trustAsHtml(value);
 	};
 	$scope.submitClarification = function(){
-		socket.post('/clarification', $scope.clarification, function(){
-			$scope.clarification = {};
-			$state.go('team.clarifications');
+		swal({
+			title : 'Send Clarification',
+			text : 'Are you sure?',
+			type : 'warning',
+			showCancelButton : true,
+			confirmButtonText : 'Yes, send it',
+			closeOnConfirm : false
+		}, function(){
+			socket.post('/clarification', $scope.clarification, function(data){
+				swal('Done!', 'Clarification sent', 'success');
+				$scope.clarification = {};
+				$state.go('team.clarifications');
+			});
 		});
 	}
 }]);

@@ -39,36 +39,25 @@ module.exports = {
 	
 	create: function(req,res){
 		var clar = req.allParams();
-		clar.owner = req.token.id;
+		
+		// get the user logged first
+		User.findOne(req.token.id).exec(function(err, user){
+			if(err)
+				return res.serverError(err);
 
-		// if it already have contest (Jury assumed)
-		if(clar.contest){
-			ClarificationService.create(clar, function(err, result){
-				if(err)
-					return res.serverError(err);
-				return res.json(result);
-			});
-		}else{
-			User.findOne(req.token.id).exec(function(err, user){
-				if(err)
-					return res.serverError(err);
-
-				if(user.role !== 'team')
-					return res.serverError('User not allowed to create clarifications without contest');
-
-				// get the active contest for this user
-				ContestService.getActiveContest(req.token.id, function(err, contest){
-					if(contest){
-						clar.contest = contest;
-						ClarificationService.create(clar, function(err, result){
-							if(err)
-								return res.serverError(err);
-							return res.json(result);
-						});
-					}
+			if(user.role === 'jury')
+				ClarificationService.createFromJury(clar, user, function(error, result){
+					if(error)
+						return res.serverError(error);
+					return res.json(result);
 				});
-			});
-		}
+			else
+				ClarificationService.createFromTeam(clar, user, function(error, result){
+					if(error)
+						return res.serverError(error);
+					return res.json(result);
+				});
+		});
 	}
 
 };

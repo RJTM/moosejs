@@ -18,19 +18,10 @@ angular.module('mooseJs.jury')
 		$scope.contests.push.apply($scope.contests, data);
 	});
 
-	$scope.subjectsFilter = function(items, props){
-		var out = [];
-		if(angular.isArray(items)){
-			items.forEach(function(item){
-				out.push(item);
-			});
-		}
-		return out;
-	}
-
 	$scope.trustAsHtml = function(value) {
 		return $sce.trustAsHtml(value);
 	};
+	
 	$scope.submitClarification = function(){
 		console.log($scope.clarification);
 		swal({
@@ -53,7 +44,8 @@ angular.module('mooseJs.jury')
 				$scope.clarification,
 				function(data){
 					swal('Done!', 'Clarification sent', 'success');
-					console.log(data);
+					$scope.clarification = {};
+					$state.go('jury.clarifications');
 				});
 		});
 	}
