@@ -1,7 +1,7 @@
 'use strict';
 angular.module('mooseJs.jury')
 	.controller('jury.ClarificationController', ["$scope", "socket", "LocalService", "$modal",  function($scope, socket, LocalService, $modal){
-		socket.get('/clarification', {token : angular.fromJson(LocalService.get('auth_token')).token}, function(data){
+		socket.get('/clarification', function(data){
 			$scope.clarifications = data;
 		});
 

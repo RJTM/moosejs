@@ -14,14 +14,21 @@ module.exports = {
 	**/
 	
 	user: function(req, res){
-		Clarification.find({ or: [
-				{ toAll: true},
-				{ owner: req.token.id}
-			]}).exec(function(err, clarifications){
-				Clarification.subscribe(req.socket, clarifications);
-				Clarification.watch(req.socket);
-				return res.json(clarifications);
-			});
+		// get the active contest for this user
+		ContestService.getActiveContest(req.token.id, function(err, contest){
+			if(contest){
+				Clarification.find({ or: [
+					{ toAll: true, contest : contest.id},
+					{ owner: req.token.id, contest : contest.id}
+				]}).exec(function(err, clarifications){
+					Clarification.subscribe(req.socket, clarifications);
+					Clarification.watch(req.socket);
+					return res.json(clarifications);
+				});
+
+			}else
+				return res.json([]);
+		});
 	},
 
 	/**
@@ -33,19 +40,35 @@ module.exports = {
 	create: function(req,res){
 		var clar = req.allParams();
 		clar.owner = req.token.id;
-		Clarification.create(clar).exec(function(err, result){
-			if(err){
-				return res.serverError(err);
-			}
 
-			Clarification.findOne(result.id).populate('contest', 'owner').exec(function(err, clarification){
+		// if it already have contest (Jury assumed)
+		if(clar.contest){
+			ClarificationService.create(clar, function(err, result){
+				if(err)
+					return res.serverError(err);
+				return res.json(result);
+			});
+		}else{
+			User.findOne(req.token.id).exec(function(err, user){
 				if(err)
 					return res.serverError(err);
 
-				Clarification.publishCreate(clar);
-				return res.json(clar);
+				if(user.role !== 'team')
+					return res.serverError('User not allowed to create clarifications without contest');
+
+				// get the active contest for this user
+				ContestService.getActiveContest(req.token.id, function(err, contest){
+					if(contest){
+						clar.contest = contest;
+						ClarificationService.create(clar, function(err, result){
+							if(err)
+								return res.serverError(err);
+							return res.json(result);
+						});
+					}
+				});
 			});
-		});
+		}
 	}
 
 };

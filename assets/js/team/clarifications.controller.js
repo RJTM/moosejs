@@ -3,7 +3,8 @@
 angular.module('mooseJs.team')
 .controller('team.ClarificationsController', ["$scope", "$modal", "socket", "CurrentUser", "LocalService", function($scope, $modal, socket, CurrentUser, LocalService){
 	// TODO: Remove token from data
-	socket.get('/clarification/user', {token: angular.fromJson(LocalService.get('auth_token')).token} ,function(data){
+	socket.get('/clarification/user', function(data){
+		console.log(data);
 		$scope.clarifications = data;
 	});
 
