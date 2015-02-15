@@ -23,7 +23,7 @@
 				<label>Recipient</label>
 				<ui-select ng-model="clarification.owner">
 					<ui-select-match placeholder="Select the recipient of the clarification..">{{$select.selected.name}}</ui-select-match>
-					<ui-select-choices repeat="recipient in recipients | filter:$select.search">
+					<ui-select-choices repeat="recipient in recipients | userByContestFilter: { contest : clarification.contest.id, allowBypass : true } | filter : $select.search">
 						<div ng-bind-html="trustAsHtml((recipient.name | highlight: $select.search))"></div>
 					</ui-select-choices>
 				</ui-select>
