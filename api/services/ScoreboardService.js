@@ -29,6 +29,38 @@ module.exports = {
 			
 		});
 	},
+
+	deleteUser: function(users){
+		async.each(users, function(user, callback){
+			Scoreboard.destroy({user: user.id}).exec(function(err, res){
+				if(err){ 
+					callback(err);
+					return;
+				}
+				res.forEach(function(row){
+					Scoreboard.publishDestroy(row.id);
+				});
+				callback();
+			}, function(err){
+				if(err){ 
+					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+				}
+			});
+		});
+	},
+
+	removeUserFromContest: function(user, contest){
+		Scoreboard.destroy({user: user.id, contest: contest.id}).exec(function(err, res){
+			if(err){ 
+				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+			}
+			res.forEach(function(row){
+				Scoreboard.publishDestroy(row.id);
+			});
+			callback();
+		});
+	},
+
 	addTask: function(task){
 		Contest.findOne({ id: task.contest}).populate('users').exec(function(err,contest){
 			if(err){
@@ -53,6 +85,53 @@ module.exports = {
 			});
 		});
 	},
+
+	addSubtask: function(subtask){
+		Task.findOne(subtask.task).exec(function(err, task){
+			if(err){
+				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+			}
+			Contest.findOne(task.contest).populate('users').exec(function(err, contest){
+				if(err){
+					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+				}
+				async.map(contest.users, function(user, callback){
+					if(user.role === 'jury' || user.role === 'team'){
+						Scoreboard.create({ contest: contest.id, user: user.id, task: task.id, subtask: subtask.id}).exec(function(err, res){
+							callback(err,res);
+						});
+					}
+				}, function(err, results){
+					if(err){ 
+						sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+					}
+					results.forEach(function(row){
+						Scoreboard.publishCreate(row);
+					});
+				});
+			});
+		});
+	},
+
+	deleteSubtask: function(subtasks){
+		async.each(subtasks, function(subtask, callback){
+			Scoreboard.destroy({subtask: subtask.id}).exec(function(err, res){
+				if(err){ 
+					callback(err);
+					return;
+				}
+				res.forEach(function(row){
+					Scoreboard.publishDestroy(row.id);
+				});
+				callback();
+			}, function(err){
+				if(err){ 
+					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+				}
+			});
+		});
+	},
+
 	update: function(grade, veredicts){
 		/**
 		

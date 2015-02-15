@@ -28,11 +28,15 @@ module.exports = {
 			type: 'int',
 			defaultsTo: 0
 		},
-		totaltime: {
+		time: {
 			type: 'int',
 			defaultsTo: 0
 		},
-		is_correct: {
+		penalty: {
+			type: 'int',
+			defaultsTo: 0
+		},
+		isCorrect: {
 			type: 'boolean',
 			defaultsTo: false
 		},

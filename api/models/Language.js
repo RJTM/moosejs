@@ -78,7 +78,7 @@ module.exports = {
         fileName: 'source.clj',
         executable: 'clojure source.clj',
         arguments: '',
-        extension: 'clj'
+        extension: 'clj',
         syntaxHighlighting: 'clike'
       },
       {

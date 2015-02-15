@@ -85,6 +85,11 @@ module.exports = {
 		});
 	},
 
+	afterDestroy: function(destroyedRecords, cb){
+		ScoreboardService.deleteUser(destroyedRecords);
+		cb();
+	},
+
 	seedData : [{
 		username : 'emiliot',
 		name : 'emilio',
