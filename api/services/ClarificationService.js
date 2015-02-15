@@ -9,6 +9,7 @@ module.exports = {
 		Clarification.create(clar).exec(function(err, result){
 			if(err){
 				cb(err);
+				return;
 			}
 
 			Clarification.findOne(result.id).populate('contest')
@@ -24,8 +25,13 @@ module.exports = {
 	},
 
 	createFromJury : function(clar, user, cb){
-		if(!clar.contest)
-			cb("Contest required to send clarification");
+		if(!clar.contest){
+			cb({ 
+				status : 'error',
+				error : "Contest required to send clarification"
+			});
+			return;
+		}
 
 		clar.jury = user;
 		module.exports.create(clar, cb);
