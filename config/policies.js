@@ -9,8 +9,8 @@ module.exports.policies = {
 
     ContestController: {
       '*': ['tokenAuth', 'teamAndJury'],
-      'find': true,
-      'findOne': true,
+      'find': ['cleanToken'],
+      'findOne': ['cleanToken'],
       'create': ['tokenAuth', 'admin'],
       'update': ['tokenAuth', 'juryAndUp'],
       'destroy': ['tokenAuth', 'admin']

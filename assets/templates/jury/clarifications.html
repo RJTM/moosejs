@@ -17,6 +17,7 @@
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
+				<th>Contest</th>
 				<th>From</th>
 				<th>Subject</th>
 				<th>is Public</th>
@@ -26,6 +27,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="clarification in clarifications track by clarification.id" ng-click="showDetails(clarification)">
+					<td>{{ clarification.contest.name }} </td>
 					<td>{{ clarification.owner.name }}</td>
 					<td>{{ clarification.subject }}</td>
 					<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>

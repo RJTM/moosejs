@@ -27,6 +27,9 @@ module.exports = {
 		},
 		answer: {
 			type: 'text'
+		},
+		contest: {
+			model : 'contest'
 		}
 	},
 

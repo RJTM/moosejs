@@ -2,16 +2,31 @@
 
 angular.module('mooseJs.jury')
 .controller('jury.ClarificationsAddController', ["$scope", "$sce", "$state", "socket", "LocalService", "CurrentUser", function($scope, $sce, $state, socket, LocalService, CurrentUser){
-	$scope.subjects = [{name: 'General Issue'}];
+	$scope.subjects = [{name: 'General Issue', allowBypass : true}];
 	socket.get('/task', function(data){
+		console.log(data);
 		$scope.subjects.push.apply($scope.subjects, data);
 	});
 
 	$scope.recipients = [{name: 'Public', isPublic : true}]
 	socket.get('/user', { role: 'team'}, function(data){
-		console.log(data);
 		$scope.recipients.push.apply($scope.recipients, data);
 	});
+
+	$scope.contests = [];
+	socket.get('/contest', {}, function(data){
+		$scope.contests.push.apply($scope.contests, data);
+	});
+
+	$scope.subjectsFilter = function(items, props){
+		var out = [];
+		if(angular.isArray(items)){
+			items.forEach(function(item){
+				out.push(item);
+			});
+		}
+		return out;
+	}
 
 	$scope.trustAsHtml = function(value) {
 		return $sce.trustAsHtml(value);

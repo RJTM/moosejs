@@ -37,9 +37,14 @@ module.exports = {
 			if(err){
 				return res.serverError(err);
 			}
-			
-			Clarification.publishCreate(result);
-			return res.json(result);
+
+			Clarification.findOne(result.id).populate('contest', 'owner').exec(function(err, clarification){
+				if(err)
+					return res.serverError(err);
+
+				Clarification.publishCreate(clar);
+				return res.json(clar);
+			});
 		});
 	}
 
