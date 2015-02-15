@@ -5,7 +5,7 @@ angular.module('mooseJs.team')
 	$scope.clarifications = 0;
 	$scope.runs = 0;
 
-	socket.get('/clarification/user', {token: angular.fromJson(LocalService.get('auth_token')).token});
+	socket.get('/clarification/user', {});
 
 	socket.on('clarification', function(message){
 		if(message.verb === 'created'){
