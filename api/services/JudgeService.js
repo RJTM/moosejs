@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-        dispatchRun: function(run){
+        dispatchRun: function(run, callback){
             /*
             1.- Receive new Run
             2.- Create new Grade with default status pending 
@@ -35,6 +35,8 @@ module.exports = {
     		        			return;   
     		        		}
             				sails.sockets.emit(judgehostToSend, 'submission', finalGrade);
+                                                   sails.sockets.leave(judgehostToSend, 'newSubmissions');
+                                                   if(callback) callback();
             			});
             		});
             	});
@@ -46,20 +48,23 @@ module.exports = {
             			return;   
             		}
                             Grade.publishCreate(result);
+                            if(callback) callback();
             	});
             }
         },
 
-        reJudgeRun: function(id){
+        reJudgeRun: function(id, callback){
             Run.findOne(id).exec(function(err, run){
-                module.exports.dispatchRun(run);
+                module.exports.dispatchRun(run, callback);
             });
         },
 
         reJudgeTask: function(id){
             Task.findOne(id).populate('runs').exec(function(err, task){
-                task.runs.forEach(function(run){
-                    module.exports.reJudgeRun(run.id);
+                async.eachSeries(task.runs, function(run, callback){
+                    module.exports.reJudgeRun(run.id, callback);
+                }, function(err){
+                    sails.log.info('Finished rejudging task '+id);
                 });
             });
         }
