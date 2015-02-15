@@ -25,7 +25,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="clarification in clarifications" ng-click="showDetails(clarification)">
+			<tr ng-repeat="clarification in clarifications | orderBy : '-id' track by clarification.id" ng-click="showDetails(clarification)">
 					<td>{{ clarification.jury !== undefined ? 'Jury' : 'Not Answered yet' }}</td>
 					<td>{{ clarification.subject }}</td>
 					<td>{{ clarification.toAll ? 'Yes' : 'No' }}</td>

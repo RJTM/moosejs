@@ -9,13 +9,11 @@ angular.module('mooseJs.jury')
 
 	$scope.recipients = [{name: 'Public', isPublic : true, allowBypass : true}]
 	socket.get('/user', { role: 'team'}, function(data){
-		console.log(data);
 		$scope.recipients.push.apply($scope.recipients, data);
 	});
 
 	$scope.contests = [];
 	socket.get('/contest', {}, function(data){
-		console.log(data);
 		$scope.contests.push.apply($scope.contests, data);
 	});
 
@@ -24,7 +22,6 @@ angular.module('mooseJs.jury')
 	};
 
 	$scope.submitClarification = function(){
-		console.log($scope.clarification);
 		swal({
 			title: 'Send Clarification Response',
 			text: 'Are you sure?',
@@ -47,6 +44,7 @@ angular.module('mooseJs.jury')
 					swal('Done!', 'Clarification sent', 'success');
 					$scope.clarification = {};
 					$state.go('jury.clarifications');
+					console.log(data);
 				});
 		});
 	}
