@@ -47,11 +47,12 @@ var tokenHttp = function(url, callback){
 
 var subscribe = function(){
 	util.log.info('Waiting for next run');
-	io.socket.once('submission', onSubmission);
 	socket.get('/judgehost/subscribe',function(body,responseObj){
 		if(body.status === 'pending'){
 			judge(body.grade);
-		}  
+		}else{
+			io.socket.once('submission', onSubmission);
+		}
 	});
 }
 
@@ -266,9 +267,7 @@ var onConnect = function(){
 
 
 var onSubmission = function(grade){
-	socket.get('/judgehost/unsubscribe', function(data){
-		judge(grade);
-	});
+	judge(grade);
 }
 
 util.log.info("Starting...");
