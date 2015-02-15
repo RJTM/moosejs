@@ -174,6 +174,17 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbParent: 'jury.contests'
 				}
 			})
+			.state('jury.contestUpdate', {
+				url : '/contests/:id',
+				templateUrl : 'templates/jury/contestUpdate.html',
+				controller : 'jury.ContestUpdateController',
+				data : {
+					id : ':id',
+					ncyBreadcrumbLabel : 'Update Contest',
+					ncyBreadcrumbParent : 'jury.contests'
+				}
+
+			})
 			.state('jury.task', {
 				url: '/tasks/:id',
 				templateUrl: 'templates/jury/task.html',

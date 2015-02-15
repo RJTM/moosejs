@@ -4,8 +4,9 @@ angular.module('mooseJs.jury')
 		
 		$scope.settings = function(index){
 			if($scope.contests[index].set){
-				// Show simple contest editing form
-				
+				$state.go('jury.contestUpdate', {
+					id : $scope.contests[index].id
+				});
 			}else{
 				$state.go('jury.wizard', {
 					id: $scope.contests[index].id
