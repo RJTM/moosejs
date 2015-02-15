@@ -1,0 +1,61 @@
+<h3>Adding a language</h3>
+
+<form class="form form-horizontal" ng-submit="save()">
+	<div class="form-group">
+		<label for="name" class="col-md-2 control-label">Name</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="name" ng-model="language.name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="compiler" class="col-md-2 control-label">Compiler</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="compiler" ng-model="language.compiler">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="filename" class="col-md-2 control-label">File name</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="filename" ng-model="language.fileName">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="executable" class="col-md-2 control-label">Executable</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="executable" ng-model="language.executable">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="arguments" class="col-md-2 control-label">Arguments for compilation</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="arguments" ng-model="language.arguments">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="extension" class="col-md-2 control-label">Extension</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="extension" ng-model="language.extension">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="syntaxHighlighting" class="col-md-2 control-label">Syntax Highlighting (check Prism.js)</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="syntaxHighlighting" ng-model="language.syntaxHighlighting">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="timeFactor" class="col-md-2 control-label">Time Factor</label>
+		<div class="col-md-10">
+			<input type="text" class="form-control" id="timeFactor" ng-model="language.timeFactor">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="timeFactor" class="col-md-2 control-label">Allowed</label>
+		<div class="col-md-10">
+			<input type="checkbox" ng-model="language.allowed">
+		</div>
+	</div>
+
+	
+	<button class="btn btn-success" type="submit">Save</button>
+</form>

@@ -6,7 +6,7 @@ angular.module('mooseJs.team')
 		$scope.tasks = data;
 	});
 
-	socket.get('/language', function(data){
+	socket.get('/language', { allowed: true }, function(data){
 		$scope.languages = data;
 	});
 
