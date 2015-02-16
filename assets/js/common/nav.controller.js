@@ -12,7 +12,7 @@ angular.module('mooseJs.common')
 			$scope.isLogged = true;
 			$scope.user = CurrentUser.user();
 		}
-
+		
 		$scope.logout = function(){
 			Auth.logout();
 			$scope.isLogged = false;

@@ -23,10 +23,10 @@
            <li><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
        </ul>
        <ul class="nav navbar-nav navbar-right" ng-show="isLogged">
-          <li class="dropdown">
-           <a href class="dropdown-toggle">Welcome, {{ user.username }} <span class="caret"></span></a>
+          <li class="dropdown" dropdown>
+           <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
             
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" dropdown-menu>
               <li><a href ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
             </ul>
           </li>
