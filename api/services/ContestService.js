@@ -29,18 +29,34 @@ module.exports = {
 	saveFromJson: function(contest, callback){
 		contest.set = true;
 		contest.tasks.forEach(function(task, index){
-			task.subtasks.forEach(function(subtask, subIndex){
-				var testcasesN = subtask.testcases;
-				subtask.testcases = [];
-				for(var i=0;i<testcasesN;i++){
-					subtask.testcases.push({
-						inputFile: '',
-						outputFile: ''
+			var subtasks = task.subtasks.slice();
+			delete task.subtasks;
+			task.contest = contest.id;
+			Task.create(task).exec(function(err, newTask){
+				subtasks.forEach(function(subtask, subIndex){
+					var testcasesN = subtask.testcases;
+					delete subtask.testcases;
+					subtask.task = newTask.id;
+					Subtask.create(subtask).exec(function(err, newSubTask){
+						var testcases = []; testcases.length = testcasesN;
+						for(var i=0;i<testcasesN;i++){
+							testcases[i] = {
+								subtask: newSubTask.id,
+								inputFile: '',
+								outputFile: ''
+							}
+						}
+						Testcase.create(testcases).exec(function(err, newTestcases){
+							delete contest.users;
+							delete contest.tasks;
+							Contest.update({id: contest.id}, contest).exec(callback);
+						});
 					});
-				}
+					
+				});
+
 			});
 		});
-		Contest.update({ id: contest.id }, contest).exec(callback);
 	},
 	
 	saveFromZip: function(id, file, cb){
