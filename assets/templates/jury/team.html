@@ -5,7 +5,7 @@
 		<div class="form-group">
 			<label class="col-sm-2">Source</label>
 			<div class="col-sm-10">
-				<input type="file" ng-file-select ng-model="source" multiple="false"/>
+				<input type="file" ng-file-select ng-model="source" multiple="false" ng-multiple="false" ng-file-change="autoSelect($files)"/>
 			</div>
 		</div>
 		<div class="form-group">

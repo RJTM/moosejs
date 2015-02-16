@@ -10,12 +10,17 @@ angular.module('mooseJs.team')
 		$scope.languages = data;
 	});
 
+	$scope.submit = {
+		task: '',
+		language: ''
+	}
+
 	$scope.$watch('source', function(value){
 		if(value){
 			var source = value[0];
 			var fileName = source.name.split('.');
 			for(var i=0;i<$scope.languages.length; i++){
-				if($scope.languages[i].extension === fileName.pop()){
+				if($scope.languages[i].extension === fileName[fileName.length-1]){
 					$scope.submit.language = $scope.languages[i].id;
 					break;
 				}
