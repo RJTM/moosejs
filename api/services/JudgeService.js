@@ -60,12 +60,23 @@ module.exports = {
         },
 
         reJudgeTask: function(id){
-            Task.findOne(id).populate('runs').exec(function(err, task){
-                async.eachSeries(task.runs, function(run, callback){
-                    module.exports.reJudgeRun(run.id, callback);
-                }, function(err){
-                    sails.log.info('Finished rejudging task '+id);
-                });
+            Task.findOne(id).populate('runs').populate('subtasks').exec(function(err, task){
+                async.series([
+                        function(callback){
+                            ScoreboardService.deleteTask([task], callback);
+                        },
+                        function(callback){
+                            ScoreboardService.addTask(task, callback);      
+                        }
+                    ],function(err){
+                        if(!err){
+                            async.eachSeries(task.runs, function(run, callback){
+                                module.exports.reJudgeRun(run.id, callback);
+                            }, function(err){
+                                sails.log.info('Finished rejudging task '+id);
+                            });
+                        }
+                    });
             });
         }
 }

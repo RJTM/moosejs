@@ -60,7 +60,7 @@ module.exports = {
 		});
 	},
 
-	addTask: function(task){
+	addTask: function(task, finished){
 		Contest.findOne({ id: task.contest}).populate('users').exec(function(err,contest){
 			if(err){
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
@@ -75,13 +75,36 @@ module.exports = {
 					}, function(err,results){
 						callback(err, results);
 					});
+				}else{
+					callback();
 				}
 			}, function(err, results){
 				if(err){ 
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 				}
 				Scoreboard.publishCreate(results);
+				if(finished) finished();
 			});
+		});
+	},
+
+	deleteTask: function(tasks, cb){
+		async.each(tasks, function(task, callback){
+			Scoreboard.destroy({task: task.id}).exec(function(err, res){
+				if(err){ 
+					callback(err);
+					return;
+				}
+				res.forEach(function(row){
+					Scoreboard.publishDestroy(row.id);
+				});
+				callback();
+			});
+		}, function(err){
+			if(err){ 
+				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
+			}
+			if(cb) cb();
 		});
 	},
 

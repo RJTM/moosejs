@@ -29,6 +29,15 @@ module.exports = {
       type : 'string'
     }
   },
+
+  afterDestroy: function(destroyedRecords, cb){
+      ScoreboardService.deleteTask(destroyedRecords);
+      Subtask.destroy({ 
+        task: destroyedRecords.map(function(currentValue){
+          return currentValue.id;
+        })
+      }).exec(cb);
+    },
     
  //  seedData: [{
  //    name: "DummyTask",
