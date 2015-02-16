@@ -185,7 +185,8 @@ module.exports = {
 					subTaskUtil[current.id] = {
 						points : current.points,
 						veredict : current.veredict,
-						autojudge : current.autojudge
+						autojudge : current.autojudge,
+						jury: current.owner
 					};
 					return current.veredict === 'accepted' ? parseInt(current.points) : 0;
 				}).reduce(function (prev, next){
@@ -201,11 +202,11 @@ module.exports = {
 						if(subTaskUtil[item.subtask].veredict === 'accepted'){
 							item.points = subTaskUtil[item.subtask].points;
 							item.isCorrect = true;
-							// item.jury = TODO
+							item.jury = subTaskUtil[item.subtask].jury;
 						}else{
 							item.points = 0;
 							item.isCorrect = false;
-							// item.jury = TODO;
+							item.jury = subTaskUtil[item.subtask].jury;
 						}
 						item.juryModified = subTaskUtil[item.subtask].veredict !== subTaskUtil[item.subtask].autojudge;
 						item.time = response.run.time;

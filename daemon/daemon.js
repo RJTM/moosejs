@@ -5,7 +5,7 @@ var async = require('async');
 var util = require('./util.js');
 var grader = require('./grader/grader.js');
 var jsonfile = require('jsonfile');
-var config,tmp;
+var config,tmp,subscribed = false;
 
 var io = sailsIOClient(socketIOClient);
 
@@ -51,7 +51,10 @@ var subscribe = function(){
 		if(body.status === 'pending'){
 			judge(body.grade);
 		}else{
-			io.socket.once('submission', onSubmission);
+			if(!subscribed){
+				io.socket.once('submission', onSubmission);
+				subscribed = true;
+			}
 		}
 	});
 }
@@ -141,9 +144,6 @@ var judgeTask = function(source, grade){
 								cleanGrade();
 								return;
 							}
-							util.log.judge('Grade '+ grade.id + ' completed!!');
-							// After judging the task, subscribe to receive new ones
-							subscribe();
 						});
 					return;
 				}
@@ -267,6 +267,7 @@ var onConnect = function(){
 
 
 var onSubmission = function(grade){
+	subscribed = false;
 	judge(grade);
 }
 
