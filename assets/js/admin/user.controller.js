@@ -1,4 +1,14 @@
 angular.module('mooseJs.admin')
-	.controller('admin.UsersController', ["$scope", "User", function($scope, User){
-		$scope.users = User.query();
-	}])
+	.controller('admin.UserController', function($scope, socket, $stateParams, $state){
+		
+		socket.get('/user/' + $stateParams.id, function(data){
+			$scope.user = data;
+		});
+
+		$scope.save = function(){
+			socket.post('/user/' + $stateParams.id, $scope.user, function(data){
+				swal('Saved', 'User updated', 'success');
+				$state.go('admin.users');
+			});
+		};
+	});

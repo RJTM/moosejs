@@ -1,6 +1,6 @@
 angular.module('mooseJs.common')
 .filter('orderObjectBy', function() {
-  return function(items, field, reverse) {
+  return function(items, field, reverse, score) {
     var filtered = [];
     angular.forEach(items, function(item) {
       filtered.push(item);
@@ -8,6 +8,13 @@ angular.module('mooseJs.common')
     filtered.sort(function (a, b) {
       if(a[field] > b[field]) return 1;
       if(a[field] < b[field]) return -1;
+      if(a[field] === b[field] && score){
+        var timeA = a['totalTime'] + a['penalty'],
+        timeB = b['totalTime'] + b['penalty'];
+        if(timeA > timeB) return 1;
+        if(timeA < timeB) return -1;
+        return 0;
+      }
       return 0;
     });
     if(reverse) filtered.reverse();

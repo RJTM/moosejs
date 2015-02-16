@@ -23,8 +23,8 @@
 				<td>{{ user.name }}</td>
 				<td>{{ user.role }}</td>
 				<td>
-					<button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></button>
-					<button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+					<button class="btn btn-info btn-xs" ui-sref="admin.user({ id: user.id })"><i class="fa fa-pencil"></i></button>
+					<button class="btn btn-danger btn-xs" ng-click="delete($index)"><i class="fa fa-trash"></i></button>
 				</td>
 			</tr>
 		</tbody>

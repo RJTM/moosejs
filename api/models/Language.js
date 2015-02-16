@@ -107,7 +107,7 @@ module.exports = {
         fileName: 'source.scala',
         executable: 'scala source.scala',
         arguments: '',
-        extesion: 'scala',
+        extension: 'scala',
         syntaxHighlighting: 'scala',
         timeFactor: 2.0
       },

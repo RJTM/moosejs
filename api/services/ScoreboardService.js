@@ -50,7 +50,7 @@ module.exports = {
 	},
 
 	removeUserFromContest: function(user, contest){
-		Scoreboard.destroy({user: user.id, contest: contest}).exec(function(err, res){
+		Scoreboard.destroy({user: user, contest: contest}).exec(function(err, res){
 			if(err){ 
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}

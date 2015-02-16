@@ -45,6 +45,16 @@ angular.module('mooseJs.admin')
 		}
 	})
 
+	.state('admin.user', {
+		url: '/users/:id',
+		templateUrl: 'templates/admin/user.html',
+		controller: 'admin.UserController',
+		data: {
+			ncyBreadcrumbLabel: 'Modifying a user',
+			ncyBreadcrumbParent: 'admin.users'
+		}
+	})
+
 	.state('admin.users.register', {
 		url : "/register",
 		views: {
