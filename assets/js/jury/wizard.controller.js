@@ -3,6 +3,16 @@
 angular.module('mooseJs.jury')
 	.controller('jury.WizardController', ["$scope", "$stateParams", "$state", "Contest", function($scope, $stateParams, $state, Contest){
 		$scope.contest = Contest.get({id: $stateParams.id});
+		$scope.$watch('contest.startTime', function(){
+			if(!$scope.contest.freezeTime || $scope.contest.freezeTime < $scope.contest.startTime)
+				$scope.contest.freezeTime = $scope.contest.startTime;
+
+			if(!$scope.contest.endTime || $scope.contest.endTime < $scope.contest.startTime)
+				$scope.contest.endTime = $scope.contest.startTime;
+
+			if(!$scope.contest.unfreezeTime || $scope.contest.unfreezeTime < $scope.contest.startTime)
+				$scope.contest.unfreezeTime = $scope.contest.startTime;
+		});
 
 		$scope.next = function(level, taskIndex, subtaskIndex){
 			if(level === 'contest'){

@@ -4,26 +4,26 @@
 	<div class="col-md-10">
 
 		<div class="form-group">
-			<label for="startTime">Start Time</label>
-			<input type="text" class="form-control" id="startTime" ng-model="contest.startTime">
+			<label for="startTime">Start Time</label><br>
+			<datetimepicker id="startTime" class="well" show-weeks="false" hour-step="1" minute-step="1" ng-model="contest.startTime" date-format="yyyy/MMM/dd" readonly-time="false"></datetimepicker>
 			<p class="help-block">Contest beginning date and time.</p>
 		</div>
 
 		<div class="form-group">
-			<label for="freezeTime">Scoreboard Freeze Time</label>
-			<input type="text" class="form-control" id="freezeTime" ng-model="contest.freezeTime">
+			<label for="freezeTime">Scoreboard Freeze Time</label><br>
+			<datetimepicker id="freezeTime" class="well" show-weeks="false" hour-step="1" minute-step="1" ng-model="contest.freezeTime" date-format="yyyy/MMM/dd" readonly-time="false"></datetimepicker>
 			<p class="help-block">If different from Unfreeze Time, the scoreboard will not show any updates after this moment.</p>
 		</div>
 		
 		<div class="form-group">
-			<label for="endTime">End time</label>
-			<input type="text" class="form-control" id="endTime" ng-model="contest.endTime">
+			<label for="endTime">End time</label><br>
+			<datetimepicker id="endTime" class="well" show-weeks="false" hour-step="1" minute-step="1" ng-model="contest.endTime" date-format="yyyy/MMM/dd" readonly-time="false"></datetimepicker>
 			<p class="help-block">Contest ending date and time.</p>
 		</div>
 
 		<div class="form-group">
-			<label for="unfreezeTime">Scoreboard Unfreeze Time</label>
-			<input type="text" class="form-control" id="unfreezeTime" ng-model="contest.unfreezeTime">
+			<label for="unfreezeTime">Scoreboard Unfreeze Time</label><br>
+			<datetimepicker id="unfreezeTime" class="well" min-date="contest.startTime" show-weeks="false" hour-step="1" minute-step="1" ng-model="contest.unfreezeTime" date-format="yyyy/MMM/dd" readonly-time="false"></datetimepicker>
 			<p class="help-block">Time to release the scoreboard</p>
 		</div>
 		
