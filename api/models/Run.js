@@ -36,6 +36,6 @@ module.exports = {
 			via: 'run'
 		}
 	},
-	seedData : []
+	// seedData : []
 };
 

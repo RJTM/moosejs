@@ -40,6 +40,12 @@ module.exports = {
 				return res.json([]);				
 			}
 		});
+	},
+
+	rejudge: function(req, res){
+		var id = req.param('id');
+		JudgeService.reJudgeTask(id);
+		return res.ok();
 	}
 };
 

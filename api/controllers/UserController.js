@@ -80,15 +80,7 @@
                if(err) return res.serverError(err);
                async.each(users, function(user, callback){
                     contest.users.remove(user);
-                    
-                    /**
-                    
-                         TODO:
-                         - Create ScoreboardService.deleteUser
-                         - Reference it here
-                    
-                    **/
-                    //ScoreboardService.addUser(user,contestId);
+                    ScoreboardService.removeUserFromContest(user,contestId);
                     callback();
                }, function(err){
                     contest.save();

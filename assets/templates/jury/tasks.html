@@ -26,7 +26,7 @@
 				<th>Name</th>
 				<th>Runs</th>
 				<th>Subtasks</th>
-				<th>Actions</th>
+				<th class="col-md-2">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,6 +39,9 @@
 				<td>
 					<button class="btn btn-info btn-xs" ui-sref="jury.task({ id: task.id })"><i class="fa fa-pencil"></i></button>
 					<button class="btn btn-danger btn-xs" ng-click="delete($index)"><i class="fa fa-trash"></i></button>
+					<button class="btn btn-warning btn-xs" ng-click="rejudge($index)" tooltip="Rejudge all runs for this task">
+						<i class="fa fa-refresh"></i> Rejudge
+					</button>
 				</td>
 			</tr>
 		</tbody>

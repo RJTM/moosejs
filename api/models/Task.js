@@ -30,24 +30,24 @@ module.exports = {
     }
   },
     
-  seedData: [{
-    name: "DummyTask",
-    code: 'dummy',
-    contest: 1,
-    color : '#D949E3'
-  },
- {
-     name: "Flips",
-     code: 'flips',
-     contest: 1,
-     color : '#4953E3'
- },
- {
-     name: "Diet Coke",
-     code: 'diet',
-     contest: 1,
-     color : '#49E389'
- }],
+ //  seedData: [{
+ //    name: "DummyTask",
+ //    code: 'dummy',
+ //    contest: 1,
+ //    color : '#D949E3'
+ //  },
+ // {
+ //     name: "Flips",
+ //     code: 'flips',
+ //     contest: 1,
+ //     color : '#4953E3'
+ // },
+ // {
+ //     name: "Diet Coke",
+ //     code: 'diet',
+ //     contest: 1,
+ //     color : '#49E389'
+ // }],
     
 };
 

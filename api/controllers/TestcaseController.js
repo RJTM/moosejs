@@ -65,8 +65,7 @@ module.exports = {
         var subtask = req.param('subtask');
         var task = req.param('task');
         var inputFile = req.file('input');
-        var outputFile = req.file('output');
-
+        
         Testcase.findOne({id: req.param('testcase')}).exec(function(err, testcase){
             if(err) return res.serverError(err);
 

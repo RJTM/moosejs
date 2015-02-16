@@ -8,7 +8,7 @@ angular.module('mooseJs.jury')
 				'done': 'Waiting to be verified',
 				'pending': 'Pending',
 				'judging': 'Judging',
-				'verified': 'verified'
+				'verified': 'Verified'
 			}
 			return statues[input];
 		}

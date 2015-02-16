@@ -13,4 +13,19 @@ angular.module('mooseJs.jury')
 		$scope.trustAsHtml = function(value) {
 			return $sce.trustAsHtml(value);
 		};
+
+		$scope.rejudge = function(index){
+			swal({
+				title: 'Rejudge all runs for this task',
+				text: 'Are you sure?',
+				type: 'warning',
+				showCancelButton : true,
+				confirmButtonText : 'Yes, rejudge',
+				closeOnConfirm : false,
+			}, function(){
+				socket.post('/task/rejudge', {id: $scope.tasks[index].id}, function(data){
+					swal('Done!', 'Starting to rejudge this task', 'success');
+				});
+			});
+		}
 	}]);

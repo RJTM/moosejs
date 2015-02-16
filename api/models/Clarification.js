@@ -33,24 +33,24 @@ module.exports = {
 		}
 	},
 
-	seedData: [
-		{
-			owner: 1,
-			jury: 2,
-			question: 'Is this the real life?',
-			answer: 'Is this just fantasy'
-		},
-		{
-			owner: 2,
-			jury: 1,
-			question: 'Is this thing working',
-			answer: 'Oh yes it is'
-		},
-		{
-			owner: 1,
-			question: 'I have no answer :('
-		}
+	// seedData: [
+	// 	{
+	// 		owner: 1,
+	// 		jury: 2,
+	// 		question: 'Is this the real life?',
+	// 		answer: 'Is this just fantasy'
+	// 	},
+	// 	{
+	// 		owner: 2,
+	// 		jury: 1,
+	// 		question: 'Is this thing working',
+	// 		answer: 'Oh yes it is'
+	// 	},
+	// 	{
+	// 		owner: 1,
+	// 		question: 'I have no answer :('
+	// 	}
 
-	]
+	// ]
 };
 

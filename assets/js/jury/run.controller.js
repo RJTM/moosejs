@@ -47,4 +47,22 @@ angular.module('mooseJs.jury')
 			return statues[run.status];
 		};
 
+		$scope.verifiable = function(thisRun){
+			if(thisRun.status === 'done'){
+				for(var i=0, n=$scope.runs.length; i<n;i++){
+					var otherRun = $scope.runs[i];
+					if(thisRun.id === otherRun.id) continue;
+					if(thisRun.owner.id === otherRun.owner.id &&
+					 thisRun.task.id === otherRun.task.id &&
+					 otherRun.status === 'done' &&
+					 thisRun.id > otherRun.id){
+						return false;
+					}
+				}
+				thisRun.verifiable = true;
+				return true;
+			}
+			return false;
+		}
+
 	}])

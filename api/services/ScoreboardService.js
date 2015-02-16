@@ -50,14 +50,13 @@ module.exports = {
 	},
 
 	removeUserFromContest: function(user, contest){
-		Scoreboard.destroy({user: user.id, contest: contest.id}).exec(function(err, res){
+		Scoreboard.destroy({user: user.id, contest: contest}).exec(function(err, res){
 			if(err){ 
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
 			res.forEach(function(row){
 				Scoreboard.publishDestroy(row.id);
 			});
-			callback();
 		});
 	},
 
@@ -135,7 +134,6 @@ module.exports = {
 	update: function(grade, veredicts){
 		/**
 		
-			TODO:
 			- Get previous result for that task
 			- Compare subtask to subtask to see which one of the runs is better
 			- Update if needed

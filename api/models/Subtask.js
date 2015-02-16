@@ -33,22 +33,22 @@ module.exports = {
 		}
 	},
 
-	seedData: [
-	{
-		task: 1,
-		points: 20,
-		timeLimit: 5,
-		memoryLimit: 50
-	},
-	{
-		task: 1,
-		points: 30
-	},
-	{
-		task: 1,
-		points: 50
-	}
-	],
+	// seedData: [
+	// {
+	// 	task: 1,
+	// 	points: 20,
+	// 	timeLimit: 5,
+	// 	memoryLimit: 50
+	// },
+	// {
+	// 	task: 1,
+	// 	points: 30
+	// },
+	// {
+	// 	task: 1,
+	// 	points: 50
+	// }
+	// ],
 
 	afterDestroy: function(destroyedRecords, cb){
 		ScoreboardService.deleteSubtask(destroyedRecords);
