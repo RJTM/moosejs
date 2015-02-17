@@ -44,12 +44,14 @@ angular.module('mooseJs.common')
 						if(new Date(contest.startTime) > currentTime){
 							var timer = {
 								running: false,
+								name: contest.name,
 								endTime: new Date(contest.startTime).getTime(),
 							}
 							$scope.timers.push(timer);
 						}else{
 							var timer = {
 								running: true,
+								name: contest.name,
 								endTime: new Date(contest.endTime).getTime()
 							}
 							$scope.timers.push(timer);
