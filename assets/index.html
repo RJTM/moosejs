@@ -11,77 +11,84 @@
   <!--STYLES END-->
 </head>
 <body>
-    
-    <nav class="navbar navbar-inverse" role="navigation" ng-controller="navController">
-       <div class="container-fluid">
-         <div class="navbar-header top-logo">
-           <a href="#"><img src="/images/logo.png" alt=""></a>
-         </div>
-         
-         <ul class="nav navbar-nav navbar-right">
+  <div class="wrapper">
+    <header>
+      <nav class="navbar navbar-inverse" role="navigation" ng-controller="navController">
+         <div class="container-fluid">
+           <div class="navbar-header top-logo">
+             <a href="#"><img src="/images/logo.png" alt=""></a>
+           </div>
+           
+           <ul class="nav navbar-nav navbar-right">
 
-          <li ng-show="user.role === 'team'" class="navbar-text">
-              <span class="text-success" ng-show="timer.status === 'running'">
-                <strong>
-                  Time remaining
-                </strong>
-              </span>
-              <span ng-show="timer.status === 'not running'">
-                Next contest in
-              </span>
-              <span class="text-warning" ng-show="timer.status === 'waiting'">
-                <strong>
-                  Results coming in
-                </strong>
-              </span>
-              <timer end-time="{{ timer.endTime }}"></timer>
-          </li>
+            <li ng-show="user.role === 'team'" class="navbar-text">
+                <span class="text-success" ng-show="timer.status === 'running'">
+                  <strong>
+                    Time remaining
+                  </strong>
+                </span>
+                <span ng-show="timer.status === 'not running'">
+                  Next contest in
+                </span>
+                <span class="text-warning" ng-show="timer.status === 'waiting'">
+                  <strong>
+                    Results coming in
+                  </strong>
+                </span>
+                <timer end-time="{{ timer.endTime }}"></timer>
+            </li>
 
-          <li class="dropdown" dropdown ng-hide="user.role === 'team'">
-            <a href="#" class="dropdown-toggle" dropdown-toggle>Contests <span class="caret"></span></a>
+            <li class="dropdown" dropdown ng-hide="user.role === 'team'">
+              <a href="#" class="dropdown-toggle" dropdown-toggle>Contests <span class="caret"></span></a>
 
-            <ul class="dropdown-menu timers-list" dropdown-menu>
-                <li ng-repeat="timer in timers">
-                    <a>
-                    <strong>{{ timer.name }}</strong> <br>
-                    <span class="text-success" ng-show="timer.status === 'running'">
-                      <strong>
-                        Time remaining
-                      </strong>
-                    </span>
-                    <span ng-show="timer.status === 'not running'">
-                      Starts in
-                    </span>
-                    <span class="text-warning" ng-show="timer.status === 'waiting'">
-                      <strong>
-                        Results coming in
-                      </strong>
-                    </span>
-                    <timer end-time="{{ timer.endTime }}"></timer>
-                    </a>
-                </li>
-            </ul>
-          </li>
-
-           <li class="dropdown" dropdown ng-show="isLogged">
-             <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
-              
-              <ul class="dropdown-menu" dropdown-menu>
-                <li><a href ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+              <ul class="dropdown-menu timers-list" dropdown-menu>
+                  <li ng-repeat="timer in timers">
+                      <a>
+                      <strong>{{ timer.name }}</strong> <br>
+                      <span class="text-success" ng-show="timer.status === 'running'">
+                        <strong>
+                          Time remaining
+                        </strong>
+                      </span>
+                      <span ng-show="timer.status === 'not running'">
+                        Starts in
+                      </span>
+                      <span class="text-warning" ng-show="timer.status === 'waiting'">
+                        <strong>
+                          Results coming in
+                        </strong>
+                      </span>
+                      <timer end-time="{{ timer.endTime }}"></timer>
+                      </a>
+                  </li>
               </ul>
             </li>
 
-            <li ng-hide="isLogged"><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
+             <li class="dropdown" dropdown ng-show="isLogged">
+               <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
+                
+                <ul class="dropdown-menu" dropdown-menu>
+                  <li><a href ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+                </ul>
+              </li>
 
-            <!-- <li><span class="navbar-text white-text">Time</span></li> -->
-         </ul>
-        </div>
+              <li ng-hide="isLogged"><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
 
-     </nav>
+              <!-- <li><span class="navbar-text white-text">Time</span></li> -->
+           </ul>
+          </div>
 
-    <div ui-view></div>
+       </nav>
+    </header>
+
+    <div ui-view>
+    </div>
+    <div class="push"></div>
+  </div>
+
+    
     <footer>
-        <div align="center">MooseJS 2014</div>
+        <div align="center">MooseJS 2015</div>
     </footer>
 
   <!--SCRIPTS-->
