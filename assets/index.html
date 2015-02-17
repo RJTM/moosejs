@@ -20,6 +20,18 @@
          
          <ul class="nav navbar-nav navbar-right">
 
+          <li ng-show="user.role === 'team'" class="navbar-text">
+              <span class="text-success" ng-show="timer.running">
+                <strong>
+                  Time remaining
+                </strong>
+              </span>
+              <span ng-hide="timer.running">
+                Next contest in
+              </span>
+              <timer end-time="{{ timer.endTime }}"></timer>
+          </li>
+
            <li class="dropdown" dropdown ng-show="isLogged">
              <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
               
@@ -29,10 +41,6 @@
             </li>
 
             <li ng-hide="isLogged"><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
-            
-            <li ng-show="user.role === 'team'" class="navbar-text">
-              {{ timerValue.hours }}h {{ timerValue.minutes }}m {{timerValue.seconds}}s
-            </li>
 
             <!-- <li><span class="navbar-text white-text">Time</span></li> -->
          </ul>
