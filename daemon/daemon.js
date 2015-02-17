@@ -195,6 +195,10 @@ var judge = function(grade){
 }
 
 var getTestCase = function(testcase, callback){
+	if(!testcase.inputFile && !testcase.outputFile){
+		callback('No testcase files found. Ignoring');
+		return;
+	}
 	var inputFile =  '/protected/testcases/'+testcase.inputFile;
 
 	var outputFile =  '/protected/testcases/'+testcase.outputFile;

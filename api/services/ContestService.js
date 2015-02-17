@@ -93,7 +93,9 @@ module.exports = {
 										fs.renameSync(to+(index+1)+'.out', to+testcase.id+'.out');
 										testcase.inputFile = dirName + testcase.id + '.in';
 										testcase.outputFile = dirName + testcase.id + '.out';
-										testcase.save();
+										testcase.save(function(){
+											Testcase.publishUpdate(testcase.id);
+										});
 									});
 								});
 							});
