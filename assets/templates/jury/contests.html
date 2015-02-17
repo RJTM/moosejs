@@ -9,7 +9,9 @@
 				<th>Name</th>
 				<th>Tasks</th>
 				<th>Start Time</th>
+				<th>Freeze Time</th>
 				<th>End Time</th>
+				<th>Unfreeze Time</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
@@ -18,7 +20,9 @@
 				<td>{{ contest.name }} <i class="fa fa-check text-success" ng-show="contest.set" tooltip="This contest has been set up"></i></td>
 				<td>{{ contest.tasks.length }}</td>
 				<td>{{ contest.startTime | date:'short' }}</td>
+				<td>{{ contest.freezeTime | date:'short' }}</td>
 				<td>{{ contest.endTime | date:'short' }}</td>
+				<td>{{ contest.unfreezeTime | date : 'short' }}</td> 
 				<td><button class="btn btn-warning btn-xs" ng-click="settings($index)"><i class="fa fa-cog"></i></button></td>
 			</tr>
 		</tbody>

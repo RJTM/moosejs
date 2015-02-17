@@ -55,7 +55,7 @@ angular.module('mooseJs.jury')
 				closeOnConfirm : true
 			}, function(){
 				socket.post('/contest/'+$scope.contest.id, $scope.contest, function(data){
-					swal('Done!', 'Clarification sent', 'success');
+					swal('Done!', 'Contest Updated', 'success');
 					$state.go('jury.contests');
 				});
 			});
