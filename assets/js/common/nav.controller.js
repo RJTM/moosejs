@@ -18,6 +18,8 @@ angular.module('mooseJs.common')
 			$scope.isLogged = false;
 			$scope.user = {};
 
+			socket.get('/contest/user', contestTime);
+
 			$state.go('public.home');
 		}
 
