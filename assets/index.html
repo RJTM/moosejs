@@ -13,24 +13,26 @@
 <body>
     
     <nav class="navbar navbar-inverse" role="navigation" ng-controller="navController">
-       <div class="navbar-header top-logo">
-         <a href="#"><img src="/images/logo.png" alt=""></a>
-       </div>
-       <p class="navbar-text navbar-right">
-           <strong><span class="white-text">Time remaining 00:00:00</span></strong>
-       </p>
-       <ul class="nav navbar-nav navbar-right" ng-hide="isLogged">
-           <li><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
-       </ul>
-       <ul class="nav navbar-nav navbar-right" ng-show="isLogged">
-          <li class="dropdown" dropdown>
-           <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
-            
-            <ul class="dropdown-menu" dropdown-menu>
-              <li><a href ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
-            </ul>
-          </li>
-       </ul>
+       <div class="container-fluid">
+         <div class="navbar-header top-logo">
+           <a href="#"><img src="/images/logo.png" alt=""></a>
+         </div>
+         
+         <ul class="nav navbar-nav navbar-right">
+
+           <li class="dropdown" dropdown ng-show="isLogged">
+             <a href="#" class="dropdown-toggle" dropdown-toggle  >Welcome, {{ user.username }} <span class="caret"></span></a>
+              
+              <ul class="dropdown-menu" dropdown-menu>
+                <li><a href ng-click="logout()"><i class="fa fa-power-off"></i> Logout</a></li>
+              </ul>
+            </li>
+
+            <li ng-hide="isLogged"><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
+
+            <li><span class="navbar-text white-text">Time</span></li>
+         </ul>
+        </div>
 
      </nav>
 
