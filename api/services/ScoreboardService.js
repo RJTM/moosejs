@@ -228,5 +228,33 @@ module.exports = {
 
 			});
 		});
+	},
+	findScoreboardJury: function(contestId, callback){
+		Scoreboard.find({ contest: contestId }).exec(callback);
+	},
+	findScoreboardTeam: function(userId, callback){
+		ContestService.getActiveContest(userId, function(err, contest){
+			if(err){
+				callback(err); return;
+			}
+			ScoreboardPublic.find({ contest: contest.id}).exec(callback);
+		});
+	},
+	findScoreboardPublic: function(contestId, callback){
+		Contest.findOne(contestId).exec(function(err, contest){
+			if(err){
+				callback(err); return;
+			}
+			if(contest){
+				var currentTime = new Date();
+				if(new Date(contest.unfreezeTime) < currentTime){
+					Scoreboard.find({ contest: contestId }).exec(callback);
+				}else{
+					ScoreboardPublic.find({ contest: contestId }).exec(callback);
+				}
+			}else{
+				return [];
+			}
+		});
 	}
 }

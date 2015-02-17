@@ -47,7 +47,8 @@ module.exports.policies = {
     },
 
     ScoreboardController: {
-      '*': ['tokenAuth', 'jury']
+      '*': false,
+      'index': 'cleanToken'
     },
 
     TaskController: {
