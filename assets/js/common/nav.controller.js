@@ -38,7 +38,23 @@ angular.module('mooseJs.common')
 						$scope.timer.endTime = new Date(currentContest.endTime).getTime();
 					}
 				}else{
-					// Everything else
+					var currentTime = new Date();
+					$scope.timers = [];
+					angular.forEach(contests, function(contest){
+						if(new Date(contest.startTime) > currentTime){
+							var timer = {
+								running: false,
+								endTime: new Date(contest.startTime).getTime(),
+							}
+							$scope.timers.push(timer);
+						}else{
+							var timer = {
+								running: true,
+								endTime: new Date(contest.endTime).getTime()
+							}
+							$scope.timers.push(timer);
+						}
+					});
 
 				}
 			}
