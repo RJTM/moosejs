@@ -67,7 +67,11 @@
                     ScoreboardService.addUser(user, contestId);
                     callback();
                }, function(err){
-                    contest.save();
+                    contest.save(function(){
+                         users.forEach(function(user){
+                              Contest.publishAdd(contestId, 'users', user);
+                         });
+                    });
                     return res.json(contest);
                });
           });         
@@ -83,7 +87,11 @@
                     ScoreboardService.removeUserFromContest(user,contestId);
                     callback();
                }, function(err){
-                    contest.save();
+                    contest.save(function(){
+                         users.forEach(function(user){
+                              Contest.publishRemove(contestId, 'users', user);
+                         });
+                    });
                     return res.json(contest);
                });
           });     

@@ -32,6 +32,30 @@ module.exports = {
 			if(err) return res.serverError(err);
 			return res.json(result);
 		});
+	},
+
+	user: function(req, res){
+		var now = new Date();
+		var user = req.token.id;
+		User.findOne(user).populate('contests').exec(function(err, user){
+			if(err) return res.serverError(err);
+			Contest.subscribe(req.socket, user.contests);
+			var upcomingContests = [];
+			user.contests.forEach(function(contest){
+				if(new Date(contest.unfreezeTime) > now)
+					upcomingContests.push(contest);
+			});
+			upcomingContests.sort(function(a,b){
+				var startTimeA = new Date(a.startTime);
+				var startTimeB = new Date(b.startTime);
+				if(startTimeA < startTimeB) return -1;
+				if (startTimeA > startTimeB) return 1;
+				return 0;
+			});
+			upcomingContests.length = Math.min(3,upcomingContests.length);
+			res.json(upcomingContests);
+			res.ok();
+		});
 	}
 };
 

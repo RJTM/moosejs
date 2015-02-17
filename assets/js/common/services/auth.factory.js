@@ -38,6 +38,13 @@ mooseJs.factory('Auth', ["$http", "LocalService", "AccessLevels", "User", "Curre
 				return user.role === 'staff';
 			}
 		},
+		isTeam: function(){
+			if(LocalService.get('auth_token')){
+				var user = CurrentUser.user();
+				return user.role === 'team';
+			}
+			return false;
+		},
 		login: function(credentials) {
 			var login = $http.post('/user/authenticate', credentials);
 			login.success(function(result) {
