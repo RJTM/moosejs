@@ -251,8 +251,25 @@ var onTestcaseChange = function(obj){
 
 var syncTestcases = function(callback){
 	socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
-		async.each(body, getTestCase, function(err){
-			if(!err){
+		async.each(body, 
+			function(testcase, callback){
+				getTestCase(testcase, function(err){
+					if(err){
+						if(err === 'No testcase files found. Ignoring'){
+							util.log.error(err);
+							callback();
+							return;
+						}else{
+							callback(err);
+							return;
+						}
+					}
+					callback();
+				});
+			}, function(err){
+			if(err){	
+				util.log.error(err);
+			}else{
 				tmp.lastUpdate = new Date();
 				jsonfile.writeFileSync('tmp.json',tmp);
 			}
