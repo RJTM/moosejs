@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.ContestUpdateController', ["$scope","$state","$stateParams", "socket",  function($scope, $state, $stateParams, socket){
+	.controller('jury.ContestUpdateController', ["$scope","$state","$stateParams", "socket", "$rootScope",  function($scope, $state, $stateParams, socket, $rootScope){
 		socket.get('/contest/'+$stateParams.id, function(data){
 			var start = new Date(data.startTime),
 				end = new Date(data.endTime),
@@ -56,6 +56,7 @@ angular.module('mooseJs.jury')
 			}, function(){
 				socket.post('/contest/'+$scope.contest.id, $scope.contest, function(data){
 					swal('Done!', 'Clarification sent', 'success');
+					$rootScope.$broadcast('contestUpdated');
 					$state.go('jury.contests');
 				});
 			});
