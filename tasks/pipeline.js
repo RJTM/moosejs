@@ -38,7 +38,6 @@ var jsFilesToInject = [
   'dependencies/prism.js',
   'dependencies/vendor/angular-ui-bootstrap-datetimepicker/datetimepicker-tpls-0.11.js',
 
-
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/common/common.module.js',

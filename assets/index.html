@@ -29,8 +29,12 @@
             </li>
 
             <li ng-hide="isLogged"><a ui-sref="public.login"><i class="fa fa-power-off"></i> Login</a></li>
+            
+            <li ng-show="user.role === 'team'" class="navbar-text">
+              {{ timerValue.hours }}h {{ timerValue.minutes }}m {{timerValue.seconds}}s
+            </li>
 
-            <li><span class="navbar-text white-text">Time</span></li>
+            <!-- <li><span class="navbar-text white-text">Time</span></li> -->
          </ul>
         </div>
 
