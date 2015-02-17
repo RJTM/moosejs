@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.WizardFinishedController', ["$scope", "socket", function($scope, socket){
+	.controller('jury.WizardFinishedController', ["$scope", "socket", "$rootScope", function($scope, socket, $rootScope){
 		$scope.getBlob = function(){
 			var contest = {
 				tasks: $scope.contest.tasks,
@@ -17,7 +17,7 @@ angular.module('mooseJs.jury')
 
 		$scope.save = function(){
 			socket.post('/contest/fromJson', $scope.contest, function(data){
-				console.log(data);
+				$rootScope.$broadcast('contestUpdated');
 			});
 		}
 	}]);

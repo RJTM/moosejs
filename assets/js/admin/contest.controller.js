@@ -1,5 +1,5 @@
 angular.module('mooseJs.admin')
-	.controller('admin.ContestsController', ["$scope", "Contest", function($scope, Contest){
+	.controller('admin.ContestsController', ["$scope", "Contest", "$rootScope", function($scope, Contest, $rootScope){
 		$scope.contests = Contest.query();
 		$scope.date = new Date();
 
@@ -32,6 +32,7 @@ angular.module('mooseJs.admin')
 			Contest.delete({ id: $scope.contests[index].id});
 			$scope.contests.splice(index,1);
 			swal("Deleted!", "The contest has been deleted", "success");
+			$rootScope.$broadcast('contestUpdated');
 		}
 
 		$scope.delete = function(index){

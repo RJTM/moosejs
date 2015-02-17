@@ -96,4 +96,8 @@ angular.module('mooseJs.common')
 		$scope.$on('loggedIn', function(event){
 			socket.get('/contest/user', contestTime);
 		});
+
+		$scope.$on('contestUpdated', function(event){
+			socket.get('/contest/user', contestTime);
+		});
 	});
