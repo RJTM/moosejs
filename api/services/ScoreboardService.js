@@ -168,6 +168,9 @@ module.exports = {
 			if(err){
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
+			if(response.run.owner.role !== 'team'){
+				return;
+			}
 			Scoreboard.find({ where: {user: response.run.owner.id, task: response.task.id}, sort: 'subtask'}).exec(function(err, rows){
 				if(err){
 					sails.log.err("Error building scoreboard. Please refresh scoreboard"); 

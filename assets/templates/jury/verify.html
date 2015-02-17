@@ -52,7 +52,7 @@
 						<tr ng-repeat-start="testcase in subtask.testcases">
 							<td>{{ $index+1 }}</td>
 							<td><span ng-class="testcase.testcasegrade.result == 'accepted' ? 'text-success' : 'text-danger'">{{ testcase.testcasegrade.result }}</td>
-							<td><button class="btn btn-xs btn-primary" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-search"></i></button></td>
+							<td><button ng-show="testcase.testcasegrade.result !=='accepted'" class="btn btn-xs btn-primary" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-search"></i></button><p ng-hide="testcase.testcasegrade.result !=='accepted'">{{testcase.diff[0].text}}</p></td>
 						</tr>
 						<tr ng-repeat-end ng-init="isCollapsed=true" collapse="isCollapsed">
 							<td colspan="3">
