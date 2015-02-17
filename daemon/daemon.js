@@ -219,8 +219,7 @@ var getTestCase = function(testcase, callback){
 
 			util.log.info("Testcase saved "+ testcase.id);
 			callback();
-		}
-		)
+		});
 }
 
 var onTestcaseChange = function(obj){
@@ -249,6 +248,10 @@ var onTestcaseChange = function(obj){
 var syncTestcases = function(callback){
 	socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
 		async.each(body, getTestCase, function(err){
+			if(!err){
+				tmp.lastUpdate = new Date();
+				jsonfile.writeFileSync('tmp.json',tmp);
+			}
 			callback();
 		});
 	});
