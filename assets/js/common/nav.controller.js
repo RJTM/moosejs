@@ -30,29 +30,45 @@ angular.module('mooseJs.common')
 					var currentTime = new Date();
 					var currentContest = contests[0];
 					$scope.timer = {};
-					if(new Date(currentContest.startTime) > currentTime){
-						$scope.timer.running = false;
-						$scope.timer.endTime = new Date(currentContest.startTime).getTime();
+					var startTime = new Date(currentContest.startTime);
+					var endTime = new Date(currentContest.endTime);
+					var unfreezeTime = new Date(currentContest.unfreezeTime);
+					if(startTime > currentTime){
+						$scope.timer.status = 'not running';
+						$scope.timer.endTime = startTime.getTime();
+					}else if(startTime < currentTime && currentTime < endTime){
+						$scope.timer.status = 'running';
+						$scope.timer.endTime = endTime.getTime();
 					}else{
-						$scope.timer.running = true;
-						$scope.timer.endTime = new Date(currentContest.endTime).getTime();
+						$scope.timer.status = 'waiting';
+						$scope.timer.endTime = unfreezeTime.getTime();
 					}
 				}else{
 					var currentTime = new Date();
 					$scope.timers = [];
 					angular.forEach(contests, function(contest){
-						if(new Date(contest.startTime) > currentTime){
+						var startTime = new Date(contest.startTime);
+						var endTime = new Date(contest.endTime);
+						var unfreezeTime = new Date(contest.unfreezeTime);
+						if(startTime > currentTime){
 							var timer = {
-								running: false,
+								status: 'not running',
 								name: contest.name,
-								endTime: new Date(contest.startTime).getTime(),
+								endTime: startTime.getTime(),
+							}
+							$scope.timers.push(timer);
+						}else if(startTime < currentTime && currentTime < endTime){
+							var timer = {
+								status: 'running',
+								name: contest.name,
+								endTime: endTime.getTime()
 							}
 							$scope.timers.push(timer);
 						}else{
 							var timer = {
-								running: true,
+								status: 'waiting',
 								name: contest.name,
-								endTime: new Date(contest.endTime).getTime()
+								endTime: unfreezeTime.getTime()
 							}
 							$scope.timers.push(timer);
 						}

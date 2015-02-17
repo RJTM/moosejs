@@ -50,6 +50,10 @@ angular.module('mooseJs.team')
 				data: $scope.submit
 			}).success(function(data){
 				swal('Done!', 'Submission sent','success');
+			}).error(function(data, status){
+				if(status === 400){
+					sweetAlert("Too late.", "This contest has ended", "error");
+				}
 			});
 		});
 	}

@@ -23,6 +23,11 @@
  			var now = new Date();
  			var contestTime = new Date(fullTask.contest.startTime);
  			var time = parseInt((now - contestTime)/60000);
+ 			var endTime = new Date(fullTask.contest.endTime);
+ 			if(now > endTime){
+ 				res.json(400, { msg: 'Too late'});
+ 				return;
+ 			}
  			RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
  				if(err) return res.serverError(err);
  				Run.create({

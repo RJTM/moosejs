@@ -21,13 +21,18 @@
          <ul class="nav navbar-nav navbar-right">
 
           <li ng-show="user.role === 'team'" class="navbar-text">
-              <span class="text-success" ng-show="timer.running">
+              <span class="text-success" ng-show="timer.status === 'running'">
                 <strong>
                   Time remaining
                 </strong>
               </span>
-              <span ng-hide="timer.running">
+              <span ng-show="timer.status === 'not running'">
                 Next contest in
+              </span>
+              <span class="text-warning" ng-show="timer.status === 'waiting'">
+                <strong>
+                  Results coming in
+                </strong>
               </span>
               <timer end-time="{{ timer.endTime }}"></timer>
           </li>
@@ -39,13 +44,18 @@
                 <li ng-repeat="timer in timers">
                     <a>
                     <strong>{{ timer.name }}</strong> <br>
-                    <span class="text-success" ng-show="timer.running">
+                    <span class="text-success" ng-show="timer.status === 'running'">
                       <strong>
                         Time remaining
                       </strong>
                     </span>
-                    <span ng-hide="timer.running">
+                    <span ng-show="timer.status === 'not running'">
                       Starts in
+                    </span>
+                    <span class="text-warning" ng-show="timer.status === 'waiting'">
+                      <strong>
+                        Results coming in
+                      </strong>
                     </span>
                     <timer end-time="{{ timer.endTime }}"></timer>
                     </a>
