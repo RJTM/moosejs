@@ -4,8 +4,9 @@ angular.module('mooseJs.jury')
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
 
-		socket.get('/scoreboard', function(data){
-			
+		var calculateScoreboard = function(data){
+			var users = $scope.scoreboardRows = {};
+			var tasks = $scope.tasks = {};
 			angular.forEach(data, function(value, key){
 				if(!users[value.user.id]){
 					users[value.user.id] = {};
@@ -64,15 +65,15 @@ angular.module('mooseJs.jury')
 			$scope.tasks = tasks;
 			//console.log(users);
 
-		});
+		};
+
+		socket.get('/scoreboard', calculateScoreboard);
 
 		socket.on('scoreboard', function(message){
 			if(message.verb === 'created'){
-				//New user or task
-				//TODO
-			}else if(message.verb === 'deleted'){
-				//Deleted user or task
-				//TODO
+				socket.get('/scoreboard', calculateScoreboard);
+			}else if(message.verb === 'destroyed'){
+				socket.get('/scoreboard', calculateScoreboard);
 			}else if(message.verb === 'updated'){
 				//Updated scoreboard
 				// console.log(message.data);
@@ -102,7 +103,7 @@ angular.module('mooseJs.jury')
 					oldTeam.penalty += parseInt(task.penalty);
 				});
 			}
-		})
+		});
 
 		$scope.getOrder = function(input){
 			return input.team.total;

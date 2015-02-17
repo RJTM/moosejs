@@ -46,6 +46,14 @@ module.exports = {
 		}
 	},
 
+	afterDestroy: function(destroyedRecords, cb){
+	    Task.destroy({ 
+	      contest: destroyedRecords.map(function(currentValue){
+	        return currentValue.id;
+	      })
+	    }).exec(cb);
+	  },
+
 	// seedData: [{
 	// 	name: "DummyContest",
 	// 	penalty: 20,

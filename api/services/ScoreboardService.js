@@ -37,9 +37,9 @@ module.exports = {
 					callback(err);
 					return;
 				}
-				res.forEach(function(row){
-					Scoreboard.publishDestroy(row.id);
-				});
+				if(res && res[0]){
+					Scoreboard.publishDestroy(res[0].id);
+				}
 				callback();
 			}, function(err){
 				if(err){ 
@@ -54,9 +54,9 @@ module.exports = {
 			if(err){ 
 				sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 			}
-			res.forEach(function(row){
-				Scoreboard.publishDestroy(row.id);
-			});
+			if(res && res[0]){
+				Scoreboard.publishDestroy(res[0].id);
+			}
 		});
 	},
 
@@ -95,9 +95,9 @@ module.exports = {
 					callback(err);
 					return;
 				}
-				res.forEach(function(row){
-					Scoreboard.publishDestroy(row.id);
-				});
+				if(res && res[0]){
+					Scoreboard.publishDestroy(res[0].id);
+				}
 				callback();
 			});
 		}, function(err){
@@ -127,8 +127,9 @@ module.exports = {
 					if(err){ 
 						sails.log.err("Error building scoreboard. Please refresh scoreboard"); return;
 					}
-					results.forEach(function(row){
-						Scoreboard.publishCreate(row);
+					Scoreboard.publishCreate({
+						id: 1,
+						rows: results
 					});
 				});
 			});
@@ -142,9 +143,9 @@ module.exports = {
 					callback(err);
 					return;
 				}
-				res.forEach(function(row){
-					Scoreboard.publishDestroy(row.id);
-				});
+				if(res && res[0]){
+					Scoreboard.publishDestroy(res[0].id);
+				}
 				callback();
 			}, function(err){
 				if(err){ 
