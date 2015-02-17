@@ -6,6 +6,7 @@ angular.module('mooseJs.team')
 	$scope.runs = 0;
 
 	socket.get('/clarification/user', {});
+	socket.get('/run/team', {});
 
 	socket.on('clarification', function(message){
 		if(message.verb === 'created'){
@@ -15,6 +16,10 @@ angular.module('mooseJs.team')
 		}else if(message.verb === 'updated'){
 			$scope.clarifications++;
 		}
+	});
+
+	socket.on('run', function(message){
+		$scope.runs++;
 	});
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){

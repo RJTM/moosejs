@@ -56,7 +56,8 @@ angular.module('mooseJs.team')
 				controller: 'team.RunsController',
 				data: {
 					ncyBreadcrumbLabel: 'Runs',
-					ncyBreadcrumbParent: 'team.home'
+					ncyBreadcrumbParent: 'team.home',
+					clearBadge : 'runs'
 				}
 			})
 			.state('team.tools', {

@@ -127,6 +127,7 @@ module.exports = {
 					},function(err){
 						if(err) return res.serverError(err);
 						ScoreboardService.update(grade, veredicts);
+						Run.publishUpdate(result[0].run);
 						return res.json(result);
 					});	
 				});

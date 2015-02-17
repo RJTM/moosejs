@@ -76,28 +76,43 @@
 	 		Run.find({owner: user}).populate('task').exec(function(err, runs){
 	 			if(err) return res.serverError(err);
 				async.each(runs, function(run, callback){
-					if(run.task.contest !== contest.id)
+					if(run.task.contest !== contest.id){
 						callback();
+						return;
+					}
+
 					var finalSubtasks = [], overall = 'accepted';
 					Task.findOne(run.task.id).populate('subtasks').exec(function(err, task){
 						if(err) callback(err);
 						async.each(task.subtasks, function(subtask, finishedSubtask){
 							Veredict.find({ where: {subtask: subtask.id, run: run.id}, limit:1, sort: 'createdAt DESC'}).exec(function(err, veredict){
-								if(err) callback(err);
-								if(subtask.feedback){
+								if(err) {
+									callback(err);
+									return;
+								}
+								if(!veredict || veredict.length === 0){
 									finalSubtasks.push({
-										points: subtask.points,
-										result: veredict.jury
+										points : subtask.points,
+										result : 'Pending'
 									});
-									if(veredict.jury !== 'accepted' && overall !== 'judged'){
-										overall = 'problem';
-									}
+									overall = 'Pending';
 								}else{
-									finalSubtasks.push({
-										points: subtask.points,
-										result: 'judged'
-									});
-									overall = 'judged';
+
+									if(subtask.feedback){
+										finalSubtasks.push({
+											points: subtask.points,
+											result: veredict[0].jury
+										});
+										if(veredict[0].jury !== 'accepted' && overall !== 'Waiting to end of contest'){
+											overall = 'Incorrect - see details';
+										}
+									}else{
+										finalSubtasks.push({
+											points: subtask.points,
+											result: 'Waiting to end of contest'
+										});
+										overall = 'Waiting to end of contest';
+									}
 								}
 								finishedSubtask();
 							});
@@ -111,6 +126,9 @@
 					});
 				}, function(err){
 					if(err) return res.serverError(err);
+					if(req.isSocket){
+						Run.subscribe(req.socket, finalRuns);
+					}
 					return res.json(finalRuns);
 				});
 	 		});

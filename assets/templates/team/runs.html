@@ -12,7 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat-start="run in runs" ng-click="showDetails(run)">
+			<tr ng-repeat-start="run in runs | orderBy : -run.time" ng-click="showDetails(run)">
 				<td>{{ run.task.name }}</td>
 				<td>{{ run.time }}</td>
 				<td>{{ run.result }}</td>
