@@ -2,11 +2,11 @@
 <div class="panel-heading">Scoreboard</div>
 	<table class="table table-bordered">
 		<thead>
-			<th>Rank</th>
+			<th class="col-md-1">Rank</th>
 			<th>Team</th>
 			<th ng-repeat="task in tasks | orderObjectBy:'name'">{{ task.name }}</th>
-			<th>Total</th>
-			<th>Time</th>
+			<th class="col-md-1">Total</th>
+			<th class="col-md-1">Time</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="team in scoreboardRows | orderObjectBy:'total':true:true">

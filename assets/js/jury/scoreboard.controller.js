@@ -6,7 +6,7 @@ angular.module('mooseJs.jury')
 
 		var calculateScoreboard = function(){
 
-			socket.get('/scoreboard', { contest: $scope.search.contest }, function(data){
+			socket.get('/scoreboard', $scope.search, function(data){
 				var users = $scope.scoreboardRows = {};
 				var tasks = $scope.tasks = {};
 				angular.forEach(data, function(value, key){
@@ -82,18 +82,23 @@ angular.module('mooseJs.jury')
 			calculateScoreboard();
 		});
 
+		$scope.$watch('search.public', function(value){
+			if($scope.search.contest)
+				calculateScoreboard();			
+		});
+
 		$scope.trustAsHtml = function(value) {
 			return $sce.trustAsHtml(value);
 		};
 
-		socket.on('scoreboard', function(message){
+		var updateScoreboard = function(message){
 			if(message.verb === 'created'){
 				calculateScoreboard();
 			}else if(message.verb === 'destroyed'){
 				calculateScoreboard();
 			}else if(message.verb === 'updated'){
 				//Updated scoreboard
-				// console.log(message.data);
+				var users = $scope.scoreboardRows;
 				var updatedUser = message.data[0].user;
 				var updatedTask = message.data[0].task;
 				var oldTask = users[updatedUser]['tasks'][updatedTask];
@@ -120,7 +125,21 @@ angular.module('mooseJs.jury')
 					oldTeam.penalty += parseInt(task.penalty);
 				});
 			}
-		});
+
+		};
+
+		var updatePrivate = function(message){
+			if($scope.search.public) return;
+			updateScoreboard(message);
+		};
+
+		var updatePublic = function(message){
+			if(!$scope.search.public) return;
+			updateScoreboard(message);
+		};
+
+		socket.on('scoreboard', updatePrivate);
+		socket.on('scoreboardpublic', updatePublic);
 
 		$scope.getOrder = function(input){
 			return input.team.total;

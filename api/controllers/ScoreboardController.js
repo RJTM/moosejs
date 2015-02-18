@@ -15,24 +15,24 @@ module.exports = {
 				if(user.role === 'jury'){
 					var contestId = req.param('contest');
 					if(req.param('public') && req.param('public') === true){
-						ScoreboardService.findScoreboardPublic(contestId, function(err, scoreboard){
+						ScoreboardService.findScoreboardPublic(req, contestId, function(err, scoreboard){
 							if(err) return res.serverError(err);
 							return res.json(scoreboard);
 						});
 					}else{
-						ScoreboardService.findScoreboardJury(contestId, function(err, scoreboard){
+						ScoreboardService.findScoreboardJury(req, contestId, function(err, scoreboard){
 							if(err) return res.serverError(err);
 							return res.json(scoreboard);
 						});
 					}
 				}else if(user.role === 'team'){
-					ScoreboardService.findScoreboardTeam(userId, function(err, scoreboard){
+					ScoreboardService.findScoreboardTeam(req, userId, function(err, scoreboard){
 						if(err) return res.serverError(err);
 						return res.json(scoreboard);
 					});
 				}else{
 					var contestId = req.param('contest');
-					ScoreboardService.findScoreboardPublic(contestId, function(err, scoreboard){
+					ScoreboardService.findScoreboardPublic(req, contestId, function(err, scoreboard){
 						if(err) return res.serverError(err);
 						return res.json(scoreboard);
 					});
