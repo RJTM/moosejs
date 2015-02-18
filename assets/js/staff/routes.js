@@ -38,11 +38,21 @@ angular.module('mooseJs.staff')
 			.state('staff.prints', {
 				url : '/prints',
 				templateUrl : 'templates/staff/prints.html',
-				controller : 'staff.PrintController',
+				controller : 'staff.PrintsController',
 				data : {
 					ncyBreadcrumbLabel : 'Prints',
 					ncyBreadcrumbParent : 'staff.home',
 					clearBadge : 'prints'
+				}
+			})
+
+			.state('staff.print', {
+				url: '/print/:id',
+				templateUrl: 'templates/staff/print.html',
+				controller: 'staff.PrintController',
+				data: {
+					ncyBreadcrumbLabel : 'Print',
+					ncyBreadcrumbParent : 'staff.prints',
 				}
 			})
 	}]);

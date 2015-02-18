@@ -38,7 +38,6 @@ module.exports = {
 
         // Should check that it exists here, but for demo purposes, assume it does
         // and just pipe a read stream to the response.
-        
         fs.exists(filePath, function(exists){
             if(exists){
                 fs.createReadStream(filePath).pipe(res);

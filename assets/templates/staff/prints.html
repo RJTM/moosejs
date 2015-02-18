@@ -11,9 +11,9 @@
 				<tbody>
 					<tr ng-repeat="print in prints | orderBy: '-id'">
 						<td class="col-md-2 text-center">{{ print.id }}</td>
-						<td class="col-md-8 text-center">{{ print.user.name }}</td>
+						<td class="col-md-8 text-center">{{ print.team.name }}</td>
 						<td class="col-md-2 text-center">
-							<a href="/jobs/{{print.source}}" class="btn btn-success"><span><i class="fa fa-print"></i> View</a>
+							<a ui-sref="staff.print({ id: print.id })" class="btn btn-success"><span><i class="fa fa-print"></i> View</a>
 						</td>
 					</tr>
 				</tbody>

@@ -1,0 +1,26 @@
+<div class="visible-print-block">
+	<div class="pull-left">
+		<p>Job {{ print.id }}</p>
+	</div>
+	<div class="pull-right">
+		<p>Team: {{ print.team.name }}</p>
+	</div>
+	<div class="clearfix"></div>
+
+
+	<pre nag-prism source="{{ source }}" class="language-clike line-numbers"></pre>
+</div>
+<div class="hidden-print">
+	<div class="pull-left">
+		<p>Job {{ print.id }}</p>
+	</div>
+	<div class="pull-right">
+		<p>Team: {{ print.team.name }}</p>
+	</div>
+	<div class="clearfix"></div>
+
+	<button class="btn btn-primary btn-block" ng-click="printSource()"><i class="fa fa-print"></i> Print</button>
+
+	<pre nag-prism source="{{ source }}" class="language-clike line-numbers"></pre>
+
+</div>

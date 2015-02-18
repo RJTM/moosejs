@@ -1,16 +1,18 @@
 'use strict';
 
 angular.module('mooseJs.staff')
-	.controller('staff.PrintController', ["$rootScope", "$scope", "socket", function($rootScope, $scope, socket){
-		$scope.prints = [];
+	.controller('staff.PrintController', ["$scope", "socket", "$stateParams", "$http", function($scope, socket, $stateParams, $http){
 
-		socket.get('/print', function(data){
-			console.log(data);
-			$scope.prints = data;
+		socket.get('/print/'+$stateParams.id, function(data){
+			$scope.print = data;
+			
+			$http.get('/jobs/'+data.source).success(function(data){
+				$scope.source = data;
+			});
+
 		});
 
-		socket.on('print', function(message){
-			console.log(message);
-			$scope.prints.push(message.data);
-		});
+		$scope.printSource = function(){
+			window.print();
+		}
 	}]);

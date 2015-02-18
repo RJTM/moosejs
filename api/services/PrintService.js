@@ -26,7 +26,7 @@ module.exports = {
 				var url = username + "/"+filename;
 
 				Print.create({
-					user : theUser,
+					team : theUser,
 					source : url
 				}).exec(function(err, printJob){
 					callback(err, printJob);

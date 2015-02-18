@@ -4,20 +4,56 @@
 		"selected_items":
 		[
 			[
-				"angular",
-				"angular-breadcrumb"
+				"min",
+				"min-height"
+			],
+			[
+				"subtask",
+				"subTaskUtil"
+			],
+			[
+				"subtasks",
+				"subtasksFeedback"
+			],
+			[
+				"com",
+				"comm-block	Comment - Block style comment"
+			],
+			[
+				"Scoreboar",
+				"ScoreboardPublic"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"dropdown",
+				"ngDir_dropdown-toggle	AngularJS"
+			],
+			[
+				"comm",
+				"comm-todo	Comment - To-do list"
 			],
 			[
 				"ncyBread",
 				"ncyBreadcrumbParent"
 			],
 			[
-				"ncyBrea",
+				"ncyb",
+				"ncyBreadcrumbParent"
+			],
+			[
+				"ncyBr",
 				"ncyBreadcrumbLabel"
 			],
 			[
-				"comm",
-				"comm-block	Comment - Block style comment"
+				"angular",
+				"angular-breadcrumb"
+			],
+			[
+				"ncyBrea",
+				"ncyBreadcrumbLabel"
 			],
 			[
 				"ba",
@@ -28,16 +64,8 @@
 				"ncyBreadcrumbParent"
 			],
 			[
-				"com",
-				"comm-todo	Comment - To-do list"
-			],
-			[
 				"resultPr",
 				"resultPriority"
-			],
-			[
-				"ncyBr",
-				"ncyBreadcrumbParent"
 			],
 			[
 				"ncyB",
@@ -72,37 +100,37 @@
 	"buffers":
 	[
 		{
-			"file": "/home/rjtm/Escritorio/moosejs/bower.json",
+			"file": "/home/rjtm/Escritorio/moosejs/assets/js/staff/print.controller.js",
 			"settings":
 			{
-				"buffer_size": 907,
+				"buffer_size": 366,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
+			"file": "/home/rjtm/Escritorio/moosejs/api/controllers/PrintController.js",
 			"settings":
 			{
-				"buffer_size": 2621,
+				"buffer_size": 515,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "/**\n * importer.less\n *\n * By default, new Sails projects are configured to compile this file\n * from LESS to CSS.  Unlike CSS files, LESS files are not compiled and\n * included automatically unless they are imported below.\n *\n * The LESS files imported below are compiled and included in the order\n * they are listed.  Mixins, variables, etc. should be imported first\n * so that they can be accessed by subsequent LESS stylesheets.\n *\n * (Just like the rest of the asset pipeline bundled in Sails, you can\n * always omit, customize, or replace this behavior with SASS, SCSS,\n * or any other Grunt tasks you like.)\n */\n\n\n\n// For example:\n//\n// @import 'variables/colors.less';\n// @import 'mixins/foo.less';\n// @import 'mixins/bar.less';\n// @import 'mixins/baz.less';\n//\n// @import 'styleguide.less';\n// @import 'pages/login.less';\n// @import 'pages/signup.less';\n//\n// etc.\n// \n@import '../dependencies/vendor/angular'\n",
-			"file": "/home/rjtm/Escritorio/moosejs/assets/styles/importer.less",
-			"file_size": 874,
-			"file_write_time": 130553988580669535,
+			"file": "/home/rjtm/Escritorio/moosejs/api/services/PrintService.js",
 			"settings":
 			{
-				"buffer_size": 919,
+				"buffer_size": 808,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/rjtm/Escritorio/moosejs/.bowerrc",
+			"contents": "<div class=\"visible-print-block\">\n	<div class=\"pull-left\">\n		<p>Job {{ print.id }}</p>\n	</div>\n	<div class=\"pull-right\">\n		<p>Team: {{ print.team.name }}</p>\n	</div>\n	<div class=\"clearfix\"></div>\n\n\n	<pre nag-prism source=\"{{ source }}\" class=\"language-clike line-numbers\"></pre>\n</div>\n<div class=\"hidden-print\">\n	<div class=\"pull-left\">\n		<p>Job {{ print.id }}</p>\n	</div>\n	<div class=\"pull-right\">\n		<p>Team: {{ print.team.name }}</p>\n	</div>\n	<div class=\"clearfix\"></div>\n\n	<button class=\"btn btn-primary btn-block\" ng-click=\"\"><i class=\"fa fa-print\"></i> Print</button>\n\n	<pre nag-prism source=\"{{ source }}\" class=\"language-clike line-numbers\"></pre>\n\n</div>\n",
+			"file": "/home/rjtm/Escritorio/moosejs/assets/templates/staff/print.html",
+			"file_size": 652,
+			"file_write_time": 130687164667541951,
 			"settings":
 			{
-				"buffer_size": 47,
+				"buffer_size": 664,
 				"line_ending": "Unix"
 			}
 		}
@@ -110,9 +138,37 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 211.0,
+		"height": 368.0,
 		"selected_items":
 		[
+			[
+				"status",
+				"Git: Status"
+			],
+			[
+				"stat",
+				"Git: Status"
+			],
+			[
+				"bs3 check",
+				"Snippet: bs3-input-checkbox"
+			],
+			[
+				"bs3 horizontal",
+				"Snippet: bs3-form-horizontal"
+			],
+			[
+				"snippet bs3 input tex",
+				"Snippet: bs3-input-text"
+			],
+			[
+				"jshint",
+				"JSHint"
+			],
+			[
+				"jsh",
+				"JSHint"
+			],
 			[
 				"push",
 				"Git: Push Current Branch"
@@ -124,10 +180,6 @@
 			[
 				"add",
 				"Git: Add..."
-			],
-			[
-				"status",
-				"Git: Status"
 			],
 			[
 				"diff",
@@ -248,10 +300,6 @@
 			[
 				"comit",
 				"Git: Commit"
-			],
-			[
-				"stat",
-				"Git: Status"
 			],
 			[
 				"git chec",
@@ -384,143 +432,142 @@
 	"expanded_folders":
 	[
 		"/home/rjtm/Escritorio/moosejs",
-		"/home/rjtm/Escritorio/moosejs/assets",
-		"/home/rjtm/Escritorio/moosejs/assets/dependencies",
-		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor",
-		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/bootstrap",
-		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/bootstrap/less",
-		"/home/rjtm/Escritorio/moosejs/assets/styles"
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/angular-ui-select",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/angular-ui-select/dist",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/staff",
+		"/home/rjtm/Escritorio/moosejs/jobs/jbernadas"
 	],
 	"file_history":
 	[
-		"/home/rjtm/Escritorio/moosejs/assets/styles/bootstrap-theme.css",
-		"/home/rjtm/Escritorio/moosejs/node_modules/ejs/index.js",
-		"/home/rjtm/Escritorio/moosejs/assets/index.html",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/lang/isNull.js",
-		"/home/rjtm/Escritorio/moosejs/.bowerrc",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/runs.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/runs.controller.js",
-		"/home/rjtm/Escritorio/moosejs-signup/server.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/routes.js",
-		"/home/rjtm/Escritorio/moosejs/api/controllers/RunController.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/run.add.controller.js",
-		"/home/rjtm/Escritorio/moosejs/api/models/Run.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/socket.service.js",
-		"/home/rjtm/Escritorio/moosejs/api/models/Scoreboard.js",
-		"/home/rjtm/Escritorio/moosejs/config/policies.js",
-		"/home/rjtm/Escritorio/moosejs/api/policies/teamAndJury.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/team.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/team.module.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/socket.io-client/node_modules/xmlhttprequest/tests/test-events.js",
-		"/home/rjtm/Escritorio/moosejs/api/models/Task.js",
-		"/home/rjtm/Escritorio/moosejs/api/models/User.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-ng-annotate/node_modules/ng-annotate/run-tests.js",
-		"/home/rjtm/Escritorio/moosejs/api/policies/cleanToken.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/templates/std/conflict-resolved.std",
-		"/home/rjtm/Escritorio/moosejs/api/models/Contest.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/models/contest.model.js",
-		"/home/rjtm/Escritorio/moosejs/api/services/ContestService.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/math/countSteps.js",
-		"/home/rjtm/Escritorio/moosejs/package.json",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/login.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/common/login.html",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/common/login.html",
-		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/LICENSE",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/localStorage.factory.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/submit.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/clarifications.add.controller.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/team/clarifications-add.html",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/clarifications-add.html",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/clarification-detail.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/clarifications.controller.js",
-		"/home/rjtm/Escritorio/moosejs/api/controllers/ClarificationController.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/team/clarifications.controller.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/team/clarification-detail.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/clarifications.detail.controller.js",
-		"/home/rjtm/Escritorio/moosejs/api/controllers/TaskController.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/tasks-add.html",
-		"/home/rjtm/Escritorio/moosejs/api/models/Subtask.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/moose.module.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/status.filter.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/skipper/test/fixtures/uploadAvatar.usingUploadMethod.action.js",
-		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/src/state.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/staff/layout.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/staff.module.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/routes.js",
+		"/home/rjtm/Escritorio/moosejs/api/policies/staff.js",
 		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-sails-linker/test/scriptlinker_test.js",
-		"/home/rjtm/Escritorio/moosejs/api/services/GradeService.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/inquirer/node_modules/cli-color/bin/generate-color-images",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/date/isSame.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/run.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/clarifications.html",
-		"/home/rjtm/Escritorio/moosejs/api/models/Testcase.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/clarifications.html",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/layout.html",
-		"/home/rjtm/Escritorio/moosejs/api/models/Clarification.js",
-		"/home/rjtm/Escritorio/moosejs/api/policies/tokenAuth.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-less/node_modules/less/node_modules/source-map/test/source-map/test-source-map-consumer.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/routes.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/pills.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/pills.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/jury.module.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/role.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/auth.factory.js",
-		"/home/rjtm/Escritorio/moosejs/assets/styles/app.css",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/socket.io/node_modules/redis/examples/auth.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/layout.html",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/layout.html",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/views/layoutshim.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/public/layout.html",
-		"/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
-		"/home/rjtm/Escritorio/moosejs/api/responses/forbidden.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/responses/defaults/ok.js",
-		"/home/rjtm/Escritorio/moosejs/api/models/Site.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-clean/AUTHORS",
-		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/release/angular-ui-router.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/inquirer/examples/long-list.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/request/locals.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/app/private/isLocalSailsValid.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/skipper/node_modules/connect/node_modules/body-parser/node_modules/on-finished/index.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/currentUser.factory.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails-disk/node_modules/waterline-cursor/cursor/cursor.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/jury/verify.controller.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/admin/routes.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/admin/routes.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/routes.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/routes.js",
-		"/home/rjtm/Escritorio/moosejs/config/routes.js",
-		"/home/rjtm/Escritorio/moosejs/config/bootstrap.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/orm/build-orm.js",
-		"/home/rjtm/Escritorio/moosejs/bower.json",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/contests.html",
-		"/home/rjtm/Escritorio/moosejs/tasks/register/compileAssets.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-less/node_modules/less/lib/less/tree/call.js",
-		"/home/rjtm/Escritorio/moosejs/assets/templates/team/home.html",
-		"/home/rjtm/Escritorio/moosejs/assets/js/team/home.controller.js",
-		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/roleDestination.constant.js",
-		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/common/role.controller.js",
-		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/src/urlRouter.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-less/node_modules/less/build/require-rhino.js",
 		"/home/rjtm/Escritorio/moosejs/api/services/ScoreboardService.js",
-		"/home/rjtm/Escritorio/moosejs/api/controllers/UserController.js",
-		"/home/rjtm/Escritorio/moosejs/assets/sources/dummycontest/trino/dummytask/a99d48f5-dc8a-4f64-bd88-8284e2381eec.cpp",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-watch/node_modules/gaze/test/add_test.js",
+		"/home/rjtm/Escritorio/moosejs/config/policies.js",
+		"/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
+		"/home/rjtm/Escritorio/moosejs/assets/index.html",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/staff/prints.html",
+		"/home/rjtm/Escritorio/moosejs/api/models/Print.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/PrintController.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/PrintService.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/verify.html",
+		"/home/rjtm/Escritorio/moosejs/api/models/Veredict.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ProtectedFileController.js",
+		"/home/rjtm/Escritorio/moosejs/config/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/prints.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/print.controller.js",
+		"/home/rjtm/Escritorio/moosejs/daemon/tmp.json",
+		"/home/rjtm/Escritorio/moosejs/api/policies/tokenAuth.js",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/bootstrap/less/mixins/tab-focus.less",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/glob/test/pause-resume.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ContestController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/nav.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Contest.js",
+		"/home/rjtm/Escritorio/moosejs/api/policies/cleanToken.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/team/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/admin/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/scoreboard.controller.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/public/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/public/home.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/public.module.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/jsonwebtoken/test/pub.pem",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/captains-log/test/printf-usage.test.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Scoreboard.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/admin/home.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/contests.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/ContestService.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/RunController.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/math/countSteps.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/contest.users.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/contest.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/JudgeService.js",
+		"/home/rjtm/Escritorio/moosejs/api/policies/jury.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/zip.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/jury.contestUpdateController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/clarifications.add.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/contests.html",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ScoreboardController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/team/clarifications-add.html",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/clarifications-add.html",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ClarificationController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/tasks.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/run.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/team/run.add.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/styles/app.less",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/task.html",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/subtask.html",
+		"/home/rjtm/Escritorio/moosejs/api/models/Subtask.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/team/submit.html",
+		"/home/rjtm/Escritorio/moosejs/daemon/daemon.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-uglify/node_modules/uglify-js/test/compress/drop-unused.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Task.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/stringify-object/stringify-object.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/public/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/staff/home.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/staff/balloon.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Balloon.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/staff/balloons.html",
+		"/home/rjtm/Escritorio/moosejs/api/services/BalloonService.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/BalloonController.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/mout/array/lastIndexOf.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/captains-log/test/standalone/bind-all-to.js",
+		"/home/rjtm/Escritorio/moosejs/bower.json",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-views/templates/homepage-orig.ejs",
+		"/home/rjtm/Escritorio/moosejs/node_modules/socket.io-client/lib/vendor/web-socket-js/flash-src/com/hurlant/math/MontgomeryReduction.as",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/express-handlebars/node_modules/handlebars/node_modules/uglify-js/lib/output.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/express-handlebars/node_modules/handlebars/node_modules/uglify-js/test/run-tests.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/express-handlebars/node_modules/glob/test/root-nomount.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/ScoreboardPublicController.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/home.html",
+		"/home/rjtm/Escritorio/moosejs/api/policies/juryAndJudgehost.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/adm-zip/headers/mainHeader.js",
+		"/home/rjtm/Escritorio/moosejs/api/policies/admin.js",
+		"/home/rjtm/Escritorio/moosejs/protected/sources/testcontest/zyx/test/abb8b4ce-d005-4b92-84ba-52a778c93e2b.py",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/team/home.html",
+		"/home/rjtm/Escritorio/moosejs/assets/js/team/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/admin/routes.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/team/team.module.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Testcase.js",
+		"/home/rjtm/Escritorio/moosejs/api/models/Run.js",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/angular-ui-router/api/angular-ui-router.d.ts",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/angular-ui-router/src/templateFactory.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-ng-annotate/node_modules/ng-annotate/run-tests.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/common/scoreboard.html",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-sails-linker/tasks/scriptlinker.js",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/bootstrap/js/scrollspy.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/team.html",
+		"/home/rjtm/Escritorio/moosejs/api/models/ScoreboardPublic.js",
+		"/home/rjtm/Escritorio/moosejs/api/controllers/GradeController.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/GradeService.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/fs-extra/node_modules/graceful-fs/graceful-fs.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/ejs-locals/test/fixtures/inherit-grandchild.ejs",
+		"/home/rjtm/Escritorio/moosejs/daemon/util.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/User/update.controller.js",
 		"/home/rjtm/Escritorio/moosejs/node_modules/sails/lib/hooks/orm/backwards-compatibility/upgrade-datastore.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-ng-annotate/node_modules/ng-annotate/node_modules/convert-source-map/test/fixtures/map-file-comment-double-slash.css",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/waterline/lib/waterline/model/lib/defaultMethods/toObject.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-adapter/.editorconfig",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-adapter/templates/boilerplate/CONTRIBUTING.md",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/prompt/node_modules/winston/test/transports/console-test.js",
-		"/home/rjtm/Escritorio/moosejs/api/responses/badRequest.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/node_modules/minimatch/test/brace-expand.js",
-		"/home/rjtm/Escritorio/moosejs/bower_components/angular-ui-router/CHANGELOG.md",
-		"/home/rjtm/Escritorio/moosejs/.gitignore",
-		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/sails-generate/node_modules/sails-generate-generator/templates/gitignore",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt/internal-tasks/subgrunt.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-ng-annotate/node_modules/ng-annotate/node_modules/simple-is/test/simple-is-tests.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-less/node_modules/less/test/less/import/import-test-a.less",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-contrib-less/node_modules/less/test/less/import/import-test-b.less",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/lib/core/resolvers/GitHubResolver.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/fstream-ignore/node_modules/minimatch/test/brace-expand.js",
-		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules/mout/random/choice.js"
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/angular-breadcrumb/Gruntfile.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/verify.controller.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/sails/node_modules/skipper/test/fixtures/uploadScreenshots.action.js",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/fstream/lib/socket-reader.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/team/home.controller.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/jury/clarification.controller.js",
+		"/home/rjtm/Escritorio/moosejs/api/services/ClarificationService.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/clarifications.html",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/team/clarifications.html",
+		"/home/rjtm/Escritorio/moosejs/api/models/Clarification.js",
+		"/home/rjtm/Escritorio/moosejs/assets/dependencies/vendor/jquery/src/var/hasOwn.js",
+		"/home/rjtm/Escritorio/moosejs/config/http.js",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/jury/clarifications-add.html",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/templates/team/clarifications-add.html",
+		"/home/rjtm/Escritorio/moosejs/node_modules/grunt-bower/node_modules/bower/node_modules/retry/lib/retry_operation.js",
+		"/home/rjtm/Escritorio/moosejs/assets/js/common/services/socket.service.js",
+		"/home/rjtm/Escritorio/moosejs/assets/templates/jury/add-testcase.html",
+		"/home/rjtm/Escritorio/moosejs/.tmp/public/js/jury/testcase.add.controller.js"
 	],
 	"find":
 	{
@@ -531,6 +578,13 @@
 		"height": 157.0,
 		"where_history":
 		[
+			"/home/rjtm/Escritorio/moosejs/api",
+			"/home/rjtm/Escritorio/moosejs/assets",
+			"/home/rjtm/Escritorio/moosejs/api",
+			"/home/rjtm/Escritorio/moosejs/assets/js",
+			"/home/rjtm/Escritorio/moosejs/assets",
+			"/home/rjtm/Escritorio/moosejs/api",
+			"/home/rjtm/Escritorio/moosejs",
 			""
 		]
 	},
@@ -539,6 +593,65 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"log",
+			"Balloon",
+			"admin",
+			"sails.log.debug",
+			"sails.log",
+			"/scoreboard",
+			"getOrder",
+			"veredicts",
+			"response",
+			"$scope.contest",
+			"value.task.name",
+			"tmp",
+			"footer",
+			"sails.log",
+			"tmp",
+			"jsonfile",
+			"currentContest",
+			"diff",
+			"publishDestroy",
+			"log",
+			"currentContest",
+			"function(data){\n			$scope.contests = data;\n		}",
+			"a",
+			"A",
+			"orderObjectBy",
+			"once",
+			"onSubmission",
+			"socket.on",
+			"onSubmi",
+			"subscribe",
+			"socket.on",
+			"subtask",
+			"addTask",
+			"pascal",
+			"haskell",
+			"csharp",
+			"go",
+			"javascr",
+			"clike",
+			"ruby",
+			"once",
+			"socket.on",
+			"subscribe",
+			"token",
+			"language",
+			"extension",
+			"Extension",
+			"extension",
+			"Extension",
+			"extension",
+			"compiler",
+			"Compiler",
+			"compiler",
+			"Compiler",
+			"compiler",
+			"Compiler",
+			"compiler",
+			"extension",
+			"extention",
 			"angular-ui-select",
 			"angular-ui-router",
 			"angular-route",
@@ -568,6 +681,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"teamContestTime",
 			"subTaskUtil",
 			"value.user.id",
 			"form-group",
@@ -583,24 +697,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/rjtm/Escritorio/moosejs/bower.json",
+					"file": "/home/rjtm/Escritorio/moosejs/assets/js/staff/print.controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 907,
+						"buffer_size": 366,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								226,
-								226
+								262,
+								262
 							]
 						],
 						"settings":
@@ -608,31 +722,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -643,16 +737,6 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -662,100 +746,40 @@
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 114.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/rjtm/Escritorio/moosejs/tasks/pipeline.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2621,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								475,
-								475
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_angle_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -765,20 +789,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "/home/rjtm/Escritorio/moosejs/assets/styles/importer.less",
+					"buffer": 1,
+					"file": "/home/rjtm/Escritorio/moosejs/api/controllers/PrintController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 919,
+						"buffer_size": 515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								917,
-								917
+								0,
+								0
 							]
 						],
 						"settings":
@@ -786,31 +810,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
@@ -821,16 +825,6 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -840,102 +834,222 @@
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"syntax": "Packages/LESS/LESS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 114.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/rjtm/Escritorio/moosejs/.bowerrc",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 47,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								45,
-								45
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
+								"bh_angle_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/rjtm/Escritorio/moosejs/api/services/PrintService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								124,
+								124
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 132.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/rjtm/Escritorio/moosejs/assets/templates/staff/print.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 664,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								529,
+								529
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"open_with_edit": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 132.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -943,7 +1057,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 55.0
 	},
 	"input":
 	{
@@ -972,6 +1086,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 140.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -992,516 +1110,516 @@
 		"selected_items":
 		[
 			[
-				"run.ad",
-				"assets/js/team/run.add.controller.js"
+				"stafflay",
+				"assets/templates/staff/layout.html"
 			],
 			[
-				"socket",
-				"assets/js/common/services/socket.service.js"
+				"index.html",
+				"assets/index.html"
 			],
 			[
-				"policies",
-				"config/policies.js"
+				"prints.html",
+				"assets/templates/staff/prints.html"
 			],
 			[
-				"runcon",
-				"api/controllers/RunController.js"
+				"printservice",
+				"api/services/PrintService.js"
 			],
 			[
-				"teamrutes",
-				"assets/js/team/routes.js"
+				"printc",
+				"api/controllers/PrintController.js"
 			],
 			[
-				"run.add",
-				"assets/js/team/run.add.controller.js"
+				"print",
+				"api/models/Print.js"
 			],
 			[
-				"run.js",
-				"api/models/Run.js"
-			],
-			[
-				"contest.js",
-				"api/models/Contest.js"
-			],
-			[
-				"login.",
-				"assets/templates/common/login.html"
-			],
-			[
-				"packa",
-				"package.json"
-			],
-			[
-				"clariadd",
-				"assets/js/team/clarifications.add.controller.js"
-			],
-			[
-				"clarifi",
-				".tmp/public/js/team/clarifications.controller.js"
-			],
-			[
-				"task.",
-				"api/models/Task.js"
-			],
-			[
-				"taskc",
-				"api/controllers/TaskController.js"
-			],
-			[
-				"run",
-				"api/models/Run.js"
-			],
-			[
-				"task",
-				"api/models/Task.js"
-			],
-			[
-				"submit.ht",
-				"assets/templates/team/submit.html"
-			],
-			[
-				"staus",
-				"assets/js/jury/status.filter.js"
-			],
-			[
-				"run.j",
-				"api/models/Run.js"
-			],
-			[
-				"clarifications.co",
-				"assets/js/team/clarifications.controller.js"
-			],
-			[
-				"teamroute",
-				"assets/js/team/routes.js"
-			],
-			[
-				"clarifications",
-				"assets/templates/team/clarifications.html"
-			],
-			[
-				"clarification-ad",
-				"assets/templates/team/clarifications-add.html"
-			],
-			[
-				"teamrout",
-				"assets/js/team/routes.js"
-			],
-			[
-				"clarification",
-				"api/controllers/ClarificationController.js"
-			],
-			[
-				"clari",
-				"assets/js/team/clarifications.controller.js"
-			],
-			[
-				"teamroutes",
-				"assets/js/team/routes.js"
-			],
-			[
-				"teamclari",
-				"assets/templates/team/clarifications.html"
-			],
-			[
-				"juryrout",
-				"assets/js/jury/routes.js"
-			],
-			[
-				"auth.s",
-				"assets/js/common/services/auth.factory.js"
-			],
-			[
-				"auth.js",
-				"assets/js/common/services/auth.factory.js"
-			],
-			[
-				"juryla",
-				"assets/templates/jury/layout.html"
-			],
-			[
-				"layout.html",
-				"assets/templates/team/layout.html"
-			],
-			[
-				"pills",
-				"assets/js/jury/pills.controller.js"
-			],
-			[
-				"polci",
-				"config/policies.js"
-			],
-			[
-				"socket.ser",
-				"assets/js/common/services/socket.service.js"
-			],
-			[
-				"auth.f",
-				"assets/js/common/services/auth.factory.js"
-			],
-			[
-				"token",
-				"api/policies/tokenAuth.js"
-			],
-			[
-				"localser",
-				"assets/js/common/services/localStorage.factory.js"
-			],
-			[
-				"clarifica",
-				"api/controllers/ClarificationController.js"
-			],
-			[
-				"current",
-				"assets/js/common/services/currentUser.factory.js"
-			],
-			[
-				"login.co",
-				"assets/js/common/User/login.controller.js"
-			],
-			[
-				"routes.js",
-				"assets/js/team/routes.js"
-			],
-			[
-				"bootstrap",
-				"config/bootstrap.js"
-			],
-			[
-				"clarific",
-				"api/controllers/ClarificationController.js"
-			],
-			[
-				"roled",
-				"assets/js/common/services/roleDestination.constant.js"
-			],
-			[
-				"role",
-				"assets/js/common/role.controller.js"
-			],
-			[
-				"usercont",
-				"api/controllers/UserController.js"
-			],
-			[
-				"scoreboardser",
-				"api/services/ScoreboardService.js"
-			],
-			[
-				"userc",
-				"api/controllers/UserController.js"
-			],
-			[
-				"daemon/",
-				"daemon/moosejs.sublime-project"
-			],
-			[
-				"scoreboardse",
-				"api/services/ScoreboardService.js"
-			],
-			[
-				"scoreboard",
-				"api/services/ScoreboardService.js"
-			],
-			[
-				"scoreboard.ht",
-				"assets/templates/common/scoreboard.html"
-			],
-			[
-				"scoreboard.co",
-				"assets/js/jury/scoreboard.controller.js"
-			],
-			[
-				"run.cn",
-				"assets/js/jury/run.controller.js"
-			],
-			[
-				"run.cntro",
-				"assets/js/jury/run.controller.js"
-			],
-			[
-				"runs.html",
-				"assets/templates/jury/runs.html"
-			],
-			[
-				"socket.js",
-				"assets/js/common/services/socket.service.js"
-			],
-			[
-				"scoreboardc",
-				"api/controllers/ScoreboardController.js"
-			],
-			[
-				"app.css",
-				"assets/styles/app.css"
-			],
-			[
-				"scoreboard.h",
-				"assets/templates/common/scoreboard.html"
-			],
-			[
-				"scoreboard.cotr",
-				"assets/js/jury/scoreboard.controller.js"
+				"printjs",
+				"api/services/PrintService.js"
 			],
 			[
 				"verify",
-				"assets/js/jury/verify.controller.js"
-			],
-			[
-				"gradecontro",
-				"api/controllers/GradeController.js"
-			],
-			[
-				"poli",
-				"config/policies.js"
-			],
-			[
-				"user.j",
-				"api/models/User.js"
-			],
-			[
-				"gradeser",
-				"api/services/GradeService.js"
-			],
-			[
-				"subtaks",
-				"api/models/Subtask.js"
-			],
-			[
-				"gradec",
-				"api/controllers/GradeController.js"
-			],
-			[
-				"verify.con",
-				"assets/js/jury/verify.controller.js"
-			],
-			[
-				"score",
-				"api/models/Scoreboard.js"
-			],
-			[
-				"tasko",
-				"api/controllers/TaskController.js"
-			],
-			[
-				"user.js",
-				"api/models/User.js"
-			],
-			[
-				"verify.c",
-				"assets/js/jury/verify.controller.js"
-			],
-			[
-				"veredic",
-				"api/models/Veredict.js"
-			],
-			[
-				"gradese",
-				"api/services/GradeService.js"
-			],
-			[
-				"runco",
-				"api/controllers/RunController.js"
-			],
-			[
-				"ver",
 				"assets/templates/jury/verify.html"
 			],
 			[
-				"veredict",
-				"api/models/Veredict.js"
-			],
-			[
-				"gradesc",
-				"api/controllers/GradeController.js"
-			],
-			[
-				"grade",
-				"api/services/GradeService.js"
-			],
-			[
-				"user",
-				"api/models/User.js"
-			],
-			[
-				"subtask",
-				"api/models/Subtask.js"
-			],
-			[
-				"verif",
-				"assets/js/jury/verify.controller.js"
+				"routes.js",
+				"config/routes.js"
 			],
 			[
 				"routes",
-				"assets/js/jury/routes.js"
+				"config/routes.js"
 			],
 			[
-				"routes.html",
-				"node_modules/sails.io.js/node_modules/request/node_modules/node-uuid/test/test.html"
+				"print.js",
+				"api/models/Print.js"
 			],
 			[
-				"scoreboard.html",
-				"assets/templates/scoreboard.html"
+				"staffroutes",
+				"assets/js/staff/routes.js"
 			],
 			[
-				"home.html",
-				"assets/templates/jury/home.html"
+				"contest",
+				"api/controllers/ContestController.js"
 			],
 			[
-				"user.",
-				"api/models/User.js"
+				"nav.controller",
+				"assets/js/common/nav.controller.js"
+			],
+			[
+				"scoreboard.controller",
+				"assets/js/jury/scoreboard.controller.js"
+			],
+			[
+				"home.controller",
+				".tmp/public/js/admin/home.controller.js"
+			],
+			[
+				"publichome.con",
+				"assets/js/public/home.controller.js"
+			],
+			[
+				"scoreboard.con",
+				"assets/js/jury/scoreboard.controller.js"
+			],
+			[
+				"home.contro",
+				"assets/js/staff/home.controller.js"
+			],
+			[
+				"home.con",
+				"assets/js/public/home.controller.js"
+			],
+			[
+				"home.cont",
+				"assets/js/admin/home.controller.js"
+			],
+			[
+				"home.controll",
+				"assets/js/team/home.controller.js"
+			],
+			[
+				"contestc",
+				"api/controllers/ContestController.js"
+			],
+			[
+				"publichome.co",
+				"assets/js/public/home.controller.js"
+			],
+			[
+				"contestser",
+				"api/services/ContestService.js"
+			],
+			[
+				"runcontroller",
+				"api/controllers/RunController.js"
+			],
+			[
+				"contest.con",
+				"assets/js/jury/contests.controller.js"
+			],
+			[
+				"contest.cnt",
+				"assets/js/admin/contest.controller.js"
 			],
 			[
 				"scoreboard.c",
 				"assets/js/jury/scoreboard.controller.js"
 			],
 			[
-				"contest",
-				"assets/js/common/models/contest.model.js"
+				"home.controler",
+				"assets/js/admin/home.controller.js"
 			],
 			[
-				"task.add",
-				"assets/js/jury/task.add.controller.js"
+				"scoreboardc",
+				"api/controllers/ScoreboardController.js"
 			],
 			[
-				"task-",
-				"assets/templates/jury/tasks-add.html"
+				"policies",
+				"config/policies.js"
 			],
 			[
-				"usercon",
-				"api/controllers/UserController.js"
+				"clarifiadd",
+				"assets/js/jury/clarifications.add.controller.js"
 			],
 			[
-				"scorebo",
-				"assets/templates/scoreboard.html"
-			],
-			[
-				"scorbo",
-				"api/models/Scoreboard.js"
-			],
-			[
-				"register.",
-				"assets/js/common/User/register.controller.js"
-			],
-			[
-				"register.tm",
-				"assets/templates/common/register.html"
-			],
-			[
-				"task.js",
-				"api/models/Task.js"
-			],
-			[
-				"register",
-				"assets/js/common/User/register.controller.js"
-			],
-			[
-				"taskcn",
-				"api/controllers/TaskController.js"
-			],
-			[
-				"gradeco",
-				"api/controllers/GradeController.js"
-			],
-			[
-				"veri",
-				"assets/templates/jury/verify.html"
-			],
-			[
-				"daemon/sub",
-				"daemon/moosejs.sublime-project"
-			],
-			[
-				"moose",
-				"daemon/moosejs.sublime-project"
-			],
-			[
-				"run.con",
+				"run.contro",
 				"assets/js/jury/run.controller.js"
 			],
 			[
-				"grade.js",
-				"api/models/Grade.js"
+				"contests.contro",
+				"assets/js/jury/contests.controller.js"
 			],
 			[
-				"very",
-				"assets/templates/jury/verify.html"
+				"jurycontests",
+				"assets/templates/jury/contests.html"
+			],
+			[
+				"subtask.html",
+				"assets/templates/jury/subtask.html"
+			],
+			[
+				"app.les",
+				"assets/styles/app.less"
+			],
+			[
+				"app.l",
+				"assets/styles/app.less"
+			],
+			[
+				"task.html",
+				"assets/templates/jury/task.html"
+			],
+			[
+				"scoreboardser",
+				"api/services/ScoreboardService.js"
+			],
+			[
+				"publichome",
+				"assets/templates/public/home.html"
+			],
+			[
+				"balloon.con",
+				"assets/js/staff/balloon.controller.js"
+			],
+			[
+				"ballon.",
+				"assets/templates/staff/balloons.html"
+			],
+			[
+				"ballonser",
+				"api/services/BalloonService.js"
+			],
+			[
+				"ballonc",
+				"api/controllers/BalloonController.js"
+			],
+			[
+				"ballon.co",
+				"assets/js/staff/balloon.controller.js"
+			],
+			[
+				"ballon",
+				"assets/templates/staff/balloons.html"
+			],
+			[
+				"ballon.js",
+				"api/models/Balloon.js"
+			],
+			[
+				"ballon.c",
+				"assets/js/staff/balloon.controller.js"
+			],
+			[
+				"publicroutes",
+				"assets/js/public/routes.js"
+			],
+			[
+				"staffroute",
+				"assets/js/staff/routes.js"
+			],
+			[
+				"juryhome",
+				"assets/templates/jury/home.html"
+			],
+			[
+				"adminhome.",
+				"assets/templates/admin/home.html"
+			],
+			[
+				"teamroutes",
+				"assets/js/team/routes.js"
+			],
+			[
+				"scoreboarder",
+				"api/services/ScoreboardService.js"
+			],
+			[
+				"scoreboard.html",
+				"assets/templates/common/scoreboard.html"
+			],
+			[
+				"teamhome.con",
+				"assets/js/team/home.controller.js"
+			],
+			[
+				"teamhome",
+				"assets/templates/team/home.html"
+			],
+			[
+				"scoreboardpu",
+				"api/models/ScoreboardPublic.js"
 			],
 			[
 				"runc",
 				"api/controllers/RunController.js"
 			],
 			[
-				"runs.ht",
-				"assets/templates/jury/runs.html"
+				"score",
+				"api/services/ScoreboardService.js"
 			],
 			[
-				"judges",
-				"api/services/JudgeService.js"
+				"gradeser",
+				"api/services/GradeService.js"
 			],
 			[
-				"judgeser",
-				"api/services/JudgeService.js"
+				"scoreboard",
+				"api/services/ScoreboardService.js"
 			],
 			[
-				"contests.html",
-				"assets/templates/jury/contests.html"
+				"gradecon",
+				"api/controllers/GradeController.js"
 			],
 			[
-				"contest.co",
-				"assets/js/jury/contest.controller.js"
+				"veredict",
+				"api/models/Veredict.js"
 			],
 			[
-				"judge",
-				"api/services/JudgeService.js"
+				"scoreboardco",
+				"api/controllers/ScoreboardController.js"
 			],
 			[
-				"judgser",
-				"api/services/JudgeService.js"
+				"clarificationaddcon",
+				"assets/js/jury/clarifications.add.controller.js"
 			],
 			[
-				"clean",
-				"api/policies/cleanToken.js"
+				"home.html",
+				"assets/templates/jury/home.html"
 			],
 			[
-				"runs.h",
-				"assets/templates/jury/runs.html"
+				"clarificationadd",
+				"assets/templates/jury/clarifications-add.html"
 			],
 			[
-				"polic",
+				"clarification",
+				"assets/js/jury/clarification.controller.js"
+			],
+			[
+				"scoreb",
+				"api/services/ScoreboardService.js"
+			],
+			[
+				"poli",
 				"config/policies.js"
 			],
 			[
-				"nav.co",
+				"soreboard",
+				"api/controllers/ScoreboardController.js"
+			],
+			[
+				"jurytestcase",
+				"assets/templates/jury/add-testcase.html"
+			],
+			[
+				"testcase.ht",
+				"assets/templates/jury/testcase.html"
+			],
+			[
+				"testcasec",
+				"api/controllers/TestcaseController.js"
+			],
+			[
+				"util",
+				"daemon/util.js"
+			],
+			[
+				"tm",
+				"daemon/tmp.json"
+			],
+			[
+				"tmp.j",
+				"daemon/tmp.json"
+			],
+			[
+				"daemon",
+				"daemon/daemon.js"
+			],
+			[
+				"daemonn",
+				"daemon/node_modules/socket.io-client/lib/namespace.js"
+			],
+			[
+				"index.",
+				"assets/index.html"
+			],
+			[
+				"timer.di",
+				"assets/js/common/timer.directive.js"
+			],
+			[
+				"timec",
+				"api/controllers/TimeController.js"
+			],
+			[
+				"nav",
 				"assets/js/common/nav.controller.js"
 			],
 			[
-				"sails",
-				"assets/js/dependencies/sails.io.js"
+				"juryzip.",
+				"assets/js/jury/zip.controller.js"
 			],
 			[
-				"jury.m",
-				"assets/js/jury/jury.module.js"
+				"contestup",
+				"assets/js/jury/jury.contestUpdateController.js"
 			],
 			[
-				"runs.",
-				"assets/templates/jury/runs.html"
+				"jurywizard",
+				"assets/js/jury/wizard.finished.controller.js"
 			],
 			[
-				"angularsai",
-				"assets/js/dependencies/angular-sails-bind/angular-sails-bind.js"
+				"admincontests.",
+				"assets/js/admin/contest.controller.js"
 			],
 			[
-				"jury.mo",
-				"assets/js/jury/jury.module.js"
+				"login.c",
+				"assets/js/common/User/login.controller.js"
 			],
 			[
-				"angular-sails",
-				"assets/js/dependencies/angular-sails-bind/angular-sails-bind.js"
+				"tokena",
+				"api/policies/tokenAuth.js"
 			],
 			[
-				"runs.htm",
-				"assets/templates/jury/runs.html"
+				"cleanto",
+				"api/policies/cleanToken.js"
+			],
+			[
+				"navc",
+				"assets/js/common/nav.controller.js"
+			],
+			[
+				"importer",
+				"assets/styles/importer.less"
+			],
+			[
+				"pipel",
+				"tasks/pipeline.js"
+			],
+			[
+				"run.add",
+				"assets/js/team/run.add.controller.js"
+			],
+			[
+				"runcon",
+				"api/controllers/RunController.js"
+			],
+			[
+				"verify.cntro",
+				"assets/js/jury/verify.controller.js"
+			],
+			[
+				"verify.ht",
+				"assets/templates/jury/verify.html"
+			],
+			[
+				"gradec",
+				"api/controllers/GradeController.js"
+			],
+			[
+				"task.js",
+				"api/models/Task.js"
+			],
+			[
+				"clarification.c",
+				"assets/js/jury/clarification.controller.js"
+			],
+			[
+				"app.le",
+				"assets/styles/app.less"
+			],
+			[
+				"polici",
+				"config/policies.js"
+			],
+			[
+				"cleant",
+				"api/policies/cleanToken.js"
+			],
+			[
+				"polcie",
+				"config/policies.js"
+			],
+			[
+				"moose.",
+				"assets/js/moose.module.js"
+			],
+			[
+				"verify.html",
+				"assets/templates/jury/verify.html"
+			],
+			[
+				"pipe",
+				"tasks/pipeline.js"
+			],
+			[
+				"bower.",
+				"bower.json"
+			],
+			[
+				"team.mo",
+				"assets/js/team/team.module.js"
+			],
+			[
+				"moosejs",
+				"assets/js/moose.module.js"
+			],
+			[
+				"userc",
+				"api/controllers/UserController.js"
+			],
+			[
+				"userco",
+				"api/controllers/UserController.js"
+			],
+			[
+				"locals",
+				"assets/js/common/services/localStorage.factory.js"
+			],
+			[
+				"localser",
+				"assets/js/common/services/localStorage.factory.js"
+			],
+			[
+				"contest.js",
+				"api/models/Contest.js"
+			],
+			[
+				"runco",
+				"api/controllers/RunController.js"
+			],
+			[
+				"contestco",
+				"api/controllers/ContestController.js"
+			],
+			[
+				"auth.fac",
+				"assets/js/common/services/auth.factory.js"
+			],
+			[
+				"user.mod",
+				"assets/js/common/models/user.model.js"
+			],
+			[
+				"clarificationser",
+				"api/services/ClarificationService.js"
+			],
+			[
+				"clarificat",
+				"api/controllers/ClarificationController.js"
+			],
+			[
+				"graderss",
+				"api/services/GradeService.js"
+			],
+			[
+				"scorebardser",
+				"api/services/ScoreboardService.js"
+			],
+			[
+				"contest.users",
+				"assets/js/admin/contest.users.controller.js"
+			],
+			[
+				"order",
+				"assets/js/common/filters/orderObjectBy.filter.js"
 			]
 		],
 		"width": 0.0
@@ -1512,7 +1630,15 @@
 		"selected_items":
 		[
 			[
+				"calza",
+				"~/Code/laravel-angular-seed/Calzados Junior.sublime-project"
+			],
+			[
 				"",
+				"~/Code/laravel-angular-seed/Calzados Junior.sublime-project"
+			],
+			[
+				"calz",
 				"~/Code/laravel-angular-seed/Calzados Junior.sublime-project"
 			],
 			[
@@ -1538,7 +1664,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 325.0,
+	"side_bar_width": 321.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
