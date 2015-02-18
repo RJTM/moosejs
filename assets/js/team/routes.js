@@ -17,7 +17,7 @@ angular.module('mooseJs.team')
 			.state('team.home', {
 				url: '/home',
 				templateUrl: 'templates/team/home.html',
-				controller: 'jury.ScoreboardController',
+				controller: 'team.HomeController',
 				data: {
 					ncyBreadcrumbLabel: 'Home'
 				}
