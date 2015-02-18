@@ -12,6 +12,15 @@
 
 }
 
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 [data-icon]:before {
   font-family: "moosejs" !important;
   content: attr(data-icon);
@@ -36,6 +45,25 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.fa-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.fa-2x {
+  font-size: 2em;
+}
+.fa-3x {
+  font-size: 3em;
+}
+.fa-4x {
+  font-size: 4em;
+}
+.fa-5x {
+  font-size: 5em;
 }
 
 .fa-plus:before {
@@ -115,4 +143,11 @@
 }
 .fa-balloon:before {
   content: "z";
+}
+.fa-balloon{
+   text-shadow: 1px 1px #000;
+}
+.fa-balloon-white {
+    /*-webkit-text-stroke: 1px black;*/
+    text-shadow: 0px 0px 1px #000;
 }

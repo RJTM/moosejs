@@ -21,13 +21,13 @@ module.exports = {
   		collection: 'run',
   		via: 'task'
   	},
-    subtasks: {
-           collection: 'subtask',
-           via: 'task',
-    },
-    color : {
-      type : 'string'
-    }
+      subtasks: {
+             collection: 'subtask',
+             via: 'task',
+      },
+      color : {
+        type : 'string'
+      }
   },
 
   afterDestroy: function(destroyedRecords, cb){

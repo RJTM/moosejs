@@ -4,7 +4,7 @@
 		<thead>
 			<th class="col-md-1">Rank</th>
 			<th>Team</th>
-			<th ng-repeat="task in tasks | orderObjectBy:'name'">{{ task.name }}</th>
+			<th ng-repeat="task in tasks | orderObjectBy:'name'">{{ task.name }} <i class="fa fa-balloon" style="color:{{ task.color }}" ng-class="{ 'fa-balloon-white': task.color === '#fff'}"></i></th>
 			<th class="col-md-1">Total</th>
 			<th class="col-md-1">Time</th>
 		</thead>

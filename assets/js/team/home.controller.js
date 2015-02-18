@@ -47,7 +47,8 @@ angular.module('mooseJs.team')
 							name: value.task.code, 
 							id: value.task.id,
 							fullPoints : 0,
-							subtasks : {}
+							subtasks : {},
+							color: value.task.color
 						};
 					}
 					tasks[value.task.code].subtasks[value.subtask.id] = value.subtask.points;
