@@ -33,7 +33,6 @@ angular.module('mooseJs.jury')
 				updateRun(message.data);
 				
 			}
-			console.log(message);
 		});
 
 

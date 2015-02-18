@@ -5,10 +5,14 @@ angular.module('mooseJs.team')
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
+		var activeContest;
 
 		var calculateScoreboard = function(){
 
 			socket.get('/scoreboard', function(data){
+				if(data && data.length > 0){
+					activeContest = data[0].contest;
+				}
 				var users = $scope.scoreboardRows = {};
 				var tasks = $scope.tasks = {};
 				angular.forEach(data, function(value, key){
@@ -113,4 +117,10 @@ angular.module('mooseJs.team')
 
 		socket.on('scoreboardpublic', updateScoreboard);
 
+		// socket.on('release', function(message){
+		// 	console.log(message);
+		// 	if(activeContest && activeContest === message.contest){
+		// 		calculateScoreboard();
+		// 	}
+		// });
 	}]);

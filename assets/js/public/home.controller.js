@@ -128,4 +128,10 @@ angular.module('mooseJs.public')
 
 		socket.on('scoreboardpublic', updateScoreboard);
 
+		socket.on('release', function(message){
+			if($scope.search.contest === message.contest){
+				calculateScoreboard();
+			}
+		});
+
 	}]);

@@ -22,7 +22,7 @@ module.exports = {
 					return;
 				}
 			}
-			callback("No active contest found for this user");
+			callback(null, []);
 		});
 	},
 

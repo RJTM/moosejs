@@ -142,6 +142,12 @@ angular.module('mooseJs.jury')
 		socket.on('scoreboard', updatePrivate);
 		socket.on('scoreboardpublic', updatePublic);
 
+		socket.on('release', function(message){
+			if($scope.search.contest === message.contest){
+				calculateScoreboard();
+			}
+		});
+
 		$scope.getOrder = function(input){
 			return input.team.total;
 		}

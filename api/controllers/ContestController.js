@@ -73,6 +73,16 @@ module.exports = {
 				});
 			}
 		});
-	}
+	},
+
+	release: function(req, res){
+		var contestId = req.param('id');
+		Contest.update({id: contestId}, { unfreezeTime: new Date() }).exec(function(err, contest){
+			if(err) return res.serverError;
+			Contest.publishUpdate(contest[0].id);
+			sails.sockets.broadcast('resultsRelease', 'release', {  contest: contest[0].id });
+			res.ok();
+		});
+	},
 };
 

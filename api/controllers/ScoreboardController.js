@@ -8,6 +8,9 @@
 module.exports = {
 	index: function(req, res){
 		var userId;
+		if(req.isSocket){
+			sails.sockets.join(req.socket, 'resultsRelease');
+		}
 		if(req.token){
 			userId = req.token.id;
 			User.findOne(userId).exec(function(err, user){

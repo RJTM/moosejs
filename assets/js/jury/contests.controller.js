@@ -1,5 +1,5 @@
 angular.module('mooseJs.jury')
-	.controller('jury.ContestsController', ["$scope", "$state", "Contest", function($scope, $state, Contest){
+	.controller('jury.ContestsController', ["$scope", "$state", "Contest", "socket", function($scope, $state, Contest, socket){
 		$scope.contests = Contest.query();
 		
 		$scope.settings = function(index){
@@ -12,5 +12,22 @@ angular.module('mooseJs.jury')
 					id: $scope.contests[index].id
 				});
 			}
+		}
+
+		$scope.kraken = function(index){
+			swal({
+				title: 'Are you sure?',
+				text: 'Everybody will be able to see the final scoreboard',
+				type: 'warning',
+				showCancelButton : true,
+				confirmButtonText : 'Yes, RELEASE',
+				closeOnConfirm : false,
+			}, function(){
+				socket.post('/contest/release',
+					{ id: $scope.contests[index].id },
+					function(data){
+						swal('Done!', 'Results released', 'success');
+					});
+			});
 		}
 	}]);

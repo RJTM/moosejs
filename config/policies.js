@@ -14,7 +14,8 @@ module.exports.policies = {
       'findOne': ['cleanToken'],
       'create': ['tokenAuth', 'admin'],
       'update': ['tokenAuth', 'juryAndUp'],
-      'destroy': ['tokenAuth', 'admin']
+      'destroy': ['tokenAuth', 'admin'],
+      'release': ['tokenAuth', 'jury'],
     },
 
     GradeController: {

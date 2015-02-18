@@ -71,7 +71,8 @@
  	team: function(req, res){
  		var user = req.token.id;
  		ContestService.getActiveContest(user, function(err, contest){
- 			if(err) res.serverError(err);
+ 			if(!contest) return res.json([]);
+ 			if(err) return res.serverError(err);
  			var finalRuns = [];
 	 		Run.find({owner: user}).populate('task').exec(function(err, runs){
 	 			if(err) return res.serverError(err);
