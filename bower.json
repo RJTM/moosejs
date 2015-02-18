@@ -31,7 +31,7 @@
     "angular-resource": "~1.2.25",
     "angular-breadcrumb": "~0.2.3",
     "sweetalert": "~0.3.1",
-    "angular-ui-select": "~0.8.3",
+    "angular-ui-select": "~0.9.8",
     "ng-file-upload": "~2.1.1",
     "bootstrap": "~3.3.2",
     "angular-ui-bootstrap-datetimepicker": "*"

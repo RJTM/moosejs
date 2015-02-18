@@ -1,1 +1,8 @@
+<label>Contest</label>
+<ui-select ng-model="search.contest" on-select="test()">
+	<ui-select-match placeholder="Select one contest for the clarification..">{{$select.selected.name}}</ui-select-match>
+	<ui-select-choices repeat="contest.id as contest in contests | filter:$select.search">
+		<div ng-bind-html="trustAsHtml((contest.name | highlight : $select.search))"></div>
+	</ui-select-choices>
+</ui-select>
 <div ng-include src="'/templates/common/scoreboard.html'"></div>
