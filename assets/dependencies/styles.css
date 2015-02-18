@@ -1,0 +1,118 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "moosejs";
+  src:url("fonts/moosejs.eot");
+  src:url("fonts/moosejs.eot?#iefix") format("embedded-opentype"),
+    url("fonts/moosejs.woff") format("woff"),
+    url("fonts/moosejs.ttf") format("truetype"),
+    url("fonts/moosejs.svg#moosejs") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "moosejs" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="fa-"]:before,
+[class*=" fa-"]:before {
+  font-family: "moosejs" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-plus:before {
+  content: "a";
+}
+.fa-check:before {
+  content: "b";
+}
+.fa-pencil:before {
+  content: "c";
+}
+.fa-trash:before {
+  content: "d";
+}
+.fa-users:before {
+  content: "e";
+}
+.fa-key:before {
+  content: "f";
+}
+.fa-times:before {
+  content: "g";
+}
+.fa-paper-plane:before {
+  content: "h";
+}
+.fa-cog:before {
+  content: "i";
+}
+.fa-bell:before {
+  content: "j";
+}
+.fa-refresh:before {
+  content: "k";
+}
+.fa-book:before {
+  content: "l";
+}
+.fa-clock-o:before {
+  content: "m";
+}
+.fa-file-code-o:before {
+  content: "n";
+}
+.fa-lightbulb-o:before {
+  content: "o";
+}
+.fa-search:before {
+  content: "p";
+}
+.fa-gavel:before {
+  content: "q";
+}
+.fa-arrow-right:before {
+  content: "r";
+}
+.fa-magic:before {
+  content: "s";
+}
+.fa-file-archive-o:before {
+  content: "t";
+}
+.fa-folder-open:before {
+  content: "u";
+}
+.fa-file-pdf-o:before {
+  content: "v";
+}
+.fa-file-text-o:before {
+  content: "w";
+}
+.fa-print:before {
+  content: "x";
+}
+.fa-question-circle:before {
+  content: "y";
+}
+.fa-balloon:before {
+  content: "z";
+}
