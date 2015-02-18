@@ -20,6 +20,7 @@ angular.module('mooseJs.admin')
 	.state('admin.home', {
 		url : '/home',
 		templateUrl : 'templates/admin/home.html',
+		controller: 'admin.HomeController',
 		data: {
 			ncyBreadcrumbLabel: 'Home'
 		}

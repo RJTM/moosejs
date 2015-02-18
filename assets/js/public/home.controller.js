@@ -1,6 +1,8 @@
 'use strict';
-angular.module('mooseJs.jury')
-	.controller('jury.ScoreboardController', ["$scope", "socket", "$sce", function($scope, socket, $sce){
+
+angular.module('mooseJs.public')
+	.controller('public.HomeController', ["$scope", "socket" , "$sce", function($scope, socket, $sce){
+
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
 
@@ -72,7 +74,7 @@ angular.module('mooseJs.jury')
 
 		$scope.search = {};
 
-		calculateScoreboard();
+		// calculateScoreboard();
 
 		socket.get('/contest', function(data){
 			$scope.contests = data;
@@ -81,11 +83,6 @@ angular.module('mooseJs.jury')
 		$scope.$watch('search.contest', function(value){
 			if(value)
 				calculateScoreboard();
-		});
-
-		$scope.$watch('search.public', function(value){
-			if($scope.search.contest)
-				calculateScoreboard();			
 		});
 
 		$scope.trustAsHtml = function(value) {
@@ -129,20 +126,6 @@ angular.module('mooseJs.jury')
 
 		};
 
-		var updatePrivate = function(message){
-			if($scope.search.public) return;
-			updateScoreboard(message);
-		};
+		socket.on('scoreboardpublic', updateScoreboard);
 
-		var updatePublic = function(message){
-			if(!$scope.search.public) return;
-			updateScoreboard(message);
-		};
-
-		socket.on('scoreboard', updatePrivate);
-		socket.on('scoreboardpublic', updatePublic);
-
-		$scope.getOrder = function(input){
-			return input.team.total;
-		}
 	}]);

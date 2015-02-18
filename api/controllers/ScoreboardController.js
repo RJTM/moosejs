@@ -40,7 +40,7 @@ module.exports = {
 			});
 		}else{
 			var contestId = req.param('contest');
-			ScoreboardService.findScoreboardPublic(contestId, function(err, scoreboard){
+			ScoreboardService.findScoreboardPublic(req, contestId, function(err, scoreboard){
 				if(err) return res.serverError(err);
 				return res.json(scoreboard);
 			});

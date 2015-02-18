@@ -16,6 +16,7 @@ mooseJs.config(["$stateProvider", "$urlRouterProvider", "AccessLevels", function
         
         .state('public.home', {
             url: "/home",
+            controller: 'public.HomeController',
             templateUrl: 'templates/public/home.html',
         })
     

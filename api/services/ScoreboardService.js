@@ -388,7 +388,7 @@ module.exports = {
 				return;
 			}
 
-			var subTaskUtil = {};
+			var subTaskUtil = {}, balloon = true;
 			var previousScore = rows.map(function(current){
 				return current.points;
 			}).reduce(function(prev, next){
@@ -400,11 +400,12 @@ module.exports = {
 					points: current.points,
 					veredict: current.veredict
 				};
+				balloon = balloon && (current.veredict === 'accepted' && subtasksFeedback[current.id]);
 				return current.veredict === 'accepted' && subtasksFeedback[current.id] ? parseInt(current.points) : 0;
 			}).reduce(function(prev, next){
 				return prev + next;
 			});
-
+			balloon = balloon && nextScore > previousScore;
 			// update each subtask entry in the scoreboard
 			async.each(rows, function(item, cb){
 				item.submissions = parseInt(item.submissions) + 1;
@@ -430,6 +431,9 @@ module.exports = {
 					return;
 				}
 				ScoreboardPublic.publishUpdate(rows[0].id, rows);
+				if(balloon){
+					BalloonService.create(grade.run.owner.id, grade.task.id);
+				}
 			});
 
 		});

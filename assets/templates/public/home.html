@@ -1,3 +1,18 @@
 <div class="container">
-    <div ng-include src="'/templates/common/scoreboard.html'"></div>
+	<div class="row form-horizontal">
+		<div class="col-md-1 text-right">
+			<label class="control-label">Contest</label>
+		</div>
+		<div class="col-md-4">
+			<ui-select ng-model="search.contest" on-select="test()">
+				<ui-select-match placeholder="Select one contest">{{$select.selected.name}}</ui-select-match>
+				<ui-select-choices repeat="contest.id as contest in contests | filter:$select.search">
+					<div ng-bind-html="trustAsHtml((contest.name | highlight : $select.search))"></div>
+				</ui-select-choices>
+			</ui-select>
+		</div>
+	</div>
+	<br>
+
+	<div ng-include src="'/templates/common/scoreboard.html'"></div>
 </div>
