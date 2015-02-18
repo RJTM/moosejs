@@ -94,12 +94,6 @@ module.exports = {
 				delete finalResponse.run.grades;
 				delete finalResponse.run.task;
 
-				if(finalResponse.grade.result === 'compiler-error'){
-					finalResponse.result = 'compiler-error';
-					cb(null,finalResponse);
-					return;
-				}
-
 				var resultPriority;
 				getResultPriority(function(resultPrio){
 					resultPriority = resultPrio;
@@ -110,11 +104,19 @@ module.exports = {
 							return;
 						}
 						finalResponse.subtasks = res;
+						if(finalResponse.grade.result === 'compiler-error'){
+							finalResponse.result = 'compiler-error';
+							finalResponse.subtasks.forEach(function(subtask){
+								subtask.result = 'compiler-error';
+							});
+							cb(null,finalResponse);
+							return;
+						}
 						async.each(finalResponse.subtasks, function(subtask, finishedSubtask){
 							async.each(subtask.testcases, function(testcase, finishedTestcase){
 								TestcaseGrade.findOne({testcase: testcase.id, grade: finalResponse.grade.id}).exec(function(err,res){
 									if(err || !res){
-										cb(err);
+										finishedTestcase(err);
 										return;
 									}
 									testcase.testcasegrade = res;
@@ -123,7 +125,7 @@ module.exports = {
 							}, function(err){
 								var topPrio = 0;
 								var tempResult = 'none';
-								for(var i = 0; i<subtask.testcases.length; i++){
+								for(var i = 0, n=subtask.testcases.length; i<n; i++){
 									if(resultPriority[subtask.testcases[i].testcasegrade.result] > topPrio){
 										tempResult = subtask.testcases[i].testcasegrade.result;
 										topPrio = resultPriority[subtask.testcases[i].testcasegrade.result];
@@ -133,12 +135,13 @@ module.exports = {
 								finishedSubtask(err);
 							})
 						}, function(err){
+
 							if(err){
 								cb(err);	
 							}
 							var topPrio = 0;
 							var tempResult = 'none';
-							for(var i=0;i<finalResponse.subtasks.length;i++){
+							for(var i=0,n=finalResponse.subtasks.length;i<n;i++){
 								if(resultPriority[finalResponse.subtasks[i].result] > topPrio){
 									tempResult = finalResponse.subtasks[i].result;
 									topPrio = resultPriority[finalResponse.subtasks[i].result];

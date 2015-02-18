@@ -24,6 +24,10 @@ angular.module('mooseJs.jury')
 					points : subtask.points
 				};
 
+				if(data.result === 'compiler-error'){
+					return;
+				}
+
 				angular.forEach(subtask.testcases, function(testcase, index){
 					$http.get('/protected/testcases/'+testcase.outputFile).success(function(data){
 						testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {

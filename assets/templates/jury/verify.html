@@ -10,8 +10,15 @@
 	<button class="btn btn-default" ng-click="showSource = !showSource">
 		Source Code
 	</button>
+	<button class="btn btn-default" ng-click="showCMessage = !showCMessage">
+		Show Compiler Output
+	</button>
 	<div ng-init="showSource = false" collapse="!showSource">
 		<pre nag-prism source="{{ code }}" class="language-{{ run.language.syntaxHighlighting }} line-numbers"></pre>
+	</div>
+
+	<div ng-init="showCMessage = false" collapse="!showCMessage">
+		<pre nag-prism source="{{ grade.compileMessage }}" class="language-clike"></pre>
 	</div>
 	
 </div>
@@ -28,6 +35,7 @@
 						</div>
 						<div class="col-md-4">
 							<select class="form-control" ng-model="veredict[subtask.id].veredict">
+								<option value="compiler-error">Compiler Error</option>
 								<option value="memory-limit">Memory Limit</option>
 								<option value="output-limit">Output Limit</option>
 								<option value="run-error">Run Error</option>
@@ -40,7 +48,7 @@
 						</div>
 					</div><br>
 				</div>
-				<table class="table table-bordered">
+				<table class="table table-bordered" ng-hide="grade.result === 'compiler-error'">
 					<thead>
 						<tr>
 							<th>Testcase #</th>
@@ -52,7 +60,7 @@
 						<tr ng-repeat-start="testcase in subtask.testcases">
 							<td>{{ $index+1 }}</td>
 							<td><span ng-class="testcase.testcasegrade.result == 'accepted' ? 'text-success' : 'text-danger'">{{ testcase.testcasegrade.result }}</td>
-							<td><button ng-show="testcase.testcasegrade.result !=='accepted'" class="btn btn-xs btn-primary" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-search"></i></button><p ng-hide="testcase.testcasegrade.result !=='accepted'">{{testcase.diff[0].text}}</p></td>
+							<td><button ng-show="testcase.testcasegrade.result =='wrong-answer' || testcase.testcasegrade.result =='presentation-error'" class="btn btn-xs btn-primary" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-search"></i></button><p ng-hide="testcase.testcasegrade.result !=='accepted'">{{testcase.diff[0].text}}</p></td>
 						</tr>
 						<tr ng-repeat-end ng-init="isCollapsed=true" collapse="isCollapsed">
 							<td colspan="3">
