@@ -1,33 +1,35 @@
-<div class="pull-left">
-	<h4>Modifying subtask {{ subtask.id }}</h4>
-</div>
-<div class="pull-right">
-	<button class="btn btn-sm btn-danger" ui-sref="jury.task"><fa class="fa fa-times"></fa></button>
-</div>
-<div class="clearfix"></div>
+<div class="well">
+	<div class="pull-left">
+		<h4>Modifying subtask {{ subtask.id }}</h4>
+	</div>
+	<div class="pull-right">
+		<button class="btn btn-sm btn-danger" ui-sref="jury.task"><fa class="fa fa-times"></fa></button>
+	</div>
+	<div class="clearfix"></div>
 
 
-<form class="form form-horizontal" ng-submit="save()">
-	<div class="form-group">
-		<label for="points" class="col-md-2 control-label">Points</label>
-		<div class="col-md-10">
-			<input type="text" class="form-control" id="points" ng-model="subtask.points">
+	<form class="form form-horizontal" ng-submit="save()">
+		<div class="form-group">
+			<label for="points" class="col-md-2 control-label">Points</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" id="points" ng-model="subtask.points">
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-md-2 control-label">Feedback</label>
-		<div class="col-md-10">
-			<input type="checkbox" id="feedback" ng-model="subtask.feedback">
+		<div class="form-group">
+			<label class="col-md-2 control-label">Feedback</label>
+			<div class="col-md-10">
+				<input type="checkbox" id="feedback" ng-model="subtask.feedback">
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label for="timelimit" class="col-md-2 control-label">Time Limit (ms)</label>
-		<div class="col-md-10">
-			<input type="text" class="form-control" id="timelimit" ng-model="subtask.timeLimit">
+		<div class="form-group">
+			<label for="timelimit" class="col-md-2 control-label">Time Limit (ms)</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" id="timelimit" ng-model="subtask.timeLimit">
+			</div>
 		</div>
-	</div>
-	<button class="btn btn-success" type="submit">Save</button>
-</form>
+		<button class="btn btn-success" type="submit">Save</button>
+	</form>
+</div>
 <br>
 <hr>
 <div class="pull-right">
