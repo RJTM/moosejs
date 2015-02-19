@@ -151,3 +151,6 @@
     /*-webkit-text-stroke: 1px black;*/
     text-shadow: 0px 0px 1px #000;
 }
+.fa-power-off:before {
+  content: "A";
+}
