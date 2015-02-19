@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.SubtaskController', function($scope, $stateParams, socket, $http){
+	.controller('jury.SubtaskController', ["$scope", "$stateParams", "socket", "$http", function($scope, $stateParams, socket, $http){
 		socket.get('/subtask/'+$stateParams.subtask, function(data){
 			$scope.subtask = data;
 		});
@@ -30,4 +30,4 @@ angular.module('mooseJs.jury')
 				});
 			});
 		}
-	});
+	}]);

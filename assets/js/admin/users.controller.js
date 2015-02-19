@@ -1,5 +1,5 @@
 angular.module('mooseJs.admin')
-	.controller('admin.UsersController', ["$scope", "User", function($scope, User, $http){
+	.controller('admin.UsersController', ["$scope", "User", "$http", function($scope, User, $http){
 		$scope.users = User.query();
 
 		$scope.delete = function($index){

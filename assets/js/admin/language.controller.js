@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.admin')
-	.controller('admin.LanguageController', function($scope, socket, $state, $stateParams){
+	.controller('admin.LanguageController', ["$scope", "socket", "$state", "$stateParams", function($scope, socket, $state, $stateParams){
 		
 		socket.get('/language/'+$stateParams.id, function(data){
 			$scope.language = data;
@@ -13,4 +13,4 @@ angular.module('mooseJs.admin')
 				$state.go('admin.languages');
 			});
 		}
-	});
+	}]);

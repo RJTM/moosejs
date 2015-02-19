@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.admin')
-	.controller('admin.JudgehostsController', function($scope, socket, $http){
+	.controller('admin.JudgehostsController', ["$scope", "socket", "$http", function($scope, socket, $http){
 		socket.get('/judgehost', function(data){
 			$scope.judgehosts = data;
 		});
@@ -30,4 +30,4 @@ angular.module('mooseJs.admin')
 				$scope.token = data.token;
 			});
 		}
-	});
+	}]);

@@ -54,7 +54,11 @@ angular.module('mooseJs.team')
 				});
 			}).error(function(data, status){
 				if(status === 400){
-					sweetAlert("Too late.", "This contest has ended", "error");
+					if(data.msg === 'Too late'){
+						sweetAlert("Too late.", "This contest has ended", "error");
+					}else{
+						sweetAlert("Error", data.msg, "error");
+					}
 				}
 			});
 		});

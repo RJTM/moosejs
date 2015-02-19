@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.AddSubtaskController', function($scope, $stateParams, socket, $state){
+	.controller('jury.AddSubtaskController', ["$scope", "$stateParams", "socket", "$state", function($scope, $stateParams, socket, $state){
 
 		$scope.subtask = {
 			task: $stateParams.id
@@ -15,4 +15,4 @@ angular.module('mooseJs.jury')
 			});
 		}
 
-	});
+	}]);

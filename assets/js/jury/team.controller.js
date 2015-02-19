@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.jury')
-	.controller('jury.TeamController', ["$scope", "socket","$upload", function($scope, socket, $upload){
+	.controller('jury.TeamController', ["$scope", "socket", "$upload", function($scope, socket, $upload){
 	
 	socket.get('/task', function(data){
 		$scope.tasks = data;

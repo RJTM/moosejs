@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.team')
-	.controller('team.ToolsController', function($scope, socket, $upload){
+	.controller('team.ToolsController', ["$scope", "socket", "$upload", function($scope, socket, $upload){
 		$scope.submit = function(){
 			$upload.upload({
 				url: '/print/',
@@ -11,4 +11,4 @@ angular.module('mooseJs.team')
 				swal('Done!', 'File sent to print', 'success');
 			});
 		}
-	});
+	}]);

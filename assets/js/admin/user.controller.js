@@ -1,5 +1,5 @@
 angular.module('mooseJs.admin')
-	.controller('admin.UserController', function($scope, socket, $stateParams, $state){
+	.controller('admin.UserController', ["$scope", "socket", "$stateParams", "$state", function($scope, socket, $stateParams, $state){
 		
 		socket.get('/user/' + $stateParams.id, function(data){
 			$scope.user = data;
@@ -11,4 +11,4 @@ angular.module('mooseJs.admin')
 				$state.go('admin.users');
 			});
 		};
-	});
+	}]);

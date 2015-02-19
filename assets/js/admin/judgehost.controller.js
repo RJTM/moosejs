@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.admin')
-	.controller('admin.JudgehostController', function($scope, socket, $state, $stateParams){
+	.controller('admin.JudgehostController', ["$scope", "socket", "$state", "$stateParams", function($scope, socket, $state, $stateParams){
 		
 		socket.get('/judgehost/'+$stateParams.id, function(data){
 			$scope.judgehost = data;
@@ -13,4 +13,4 @@ angular.module('mooseJs.admin')
 				$state.go('admin.judgehosts');
 			});
 		}
-	});
+	}]);

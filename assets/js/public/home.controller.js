@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.public')
-	.controller('public.HomeController', ["$scope", "socket" , "$sce", function($scope, socket, $sce){
+	.controller('public.HomeController', ["$scope", "socket", "$sce", function($scope, socket, $sce){
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};

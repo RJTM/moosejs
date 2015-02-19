@@ -5,7 +5,7 @@ angular.module('mooseJs.common')
 			endTime: '@endTime',
 		},
 		restrict: 'E',
-		controller: function($scope, $timeout){
+		controller: ["$scope", "$timeout", function($scope, $timeout){
 			var myTimeout = null;
 			$scope.output = {};
 			var create = function(){
@@ -34,7 +34,7 @@ angular.module('mooseJs.common')
 				$timeout.cancel(myTimeout);
 				create();
 			});
-		},
+		}],
 		template: '<span>{{ output.hours }}h {{output.minutes}}m {{output.seconds}}s</span>'
 	}
 });

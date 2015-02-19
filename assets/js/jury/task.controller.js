@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.jury')
-	.controller('jury.TaskController', function($scope, Task, $stateParams, $http, $state){
+	.controller('jury.TaskController', ["$scope", "Task", "$stateParams", "$http", "$state", function($scope, Task, $stateParams, $http, $state){
 		$scope.task = Task.get({id :$stateParams.id});
 
 		$scope.save = function(){
@@ -27,4 +27,4 @@ angular.module('mooseJs.jury')
 				});
 			});
 		}
-	});
+	}]);

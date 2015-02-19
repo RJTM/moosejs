@@ -20,35 +20,54 @@
  		var language = req.param('language');
 
  		Task.findOne(task).populate('contest').exec(function(err, fullTask){
- 			var now = new Date();
- 			var contestTime = new Date(fullTask.contest.startTime);
- 			var time = parseInt((now - contestTime)/60000);
- 			var endTime = new Date(fullTask.contest.endTime);
- 			if(now > endTime){
- 				res.json(400, { msg: 'Too late'});
- 				return;
- 			}
- 			RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
- 				if(err) return res.serverError(err);
- 				Run.create({
- 					time: time,
- 					owner: owner,
- 					task: task,
- 					language: language,
- 					source: sourceUrl
- 				}).exec(function(err, result){
- 					if(err) return res.json(500, err);
- 					JudgeService.dispatchRun(result);
- 					Run.findOne({id: result.id}).populate('owner').populate('task').exec(function(err, data){
- 						if(err){
- 							Run.publishCreate(result);
- 							return res.json(result);
- 						} 
- 						Run.publishCreate(data);
- 						return res.json(data);
+ 			User.findOne(owner).populate('contests').exec(function(err, fullOwner){
+ 				var allowed = false;
+ 				if(fullOwner.role === 'jury'){
+ 					allowed = true;
+ 				}else{
+ 					for(var i=0,n=fullOwner.contests.length; i<n;i++){
+ 						if(fullOwner.contests[i].id === fullTask.contest.id){
+ 							allowed = true;
+ 							break;
+ 						}
+ 					}
+ 				}
+
+ 				if(allowed){
+ 					var now = new Date();
+ 					var contestTime = new Date(fullTask.contest.startTime);
+ 					var time = parseInt((now - contestTime)/60000);
+ 					var endTime = new Date(fullTask.contest.endTime);
+ 					if(now > endTime){
+ 						res.json(400, { msg: 'Too late'});
+ 						return;
+ 					}
+ 					RunService.uploadSourceFile(task, owner, source, function(err, sourceUrl){
+ 						if(err) return res.serverError(err);
+ 						Run.create({
+ 							time: time,
+ 							owner: owner,
+ 							task: task,
+ 							language: language,
+ 							source: sourceUrl
+ 						}).exec(function(err, result){
+ 							if(err) return res.json(500, err);
+ 							JudgeService.dispatchRun(result);
+ 							Run.findOne({id: result.id}).populate('owner').populate('task').exec(function(err, data){
+ 								if(err){
+ 									Run.publishCreate(result);
+ 									return res.json(result);
+ 								} 
+ 								Run.publishCreate(data);
+ 								return res.json(data);
+ 							});
+ 						});
  					});
- 				});
+ 				}else{
+ 					return res.json(400, { msg: 'You are not registered to this contest'});
+ 				}
  			});
+ 			
  		});
  		
 
