@@ -19,8 +19,10 @@ module.exports = {
 			function(err, printJob){
 				if(err)
 					return res.serverError(err);
-				Print.publishCreate(printJob);
-				return res.json(printJob);
+				Print.findOne(printJob.id).populate('team').exec(function(err, fullJob){
+					Print.publishCreate(fullJob);
+					return res.json(fullJob);
+				});
 		});
 	}
 };

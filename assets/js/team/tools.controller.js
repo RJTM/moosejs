@@ -15,5 +15,11 @@ angular.module('mooseJs.team')
 			}).success(function(data){
 				swal('Done!', 'File sent to print', 'success');
 			});
+		};
+
+		$scope.sos = function(){
+			socket.post('/sos', function(data){
+				swal('SOS sent', 'Staff will get there ASAP', 'success');
+			});
 		}
 	}]);

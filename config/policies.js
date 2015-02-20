@@ -72,5 +72,11 @@ module.exports.policies = {
         'download': ['tokenAuth', 'juryAndJudgehost'],
         'job': ['tokenAuth', 'staff']
     },
+    SosController: {
+        '*': ['tokenAuth'],
+    },
+    BallonController: {
+        '*': ['tokenAuth'],
+    },
     '*': 'cleanToken'
 };

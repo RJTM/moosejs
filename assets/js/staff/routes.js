@@ -55,4 +55,15 @@ angular.module('mooseJs.staff')
 					ncyBreadcrumbParent : 'staff.prints',
 				}
 			})
+
+			.state('staff.sos', {
+				url: '/sos',
+				templateUrl: 'templates/staff/sos.html',
+				controller: 'staff.SosController',
+				data: {
+					ncyBreadcrumbLabel: 'Sos calls',
+					ncyBreadcrumbParent: 'staff.home',
+					clearBadge : 'sos'
+				}
+			})
 	}]);
