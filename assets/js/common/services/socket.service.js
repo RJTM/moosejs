@@ -49,6 +49,24 @@ angular.module('mooseJs.common')
 						}
 					});
 				});
+			},
+			delete : function(url, data, callback){
+				if(!callback){
+					if(typeof data == 'function' || typeof data == 'undefined'){
+						callback = data;
+						data = {};
+					}
+				}
+
+				if(Auth.isAuthenticated()){
+					data.token = JSON.parse(LocalService.get('auth_token')).token;
+				}
+				io.socket.delete(url, data, function(){
+					var args = arguments;
+					$rootScope.$apply(function(){
+						callback.apply(io.socket, args);
+					});
+				});
 			}
 		}
 	}]);
