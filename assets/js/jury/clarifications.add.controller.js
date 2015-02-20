@@ -32,6 +32,7 @@ angular.module('mooseJs.jury')
 		}, function(){
 			if($scope.clarification.owner.isPublic){
 				$scope.clarification.toAll = true;
+				$scope.clarification.owner = CurrentUser.user().id;
 			}else{
 				$scope.clarification.toAll = false;
 			}
@@ -42,7 +43,6 @@ angular.module('mooseJs.jury')
 				$scope.clarification,
 				function(data){
 					swal('Done!', 'Clarification sent', 'success');
-					$scope.clarification = {};
 					$state.go('jury.clarifications');
 				});
 		});
