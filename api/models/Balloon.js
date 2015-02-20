@@ -13,6 +13,10 @@ module.exports = {
 		},
 		user : {
 			model : 'user'
+		},
+		done: {
+			type: 'boolean',
+			defaultsTo: false
 		}
 	}
 };

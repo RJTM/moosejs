@@ -9,6 +9,19 @@ angular.module('mooseJs.staff')
 		});
 
 		socket.on('print', function(message){
-			$scope.prints.push(message.data);
+			if(message.verb === 'created'){
+				$scope.prints.push(message.data);
+			}else{
+				angular.forEach($scope.prints, function(print){
+					if(print.id == message.id){
+						print.done = true;
+					}
+				});
+			}
 		});
+
+		$scope.done = function(print){
+			print.done = true;
+			socket.post('/print/'+print.id, print);
+		}
 	}]);

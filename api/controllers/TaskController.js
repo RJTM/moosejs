@@ -46,6 +46,30 @@ module.exports = {
 		var id = req.param('id');
 		JudgeService.reJudgeTask(id);
 		return res.ok();
+	},
+
+	statement: function(req, res){
+		var statement = req.file('statement');
+		var taskId = req.param('task');
+		if(!statement || !taskId){
+			return res.json(400, {msg: 'Parameters missing'});
+		}
+		Task.findOne(taskId).populate('contest').exec(function(err, task){
+			var contestName = URLService.toSlug(task.contest.name);
+			var taskName = URLService.toSlug(task.code);
+			var dirName =  contestName+"/"+taskName+"/";
+
+			statement.upload({
+				dirname: sails.config.appPath + "/assets/statements/" + dirName,
+				maxBytes: Number.MAX_VALUE,
+				saveAs: taskName + '.pdf'
+			}, function(err,up){
+	                if(err){ 
+	                	return res.serverError(err);
+	                }
+	                return res.json({statement: 'dirname/'+taskName+'.pdf'});
+            	});
+		});
 	}
 };
 

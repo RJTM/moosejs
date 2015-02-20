@@ -3,6 +3,7 @@
 <div class="row">
 	<div class="col-md-6 jumbotron">
 		<h4>Send a file to print</h4>
+		<alert ng-repeat="error in errors" type="danger">{{ error }}</alert>
 		<input type="file" ng-file-select ng-model="printFile" multiple="false"/><br>
 		<button class="btn btn-success" ng-click="submit()">Submit</button>
 	</div>

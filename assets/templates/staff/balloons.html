@@ -7,12 +7,14 @@
 					<th class="text-center">#</th>
 					<th class="text-center">Team</th>
 					<th class="text-center">Color</th>
+					<th class="text-center">Actions</th>
 				</thead>
 				<tbody>
-					<tr ng-repeat="balloon in balloons | orderBy: '-id'">
+					<tr ng-class="{ 'staff-done': balloon.done }" ng-repeat="balloon in balloons | orderBy: ['done', '-id'] track by balloon.id">
 						<td class="col-md-2 text-center">{{ balloon.id }}</td>
 						<td class="col-md-8 text-center">{{ balloon.user.name }}</td>
 						<td class="col-md-2 text-center" style="background-color : {{ balloon.task.color }}"></td>
+						<td><button ng-hide="balloon.done" class="btn btn-success" ng-click="done(balloon)"><i class="fa fa-check"></i> Done</button></td>
 					</tr>
 				</tbody>
 			</table>

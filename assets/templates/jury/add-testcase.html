@@ -8,6 +8,7 @@
 	<div class="clearfix"></div>
 
 	<form class="form form-horizontal" ng-submit="save()">
+		<alert ng-repeat="error in errors" type="danger">{{ error }}</alert>
 		<div class="form-group">
 			<label for="input" class="col-md-2 control-label">Input file</label>
 			<div class="col-md-10">

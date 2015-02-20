@@ -4,6 +4,11 @@ angular.module('mooseJs.jury')
 	.controller('jury.TestcaseController', ["$scope", "$stateParams", "$upload", function($scope, $stateParams, $upload){
 		$scope.testcaseId = $stateParams.testcase;
 		$scope.save = function(){
+			$scope.errors = [];
+			if(!$scope.input || !$scope.output){
+				$scope.errors.push('Please select two files');
+				return;
+			}
 			$upload.upload({
 				url: '/testcase/'+$stateParams.testcase,
 				file: [$scope.input[0], $scope.output[0]],

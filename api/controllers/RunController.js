@@ -19,6 +19,10 @@
  		var source = req.file('source');
  		var language = req.param('language');
 
+ 		if(!owner || !task || !source || !language){
+ 			return res.json(400, {msg: 'Parameters missing'});
+ 		}
+
  		Task.findOne(task).populate('contest').exec(function(err, fullTask){
  			User.findOne(owner).populate('contests').exec(function(err, fullOwner){
  				var allowed = false;

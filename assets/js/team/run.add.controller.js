@@ -35,6 +35,11 @@ angular.module('mooseJs.team')
 	});
 
 	$scope.submit = function(){
+		$scope.errors = [];
+		if(!$scope.source || !$scope.submit.task || !$scope.submit.language){
+			$scope.errors.push('Please select a file and fill all the fields');
+			return;
+		}
 		swal({
 			title: 'Submitting solution',
 			text: 'Are you sure?',
@@ -45,7 +50,7 @@ angular.module('mooseJs.team')
 		}, function(){
 			$upload.upload({
 				url: '/run/submit',
-				file: $scope.source,
+				file: $scope.source[0],
 				fileFormDataName: 'source',
 				data: $scope.submit
 			}).success(function(data){

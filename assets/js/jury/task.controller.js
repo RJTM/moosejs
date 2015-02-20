@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mooseJs.jury')
-	.controller('jury.TaskController', ["$scope", "Task", "$stateParams", "$http", "$state", function($scope, Task, $stateParams, $http, $state){
+	.controller('jury.TaskController', ["$scope", "Task", "$stateParams", "$http", "$state", "$upload", function($scope, Task, $stateParams, $http, $state, $upload){
 		$scope.task = Task.get({id :$stateParams.id});
 
 		$scope.save = function(){
@@ -25,6 +25,25 @@ angular.module('mooseJs.jury')
 					$scope.task.subtasks.splice(index,1);
 					$state.go('jury.task');
 				});
+			});
+		}
+
+		$scope.uploadStatement = function(){
+			$scope.errors = [];
+			if(!$scope.statement){
+				$scope.errors.push('Please select a file');
+				return;
+			}
+			$upload.upload({
+				url: '/task/statement',
+				file: $scope.statement[0],
+				fileFormDataName: 'statement',
+				fileName: 'statement.pdf',
+				data: {
+					task: $stateParams.id,
+				}
+			}).success(function(data){
+				swal('Done!', 'Statement updated','success');
 			});
 		}
 	}]);

@@ -24,6 +24,11 @@ module.exports = {
         var subtask = req.param('subtask');
         var task = req.param('task');
         var inputFile = req.file('input');
+
+        if(!subtask || !task || !inputFile){
+            return res.json(400, {msg: 'Parameters missing'});
+        }
+        
         Testcase.create({
             subtask: subtask
         }).exec(function(err, testcase){

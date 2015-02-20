@@ -130,6 +130,8 @@ protected/testcases/
 
 jobs/**/*
 
+assets/statements/**/*.pdf
+
 daemon/grader/sources
 
 moose.sublime-project

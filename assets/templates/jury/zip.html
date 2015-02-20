@@ -34,6 +34,7 @@
 	</div>
 	<div class="col-md-6 col-md-offset-1">
 		<h4>Upload zip file</h4>
+		<alert ng-repeat="error in errors" type="danger">{{ error }}</alert>
 		<input type="file" ng-file-select accept="*.zip" ng-model="input" multiple="false" class="form-control">
 		<br><br>
 		<button class="btn btn-primary btn-block" ng-click="upload()">
