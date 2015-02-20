@@ -21,6 +21,8 @@ angular.module('mooseJs.jury')
 				swal('Done!', 'Testcase uploaded','success');
 				$scope.subtask.testcases.push(data);
 				$state.go('jury.task.subtask');
+			}).error(function(data){
+				swal('Error', 'Testcase upload failed', 'error');
 			});
 		}
 	}]);

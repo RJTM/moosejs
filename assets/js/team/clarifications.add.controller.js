@@ -19,10 +19,13 @@ angular.module('mooseJs.team')
 			confirmButtonText : 'Yes, send it',
 			closeOnConfirm : false
 		}, function(){
-			socket.post('/clarification', $scope.clarification, function(data){
-				swal('Done!', 'Clarification sent', 'success');
-				$scope.clarification = {};
-				$state.go('team.clarifications');
+			socket.post('/clarification', $scope.clarification, function(data, jwsres){
+				if(jwsres.statusCode === 200){
+					swal('Done!', 'Clarification sent', 'success');
+					$scope.clarification = {};
+					$state.go('team.clarifications');
+				}else
+					swal('Error', 'Clarification send failed', 'error');
 			});
 		});
 	}

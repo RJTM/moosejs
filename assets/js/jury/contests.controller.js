@@ -25,8 +25,11 @@ angular.module('mooseJs.jury')
 			}, function(){
 				socket.post('/contest/release',
 					{ id: $scope.contests[index].id },
-					function(data){
-						swal('Done!', 'Results released', 'success');
+					function(data, jwsres){
+						if(jwsres.statusCode === 200)
+							swal('Done!', 'Results released', 'success');
+						else
+							swal('Done', 'Results release failed', 'error');
 					});
 			});
 		}

@@ -23,6 +23,8 @@ angular.module('mooseJs.jury')
 				$rootScope.$broadcast('contestUpdated');
 			}).progress(function(evt){
 				$scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+			}).error(function(data){
+				swal('Error', 'Contest zip upload failed, try again', 'error');
 			});
 		}
 	}]);

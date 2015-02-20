@@ -41,9 +41,12 @@ angular.module('mooseJs.jury')
 			
 			socket.post('/clarification',
 				$scope.clarification,
-				function(data){
-					swal('Done!', 'Clarification sent', 'success');
-					$state.go('jury.clarifications');
+				function(data, jwsres){
+					if(jwsres.statusCode === 200){
+						swal('Done!', 'Clarification sent', 'success');
+						$state.go('jury.clarifications');
+					}else
+						swal('Error', 'Clarification not sent', 'error');
 				});
 		});
 	}

@@ -52,8 +52,12 @@ angular.module('mooseJs.jury')
 		});
 
 		$scope.makeVeredict = function(){
-			socket.post('/grade/verify', {grade: $scope.grade, veredict: $scope.veredict}, function(data){
-				$state.go('jury.runs');
+			socket.post('/grade/verify', {grade: $scope.grade, veredict: $scope.veredict}, function(data, jwsres){
+				if(jwsres.statusCode === 200){
+					swal('Done!', 'Run verified successfully', 'success');
+					$state.go('jury.runs');
+				}else
+					swal('Error', 'Run verification failed', 'error');
 			});
 		};
 

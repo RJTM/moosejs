@@ -23,8 +23,11 @@ angular.module('mooseJs.jury')
 				confirmButtonText : 'Yes, rejudge',
 				closeOnConfirm : false,
 			}, function(){
-				socket.post('/task/rejudge', {id: $scope.tasks[index].id}, function(data){
-					swal('Done!', 'Starting to rejudge this task', 'success');
+				socket.post('/task/rejudge', {id: $scope.tasks[index].id}, function(data, jwsres){
+					if(jwsres.statusCode === 200)
+						swal('Done!', 'Starting to rejudge this task', 'success');
+					else
+						swal('Error', 'Rejudge failed, try again', 'error');
 				});
 			});
 		}

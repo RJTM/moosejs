@@ -21,6 +21,8 @@ angular.module('mooseJs.jury')
 				}
 			}).success(function(data){
 				swal('Done!', 'Testcase uploaded','success');
+			}).error(function(data){
+				swal('Error', 'Testcase upload failed', 'error');
 			});
 		}
 	}]);

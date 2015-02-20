@@ -24,6 +24,8 @@ angular.module('mooseJs.jury')
 					swal('Deleted', 'Subtask deleted', 'success');
 					$scope.task.subtasks.splice(index,1);
 					$state.go('jury.task');
+				}).error(function(data){
+					swal('Error', 'Subtask delete failed', 'error');
 				});
 			});
 		}

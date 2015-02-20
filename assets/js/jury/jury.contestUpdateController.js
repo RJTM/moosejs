@@ -54,10 +54,13 @@ angular.module('mooseJs.jury')
 				confirmButtonText : 'Yes, update it',
 				closeOnConfirm : true
 			}, function(){
-				socket.post('/contest/'+$scope.contest.id, $scope.contest, function(data){
-					swal('Done!', 'Contest Updated', 'success');
-					$rootScope.$broadcast('contestUpdated');					
-					$state.go('jury.contests');
+				socket.post('/contest/'+$scope.contest.id, $scope.contest, function(data, jwsres){
+					if(jwsres.statusCode === 200){
+						swal('Done!', 'Contest Updated', 'success');
+						$rootScope.$broadcast('contestUpdated');					
+						$state.go('jury.contests');
+					}else
+						swal('Error', 'Contest update failed', 'error');
 				});
 			});
 		};

@@ -20,8 +20,11 @@ angular.module('mooseJs.team')
 			$scope.clarification.jury = CurrentUser.user().id;
 			socket.post('/clarification/' + $scope.clarification.id,
 				$scope.clarification,
-				function(data){
-					swal('Done!', 'Clarification sent', 'success');
+				function(data, jwsres){
+					if(jwsres.statusCode === 200)
+						swal('Done!', 'Clarification sent', 'success');
+					else
+						swal('Error', 'Clarification sent failed', 'error');
 				});
 		});
 	}

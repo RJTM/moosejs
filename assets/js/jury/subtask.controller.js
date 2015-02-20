@@ -7,8 +7,11 @@ angular.module('mooseJs.jury')
 		});
 
 		$scope.save = function(){
-			socket.post('/subtask/'+$stateParams.subtask, $scope.subtask, function(data){
-				swal('Saved', 'Subtask data saved', 'success');
+			socket.post('/subtask/'+$stateParams.subtask, $scope.subtask, function(data, jwsres){
+				if(jwsres.statusCode === 200)
+					swal('Saved', 'Subtask data saved', 'success');
+				else
+					swal('Error', 'Subtask save failed', 'error');
 			});
 		}
 
@@ -27,6 +30,8 @@ angular.module('mooseJs.jury')
 					swal('Deleted', 'Testcase deleted', 'success');
 					$scope.subtask.testcases.splice(index,1);
 					$state.go('jury.task.subtask');
+				}).error(function(data){
+					swal('Error', 'Testcase delete failed', 'error');
 				});
 			});
 		}

@@ -56,6 +56,8 @@ angular.module('mooseJs.jury')
 				data: $scope.submit
 			}).success(function(data){
 				swal('Done!', 'Submission sent','success');
+			}).error(function(data){
+				swal('Error', 'Submission not sent', 'error');
 			});
 		});
 	}

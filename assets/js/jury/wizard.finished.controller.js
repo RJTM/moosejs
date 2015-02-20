@@ -16,9 +16,12 @@ angular.module('mooseJs.jury')
 		}
 
 		$scope.save = function(){
-			socket.post('/contest/fromJson', $scope.contest, function(data){
-				$rootScope.$broadcast('contestUpdated');
-				swal('Done!', 'Contest saved', 'success');
+			socket.post('/contest/fromJson', $scope.contest, function(data, jwsres){
+				if(jwsres.statusCode === 200){
+					$rootScope.$broadcast('contestUpdated');
+					swal('Done!', 'Contest saved', 'success');
+				}else
+					swal('Error', 'Contest save failed', 'error');
 			});
 		}
 	}]);
