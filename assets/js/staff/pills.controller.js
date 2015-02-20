@@ -4,6 +4,7 @@ angular.module('mooseJs.staff')
 	.controller('staff.PillsController', ["$rootScope", "$scope", "socket", function($rootScope, $scope, socket){
 		$scope.prints = 0;
 		$scope.balloons = 0;
+		$scope.sos = 0;
 
 		socket.get('/print');
 		socket.on('print', function(message){
@@ -13,6 +14,11 @@ angular.module('mooseJs.staff')
 		socket.get('/balloon');
 		socket.on('balloon', function(message){
 			$scope.balloons++;
+		});
+
+		socket.get('/sos');
+		socket.on('sos', function(message){
+			$scope.sos++;
 		});
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
