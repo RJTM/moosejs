@@ -39,8 +39,6 @@ angular.module('mooseJs.jury')
 				closeOnConfirm : false,
 			}, function(){
 				socket.delete('/task/'+$scope.tasks[index].id, function(data, jwsres){
-					console.log(data);
-					console.log(jwsres);
 					if(jwsres.statusCode === 200){
 						swal('Done!', 'Task deleted', 'success');
 						$scope.tasks.splice(index,1);
