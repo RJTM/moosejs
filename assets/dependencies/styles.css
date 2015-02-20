@@ -14,7 +14,7 @@
 
 .fa {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 moosejs;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -154,3 +154,16 @@
 .fa-power-off:before {
   content: "A";
 }
+.fa-chevron-down:before {
+  content: "B";
+}
+.fa-chevron-left:before {
+  content: "C";
+}
+.fa-chevron-right:before {
+  content: "D";
+}
+.fa-chevron-up:before {
+  content: "E";
+}
+
