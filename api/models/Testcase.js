@@ -29,7 +29,12 @@ module.exports = {
 				},
 				function(callback){
 					fs.unlink(sails.config.appPath + "/protected/testcases/" + testcase.outputFile,callback);
-				}], callback);
+				}], function(err, result){
+					if(err){
+						sails.log.warning('Error deleting testcase file, not found. Ignoring');
+					}
+					callback();
+				});
 		}, cb);
 	}
 

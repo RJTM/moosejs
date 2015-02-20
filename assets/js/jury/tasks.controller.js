@@ -28,4 +28,23 @@ angular.module('mooseJs.jury')
 				});
 			});
 		}
+
+		$scope.delete = function(index){
+			swal({
+				title: 'Delete Task',
+				text: 'Are you sure?',
+				type: 'warning',
+				showCancelButton : true,
+				confirmButtonText : 'Yes, delete it',
+				closeOnConfirm : false,
+			}, function(){
+				socket.delete('/task/'+$scope.tasks[index].id, function(data, jwsres){
+					if(jwsres.statusCode === 200){
+						swal('Done!', 'Task deleted', 'success');
+						$scope.tasks.splice(index,1);
+					}else
+						swal('Error!', 'Task delete failed', 'error');
+				});
+			});	
+		}
 	}]);
