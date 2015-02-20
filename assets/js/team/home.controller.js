@@ -5,13 +5,13 @@ angular.module('mooseJs.team')
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
-		var activeContest;
+		$scope.isTeam = true;
 
 		var calculateScoreboard = function(){
 
 			socket.get('/scoreboard', function(data){
 				if(data && data.length > 0){
-					activeContest = data[0].contest;
+					$scope.activeContest = data[0].contest;
 				}
 				var users = $scope.scoreboardRows = {};
 				var tasks = $scope.tasks = {};

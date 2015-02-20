@@ -55,7 +55,7 @@ module.exports = {
 			return res.json(400, {msg: 'Parameters missing'});
 		}
 		Task.findOne(taskId).populate('contest').exec(function(err, task){
-			var contestName = URLService.toSlug(task.contest.name);
+			var contestName = task.contest.id;
 			var taskName = URLService.toSlug(task.code);
 			var dirName =  contestName+"/"+taskName+"/";
 

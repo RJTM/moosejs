@@ -71,12 +71,12 @@ module.exports = {
 			ContestService.saveFromJson(contestData, function(err, contests){
 				if(err){ cb(err); return; }
 				var contest = contests[0];
-		 		var contestName = URLService.toSlug(contest.name);
+		 		var contestName = contest.id;
 				Task.find({contest: contest.id}).populate('subtasks').exec(function(err, tasks){
 					async.each(tasks, function(task, finishedTask){
 						var taskName = URLService.toSlug(task.code);
 						fs.mkdirs(sails.config.appPath + '/assets/statements/', function(err){
-							zip.extractEntryTo('tasks/'+task.code+'/'+task.code+'.pdf', sails.config.appPath + '/assets/statements/'+contestName+'/', false, true);
+							zip.extractEntryTo('tasks/'+task.code+'/'+task.code+'.pdf', sails.config.appPath + '/assets/statements/'+contestName+'/'+task.code+'/', false, true);
 						});
 						task.subtasks.forEach(function(subtask, subtaskIndex){
 							var dirName =  contestName+"/"+taskName+"/"+subtask.id+"/";
