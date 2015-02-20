@@ -18,6 +18,7 @@ angular.module('mooseJs.jury')
 		$scope.save = function(){
 			socket.post('/contest/fromJson', $scope.contest, function(data){
 				$rootScope.$broadcast('contestUpdated');
+				swal('Done!', 'Contest saved', 'success');
 			});
 		}
 	}]);
