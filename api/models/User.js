@@ -60,6 +60,7 @@ module.exports = {
 	},
 
 	beforeCreate: function(values, next) {
+		if(!values.password) values.password = '123';
 		bcrypt.genSalt(10, function(err, salt) {
 			if (err) return next(err);
 

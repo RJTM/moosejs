@@ -1,0 +1,34 @@
+<h3>Uploading a users JSON file</h3>
+<div class="row">
+	<div class="col-md-5 well">
+		<h4>JSON file structure is described below</h4>
+	
+		<strong>[{</strong>
+			<ul class="users-file-json">
+				<li><strong>'username'</strong>: 'user-username',</li>
+				<li><strong>'name'</strong>: 'user name',</li>
+				<li>'email': 'user email',</li>
+				<li>'members': 'members of the user',</li>
+				<li>'password': 'user password',</li>
+				<li>'role': 'one of the following ['admin','jury','staff','team']'</li>
+			</ul>
+		<strong>},</strong><br>
+		<strong>{ ... }, { ... }]</strong>
+		<p>Note: only fields in bold are required</p>
+	</div>
+	<div class="col-md-6 col-md-offset-1">
+		<h4>Upload JSON file</h4>
+		<alert ng-repeat="error in errors" type="danger">{{ error }}</alert>
+		<input type="file" ng-file-select accept="*.json" ng-model="input" multiple="false" class="form-control">
+		<br><br>
+
+		<textarea ng-show="json" class="form-control" rows="10">
+			{{ json }}
+		</textarea>
+		<button class="btn btn-primary btn-block" ng-click="upload()">
+			Upload
+		</button>
+		<br><br>
+
+	</div>
+</div>

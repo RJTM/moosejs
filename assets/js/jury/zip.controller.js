@@ -3,12 +3,13 @@
 angular.module('mooseJs.jury')
 	.controller('jury.ZipController', ["$scope", "$upload", "$stateParams", "$rootScope", function($scope, $upload, $stateParams, $rootScope){
 		$scope.uploading = false;
-		$scope.errors = [];
-		if(!$scope.input){
-			$scope.errors.push('Please select a file');
-			return;
-		}
+		
 		$scope.upload = function(){
+			$scope.errors = [];
+			if(!$scope.input){
+				$scope.errors.push('Please select a file');
+				return;
+			}
 			$scope.uploading = true;
 			$upload.upload({
 				url: '/contest/fromZip',

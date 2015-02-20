@@ -2,7 +2,7 @@ angular.module('mooseJs.admin')
 	.controller('admin.UsersController', ["$scope", "User", "$http", function($scope, User, $http){
 		$scope.users = User.query();
 
-		$scope.delete = function($index){
+		$scope.delete = function(index){
 			swal({
 				title: 'Are you sure you want to delete this user?',
 				text: 'This process cannot be undone',
@@ -11,8 +11,9 @@ angular.module('mooseJs.admin')
 				confirmButtonText : 'Yes, delete it',
 				closeOnConfirm : false,
 			}, function(){
-				$http.delete('/user/'+ $scope.users[index].id, function(data){
+				$http.delete('/user/'+ $scope.users[index].id).success(function(data){
 					swal('Deleted!', 'This user has been deleted', 'success');
+					$scope.users.splice(index,1);
 				});
 			});
 		};
