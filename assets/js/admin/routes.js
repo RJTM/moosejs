@@ -46,6 +46,20 @@ angular.module('mooseJs.admin')
 		}
 	})
 
+	.state('admin.users.file', {
+		url: '/file',
+		views: {
+			'@admin': {
+				templateUrl : 'templates/admin/users-file.html',
+				controller : 'admin.UsersFileController'
+			}
+		},
+		data : {
+			ncyBreadcrumbLabel: 'Uploading users file',
+			ncyBreadcrumbParent: 'admin.users'	
+		}
+	})
+
 	.state('admin.user', {
 		url: '/users/:id',
 		templateUrl: 'templates/admin/user.html',

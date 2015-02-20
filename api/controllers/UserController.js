@@ -38,11 +38,20 @@
      },
 
      create: function(req, res){
-     	var  newUser = req.allParams();
-     	User.create(newUser).exec(function(err, user){
-     		if(err) return res.json(400, err);
-     		return res.json(user);
+          var  newUser = req.allParams();
+          User.create(newUser).exec(function(err, user){
+               if(err) return res.json(400, err);
+     	    return res.json(user);
      	});
+     },
+
+     json: function(req, res){
+          var json = req.param('json');
+          sails.log.debug(json);
+          User.create(json).exec(function(err, user){
+               if(err) return res.json(400, err);
+              return res.json(user);
+          });
      },
 
      addToContest: function(req, res){
