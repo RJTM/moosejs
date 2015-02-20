@@ -7,8 +7,8 @@
 	</ui-select>
 </div>
 <div class="pull-right">
-	<button class="btn btn-success">
-		<i class="fa fa-plus" ui-sref="jury.tasks.add"></i> Add task
+	<button class="btn btn-success" ui-sref="jury.tasks.add">
+		<i class="fa fa-plus"></i> Add task
 	</button>
 </div>
 <div class="clearfix"></div>
@@ -23,6 +23,7 @@
 			<tr>
 				<th>#</th>
 				<th>Contest</th>
+				<th>Code</th>
 				<th>Name</th>
 				<th>Runs</th>
 				<th>Subtasks</th>
@@ -33,6 +34,7 @@
 			<tr ng-repeat="task in tasks | filter : contest">
 				<td>{{ task.id }}</td>
 				<td>{{ task.contest.name }}</td>
+				<td>{{ task.code }}</td>
 				<td>{{ task.name }}</td>
 				<td>{{ task.runs.length }}</td>
 				<td>{{ task.subtasks.length }}</td>
