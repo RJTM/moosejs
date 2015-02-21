@@ -22,7 +22,6 @@ angular.module('mooseJs.admin')
 			}
 			$http.post('/user/json', {json: JSON.parse($scope.json)}).success(function(data){
 				swal('Uploaded', 'Users created', 'success');
-				console.log(data);
 			});
 		}
 	}]);

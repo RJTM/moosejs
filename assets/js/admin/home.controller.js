@@ -106,7 +106,6 @@ angular.module('mooseJs.admin')
 				oldTask.penalty = message.data[0].penalty;
 				
 				angular.forEach(message.data, function(value, key){
-					// console.log(users[value.user]);
 					oldTask.points += parseInt(value.points);
 					oldTask.time = Math.max(oldTask.time, value.time);
 					oldTask.runs = value.submissions;
