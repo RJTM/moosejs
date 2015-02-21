@@ -2,7 +2,6 @@ angular.module('mooseJs.common')
 	.controller('navController', ["$scope", "$state", "Auth", "CurrentUser", "socket", "$timeout", function($scope, $state, Auth, CurrentUser, socket, $timeout){
 		
 		$scope.$on('loggedIn', function(event){
-			console.log("Received a loggedIn event");
 			$scope.isLogged = true;
 			$scope.user = CurrentUser.user();
 		});
