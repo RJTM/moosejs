@@ -28,12 +28,12 @@ module.exports = {
 
 	saveFromJson: function(contest, callback){
 		contest.set = true;
-		contest.tasks.forEach(function(task, index){
+		async.each(contest.tasks, function(task, finishedTask){
 			var subtasks = task.subtasks.slice();
 			delete task.subtasks;
 			task.contest = contest.id;
 			Task.create(task).exec(function(err, newTask){
-				subtasks.forEach(function(subtask, subIndex){
+				async.each(subtasks, function(subtask, cb){
 					var testcasesN = subtask.testcases;
 					delete subtask.testcases;
 					subtask.task = newTask.id;
@@ -47,15 +47,31 @@ module.exports = {
 							}
 						}
 						Testcase.create(testcases).exec(function(err, newTestcases){
-							delete contest.users;
-							delete contest.tasks;
-							Contest.update({id: contest.id}, contest).exec(callback);
+							if(err){
+								cb(err);
+								return;
+							}
+							cb();
 						});
 					});
 					
+				}, function(err){
+					if(err){
+						finishedTask(err);
+						return;
+					}
+					finishedTask();
+					
 				});
-
 			});
+		}, function(err){
+			if(err){
+				callback(err);
+				return;
+			}
+			delete contest.users;
+			delete contest.tasks;
+			Contest.update({id: contest.id}, contest).exec(callback);
 		});
 	},
 	
@@ -73,34 +89,45 @@ module.exports = {
 				var contest = contests[0];
 		 		var contestName = contest.id;
 				Task.find({contest: contest.id}).populate('subtasks').exec(function(err, tasks){
-					async.each(tasks, function(task, finishedTask){
+					if(err){ cb(err); return; }
+					async.eachSeries(tasks, function(task, finishedTask){
 						var taskName = URLService.toSlug(task.code);
 						fs.mkdirs(sails.config.appPath + '/assets/statements/', function(err){
 							zip.extractEntryTo('tasks/'+task.code+'/'+task.code+'.pdf', sails.config.appPath + '/assets/statements/'+contestName+'/'+task.code+'/', false, true);
 						});
-						task.subtasks.forEach(function(subtask, subtaskIndex){
+						var subtaskIndex = 0;
+						async.eachSeries(task.subtasks, function(subtask, finishedSubtask){
 							var dirName =  contestName+"/"+taskName+"/"+subtask.id+"/";
 							fs.mkdirs(sails.config.appPath + '/protected/testcases/' + dirName, function(err){
 								if(err){ cb(err); return; }
 								Testcase.find({subtask: subtask.id}).exec(function(err, testcases){
 									if(err){ cb(err); return; }
-									testcases.forEach(function(testcase, index){
+									var index = 0;
+									async.eachSeries(testcases, function(testcase, finishedTestcase){
 										var from = 'tasks/'+task.code+'/'+(subtaskIndex+1)+'/'+(index+1);
 										var to = sails.config.appPath + "/protected/testcases/" + dirName;
 										zip.extractEntryTo(from+'.in', to, false, true);
 										zip.extractEntryTo(from+'.out', to, false, true);
-										fs.renameSync(to+(index+1)+'.in', to+testcase.id+'.in');
-										fs.renameSync(to+(index+1)+'.out', to+testcase.id+'.out');
-										testcase.inputFile = dirName + testcase.id + '.in';
-										testcase.outputFile = dirName + testcase.id + '.out';
-										testcase.save(function(){
-											Testcase.publishUpdate(testcase.id);
+										fs.rename(to+(index+1)+'.in', to+testcase.id+'.in', function(err){
+											fs.rename(to+(index+1)+'.out', to+testcase.id+'.out', function(err){
+												testcase.inputFile = dirName + testcase.id + '.in';
+												testcase.outputFile = dirName + testcase.id + '.out';
+												testcase.save(function(){
+													Testcase.publishUpdate(testcase.id);
+													index++;
+													finishedTestcase();
+												});
+											});
 										});
+									}, function(err){
+										subtaskIndex++;
+										finishedSubtask(err);
 									});
 								});
 							});
+						}, function(err){
+							finishedTask();
 						});
-						finishedTask();
 					}, function(err){
 						cb(err, contest);
 						return;
