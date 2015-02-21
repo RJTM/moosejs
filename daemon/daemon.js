@@ -251,7 +251,7 @@ var onTestcaseChange = function(obj){
 
 var syncTestcases = function(callback){
 	socket.post('/testcase/sync',{date: tmp.lastUpdate}, function(body, responseObj){
-		async.each(body, 
+		async.eachSeries(body, 
 			function(testcase, callback){
 				getTestCase(testcase, function(err){
 					if(err){
