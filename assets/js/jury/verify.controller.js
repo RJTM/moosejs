@@ -5,7 +5,6 @@ angular.module('mooseJs.jury')
 		$scope.veredict = {};
 
 		socket.get('/run/getResult', {run: $stateParams.id} , function(data){
-			console.log(data);
 			$scope.subtasks = data.subtasks;
 			$scope.run = data.run;
 			$scope.task = data.task;
@@ -45,7 +44,6 @@ angular.module('mooseJs.jury')
 							lines.pop();
 						});
 						testcase.diff = lines;
-						console.log(lines);
 					});
 				});
 			});

@@ -44,7 +44,7 @@ module.exports = {
 				var statement = gPath + '/TimeScript.sh 10s -t -v ' +
 								 gPath + '/' +util.getPath(source) + ':/workspace ' + 
 								 '-w /workspace ' +
-								 'moosejs/grader:v0.1' + ' /workspace/compile.sh ' 
+								 'moosejs/grader:1.0' + ' /workspace/compile.sh ' 
 								 + language.compiler + ' ' + language.fileName + ' ' + language.arguments;
 				exec(statement, function(error, stdout, stderr){
 				    	if (error) {
@@ -78,7 +78,7 @@ module.exports = {
 						  '-v ' + gPath + '/' +util.getPath(source) + ':/workspace ' + 
 						  '-v ' + gPath + '/../testcases/:/testcases ' + 
 						   '-w /workspace ' +
-						   'moosejs/grader:v0.1' + ' /workspace/run.sh "' +
+						   'moosejs/grader:1.0' + ' /workspace/run.sh "' +
 						   language.executable + '" /testcases/'+refInput +
 						   ' /workspace/outputs/'+util.getFileName(refOutput) +
 						   ' /workspace/errors/'+util.getFileName(refOutput)+'.error';

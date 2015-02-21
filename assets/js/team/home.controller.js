@@ -95,7 +95,6 @@ angular.module('mooseJs.team')
 				oldTask.penalty = message.data[0].penalty;
 				
 				angular.forEach(message.data, function(value, key){
-					// console.log(users[value.user]);
 					oldTask.points += parseInt(value.points);
 					oldTask.time = Math.max(oldTask.time, value.time);
 					oldTask.runs = value.submissions;
@@ -119,7 +118,6 @@ angular.module('mooseJs.team')
 		socket.on('scoreboardpublic', updateScoreboard);
 
 		// socket.on('release', function(message){
-		// 	console.log(message);
 		// 	if(activeContest && activeContest === message.contest){
 		// 		calculateScoreboard();
 		// 	}

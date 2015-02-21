@@ -22,8 +22,10 @@ angular.module('mooseJs.jury')
 		});
 
 		socket.on('run', function(message){
-			message.data.status = 'pending';
-			$scope.runs.push(message.data);
+			if(message.verb === 'created'){
+				message.data.status = 'pending';
+				$scope.runs.push(message.data);
+			}
 		});
 
 		socket.on('grade', function(message){

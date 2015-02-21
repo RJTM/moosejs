@@ -42,7 +42,7 @@
               <a href="#" class="dropdown-toggle" dropdown-toggle>Contests <span class="caret"></span></a>
 
               <ul class="dropdown-menu timers-list" dropdown-menu>
-                  <li ng-repeat="timer in timers">
+                  <li ng-repeat="timer in timers" ng-show="timers.length > 0">
                       <a>
                       <strong>{{ timer.name }}</strong> <br>
                       <span class="text-success" ng-show="timer.status === 'running'">
@@ -60,6 +60,9 @@
                       </span>
                       <timer end-time="{{ timer.endTime }}"></timer>
                       </a>
+                  </li>
+                  <li ng-hide="timers.length > 0">
+                    <a><strong>No upcoming contests</strong></a>
                   </li>
               </ul>
             </li>
