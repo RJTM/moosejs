@@ -7,6 +7,12 @@ angular.module('mooseJs.jury')
 			$scope.runs++;
 		});
 
+		$scope.clarifications = 0;
+		socket.get('/clarification');
+		socket.on('clarification', function(message){
+			$scope.clarifications++;
+		});
+
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
 			if(toState.data.clearBadge){
 				$scope[toState.data.clearBadge] = 0;

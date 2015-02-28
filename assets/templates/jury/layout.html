@@ -1,7 +1,7 @@
 <ul class="nav nav-pills">
 	<li ui-sref-active="active"><a ui-sref="jury.home">Home</a></li>
 	<li ui-sref-active="active"><a ui-sref="jury.team">As a team</a></li>
-	<li ui-sref-active="active"><a ui-sref="jury.clarifications">Clarifications</a></li>
+	<li ui-sref-active="active"><a ui-sref="jury.clarifications">Clarifications <span class="badge" ng-show="clarifications">{{ clarifications }}</span></a></li>
 	<li ui-sref-active="active"><a ui-sref="jury.tasks">Tasks</a></li>
 	<li ui-sref-active="active"><a ui-sref="jury.runs">Runs <span class="badge" ng-show="runs">{{ runs }}</span></a></li>
 	<li ui-sref-active="active"><a ui-sref="jury.contests">Contests</a></li>
