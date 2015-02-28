@@ -14,14 +14,14 @@ angular.module('mooseJs.common')
 	$scope.errors = [];
 	$scope.register = function(){
 		$scope.errors = [];
-		User.save($scope.user, 
-			function(data){
-		        	//TODO
-		        		$state.go('admin.home');
-		        	},
-        function(error){
-        	$scope.errors.push({message: error.data.summary});
-        });
+		User.save($scope.user, function(data){
+			swal('Done!', 'User registered', 'success');
+		    $state.go('admin.users');
+		},
+		function(error){
+			console.log(error);
+			$scope.errors.push({message: error.data.summary});	
+		});
 	};
 	
 }]);
