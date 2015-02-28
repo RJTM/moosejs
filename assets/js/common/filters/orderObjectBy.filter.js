@@ -11,8 +11,8 @@ angular.module('mooseJs.common')
       if(a[field] === b[field] && score){
         var timeA = a['totalTime'] + a['penalty'],
         timeB = b['totalTime'] + b['penalty'];
-        if(timeA > timeB) return 1;
-        if(timeA < timeB) return -1;
+        if(timeA > timeB) return -1;
+        if(timeA < timeB) return 1;
         return 0;
       }
       return 0;
