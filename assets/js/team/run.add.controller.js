@@ -64,6 +64,8 @@ angular.module('mooseJs.team')
 					}else{
 						swal("Error", data.msg, "error");
 					}
+				}else{
+					swal("Error", "System failed receiving submission, try again.", "error");
 				}
 			});
 		});
