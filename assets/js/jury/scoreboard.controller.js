@@ -3,6 +3,7 @@ angular.module('mooseJs.jury')
 	.controller('jury.ScoreboardController', ["$scope", "socket", "$sce", function($scope, socket, $sce){
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
+		$scope.allowProblemset = true;
 
 		var calculateScoreboard = function(){
 

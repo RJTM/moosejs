@@ -5,6 +5,7 @@ angular.module('mooseJs.public')
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
+		$scope.allowProblemset = false;
 
 		var calculateScoreboard = function(){
 
