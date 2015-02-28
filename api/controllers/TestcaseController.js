@@ -11,7 +11,7 @@ module.exports = {
             Testcase.subscribe(req.socket,list,'update');
             Testcase.watch(req.socket);
 //            sails.log.debug(sails.sockets.subscribers('testcase'));
-});
+        });
         var lastSync = req.param('date');
         Testcase.find({ updatedAt: { '>': lastSync}}).populate('subtask').exec(function(err, result){
             if(err) return res.serverError(err);
@@ -36,7 +36,7 @@ module.exports = {
             var callback = function(err,results){
                 if(err){
                     sails.log.error("Error loading files, deleting testcase");
-                    Testcase.delete(testcase.id).exec(function(err,deleted){
+                    Testcase.destroy(testcase.id).exec(function(err,deleted){
                         sails.log.error("Error deleting testcase");
                     });
                     return res.serverError(err);

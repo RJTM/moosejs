@@ -24,14 +24,14 @@ module.exports = {
 	afterDestroy: function(destroyedRecords, cb){
 		async.each(destroyedRecords, function(testcase,callback){
 			async.parallel([
-				function(callback){
-					fs.unlink(sails.config.appPath + "/protected/testcases/" + testcase.inputFile,callback);
+				function(finishedTestcase){
+					fs.unlink(sails.config.appPath + "/protected/testcases/" + testcase.inputFile,finishedTestcase);
 				},
-				function(callback){
-					fs.unlink(sails.config.appPath + "/protected/testcases/" + testcase.outputFile,callback);
+				function(finishedTestcase){
+					fs.unlink(sails.config.appPath + "/protected/testcases/" + testcase.outputFile, finishedTestcase);
 				}], function(err, result){
 					if(err){
-						sails.log.warning('Error deleting testcase file, not found. Ignoring');
+						sails.log.warn('Error deleting testcase file, not found. Ignoring');
 					}
 					callback();
 				});
