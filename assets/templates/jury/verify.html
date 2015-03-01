@@ -13,6 +13,7 @@
 	<button class="btn btn-default" ng-click="showCMessage = !showCMessage">
 		Show Compiler Output
 	</button>
+	<button class="btn btn-warning pull-right" ng-hide="grade.status === 'verified'" ng-click="ignoreSubmission()">Ignore Submission</button>
 	<div ng-init="showSource = false" collapse="!showSource">
 		<pre nag-prism source="{{ code }}" class="language-{{ run.language.syntaxHighlighting }} line-numbers"></pre>
 	</div>

@@ -59,6 +59,16 @@ angular.module('mooseJs.jury')
 			});
 		};
 
+		$scope.ignoreSubmission = function(){
+			console.log($scope.veredict);
+			console.log($scope.subtasks);
+
+			for(var i = 0, n=$scope.subtasks.length; i<n; i++){
+				$scope.veredict[$scope.subtasks[i].id].veredict = 'ignore-submission';
+			}
+			console.log($scope.veredict);
+		}
+
 		$scope.redFilter = function(line){
 			if(line.color == 'red' || line.color == 'gray')
 				return true;
