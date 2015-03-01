@@ -11,16 +11,18 @@
 				<th>Task</th>
 				<th>Time</th>
 				<th>Status</th>
+				<th>Ignored</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'warning' : 'danger' " ng-repeat="run in runs | orderBy:[statusSort,'-id']">
+			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'bg-warning' : 'bg-danger' " ng-repeat="run in runs | orderBy:[statusSort,'-id']">
 				<td>{{ run.id }}</td>
 				<td>{{ run.owner.name }}</td>
 				<td>{{ run.task.name }}</td>
 				<td>{{ run.time }}</td>
 				<td>{{ run.status | statusFilter }}</td>
+				<td>{{ run.ignore }}</td>
 				<td>
 					<button ng-show="run.status === 'done'"  ui-sref="jury.runs.verify({ id: run.id })" class="btn btn-success btn-xs" tooltip="Verify solution" ng-disabled="!verifiable(run)"><i class="fa fa-check"></i></button>
 					<button class="btn btn-info btn-xs" ng-hide="run.status === 'done'" ui-sref="jury.runs.verify({ id: run.id })"><i class="fa fa-search"></i></button>

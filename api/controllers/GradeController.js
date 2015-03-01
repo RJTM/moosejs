@@ -125,10 +125,21 @@ module.exports = {
 							callback(err);
 						});
 					},function(err){
-						if(err) return res.serverError(err);
-						ScoreboardService.update(grade, veredicts);
-						Run.publishUpdate(result[0].run);
-						return res.json(result);
+						if(err)
+							return res.serverError(err);
+						if(veredicts.length > 0 && veredicts[0].veredict === 'ignore-submission'){
+							Run.update({id : result[0].run}, {ignore : true}).exec(function(error, resultRun){
+								if(error)
+									return res.serverError(error);
+								ScoreboardService.update(grade, veredicts);
+								Run.publishUpdate(result[0].run);
+								return res.json(result);
+							});
+						}else{
+							ScoreboardService.update(grade, veredicts);
+							Run.publishUpdate(result[0].run);
+							return res.json(result);
+						}
 					});	
 				});
 			}else{

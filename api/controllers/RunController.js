@@ -121,22 +121,28 @@
 									});
 									overall = 'Pending';
 								}else{
-
-									if(subtask.feedback){
-										finalSubtasks.push({
-											points: subtask.points,
-											result: veredict[0].jury
-										});
-										if(veredict[0].jury !== 'accepted' && 
-											overall !== 'Waiting to end of contest'){
-											overall = 'Incorrect - see details';
-										}
-									}else if(veredict[0].jury === 'compiler-error'){
+									if(veredict[0].jury === 'compiler-error'){
 										finalSubtasks.push({
 											points : subtask.points,
 											result : 'compiler-error'
 										});
 										overall = 'Incorrect - see details';
+									}else if(veredict[0].jury === 'ignore-submission'){
+										finalSubtasks.push({
+											points : subtask.points,
+											result : 'ignored-submission'
+										});
+										overall = "Submission ignored by juries"
+									}else if(subtask.feedback){
+										finalSubtasks.push({
+											points: subtask.points,
+											result: veredict[0].jury
+										});
+										if(veredict[0].jury !== 'accepted' && 
+											!(overall === 'Waiting to end of contest' ||
+											  overall === 'Submission ignored by juries')){
+											overall = 'Incorrect - see details';
+										}
 									}else{
 										finalSubtasks.push({
 											points: subtask.points,

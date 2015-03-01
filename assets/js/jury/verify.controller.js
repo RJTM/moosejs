@@ -60,13 +60,20 @@ angular.module('mooseJs.jury')
 		};
 
 		$scope.ignoreSubmission = function(){
-			console.log($scope.veredict);
-			console.log($scope.subtasks);
-
-			for(var i = 0, n=$scope.subtasks.length; i<n; i++){
-				$scope.veredict[$scope.subtasks[i].id].veredict = 'ignore-submission';
-			}
-			console.log($scope.veredict);
+			swal({
+				title: 'Ignore submission',
+				text: 'Are you sure to ignore this submission?',
+				type: 'warning',
+				showCancelButton : true,
+				confirmButtonText : 'Yes, ignore it',
+				closeOnConfirm : false,
+			}, function(){
+				for(var i = 0, n=$scope.subtasks.length; i<n; i++){
+					$scope.veredict[$scope.subtasks[i].id].veredict = 'ignore-submission';
+				}
+				console.log($scope.veredict);
+				$scope.makeVeredict();
+			});
 		}
 
 		$scope.redFilter = function(line){
