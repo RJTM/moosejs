@@ -66,4 +66,16 @@ angular.module('mooseJs.staff')
 					clearBadge : 'sos'
 				}
 			})
+
+			.state('staff.password',{
+				url:'/password',
+				templateUrl: 'templates/common/password.html',
+				controller: 'common.PasswordController',
+				data: {
+					ncyBreadcrumbLabel: 'Changing password',
+					ncyBreadcrumbParent: 'staff.home',
+					access: AccessLevels.staff
+				}
+			});
+
 	}]);

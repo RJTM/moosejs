@@ -11,6 +11,10 @@ angular.module('mooseJs.common')
 			$scope.isLogged = true;
 			$scope.user = CurrentUser.user();
 		}
+
+		$scope.changePassword = function(){
+			$state.go($scope.user.role + '.password');
+		}
 		
 		$scope.logout = function(){
 			Auth.logout();

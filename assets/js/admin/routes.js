@@ -163,4 +163,15 @@ angular.module('mooseJs.admin')
 			ncyBreadcrumbParent: 'admin.judgehosts'
 		}
 	})
+	.state('admin.password',{
+		url:'/password',
+		templateUrl: 'templates/common/password.html',
+		controller: 'common.PasswordController',
+		data: {
+			ncyBreadcrumbLabel: 'Changing password',
+			ncyBreadcrumbParent: 'admin.home',
+			access: AccessLevels.admin
+		}
+	});
+
 }]);

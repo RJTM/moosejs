@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing Users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
+var bcrypt = require('bcrypt');
 
  module.exports = {
     /**
@@ -104,6 +105,25 @@
                     return res.json(contest);
                });
           });     
+     },
+
+     password: function(req, res){
+          var password = req.param('password');
+          var id = req.token.id;
+          User.update({id: id}, {password: password})
+          bcrypt.genSalt(10, function(err, salt) {
+
+               bcrypt.hash(password, salt, function(err, hash) {
+                    if (err) return next(err);
+
+                    var encryptedPassword = hash;
+                    User.update({id: id}, {encryptedPassword: encryptedPassword}).exec(function(err, user){
+                         if(err) return res.serverError(err);
+                         return res.json(user);
+                    });
+               });
+          });
+
      }
 
 

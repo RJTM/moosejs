@@ -67,6 +67,7 @@ module.exports.policies = {
         'findOne': ['tokenAuth', 'juryAndUp'],
         'authenticate': true,
         'update': 'tokenAuth',
+        'password': 'tokenAuth'
     },
     ProtectedFileController: {
         'download': ['tokenAuth', 'juryAndJudgehost'],

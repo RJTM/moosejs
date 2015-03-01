@@ -230,4 +230,16 @@ angular.module('mooseJs.jury')
 					ncyBreadcrumbParent: 'jury.task.subtask'
 				}
 			})
+			.state('jury.password',{
+				url:'/password',
+				templateUrl: 'templates/common/password.html',
+				controller: 'common.PasswordController',
+				data: {
+					ncyBreadcrumbLabel: 'Changing password',
+					ncyBreadcrumbParent: 'jury.home',
+					access: AccessLevels.jury
+				}
+			});
+
+			
 	}]);

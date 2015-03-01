@@ -68,5 +68,16 @@ angular.module('mooseJs.team')
 					ncyBreadcrumbLabel: 'Tools',
 					ncyBreadcrumbParent: 'team.home'
 				}
+			})
+			.state('team.password',{
+				url:'/password',
+				templateUrl: 'templates/common/password.html',
+				controller: 'common.PasswordController',
+				data: {
+					ncyBreadcrumbLabel: 'Changing password',
+					ncyBreadcrumbParent: 'team.home',
+					access: AccessLevels.team
+				}
 			});
+
 	}]);
