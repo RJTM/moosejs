@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mooseJs.public')
-	.controller('public.HomeController', ["$scope", "socket", "$sce", function($scope, socket, $sce){
+	.controller('public.HomeController', ["$scope", "socket", "$sce", "LocalService", function($scope, socket, $sce, LocalService){
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
@@ -83,9 +83,18 @@ angular.module('mooseJs.public')
 		});
 
 		$scope.$watch('search.contest', function(value){
-			if(value)
+			if(value){
+				LocalService.set('selected_contest', value);
 				calculateScoreboard();
+			}
 		});
+
+		var previousSelectedContest = LocalService.get('selected_contest');
+		if(previousSelectedContest){
+			$scope.search.contest = previousSelectedContest;
+			calculateScoreboard();
+		}
+
 
 		$scope.trustAsHtml = function(value) {
 			return $sce.trustAsHtml(value);
