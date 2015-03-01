@@ -71,7 +71,6 @@ angular.module('mooseJs.jury')
 				for(var i = 0, n=$scope.subtasks.length; i<n; i++){
 					$scope.veredict[$scope.subtasks[i].id].veredict = 'ignore-submission';
 				}
-				console.log($scope.veredict);
 				$scope.makeVeredict();
 			});
 		}

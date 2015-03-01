@@ -70,8 +70,8 @@
 										<strong>Jury Output</strong>
 									</div>
 									<div class="row wrap" ng-repeat="line in testcase.diff | filter:redFilter">
-										<span class="col-md-1 text-muted">{{$index + 1}}</span>
-										<span ng-class="{'bg-danger' : line.color=='red', 'text-danger' : line.color=='red'}" class="col-md-9 col-md-offset-1">{{line.text}}</span>
+										<span class="col-md-2 text-muted">{{$index + 1}}</span>
+										<span ng-class="{'bg-danger' : line.color=='red', 'text-danger' : line.color=='red'}" class="col-md-9">{{line.text}}</span>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -79,8 +79,8 @@
 										<strong>Team Output</strong>
 									</div>
 									<div class="row wrap" ng-repeat="line in testcase.diff | filter:greenFilter">
-										<span class="col-md-1 text-muted">{{$index + 1}}</span>
-										<span ng-class="{'bg-danger': line.color=='green', 'text-danger' : line.color=='green'}" class="col-md-9 col-md-offset-1">{{line.text}}</span>
+										<span class="col-md-2 text-muted">{{$index + 1}}</span>
+										<span ng-class="{'bg-danger': line.color=='green', 'text-danger' : line.color=='green'}" class="col-md-9">{{line.text}}</span>
 									</div>
 								</div>
 							</td>
