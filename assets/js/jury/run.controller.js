@@ -63,7 +63,7 @@ angular.module('mooseJs.jury')
 				thisRun.verifiable = true;
 				return true;
 			}
-			return false;
+			return true;
 		}
 
 	}])

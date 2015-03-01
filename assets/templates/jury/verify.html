@@ -29,7 +29,7 @@
 			<accordion-group ng-repeat="subtask in subtasks" heading="Subtask {{ $index+1 }}">
 				<div class="row" align="center">
 					<h3>Auto Judge Response: <strong><span ng-class="subtask.result == 'accepted' ? 'text-success' : 'text-danger'">{{ subtask.result }}</span></strong></h3>
-					<div class="row">
+					<div class="row" ng-hide="grade.status === 'verified'">
 						<div class="col-md-4 col-md-offset-2" align="right">
 							Veredict
 						</div>
@@ -88,6 +88,6 @@
 				</table>			
 			</accordion-group>
 		</accordion>
-		<button class="btn btn-block btn-lg btn-danger" ng-click="makeVeredict()"><i class="fa fa-gavel"></i> Make Veredict</button>
+		<button class="btn btn-block btn-lg btn-danger" ng-click="makeVeredict()" ng-hide="grade.status === 'verified'"><i class="fa fa-gavel"></i> Make Veredict</button>
 	</div>
 </div>
