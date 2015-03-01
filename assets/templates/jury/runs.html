@@ -15,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'warning' : 'danger' " ng-repeat="run in runs | orderBy:[statusSort,'id']">
+			<tr ng-class="run.status == 'verified' ? 'success' : run.status == 'pending' ? 'warning' : 'danger' " ng-repeat="run in runs | orderBy:[statusSort,'-id']">
 				<td>{{ run.id }}</td>
 				<td>{{ run.owner.name }}</td>
 				<td>{{ run.task.name }}</td>
