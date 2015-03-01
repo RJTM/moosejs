@@ -35,7 +35,8 @@
                     Results coming in
                   </strong>
                 </span>
-                <timer end-time="{{ timer.endTime }}"></timer>
+                <timer ng-show="timer" end-time="{{ timer.endTime }}"></timer>
+                <strong ng-hide="timer">No upcoming contests</strong>
             </li>
 
             <li class="dropdown" dropdown ng-hide="user.role === 'team'">
