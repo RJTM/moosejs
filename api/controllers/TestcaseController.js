@@ -6,13 +6,13 @@
  */
 
 module.exports = {
-	sync: function(req, res){
+    sync: function(req, res){
         Testcase.find({}).exec(function(e,list){
             Testcase.subscribe(req.socket,list,'update');
             Testcase.watch(req.socket);
 //            sails.log.debug(sails.sockets.subscribers('testcase'));
         });
-        var lastSync = req.param('date');
+        var lastSync = new Date(req.param('date'));
         Testcase.find({ updatedAt: { '>': lastSync}}).populate('subtask').exec(function(err, result){
             if(err) return res.serverError(err);
             return res.json(result);
