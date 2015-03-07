@@ -32,11 +32,13 @@ module.exports = {
 
   afterDestroy: function(destroyedRecords, cb){
       ScoreboardService.deleteTask(destroyedRecords);
-      Subtask.destroy({ 
-        task: destroyedRecords.map(function(currentValue){
-          return currentValue.id;
-        })
-      }).exec(cb);
+      async.map(destroyedRecords, function(currentValue, callback){
+        callback(null, currentValue.id);
+      }, function(err, results){
+          Subtask.destroy({
+            task: results
+          }).exec(cb);
+      });
     },
     
  //  seedData: [{

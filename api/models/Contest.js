@@ -47,11 +47,13 @@ module.exports = {
 	},
 
 	afterDestroy: function(destroyedRecords, cb){
-	    Task.destroy({ 
-	      contest: destroyedRecords.map(function(currentValue){
-	        return currentValue.id;
-	      })
-	    }).exec(cb);
+		async.map(destroyedRecords, function(currentValue, callback){
+			callback(null, currentValue.id);
+		}, function(err , results){
+			Task.destroy({
+				contest: results
+			}).exec(cb);
+		});
 	  },
 
 	// seedData: [{

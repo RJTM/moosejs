@@ -52,11 +52,14 @@ module.exports = {
 
 	afterDestroy: function(destroyedRecords, cb){
 		ScoreboardService.deleteSubtask(destroyedRecords);
-		Testcase.destroy({ 
-			subtask: destroyedRecords.map(function(currentValue){
-				return currentValue.id;
-			})
-		}).exec(cb);
+		async.map(destroyedRecords, function(currentValue, callback){
+			callback(null, currentValue.id);
+		}, function(err, results){
+			Testcase.destroy({
+				subtask: results
+			}).exec(cb);
+		});
+
 	},
 
 	afterCreate: function(newSubtask, cb){
