@@ -378,65 +378,70 @@ module.exports = {
 		}
 
 		var subtasksFeedback = {};
-		grade.subtasks.forEach(function(subtask){
+
+		async.each(grade.subtasks, function(subtask, callback){
 			subtasksFeedback[subtask.id] = subtask.feedback;
-		});
-
-		ScoreboardPublic.find({ where: { user: grade.run.owner.id, task: grade.task.id}, sort: 'subtask'}).exec(function(err, rows){
-			if(err){
-				sails.log.err("Error building scoreboard, Please refresh scoreboard");
-				return;
-			}
-
-			var subTaskUtil = {}, balloon = true;
-			var previousScore = rows.map(function(current){
-				return current.points;
-			}).reduce(function(prev, next){
-				return prev + next;
-			});
-
-			var nextScore = veredicts.map(function(current){
-				subTaskUtil[current.id] = {
-					points: current.points,
-					veredict: current.veredict
-				};
-				balloon = balloon && (current.veredict === 'accepted' && subtasksFeedback[current.id]);
-				return current.veredict === 'accepted' && subtasksFeedback[current.id] ? parseInt(current.points) : 0;
-			}).reduce(function(prev, next){
-				return prev + next;
-			});
-			balloon = balloon && nextScore > previousScore;
-			// update each subtask entry in the scoreboard
-			async.each(rows, function(item, cb){
-				item.submissions = parseInt(item.submissions) + 1;
-
-				// update results if needed
-				if(nextScore > previousScore){
-					if(subTaskUtil[item.subtask].veredict === 'accepted' && subtasksFeedback[item.subtask]){
-						item.points = subTaskUtil[item.subtask].points;
-						item.isCorrect = true;
-					}else{
-						item.points = 0;
-						item.isCorrect = false;
-					}
-					item.time = grade.run.time;
-					item.penalty = (item.submissions - 1) * grade.contest.penalty;
-				}
-
-				item.save();
-				cb();
-			}, function(err){
+			callback();
+		}, function(err){
+			
+			ScoreboardPublic.find({ where: { user: grade.run.owner.id, task: grade.task.id}, sort: 'subtask'}).exec(function(err, rows){
 				if(err){
-					sails.log.err("Error building scoreboard. Please refresh scoreboard");
+					sails.log.err("Error building scoreboard, Please refresh scoreboard");
 					return;
 				}
-				ScoreboardPublic.publishUpdate(rows[0].id, rows);
-				if(balloon){
-					BalloonService.create(grade.run.owner.id, grade.task.id);
-				}
-			});
 
+				var subTaskUtil = {}, balloon = true;
+				var previousScore = rows.map(function(current){
+					return current.points;
+				}).reduce(function(prev, next){
+					return prev + next;
+				});
+
+				var nextScore = veredicts.map(function(current){
+					subTaskUtil[current.id] = {
+						points: current.points,
+						veredict: current.veredict
+					};
+					balloon = balloon && (current.veredict === 'accepted' && subtasksFeedback[current.id]);
+					return current.veredict === 'accepted' && subtasksFeedback[current.id] ? parseInt(current.points) : 0;
+				}).reduce(function(prev, next){
+					return prev + next;
+				});
+				balloon = balloon && nextScore > previousScore;
+				// update each subtask entry in the scoreboard
+				async.each(rows, function(item, cb){
+					item.submissions = parseInt(item.submissions) + 1;
+
+					// update results if needed
+					if(nextScore > previousScore){
+						if(subTaskUtil[item.subtask].veredict === 'accepted' && subtasksFeedback[item.subtask]){
+							item.points = subTaskUtil[item.subtask].points;
+							item.isCorrect = true;
+						}else{
+							item.points = 0;
+							item.isCorrect = false;
+						}
+						item.time = grade.run.time;
+						item.penalty = (item.submissions - 1) * grade.contest.penalty;
+					}
+
+					item.save();
+					cb();
+				}, function(err){
+					if(err){
+						sails.log.err("Error building scoreboard. Please refresh scoreboard");
+						return;
+					}
+					ScoreboardPublic.publishUpdate(rows[0].id, rows);
+					if(balloon){
+						BalloonService.create(grade.run.owner.id, grade.task.id);
+					}
+				});
+
+			});
 		});
+
+		
 
 	},
 

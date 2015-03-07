@@ -106,11 +106,16 @@ module.exports = {
 						finalResponse.subtasks = res;
 						if(finalResponse.grade.result === 'compiler-error'){
 							finalResponse.result = 'compiler-error';
-							finalResponse.subtasks.forEach(function(subtask){
+							async.each(finalResponse.subtasks, function(subtask, callback){
 								subtask.result = 'compiler-error';
+								callback();
+							}, function(err){
+								cb(null,finalResponse);
+								return;
 							});
-							cb(null,finalResponse);
 							return;
+
+
 						}
 						async.each(finalResponse.subtasks, function(subtask, finishedSubtask){
 							async.each(subtask.testcases, function(testcase, finishedTestcase){

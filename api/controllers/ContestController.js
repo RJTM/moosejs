@@ -48,19 +48,17 @@ module.exports = {
 			if(user && user.role === 'team'){
 				Contest.subscribe(req.socket, user.contests);
 				var upcomingContests = [];
-				user.contests.forEach(function(contest){
-					if(new Date(contest.unfreezeTime) > now)
-						upcomingContests.push(contest);
+				async.filterSeries(user.contests, function(contest, callback){
+					callback(new Date(contest.unfreezeTime) > now);
+				}, function(upcomingContests){
+					async.sortBy(upcomingContests, function(contest, callback){
+						callback(null, contest.startTime);
+					}, function(err, results){
+						results.length = Math.min(1, results.length);
+						res.json(results);
+					});
 				});
-				upcomingContests.sort(function(a,b){
-					var startTimeA = new Date(a.startTime);
-					var startTimeB = new Date(b.startTime);
-					if(startTimeA < startTimeB) return -1;
-					if (startTimeA > startTimeB) return 1;
-					return 0;
-				});
-				upcomingContests.length = Math.min(3,upcomingContests.length);
-				res.json(upcomingContests);
+
 			}else{
 				Contest.find({ where: { unfreezeTime: { '>': new Date() } }, limit: 3, sort: 'startTime ASC' }).exec(function(err, contests){
 					if(err){

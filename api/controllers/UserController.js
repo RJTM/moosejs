@@ -78,8 +78,11 @@ var bcrypt = require('bcrypt');
                     callback();
                }, function(err){
                     contest.save(function(){
-                         users.forEach(function(user){
+                         async.each(users, function(user, callback){
                               Contest.publishAdd(contestId, 'users', user);
+                              callback();
+                         }, function(){
+
                          });
                     });
                     return res.json(contest);
@@ -98,8 +101,11 @@ var bcrypt = require('bcrypt');
                     callback();
                }, function(err){
                     contest.save(function(){
-                         users.forEach(function(user){
+                         async.each(users, function(user, callback){
                               Contest.publishRemove(contestId, 'users', user);
+                              callback();
+                         }, function(err){
+                         
                          });
                     });
                     return res.json(contest);
