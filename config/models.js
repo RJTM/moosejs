@@ -19,6 +19,7 @@ module.exports.models = {
   ***************************************************************************/
   migrate: 'safe',
   // connection: 'localDiskDb'
+  'connection': 'moosejs',
     
   seed: function(cb){
     var self = this;

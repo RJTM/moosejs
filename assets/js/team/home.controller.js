@@ -5,7 +5,6 @@ angular.module('mooseJs.team')
 
 		var users = $scope.scoreboardRows = {};
 		var tasks = $scope.tasks = {};
-		$scope.isTeam = true;
 		$scope.allowProblemset = true;
 
 		var calculateScoreboard = function(){
