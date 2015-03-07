@@ -71,7 +71,7 @@ module.exports = {
                     ],function(err){
                         if(!err){
                             async.eachSeries(task.runs, function(run, callback){
-                                module.exports.reJudgeRun(run.id, callback);
+                                module.exports.dispatchRun(run, callback);
                             }, function(err){
                                 sails.log.info('Finished rejudging task '+id);
                             });
