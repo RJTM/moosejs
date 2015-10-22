@@ -36,7 +36,7 @@ var jsFilesToInject = [
   'dependencies/vendor/ng-file-upload/angular-file-upload.js',
   'dependencies/vendor/sweetalert/lib/sweet-alert.js',
   'dependencies/prism.js',
-  'dependencies/vendor/angular-ui-bootstrap-datetimepicker/datetimepicker-tpls-0.11.js',
+  'dependencies/vendor/angular-ui-bootstrap-datetimepicker/datetimepicker-tpls-0.8.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
