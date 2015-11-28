@@ -47,6 +47,7 @@ module.exports = {
 								 'moosejs/grader:1.0' + ' /workspace/compile.sh ' 
 								 + language.compiler + ' ' + language.fileName + ' ' + language.arguments;
 				exec(statement, function(error, stdout, stderr){
+					console.log(error, stdout, stderr);
 				    	if (error) {
 				       	if(error.code === 1){
 				       		// Compiler error
@@ -99,23 +100,39 @@ module.exports = {
 			// Check for wrong-answer
 			var diffStatement = 'diff '+gPath+'/../testcases/' + refOutput +
 			 ' ' + gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput);
+			console.log(diffStatement);
 			exec(diffStatement, function(error){
+				if(error && typeof error.code === 'undefined'){
+					callback(null, {result: 'wrong-answer', message: 'Too many differences'});
+					return;
+				}
 				if(error && error.code === 1){
-					fs.readFile(gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput), 
-						{
-							encoding: 'utf8'
-						},
-						function(err, data){
-							var diffPre = diffStatement + ' -iEZbwB'
-							exec(diffPre, function(error){
-								if(error && error.code === 1){
-									callback(null, {result: 'wrong-answer', message: data});
-									return;
-								}
-								callback(null, {result: 'presentation-error', message: data});
-							});
-							return;
+					var gitDiffStatement = 'git ' + diffStatement.substr(0, 5) + "--no-index " + diffStatement.substr(5);
+					exec(gitDiffStatement, function(error, diffOutput){
+						var diffPre = diffStatement + ' -iEZbwB';
+						exec(diffPre, function(error){
+							if(error && error.code === 1){
+								callback(null, {result: 'wrong-answer', message: diffOutput});
+								return;
+							}
+							callback(null, {result: 'presentation-error', message: diffOutput});
 						});
+					});
+					// fs.readFile(gPath + '/'+ util.getPath(source) + 'outputs/' + util.getFileName(refOutput), 
+					// 	{
+					// 		encoding: 'utf8'
+					// 	},
+					// 	function(err, data){
+					// 		var diffPre = diffStatement + ' -iEZbwB';
+					// 		exec(diffPre, function(error){
+					// 			if(error && error.code === 1){
+					// 				callback(null, {result: 'wrong-answer', message: data});
+					// 				return;
+					// 			}
+					// 			callback(null, {result: 'presentation-error', message: data});
+					// 		});
+					// 		return;
+					// 	});
 					return;
 				}
 				callback(null, {result: 'accepted', message: 'Execution Time: '+executionTime});

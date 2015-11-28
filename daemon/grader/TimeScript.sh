@@ -6,8 +6,8 @@ shift
 
 container=$(docker run -d "$@")
 code=$(timeout "$timelimit" docker wait "$container" || true)
-docker kill $container &> /dev/null
 if [ -z "$code" ]; then
+	docker kill $container &> /dev/null
 	>&2 echo "Timeout"
 	docker rm $container &> /dev/null
 	exit 137

@@ -27,25 +27,25 @@ angular.module('mooseJs.jury')
 					return;
 				}
 
-				angular.forEach(subtask.testcases, function(testcase, index){
-					$http.get('/protected/testcases/'+testcase.outputFile).success(function(data){
-						testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-				   			return '&#'+i.charCodeAt(0)+';';
-						});
-						var result = diff(testcase.juryOutput, testcase.testcasegrade.output);
-						var lines = [];
-						result.forEach(function(part){
-							lines = lines.concat(part.value.split('\n').map(function(value){
-								return {
-									text : value,
-									color : part.added ? 'green' : part.removed ? 'red' : 'gray'
-								}
-							}));
-							lines.pop();
-						});
-						testcase.diff = lines;
-					});
-				});
+				// angular.forEach(subtask.testcases, function(testcase, index){
+				// 	$http.get('/protected/testcases/'+testcase.outputFile).success(function(data){
+				// 		testcase.juryOutput = data.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+				//    			return '&#'+i.charCodeAt(0)+';';
+				// 		});
+				// 		var result = diff(testcase.juryOutput, testcase.testcasegrade.output);
+				// 		var lines = [];
+				// 		result.forEach(function(part){
+				// 			lines = lines.concat(part.value.split('\n').map(function(value){
+				// 				return {
+				// 					text : value,
+				// 					color : part.added ? 'green' : part.removed ? 'red' : 'gray'
+				// 				}
+				// 			}));
+				// 			lines.pop();
+				// 		});
+				// 		testcase.diff = lines;
+				// 	});
+				// });
 			});
 		});
 

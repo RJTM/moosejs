@@ -82,6 +82,7 @@ angular.module('mooseJs.jury')
 
 		$scope.$watch('search.contest', function(value){
 			if(value){
+				$scope.activeContest = value;
 				LocalService.set('selected_contest', value);
 				calculateScoreboard();
 			}
@@ -94,6 +95,7 @@ angular.module('mooseJs.jury')
 
 		var previousSelectedContest = LocalService.get('selected_contest');
 		if(previousSelectedContest){
+			$scope.activeContest = previousSelectedContest;
 			$scope.search.contest = previousSelectedContest;
 			calculateScoreboard();
 		}

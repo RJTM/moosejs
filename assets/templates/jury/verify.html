@@ -65,7 +65,7 @@
 						</tr>
 						<tr ng-repeat-end ng-init="isCollapsed=true" collapse="isCollapsed">
 							<td colspan="3">
-								<div class="col-md-6">
+<!-- 								<div class="col-md-6">
 									<div class="row text-center">
 										<strong>Jury Output</strong>
 									</div>
@@ -82,8 +82,10 @@
 										<span class="col-md-2 text-muted">{{$index + 1}}</span>
 										<span ng-class="{'bg-danger': line.color=='green', 'text-danger' : line.color=='green'}" class="col-md-9">{{line.text}}</span>
 									</div>
-								</div>
-							</td>
+								</div>-->
+								<diff-show diff="{{ testcase.testcasegrade.output }}"></diff-show>
+
+ 							</td>
 						</tr>
 					</tbody>
 				</table>			
